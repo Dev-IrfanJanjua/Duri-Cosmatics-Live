@@ -1,0 +1,330 @@
+{% style %}
+  .section-{{ section.id }} {
+    background-color: {{ section.settings.section_bg }};
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+  }
+
+  .section-{{ section.id }} .page-width {
+        padding-right: 0;
+    }
+
+  .section-{{ section.id }} .drying-content-inner {
+    background-color: {{ section.settings.content_bg }};
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    /* max-width: 480px; 
+    margin-left: auto; */
+  }
+
+  .drying-wrapper {
+    display: flex;
+    gap: 80px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.drying-content {
+    max-width: calc(44% - 80px);
+    width: 100%;
+    padding: 40px 0;
+    padding-left: 80px;
+}
+
+.drying-image {
+    max-width: 56%;
+    width: 100%;
+    height: auto;
+}
+
+.drying-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+h2.drying-title {
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 46.8px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    color: #000;
+    margin: 0 0 16px;
+}
+
+p.drying-desc {
+    font-family: PP Mori;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    color: #000;
+    margin: 0;
+}
+
+.drying-block_icon {
+    width: 48px;
+    min-width: 48px;
+    height: 48px;
+}
+
+.drying-block_icon img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+p.drying-block_text {
+    font-family: PP Mori;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0px;
+    text-align: center;
+    vertical-align: middle;
+    color: #000;
+    margin: 0;
+}
+
+.drying-blocks {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.drying-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+  @media screen and (max-width: 900px) {
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    .section-{{ section.id }} .page-width {
+    padding: 0;
+}
+
+    .drying-wrapper {
+    flex-direction: column-reverse;
+    gap: 0;
+}
+
+.drying-image {
+    max-width: 100%;
+}
+
+.drying-content {
+    max-width: 100%;
+    padding: 40px 16px;
+}
+
+.section-{{ section.id }} .drying-content-inner {
+    padding: 16px;
+    gap: 16px;
+}
+
+h2.drying-title {
+    font-size: 24px;
+    line-height: 31.2px;
+    margin-bottom: 12px;
+}
+
+  }
+{% endstyle %}
+
+<section class="drying-section section-{{ section.id }}">
+  {% comment %} <div class="page-width"> {% endcomment %}
+    <div class="drying-wrapper">
+      
+      <!-- Left Content -->
+      <div class="drying-content">
+        <div class="drying-content-inner">
+
+          <div class="drying-head">
+            {% if section.settings.title != blank %}
+              <h2 class="drying-title">
+                {{ section.settings.title }}
+              </h2>
+            {% endif %}
+
+            {% if section.settings.description != blank %}
+              <p class="drying-desc">
+                {{ section.settings.description }}
+              </p>
+            {% endif %}
+          </div>
+
+          <div class="drying-blocks">
+            {% for block in section.blocks %}
+              <div class="drying-block" {{ block.shopify_attributes }}>
+                
+                <div class="drying-block_icon">
+                  {% if block.settings.icon != blank %}
+                    {{
+                      block.settings.icon
+                      | image_url: width: 200
+                      | image_tag: loading: 'lazy'
+                    }}
+                  {% endif %}
+                </div>
+
+                {% if block.settings.text != blank %}
+                  <p class="drying-block_text">
+                    {{ block.settings.text }}
+                  </p>
+                {% endif %}
+
+              </div>
+            {% endfor %}
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right Image -->
+      <div class="drying-image">
+        {% if section.settings.main_image != blank %}
+            {{ section.settings.main_image | image_url: width: 1600 | image_tag:
+                widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                alt: "image",
+                loading: "lazy"
+            }}
+        {% endif %}
+      </div>
+
+    </div>
+  {% comment %} </div> {% endcomment %}
+</section>
+
+{% schema %}
+{
+  "name": "Drying Section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "content_bg",
+      "label": "Content Inner Background Color",
+      "default": "#f7f7f7"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Drying Section Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Add your description here."
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Right Side Image"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Top (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top (Mobile)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom (Mobile)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "drying_block",
+      "name": "Drying Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Block text goes here"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Drying Section",
+      "category": "Duri",
+      "blocks": [
+        {
+          "type": "drying_block"
+        },
+        {
+          "type": "drying_block"
+        },
+        {
+          "type": "drying_block"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,872 @@
+{% style %}
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.desktop-padding-top }}px;
+    padding-bottom: {{ section.settings.desktop-padding-bottom }}px;
+    background-color: {{ section.settings.back-color}};
+    overflow: hidden;
+}
+.nv-content {
+    padding-left: 80px;
+}
+.newyuio {
+  display: flex;
+  flex-direction: column;
+}
+.custom-video-slider{
+  width: 100%;
+   /* min-height: 530px; */
+  height: 60vh;
+  object-fit: cover;
+  position: relative;
+  z-index: 12;
+}
+.custom-video-container{
+  position: relative;
+  z-index: 10;
+}
+.play-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+     z-index: 20;
+}
+.nv-products img{
+  width: 60px;
+  height: 60px;
+}
+.play-svg{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nv-products {
+    display: flex;
+    gap: 16px;
+    padding: 12px 16px;
+    justify-contetn: center;
+}
+p.nv-product-title {
+    margin: 0;
+    text-transform: capitalize;
+    letter-spacing: 0px;
+    padding-bottom: 4px;
+    color: #000;
+    font-family: "PP Mori";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+}
+span.nv-orignal-price {
+    letter-spacing: 0px;
+    color: #000;
+    font-family: "PP Mori";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px; /* 150% */
+}
+span.nv-compare-price {
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: 7%;
+    text-underline-offset: -30%;
+    text-underline-position: from-font;
+    letter-spacing: 0px;
+    color: #000;
+    font-family: "PP Mori";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px; /* 150% */
+}
+.nv-product-prices {
+    display: flex
+;
+    align-items: center;
+    gap: 8px;
+}
+.single-video-block {
+    border: 1.345px solid var(--4, #F6E2FB);
+    background: #fff;
+}
+.nv-product-bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nv-heading{
+  margin: 0;
+  padding: 0px 40px;
+}
+.nv-heading p {
+    margin: 0;
+    text-align: center;
+    letter-spacing: 0px;
+    padding-bottom: 14px;
+    color: #000;
+    font-family: "PP Mori";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 46.8px;
+}
+.subb-heading {
+    margin: 0;
+    text-align: center;
+    color: #000;
+    font-family: "PP Mori";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px; /* 150% */
+    padding-bottom: 24px;
+    letter-spacing: 0;
+}
+.nv-heading p strong{
+  color: var(--1, #6A2590);
+   font-weight: 400;
+}
+/*.new-videos .swiper-slide-active{
+  transform: scaleY(1.15);
+    transform-origin: top;
+    margin-top: -24px;
+} */
+.new-videos .swiper{
+  overflow: visible;
+}
+.nv-main-wrapper{
+  position: relative;
+}
+.cstm-pre-btn-nv {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 24px;
+    z-index: 999;
+     cursor: pointer;
+}
+.cstm-next-btn-nv {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 24px;
+    z-index: 999;
+    cursor: pointer;
+}
+/* .nv-main-wrapper::before,
+.nv-main-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 240px; /* Adjust the width to control the size of the gradient */
+background: linear-gradient(272deg, #FAF7FC 12.2%, rgba(250, 247, 252, 0.00) 98.36%);
+  z-index: 9
+} */
+
+.nv-main-wrapper::before {
+  left: 0;
+  transform: rotate(180deg);
+}
+
+.nv-main-wrapper::after {
+  right: 0;
+ background: linear-gradient(272deg, #FAF7FC 12.2%, rgba(250, 247, 252, 0.00) 98.36%);
+}
+.nv-heading {
+    margin: 0;
+    padding: 0px 16px;
+}
+.sr-svg{
+  display: flex;
+}
+    .nv-products {
+      padding: 12px 16px;
+    }
+  .nv-product-detail{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .main-btn-clasNEW {
+    padding-top: 55px;
+  }
+  .main-btn-clasNEW .swiper-scrollbar{
+    height: 2px;
+    width: 84%;
+  }
+  
+  .main-btn-clasNEW .swiper-scrollbar-drag{
+    display: block !important;
+    background: #9CBCB5;
+  }
+  .new-videos .swiper-button-nextttxx svg rect,  .new-videos .swiper-button-prevvvxx svg rect{
+    stroke: #9CBCB5;
+  }
+  .new-videos .swiper-button-disabled svg rect, .new-videos .swiper-button-disabled rect{
+    stroke: #D9D9D9;
+  }
+  {% comment %} .swiper-button-prevvv svg {
+    border: 1px solid #9CBCB5;
+  } {% endcomment %}
+
+  .new-videos .quick-add__submit:after{
+  content: none !important;
+}
+.new-videos .quick-add__submit:before{
+  content: none !important;
+}
+.new-videos .button--full-width {
+    display: flex
+;
+    width: 100%;
+    /* width: 14px; */
+    min-width: -3px;
+    min-width: 32px;
+    width: 32px;
+    padding: 0px;
+    letter-spacing: 0px;
+    min-height: 32px;
+    border: none;
+    box-shadow: navajowhite;
+}
+.new-videos .button--full-width svg{
+  width: 32px;
+  height: 32px;
+}
+@media screen and (max-width: 1100px) {
+ .nv-main-wrapper::before,
+.nv-main-wrapper::after {
+  width: 120px;
+}
+.custom-video-slider {
+  min-height: unset;
+}
+.nv-products img {
+    width: 50px;
+    height: 50px;
+}
+p.nv-product-title {
+  font-size: 14px;
+  line-height: 16px;
+}
+.nv-products {
+    display: flex
+;
+    gap: 8px;
+    padding: 6px 12px;
+    justify-contetn: center;
+}
+
+}
+   @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding-top-mbl }}px;
+        padding-bottom: {{ section.settings.padding-bottom-mbl }}px;
+    }
+ .nv-main-wrapper::before,
+.nv-main-wrapper::after {
+  content: unset;
+}
+.nv-content {
+    padding-left: 16px;
+}
+.cstm-next-btn-nv, .cstm-pre-btn-nv {
+  display: none;
+}
+.nv-heading p {
+  font-size: 24px;
+  padding-bottom: 8px;
+  line-height: 31.2px;
+}
+.subb-heading {
+    padding-bottom: 16px;
+    padding-right: 16px;
+}
+/* .new-videos .swiper-slide-active {
+    transform: scaleY(1.15);
+    transform-origin: top;
+    margin-top: -28px;
+    transition: transform 0.8s ease, margin-top 0.3s ease;
+} */
+
+.nv-products img {
+        width: 36px;
+        height: 36px;
+    }
+        /* p.nv-product-title {
+        font-size: 12px;
+        line-height: normal;
+        padding-bottom: 4px;
+    } */
+span.nv-orignal-price {
+  font-size: 10px;
+}
+.nv-compare-price{
+  font-size: 10px;
+}
+.main-btn-clasNEW {
+    padding-top: 0px;
+    display: none;
+}
+   }
+
+
+
+  {% endstyle %}
+<section class="section-{{ section.id }}-padding new-videos {% if section.settings.show_section1 %}Duri-landing-video-collection {% endif %}">
+   <div class="nv-content">
+     <h3 class="nv-heading">{{ section.settings.heading }}</h3>
+     <p class="subb-heading">{{ section.settings.subheading }}</p>
+     <div class="nv-main-wrapper">
+         <div class="swiper mySwiper-video">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+      <div class="swiper-slide">
+       <div class="single-video-block">
+        <div class="custom-video-container custom-video-new-block-{{ section.id }}">
+          {% if block.settings.video != blank %}
+                  {{
+                    block.settings.video
+                    | video_tag:
+                      class: 'custom-video-slider',
+                      image_size: '1100x',
+                      controls: false,
+                      muted: false,
+                   id: 'custom-video-new-block'
+                  }}
+                {% endif %}
+    
+      
+        <div class="play-svg" id="playIcon-{{ section.id }}">
+              {% render 'play-svg-new' %}
+            </div>
+   
+          </div>
+            {% assign card_product = block.settings.product %}
+
+        <a href="{{ card_product.url }}" class="nv-products">
+          {% if card_product.featured_image %}
+          <img src="{{ card_product.featured_image | image_url }}" width="auto" height="auto">
+            {% endif %}
+        <div class="nv-product-detail">
+          <div class="newyuio">
+          <p class="nv-product-title">{{ card_product.title }}</p>
+           <div class="nv-product-bottom">
+             <div class="nv-product-prices">
+              <span class="nv-orignal-price">{{ card_product.price | money }}</span>
+                <span class="nv-compare-price">{{ card_product.compare_at_price | money }}</span>
+             </div>
+              {% comment %} <div class="sr-svg">{% render 'arrow-svg-new' %}</div> {% endcomment %}
+
+
+           </div>
+          </div>
+
+
+
+
+           {% assign quick_add = section.settings.quick_add %}
+                         {%  assign section_id = section.id %}
+                      {% assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id %}
+               {% if quick_add == 'standard' %}
+          <div class="quick-add no-js-hidden">
+            {%- liquid
+              assign qty_rules = false
+              if card_product.selected_or_first_available_variant.quantity_rule.min > 1 or card_product.selected_or_first_available_variant.quantity_rule.max != null or card_product.selected_or_first_available_variant.quantity_rule.increment > 1
+                assign qty_rules = true
+              endif
+            -%}
+            {%- if card_product.variants_count > 1 or qty_rules -%}
+              <modal-opener data-modal="#QuickAdd-{{ card_product.id }}">
+                <button
+                  id="{{ product_form_id }}-submit"
+                  type="submit"
+                  name="add"
+                  class="quick-add__submit button button--full-width button--secondary{% if horizontal_quick_add %} card--horizontal__quick-add animate-arrow{% endif %}"
+                  aria-haspopup="dialog"
+                  aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
+                  data-product-url="{{ card_product.url }}"
+                >
+                  {{ 'products.product.choose_options' | t }}
+                  {%- if horizontal_quick_add -%}
+                    <span class="icon-wrap">
+                      {{- 'icon-arrow.svg' | inline_asset_content -}}
+                    </span>
+                  {%- endif -%}
+                  {%- render 'loading-spinner' -%}
+                </button>
+              </modal-opener>
+              <quick-add-modal id="QuickAdd-{{ card_product.id }}" class="quick-add-modal">
+                <div
+                  role="dialog"
+                  aria-label="{{ 'products.product.choose_product_options' | t: product_name: card_product.title | escape }}"
+                  aria-modal="true"
+                  class="quick-add-modal__content global-settings-popup"
+                  tabindex="-1"
+                >
+                  <button
+                    id="ModalClose-{{ card_product.id }}"
+                    type="button"
+                    class="quick-add-modal__toggle"
+                    aria-label="{{ 'accessibility.close' | t }}"
+                  >
+                    {{- 'icon-close.svg' | inline_asset_content -}}
+                  </button>
+                  <div id="QuickAddInfo-{{ card_product.id }}" class="quick-add-modal__content-info"></div>
+                </div>
+              </quick-add-modal>
+            {%- else -%}
+              <product-form data-section-id="{{ section.id }}">
+                {%- form 'product',
+                  card_product,
+                  id: product_form_id,
+                  class: 'form',
+                  novalidate: 'novalidate',
+                  data-type: 'add-to-cart-form'
+                -%}
+                  <input
+                    type="hidden"
+                    name="id"
+                    value="{{ card_product.selected_or_first_available_variant.id }}"
+                    class="product-variant-id"
+                    {% if card_product.selected_or_first_available_variant.available == false %}
+                      disabled
+                    {% endif %}
+                  >
+                  <button
+                    id="{{ product_form_id }}-submit"
+                    type="submit"
+                    name="add"
+                    class="quick-add__submit button button--full-width button--secondary{% if horizontal_quick_add %} card--horizontal__quick-add{% endif %}"
+                    aria-haspopup="dialog"
+                    aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
+                    aria-live="polite"
+                    data-sold-out-message="true"
+                    {% if card_product.selected_or_first_available_variant.available == false %}
+                      disabled
+                    {% endif %}
+                  >
+                    {% comment %} <span>
+                      {%- if card_product.selected_or_first_available_variant.available -%}
+                        {{ 'products.product.add_to_cart' | t }}
+                      {%- else -%}
+                        {{ 'products.product.sold_out' | t }}
+                      {%- endif -%}
+                    </span> {% endcomment %}
+                    {% render 'btn-svg' %}
+                    <span class="sold-out-message hidden">
+                      {{ 'products.product.sold_out' | t }}
+                    </span>
+                    {%- if horizontal_quick_add -%}
+                      <span class="icon-wrap">
+                        {{- 'icon-plus.svg' | inline_asset_content -}}
+                      </span>
+                    {%- endif -%}
+                    {%- render 'loading-spinner' -%}
+                  </button>
+                {%- endform -%}
+              </product-form>
+            {%- endif -%}
+          </div>
+         {% elsif quick_add == 'bulk' %}
+          {% if card_product.variants_count == 1 %}
+            <quick-add-bulk
+              data-min="{{ card_product.selected_or_first_available_variant.quantity_rule.min }}"
+              id="quick-add-bulk-{{ card_product.selected_or_first_available_variant.id }}-{{ section.id }}"
+              class="quick-add-bulk"
+              data-index="{{ card_product.selected_or_first_available_variant.id }}"
+            >
+              {% if card_product.selected_or_first_available_variant.available == false %}
+                <button
+                  id="{{ product_form_id }}-submit"
+                  type="submit"
+                  name="add"
+                  class="quick-add__submit button button--full-width button--secondary"
+                  aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
+                  data-sold-out-message="true"
+                  disabled
+                >
+                  <span>{{ 'products.product.sold_out' | t }}</span>
+                  <span class="sold-out-message hidden">
+                    {{ 'products.product.sold_out' | t }}
+                  </span>
+                </button>
+              {% else %}
+                {% render 'quantity-input', variant: card_product.selected_or_first_available_variant, min: 0 %}
+              {% endif %}
+            </quick-add-bulk>
+          {% else %}
+            <div class="quick-add no-js-hidden">
+              {%- liquid
+                assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id
+                assign qty_rules = false
+                if card_product.selected_or_first_available_variant.quantity_rule.min > 1 or card_product.selected_or_first_available_variant.quantity_rule.max != null or card_product.selected_or_first_available_variant.quantity_rule.increment > 1
+                  assign qty_rules = true
+                endif
+              -%}
+              <modal-opener
+                id="QuickBulk-{{ card_product.id }}-{{ section_id }}"
+                data-modal="#QuickAddBulk-{{ card_product.id }}-{{ section.id }}"
+              >
+                <button
+                  id="{{ product_form_id }}-submit"
+                  type="submit"
+                  name="add"
+                  class="quick-add__submit button button--full-width button--secondary"
+                  aria-haspopup="dialog"
+                  aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
+                  data-product-url="{{ card_product.url }}"
+                >
+                  {{ 'products.product.choose_options' | t }}
+                  {%- render 'loading-spinner' -%}
+                </button>
+              </modal-opener>
+              <modal-dialog
+                id="QuickAddBulk-{{ card_product.id }}-{{ section_id }}"
+                class="quick-add-modal color-{{ section.settings.color_scheme }}"
+              >
+                <div
+                  role="dialog"
+                  aria-label="{{ 'products.product.choose_product_options' | t: product_name: card_product.title | escape }}"
+                  aria-modal="true"
+                  class="quick-add-modal__content quick-add-modal__content--bulk global-settings-popup"
+                  tabindex="-1"
+                >
+                  <button
+                    id="ModalClose-{{ card_product.id }}"
+                    type="button"
+                    class="quick-add-modal__toggle"
+                    aria-label="{{ 'accessibility.close' | t }}"
+                  >
+                    {{- 'icon-close.svg' | inline_asset_content -}}
+                  </button>
+                  <div
+                    id="QuickAddInfo-{{ card_product.id }}"
+                    class="quick-add-modal__content-info quick-add-modal__content-info--bulk"
+                  >
+                    <div class="quick-add__content-info__media">
+                      <div class="quick-add__info">
+                        {%- if card_product.featured_media -%}
+                          <div
+                            class="quick-add__product-media"
+                          >
+                            <div class="quick-add__product-container global-media-settings">
+                              {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+                              <img
+                                srcset="
+                                  {%- if card_product.featured_media.width >= 165 -%}{{ card_product.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
+                                  {%- if card_product.featured_media.width >= 360 -%}{{ card_product.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
+                                  {%- if card_product.featured_media.width >= 533 -%}{{ card_product.featured_media | image_url: width: 533 }} 533w,{%- endif -%}
+                                  {%- if card_product.featured_media.width >= 720 -%}{{ card_product.featured_media | image_url: width: 720 }} 720w,{%- endif -%}
+                                  {%- if card_product.featured_media.width >= 940 -%}{{ card_product.featured_media | image_url: width: 940 }} 940w,{%- endif -%}
+                                  {%- if card_product.featured_media.width >= 1066 -%}{{ card_product.featured_media | image_url: width: 1066 }} 1066w,{%- endif -%}
+                                  {{ card_product.featured_media | image_url }} {{ card_product.featured_media.width }}w
+                                "
+                                src="{{ card_product.featured_media | image_url: width: 533 }}"
+                                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                                alt="{{ card_product.featured_media.alt | escape }}"
+                                class="motion-reduce"
+                                {% unless lazy_load == false %}
+                                  loading="lazy"
+                                {% endunless %}
+                                width="{{ card_product.featured_media.width }}"
+                                height="{{ card_product.featured_media.height }}"
+                              >
+                              {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
+                            </div>
+                          </div>
+                        {%- endif -%}
+                        <a
+                          {% if card_product == blank %}
+                            role="link" aria-disabled="true"
+                          {% else %}
+                            href="{{ card_product.url }}"
+                          {% endif %}
+                          class="link product__view-details animate-arrow small-hide medium-hide"
+                        >
+                          {{ 'products.product.view_full_details' | t -}}
+                          {{- 'icon-arrow.svg' | inline_asset_content -}}
+                        </a>
+                      </div>
+                      <div class="quick-add-modal__content-info--bulk-details large-up-hide">
+                        <a href="{{ card_product.url }}" class="full-unstyled-link">
+                          <h3>{{ card_product.title | escape }}</h3>
+                        </a>
+                        {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+                        {%- if card_product.quantity_price_breaks_configured? -%}
+                          <div class="card__information-volume-pricing-note">
+                            <span class="caption">{{ 'products.product.volume_pricing.note' | t }}</span>
+                          </div>
+                        {%- endif -%}
+                      </div>
+                    </div>
+                    <div>
+                      <div class="quick-add-modal__content-info--bulk-details small-hide medium-hide">
+                        <a href="{{ card_product.url }}" class="full-unstyled-link">
+                          <h3 class="h2">
+                            {{ card_product.title | escape }}
+                          </h3>
+                        </a>
+                        {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+                        {%- if card_product.quantity_price_breaks_configured? -%}
+                          <div class="card__information-volume-pricing-note">
+                            <span class="caption">{{ 'products.product.volume_pricing.note' | t }}</span>
+                          </div>
+                        {%- endif -%}
+                      </div>
+                      <bulk-modal
+                        id="QuickBulkModal-{{ card_product.id }}-{{ section_id }}"
+                        data-url="{{ card_product.url }}"
+                        data-section-id="{{ section_id }}"
+                        data-product-id="{{ card_product.id }}"
+                      >
+                      </bulk-modal>
+                    </div>
+                  </div>
+                </div>
+              </modal-dialog>
+            </div>
+          {% endif %}
+         {% endif %}
+
+
+
+
+
+
+         </div>
+         </a>
+     </div>
+     
+     </div>
+      {% endfor %}
+         </div>
+
+         <div class="main-btn-clasNEW">
+          <div class="swiper-scrollbar"></div>
+            
+          </div>
+              </div>
+
+              <div class="btn-maiNN">
+              <div class="swiper-button-nextttxx"> {% render 'my-first-btn' %} </div>
+              <div class="swiper-button-prevvvxx"> {% render 'my-second-btn' %} </div>
+            </div>
+      </div>
+      {% comment %} <div class="cstm-pre-btn-nv">{% render 'pre-btn' %}</div>
+       <div class="cstm-next-btn-nv">{% render 'next-btn' %}</div> {% endcomment %}
+     </div>
+  
+ 
+</section>
+
+
+
+<script>
+    var swiper = new Swiper(".mySwiper-video", {
+      slidesPerView: 3.5,
+      spaceBetween: 20,  
+        {% comment %} centeredSlides: true,    // Center the active slide {% endcomment %}
+        speed: 800,
+  {% comment %} loop: true, {% endcomment %}
+        navigation: {
+        nextEl: ".cstm-next-btn-nv",
+        prevEl: ".cstm-pre-btn-nv",
+      },
+      scrollbar: {
+        el: ".swiper-scrollbar",
+      },
+      navigation: {
+      nextEl: '.swiper-button-nextttxx',
+      prevEl: '.swiper-button-prevvvxx',
+    },
+        breakpoints: {
+    // When window width is >= 640px
+    0: {
+      slidesPerView: 1.5,
+      spaceBetween: 12, 
+    },
+    // When window width is >= 768px
+    768: {
+      slidesPerView: 3.5,
+      spaceBetween: 14,
+    },
+    // When window width is >= 1024px
+    1024: {
+    slidesPerView: 4,
+      spaceBetween: 20,
+    }
+  }
+    });
+  </script>
+
+
+  {%- if section.settings.quick_add == 'standard' -%}
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{%- if section.settings.quick_add == 'bulk' -%}
+  <script src="{{ 'quick-add-bulk.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'quick-order-list.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+
+
+
+
+{% schema %}
+{
+    "name": "Duri Collection Video New",
+    "settings": [
+
+        {
+          "type": "checkbox",
+          "id": "show_section1",
+          "label": "Show this section",
+          "default": false
+        },
+        { 
+          "type": "range",
+          "id": "desktop-padding-top",
+          "label": "Desktop Padding Top",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 16 
+        },
+        { "type": "range",
+          "id": "desktop-padding-bottom",
+          "label": "Desktop Padding Bottom",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 16
+        },
+        { "type": "range",
+          "id": "padding-top-mbl",
+          "label": "Mobile Padding Top",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 16
+        },
+        { "type": "range",
+          "id": "padding-bottom-mbl",
+          "label": "Mobile Padding Bottom",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 16
+        },
+       {
+        "type": "color",
+        "id": "back-color",
+        "label": "Background Color"
+      },
+        {
+        "type": "richtext",
+        "id": "heading",
+        "label": "heading"
+        },
+        {
+        "type": "text",
+        "id": "subheading",
+        "label": "subheading"
+        },
+         {
+      "type": "select",
+      "id": "quick_add",
+      "default": "none",
+      "label": "t:sections.main-collection-product-grid.settings.quick_add.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_1"
+        },
+        {
+          "value": "standard",
+          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_2"
+        },
+        {
+          "value": "bulk",
+          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_3"
+        }
+      ]
+    },
+    ],
+  "blocks": [
+    {
+        "type": "featured-blocks",
+        "name": "Featurd Blocks",
+         "settings": [
+            {
+              "type": "video",
+               "id": "video",
+                "label": "video"
+            },
+            {
+              "type": "product",
+               "id": "product",
+                "label": "select product"
+            }
+         ]
+      },
+    ],
+    "presets": [
+        { "name": "Duri Collection Video New" }
+    ]
+}
+{% endschema %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const videoContainers = document.querySelectorAll(".custom-video-container");
+
+  videoContainers.forEach(container => {
+    const video = container.querySelector("video");
+    const playIcon = container.querySelector(".play-svg");
+
+    // Initially show the play icon when the video is not playing
+    playIcon.style.display = "flex";
+
+    // Play the video when the play icon is clicked
+    playIcon.addEventListener("click", function () {
+      if (video.paused) {
+        video.play();
+        playIcon.style.display = "none";  // Hide the play icon when the video starts playing
+      }
+    });
+
+    // Pause the video when the video itself is clicked
+    video.addEventListener("click", function () {
+      if (!video.paused) {
+        video.pause();
+        playIcon.style.display = "flex";  // Show the play icon when the video is paused
+      }
+    });
+
+    // Pause all other videos when a new one is played
+    video.addEventListener("play", function () {
+      document.querySelectorAll(".custom-video-container video").forEach(v => {
+        if (v !== video) {
+          v.pause();
+          v.closest(".custom-video-container").querySelector(".play-svg").style.display = "flex"; // Show play icon on other videos
+        }
+      });
+    });
+  });
+});
+
+
+</script>

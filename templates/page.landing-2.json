@@ -1,0 +1,1142 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "duri_landing_banner_dC8cNU": {
+      "type": "duri-landing-banner",
+      "disabled": true,
+      "name": "Duri Landing Banner",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "mbl_padding_top": 0,
+        "mbl_padding_bottom": 0,
+        "back-color": "",
+        "cheeseBnrImg": "shopify://shop_images/7a807581dddff423d26ba547078fda363dd44eaa.png",
+        "cheeseBnrImg1": "shopify://shop_images/image_1.png",
+        "heading": "Nail Recovery Starts Here",
+        "headingMBL": "Nail Recovery Starts Here",
+        "subtextt": "<p>Strengthen, protect, and polish in one easy bundle — featuring our best-selling Rejuvacote + your choice of nail color.</p>",
+        "button_label": "SHOP NOW",
+        "button_label4": "Request Form",
+        "button_label5": "CALL US",
+        "button_link": "",
+        "button_link4": "",
+        "button_link5": "",
+        "enable_highlight-chz-bnr": false,
+        "enable_highlight-country-page": false
+      }
+    },
+    "ads_banner_LxBAbT": {
+      "type": "ads-banner",
+      "name": "Adds Banner",
+      "settings": {
+        "img_desk": "shopify://shop_images/7a807581dddff423d26ba547078fda363dd44eaa.png",
+        "img_mob": "shopify://shop_images/image_1.png",
+        "banner_icon": "shopify://shop_images/Frame_2147228098.svg",
+        "stars": "shopify://shop_images/Frame_2147226224_1.svg",
+        "stars_text": "1000s of happy customers",
+        "title": "Nail Recovery Starts Here",
+        "text_colot": "#000000",
+        "description": "Strengthen, protect, and polish in one easy bundle — featuring our best-selling Rejuvacote + your choice of nail color.",
+        "max_width": 685,
+        "button_text": "Shop Now",
+        "button_link": "shopify://collections/all",
+        "btn_bg": "#7c0732",
+        "btn_text": "#ffffff",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "duri_marquee_first_3TmXAk": {
+      "type": "duri-marquee-first",
+      "blocks": {
+        "feature_MJLmht": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/manicure.svg",
+            "title": "Strengthens Nails"
+          }
+        },
+        "feature_UFDDRm": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Layer_1.svg",
+            "title": "Long-Lasting"
+          }
+        },
+        "feature_iVbcQM": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Layer_1_1.svg",
+            "title": "Non-Toxic Formula"
+          }
+        },
+        "feature_amtmT6": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_11.svg",
+            "title": "Gluten-Free"
+          }
+        }
+      },
+      "block_order": [
+        "feature_MJLmht",
+        "feature_UFDDRm",
+        "feature_iVbcQM",
+        "feature_amtmT6"
+      ],
+      "disabled": true,
+      "name": "Duri First Marquee",
+      "settings": {
+        "hide": false
+      }
+    },
+    "marquee_P8yQbG": {
+      "type": "marquee",
+      "blocks": {
+        "feature_fyjFQV": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_3.svg",
+            "title": "Non-Toxic Formula"
+          }
+        },
+        "feature_wehwFE": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_4.svg",
+            "title": "CRUELTY-Free"
+          }
+        },
+        "feature_jy3apd": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_2.svg",
+            "title": "Long-Lasting"
+          }
+        },
+        "feature_8VE6KN": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_1.svg",
+            "title": "Strengthens Nails"
+          }
+        },
+        "feature_rjamqT": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_3.svg",
+            "title": "Non-Toxic Formula"
+          }
+        },
+        "feature_xicRLD": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_4.svg",
+            "title": "CRUELTY-Free"
+          }
+        },
+        "feature_RiXqEL": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_2.svg",
+            "title": "Long-Lasting"
+          }
+        },
+        "feature_WdABHz": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_1.svg",
+            "title": "Strengthens Nails"
+          }
+        }
+      },
+      "block_order": [
+        "feature_fyjFQV",
+        "feature_wehwFE",
+        "feature_jy3apd",
+        "feature_8VE6KN",
+        "feature_rjamqT",
+        "feature_xicRLD",
+        "feature_RiXqEL",
+        "feature_WdABHz"
+      ],
+      "name": "CSTM Marquee",
+      "settings": {
+        "hide": false,
+        "border": true,
+        "background_color": "rgba(0,0,0,0)",
+        "border_color": "#d99ca5",
+        "padding_block": 10,
+        "padding_block_mob": 5
+      }
+    },
+    "bundle_collection_cy8naR": {
+      "type": "bundle-collection",
+      "blocks": {
+        "gallery_image_BghVxV": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_2_1.png",
+            "alt": ""
+          }
+        },
+        "gallery_image_wn6eJX": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/3_pack_-_rej1_new_print_9a820da9-cb35-4a91-9642-06e02cac1a6b.png",
+            "alt": ""
+          }
+        },
+        "gallery_image_iqCWfC": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/p6_de441442-276c-4d41-9cdc-22edaba17447.png",
+            "alt": ""
+          }
+        },
+        "gallery_image_NqjLGa": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/p2_2fe113c5-890a-4788-ade0-4f2b311ec4b3.png",
+            "alt": ""
+          }
+        },
+        "cstm_review_8qAg3b": {
+          "type": "cstm_review",
+          "settings": {
+            "review_img": "shopify://shop_images/Img_-_4.7_out_of_5_stars_1.svg",
+            "review_text": "4.9",
+            "review_url": ""
+          }
+        },
+        "heading_e6nPUh": {
+          "type": "heading",
+          "settings": {
+            "heading": "Nail Recovery Bundle",
+            "subheading": "",
+            "heading_tag": "h2",
+            "heading_size": 28,
+            "heading_color": "#000000"
+          }
+        },
+        "richtext_DHtmLe": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Treat yourself to our re-formulated bright bubblegum pink lacquer from the Happy Hour Collection. Long-lasting, glossy, opaque, easy to apply. 7-free, vegan, cruelty-free, paraben-free, made in USA.</p>"
+          }
+        },
+        "bundle_products_DExbnk": {
+          "type": "bundle_products",
+          "settings": {
+            "product_1": "006d-aurora",
+            "product_2": "008d-o-sole-mia",
+            "collection_1": "pink",
+            "collection_2": "enchanted-collection",
+            "collection_3": "dear-diary",
+            "collection_4": "red-carpet-trends",
+            "collection_5": "",
+            "collection_6": "",
+            "collection_7": "",
+            "collection_8": "",
+            "placeholder": "shopify://shop_images/72090e03ad6b44f695db104529a76a1f109af336.png"
+          }
+        },
+        "add_ons_xKjhdA": {
+          "type": "add_ons",
+          "settings": {
+            "main_title": "Choose Add Ons",
+            "product": "001d-sunny-side-up",
+            "custom_title": "DROP'N GO Polish Drying Drops",
+            "custom_desc": "Speed up dry time by 2x",
+            "custom_image": "shopify://shop_images/f7d1ddb040fb0b465d78c6a891cc7285f918d04d.png"
+          }
+        },
+        "button_DYttUa": {
+          "type": "button",
+          "settings": {}
+        },
+        "announcement_bar_hAt3FE": {
+          "type": "announcement_bar",
+          "settings": {
+            "bg_color": "#f8d7da",
+            "text": "Free Nail File Included",
+            "subtext": "Take care of your nails with every order"
+          }
+        },
+        "info_icons_rNXMXk": {
+          "type": "info_icons",
+          "settings": {
+            "icon_1": "shopify://shop_images/Frame_1484578863_3d4d12af-9361-405b-a94f-3dde6eb156b6.svg",
+            "title_1": "Multi-Award Winning Formula",
+            "icon_2": "shopify://shop_images/Frame_1484578863_1_0699c23e-6592-402b-a528-0a04a9019252.svg",
+            "title_2": "Free Delivery 3-5 Days",
+            "icon_3": "shopify://shop_images/Frame_1484578863_5.svg",
+            "title_3": "3 Days Risk-Free Manicure"
+          }
+        },
+        "popup_fKGNHP": {
+          "type": "popup",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_2.png",
+            "title": "Rejuvacote 2 Nail Growth System",
+            "description": "Rejuvacote 2 Nail Growth System, Super sensitive formula, Base and Top Coat",
+            "question_1": "Strengthens and protects natural nails",
+            "answer_1": "Rejuvacote 2 Nail Growth System, Super sensitive formula, Base and Top Coat",
+            "question_2": "Easy to use",
+            "answer_2": "Rejuvacote 2 Nail Growth System, Super sensitive formula, Base and Top Coat",
+            "question_3": "Enhances manicure results",
+            "answer_3": "Rejuvacote 2 Nail Growth System, Super sensitive formula, Base and Top Coat"
+          }
+        },
+        "popup_RJwcAb": {
+          "type": "popup",
+          "settings": {
+            "image": "shopify://shop_images/f7d1ddb040fb0b465d78c6a891cc7285f918d04d.png",
+            "title": "Rejuvacote 2 Nail Growth System",
+            "description": "Rejuvacote 2 Nail Growth System, Super sensitive formula, Base and Top Coat",
+            "question_1": "Strengthens and protects natural nails",
+            "answer_1": "Rejuvacote 2 Nail Growth System, Super sensitive formula, Base and Top Coat",
+            "question_2": "Easy to use",
+            "answer_2": "Rejuvacote 2 Nail Growth System, Super sensitive formula, Base and Top Coat",
+            "question_3": "Enhances manicure results",
+            "answer_3": "Rejuvacote 2 Nail Growth System, Super sensitive formula, Base and Top Coat"
+          }
+        }
+      },
+      "block_order": [
+        "gallery_image_BghVxV",
+        "gallery_image_wn6eJX",
+        "gallery_image_iqCWfC",
+        "gallery_image_NqjLGa",
+        "cstm_review_8qAg3b",
+        "heading_e6nPUh",
+        "richtext_DHtmLe",
+        "bundle_products_DExbnk",
+        "add_ons_xKjhdA",
+        "button_DYttUa",
+        "announcement_bar_hAt3FE",
+        "info_icons_rNXMXk",
+        "popup_fKGNHP",
+        "popup_RJwcAb"
+      ],
+      "name": "Custom Product Feature",
+      "settings": {
+        "section_padding_top": 40,
+        "section_padding_bottom": 40,
+        "section_padding_side": 0,
+        "badge_text": "",
+        "badge_style": "default",
+        "bundle_label": "Select Your Bundle:",
+        "product_heading": "Choose Rejuvacote:",
+        "color_heading": "Select Nail Polish Colors",
+        "selected_heading": "Selected Nail Polish Colors",
+        "tier_2_label": "Rejuvacote  + 2 Nail Colors",
+        "tier_2_badge": "",
+        "tier_2_colors": 2,
+        "tier_2_price": "$35",
+        "tier_2_compare_price": "$41",
+        "tier_4_label": "Rejuvacote  + 4 Nail Colors",
+        "tier_4_badge": "Most Popular",
+        "tier_4_colors": 4,
+        "tier_4_price": "$55",
+        "tier_4_compare_price": "",
+        "tier_6_label": "Rejuvacote  + 6 Nail Colors",
+        "tier_6_badge": "Best value",
+        "tier_6_colors": 6,
+        "tier_6_price": "$72",
+        "tier_6_compare_price": ""
+      }
+    },
+    "featured_product_Rk3tJE": {
+      "type": "featured-product",
+      "blocks": {
+        "cstm_review_n3crxX": {
+          "type": "cstm_review",
+          "settings": {
+            "review_img": "shopify://shop_images/Img_-_4.7_out_of_5_stars_1.svg",
+            "review_text": "4.9",
+            "review_url": ""
+          }
+        },
+        "text_ei63DW": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title_PYNkwR": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "new_description_6mMJWy": {
+          "type": "new-description",
+          "settings": {}
+        },
+        "price_BkPHQc": {
+          "type": "price",
+          "disabled": true,
+          "settings": {}
+        },
+        "variant_picker_tRbwDK": {
+          "type": "variant_picker",
+          "disabled": true,
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector_NUEFYc": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "tubs_selector_YygMyC": {
+          "type": "tubs_selector",
+          "disabled": true,
+          "settings": {
+            "title_t": "Select Your Bundle:",
+            "text1": "Rejuvacote  + 2 Nail Colors",
+            "text2": "Rejuvacote  + 4 Nail Colors",
+            "text3": "Rejuvacote  + 6 Nail Colors",
+            "qty_1": "2",
+            "qty_2": "4",
+            "qty_3": "6",
+            "discount": 10
+          }
+        },
+        "landing_selector_jrtWPF": {
+          "type": "landing_selector",
+          "disabled": true,
+          "settings": {
+            "title_text": "Choose Rejuvacote"
+          }
+        },
+        "buy_buttons_ktGWYT": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true
+          }
+        },
+        "announcement_bar_Jp9ybQ": {
+          "type": "announcement_bar",
+          "settings": {
+            "bg_color": "#fbc8c1",
+            "text": "Free Nail File Included",
+            "subtext": "Take care of your nails with every order"
+          }
+        },
+        "info_icons_CjRy9i": {
+          "type": "info_icons",
+          "settings": {
+            "icon_1": "shopify://shop_images/Frame_1484578863_3.svg",
+            "title_1": "Multi-Award Winning Formula",
+            "icon_2": "shopify://shop_images/Frame_1484578863_4.svg",
+            "title_2": "Free Delivery 3-5 Days",
+            "icon_3": "shopify://shop_images/Frame_1484578863_5.svg",
+            "title_3": "3 Days Risk-Free Manicure"
+          }
+        },
+        "share_8T3EW9": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "cstm_review_n3crxX",
+        "text_ei63DW",
+        "title_PYNkwR",
+        "new_description_6mMJWy",
+        "price_BkPHQc",
+        "variant_picker_tRbwDK",
+        "quantity_selector_NUEFYc",
+        "tubs_selector_YygMyC",
+        "landing_selector_jrtWPF",
+        "buy_buttons_ktGWYT",
+        "announcement_bar_Jp9ybQ",
+        "info_icons_CjRy9i",
+        "share_8T3EW9"
+      ],
+      "disabled": true,
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "cstm_style": true,
+        "product": "rejuvacote-1-original-maximum-strength-nail-growth-system-base-and-top-coat",
+        "color_scheme": "",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "none",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "duri_why_you_ill_see_ec6DqJ": {
+      "type": "duri-why-you-ill-see",
+      "blocks": {
+        "blocks_BLfzCT": {
+          "type": "blocks",
+          "settings": {
+            "custom_svg": "<svg width=\"29\" height=\"41\" viewbox=\"0 0 29 41\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M19.2798 37.9141H27.0515C27.4092 37.9141 27.6992 38.2029 27.6992 38.5592V39.8495C27.6992 40.2058 27.4092 40.4947 27.0515 40.4947H1.14568C0.788012 40.4947 0.498047 40.2058 0.498047 39.8495V38.5592C0.498047 38.2029 0.788012 37.9141 1.14568 37.9141H16.6891\" stroke=\"#B23A48\" stroke-width=\"0.995845\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M27.051 30.1744H16.6886C16.331 30.1744 16.041 29.8855 16.041 29.5292V28.2389C16.041 27.8826 16.331 27.5938 16.6886 27.5938H27.051C27.4086 27.5938 27.6986 27.8826 27.6986 28.2389V29.5292C27.6986 29.8855 27.4086 30.1744 27.051 30.1744Z\" stroke=\"#B23A48\" stroke-width=\"0.995845\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M21.2228 37.9152C21.2228 35.0647 18.9031 32.7539 16.0416 32.7539H12.1558C9.29433 32.7539 6.97461 35.0647 6.97461 37.9152\" stroke=\"#B23A48\" stroke-width=\"0.995845\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M7.8201 34.7996C4.58532 32.7358 2.44141 29.124 2.44141 25.0133C2.44141 20.753 4.74432 17.0285 8.17777 15.0078\" stroke=\"#B23A48\" stroke-width=\"0.995845\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M24.4611 30.3359C23.539 32.1129 22.1699 33.6223 20.502 34.7166\" stroke=\"#B23A48\" stroke-width=\"0.995845\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M19.8927 30.174C18.4696 31.7578 16.4016 32.7546 14.0999 32.7546C9.8077 32.7546 6.32812 29.2884 6.32812 25.0126C6.32812 22.2007 7.83305 19.7389 10.0843 18.3828\" stroke=\"#B23A48\" stroke-width=\"0.995845\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M11.5078 18.5611C13.2962 18.5611 14.746 17.1168 14.746 15.3352C14.746 13.5536 13.2962 12.1094 11.5078 12.1094C9.71935 12.1094 8.26953 13.5536 8.26953 15.3352C8.26953 17.1168 9.71935 18.5611 11.5078 18.5611Z\" stroke=\"#B23A48\" stroke-width=\"0.995845\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M8.30218 10.3304L5.76658 5.95541C5.5877 5.64684 5.69387 5.25223 6.00363 5.07412L11.6124 1.84828C11.9222 1.67009 12.3183 1.77584 12.4971 2.08442L20.9165 16.6113C21.0954 16.9199 20.9892 17.3145 20.6795 17.4926L15.0707 20.7184C14.7609 20.8966 14.3648 20.7909 14.186 20.4823L12.9276 18.311\" stroke=\"#B23A48\" stroke-width=\"0.995845\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M16.752 19.7512L18.371 22.5449C18.5499 22.8535 18.946 22.9592 19.2557 22.781L20.3774 22.1359C20.6872 21.9577 20.7934 21.5632 20.6145 21.2546L18.9954 18.4609\" stroke=\"#B23A48\" stroke-width=\"0.995845\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M7.12475 4.43039L6.1533 2.75425C5.97442 2.44568 6.08058 2.05107 6.39034 1.87296L8.63388 0.582653C8.94364 0.404463 9.33976 0.510218 9.51856 0.81879L10.49 2.49501\" stroke=\"#B23A48\" stroke-width=\"0.995845\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M14.1 35.3345C14.8153 35.3345 15.3952 34.7568 15.3952 34.0442C15.3952 33.3316 14.8153 32.7539 14.1 32.7539C13.3846 32.7539 12.8047 33.3316 12.8047 34.0442C12.8047 34.7568 13.3846 35.3345 14.1 35.3345Z\" stroke=\"#B23A48\" stroke-width=\"0.995845\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
+            "blockheading": "Results You Can Feel",
+            "subtext": "Carefully formulated with dermatologist-approved ingredients, this product supports nail strength and resilience while preventing breakage."
+          }
+        },
+        "blocks_btNbRV": {
+          "type": "blocks",
+          "settings": {
+            "custom_svg": "<svg width=\"34\" height=\"40\" viewbox=\"0 0 34 40\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M19.1996 17.1982C17.9839 15.8832 16.3542 15.0247 14.5822 14.7658V10.4473H6.7855V14.7658C4.8141 15.0659 3.02789 16.097 1.78218 17.6542C0.536474 19.2113 -0.0774378 21.1803 0.0625672 23.1695L0.781547 33.2305C0.850798 34.1058 1.24718 34.9228 1.89174 35.5189C2.53631 36.115 3.38177 36.4465 4.25973 36.4473H17.122C17.9998 36.444 18.8442 36.1101 19.4871 35.5123C20.1299 34.9145 20.524 34.0965 20.5909 33.2212L21.3238 23.1741C21.4039 22.0852 21.2563 20.9915 20.8906 19.9626C20.5249 18.9338 19.949 17.9923 19.1996 17.1982ZM7.71924 14.6678V14.2009H10.3057V13.2672H7.71924V12.8003H11.711V11.8665H7.71924V11.381H13.6485V14.6491H7.71924V14.6678ZM20.3901 23.1088L19.6478 33.1792C19.5921 33.8126 19.3026 34.4025 18.8356 34.8341C18.3687 35.2656 17.7578 35.5078 17.122 35.5135H4.25973C3.62039 35.5136 3.0043 35.2738 2.53319 34.8416C2.06208 34.4093 1.77022 33.8161 1.71529 33.1792L0.991639 23.1088C0.922251 22.1476 1.05198 21.1825 1.37272 20.2737C1.69345 19.365 2.19828 18.5323 2.85562 17.8276C3.51297 17.1229 4.30867 16.5615 5.19294 16.1785C6.07722 15.7954 7.03103 15.599 7.99469 15.6015H13.387C14.3507 15.599 15.3045 15.7954 16.1888 16.1785C17.0731 16.5615 17.8688 17.1229 18.5261 17.8276C19.1835 18.5323 19.6883 19.365 20.009 20.2737C20.3298 21.1825 20.4595 22.1476 20.3901 23.1088Z\" fill=\"#7C0732\"></path>\n<path d=\"M13.2568 17.9359H7.97653C7.31108 17.932 6.65268 18.0723 6.04661 18.3471C5.44055 18.622 4.9012 19.0248 4.46566 19.5279C4.05309 20.0151 3.74055 20.5788 3.54589 21.1868C3.35123 21.7949 3.27827 22.4353 3.33117 23.0715L3.91009 31.0923C3.9568 31.6592 4.21428 32.1879 4.63174 32.5743C5.04919 32.9606 5.59629 33.1765 6.16507 33.1792H15.199C15.7699 33.1784 16.3195 32.962 16.7376 32.5733C17.1557 32.1846 17.4116 31.6523 17.454 31.083L18.0563 22.9408C18.107 22.2771 18.0141 21.6103 17.7836 20.9859C17.5532 20.3614 17.1907 19.7941 16.721 19.3225C16.2629 18.8752 15.7213 18.5225 15.1269 18.2846C14.5325 18.0467 13.897 17.9282 13.2568 17.9359ZM17.1225 22.8707L16.5249 31.0223C16.4969 31.355 16.3452 31.6652 16.0998 31.8916C15.8543 32.1181 15.5329 32.2443 15.199 32.2455H6.16507C5.83014 32.244 5.50807 32.1163 5.26316 31.8879C5.01824 31.6594 4.8685 31.347 4.84383 31.0129L4.26491 23.0061C4.17455 21.9705 4.49859 20.9413 5.16597 20.1442C5.51377 19.7428 5.94406 19.4212 6.42748 19.2012C6.9109 18.9813 7.43608 18.8682 7.96719 18.8696H13.2568C13.7741 18.8602 14.288 18.9536 14.7689 19.1443C15.2497 19.3351 15.6879 19.6194 16.0581 19.9808C16.4343 20.3566 16.7243 20.8097 16.9081 21.3087C17.0919 21.8077 17.1651 22.3407 17.1225 22.8707Z\" fill=\"#7C0732\"></path>\n<path d=\"M32.4091 33.9331L29.3651 21.1731C29.3263 21.0099 29.2553 20.8561 29.1562 20.7208C29.0571 20.5855 28.9319 20.4715 28.788 20.3853C28.6441 20.2992 28.4844 20.2428 28.3183 20.2194C28.1522 20.196 27.9832 20.2061 27.8211 20.2491L27.4651 20.3451L26.7891 17.5091C26.7634 17.4023 26.7167 17.3018 26.6516 17.2133C26.5865 17.1249 26.5045 17.0503 26.4102 16.9941C26.3159 16.9378 26.2113 16.9009 26.1026 16.8857C25.9939 16.8704 25.8832 16.877 25.7771 16.9051L25.0531 17.1011L23.2651 10.4131C23.3439 10.3299 23.404 10.2309 23.4413 10.1225C23.4786 10.0142 23.4921 9.89909 23.4811 9.78505L22.7571 4.74505C22.7456 4.65412 22.7151 4.56665 22.6674 4.4884C22.6197 4.41016 22.5559 4.34292 22.4803 4.29113C22.4047 4.23934 22.319 4.20418 22.2288 4.18796C22.1386 4.17174 22.046 4.17484 21.9571 4.19705L20.5371 4.59705C20.4478 4.62169 20.3649 4.66505 20.2937 4.72425C20.2225 4.78344 20.1648 4.85711 20.1243 4.94037C20.0838 5.02362 20.0615 5.11453 20.0589 5.20707C20.0562 5.29961 20.0733 5.39164 20.1091 5.47705L21.9851 10.1851C22.0304 10.2933 22.0996 10.3898 22.1876 10.4674C22.2756 10.545 22.38 10.6016 22.4931 10.6331L24.2811 17.3051L23.6091 17.4851C23.5023 17.5132 23.4022 17.5624 23.3148 17.63C23.2275 17.6975 23.1546 17.7819 23.1005 17.8782C23.0464 17.9745 23.0122 18.0806 22.9999 18.1904C22.9876 18.3001 22.9975 18.4112 23.0291 18.5171L23.8611 21.3171L23.4611 21.4251C23.2994 21.4676 23.1478 21.542 23.0153 21.6439C22.8827 21.7458 22.7718 21.8731 22.6891 22.0184C22.6064 22.1637 22.5535 22.324 22.5336 22.49C22.5137 22.656 22.5271 22.8243 22.5731 22.9851L26.3091 35.5611C26.3703 35.7695 26.4972 35.9526 26.6709 36.0831C26.8446 36.2135 27.0558 36.2844 27.2731 36.2851C27.3636 36.2846 27.4536 36.2725 27.5411 36.2491L31.6851 35.1451C31.9404 35.0781 32.1593 34.9136 32.2947 34.687C32.4301 34.4603 32.4711 34.1896 32.4091 33.9331ZM30.9131 31.1331L31.0731 31.8011L26.3931 33.0531L26.2011 32.3771L30.9131 31.1331ZM24.6291 21.0891L23.8291 18.2571L26.0291 17.6971L26.7051 20.5371L26.0331 20.7171L25.2611 20.9251L24.6411 21.0931C24.6411 21.0931 24.6331 21.0931 24.6291 21.0891ZM23.4011 22.4091C23.4306 22.3559 23.4707 22.3094 23.5188 22.2723C23.567 22.2351 23.6222 22.2082 23.6811 22.1931L28.0491 21.0211H28.1651C28.247 21.0195 28.3275 21.0418 28.3971 21.0851C28.4499 21.1155 28.4959 21.1564 28.5323 21.2052C28.5688 21.254 28.5949 21.3098 28.6091 21.3691L30.7491 30.3491L25.9891 31.6251L23.3411 22.7611C23.3256 22.7015 23.323 22.6393 23.3334 22.5786C23.3437 22.518 23.3668 22.4602 23.4011 22.4091ZM31.4771 34.3731L27.3331 35.4811C27.28 35.4958 27.2233 35.489 27.1753 35.462C27.1273 35.435 27.092 35.39 27.0771 35.3371L26.6211 33.8051L31.2571 32.5851L31.6291 34.1411C31.6367 34.1916 31.6254 34.2433 31.5974 34.2861C31.5693 34.3289 31.5265 34.3598 31.4771 34.3731Z\" fill=\"#7C0732\"></path>\n</svg>",
+            "blockheading": "Preferred by Pros 1994",
+            "subtext": "Trusted in over 20,000 salons for its proven ability to repair damage from acrylics, gels, and daily wear. This highly effective formula restores and strengthens nails, tackling wear and tear with remarkable results."
+          }
+        },
+        "blocks_KqxNQU": {
+          "type": "blocks",
+          "settings": {
+            "custom_svg": "<svg width=\"40\" height=\"40\" viewbox=\"0 0 40 40\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M25.0688 12.4367C25.0312 12.2117 24.8813 12.0305 24.6688 11.9492C21.2688 10.6992 18.7375 10.6992 15.3313 11.9492C15.1188 12.0242 14.9687 12.2117 14.9312 12.4367C14.6312 14.2555 14.4188 15.9492 14.2813 17.5992C13.9688 17.9305 13.675 18.2742 13.4312 18.6242C12.125 20.4617 11.4062 22.8055 11.4062 25.218V38.1242C11.4062 38.468 11.6875 38.7492 12.0312 38.7492C12.375 38.7492 12.6562 38.468 12.6562 38.1242V25.218C12.6562 23.2617 13.1812 21.3742 14.1437 19.818C14.0312 22.6117 14.1438 25.3867 14.5 28.543C14.525 28.7555 14.6562 28.943 14.8438 29.0367C16.5563 29.8742 18.275 30.293 20 30.293C21.725 30.293 23.4438 29.8742 25.1562 29.0367C25.35 28.943 25.4812 28.7555 25.5 28.543C25.85 25.3867 25.9625 22.618 25.8562 19.8242C26.8125 21.368 27.3375 23.2492 27.3375 25.218V38.1242C27.3375 38.468 27.6188 38.7492 27.9625 38.7492C28.3063 38.7492 28.5875 38.468 28.5875 38.1242V25.218C28.5875 22.2992 27.5375 19.543 25.7188 17.6055C25.5813 15.9492 25.3688 14.2617 25.0688 12.4367ZM24.2937 28.0617C21.4062 29.3867 18.5875 29.3867 15.7 28.0617C15.1188 22.5805 15.225 18.4242 16.1 13.0055C18.9375 12.018 21.05 12.018 23.8875 13.0055C24.7625 18.4305 24.875 22.5867 24.2875 28.0617H24.2937Z\" fill=\"#7C0732\"></path>\n<path d=\"M10.2754 7.03711C9.93164 7.03711 9.65039 7.31836 9.65039 7.66211V8.74336C9.65039 9.08711 9.93164 9.36836 10.2754 9.36836C10.6191 9.36836 10.9004 9.08711 10.9004 8.74336V7.66211C10.9004 7.31836 10.6191 7.03711 10.2754 7.03711Z\" fill=\"#7C0732\"></path>\n<path d=\"M8.70586 9.6875H7.63086C7.28711 9.6875 7.00586 9.96875 7.00586 10.3125C7.00586 10.6562 7.28711 10.9375 7.63086 10.9375H8.70586C9.04961 10.9375 9.33086 10.6562 9.33086 10.3125C9.33086 9.96875 9.04961 9.6875 8.70586 9.6875Z\" fill=\"#7C0732\"></path>\n<path d=\"M10.2754 11.2617C9.93164 11.2617 9.65039 11.543 9.65039 11.8867V12.968C9.65039 13.3117 9.93164 13.593 10.2754 13.593C10.6191 13.593 10.9004 13.3117 10.9004 12.968V11.8867C10.9004 11.543 10.6191 11.2617 10.2754 11.2617Z\" fill=\"#7C0732\"></path>\n<path d=\"M12.9187 10.9375C13.2625 10.9375 13.5437 10.6562 13.5437 10.3125C13.5437 9.96875 13.2625 9.6875 12.9187 9.6875H11.8437C11.5 9.6875 11.2188 9.96875 11.2188 10.3125C11.2188 10.6562 11.5 10.9375 11.8437 10.9375H12.9187Z\" fill=\"#7C0732\"></path>\n<path d=\"M29.7246 7.03711C29.3809 7.03711 29.0996 7.31836 29.0996 7.66211V8.74336C29.0996 9.08711 29.3809 9.36836 29.7246 9.36836C30.0684 9.36836 30.3496 9.08711 30.3496 8.74336V7.66211C30.3496 7.31836 30.0684 7.03711 29.7246 7.03711Z\" fill=\"#7C0732\"></path>\n<path d=\"M32.368 9.6875H31.293C30.9492 9.6875 30.668 9.96875 30.668 10.3125C30.668 10.6562 30.9492 10.9375 31.293 10.9375H32.368C32.7117 10.9375 32.993 10.6562 32.993 10.3125C32.993 9.96875 32.7117 9.6875 32.368 9.6875Z\" fill=\"#7C0732\"></path>\n<path d=\"M29.7246 11.2617C29.3809 11.2617 29.0996 11.543 29.0996 11.8867V12.968C29.0996 13.3117 29.3809 13.593 29.7246 13.593C30.0684 13.593 30.3496 13.3117 30.3496 12.968V11.8867C30.3496 11.543 30.0684 11.2617 29.7246 11.2617Z\" fill=\"#7C0732\"></path>\n<path d=\"M28.1629 9.6875H27.0879C26.7441 9.6875 26.4629 9.96875 26.4629 10.3125C26.4629 10.6562 26.7441 10.9375 27.0879 10.9375H28.1629C28.5066 10.9375 28.7879 10.6562 28.7879 10.3125C28.7879 9.96875 28.5066 9.6875 28.1629 9.6875Z\" fill=\"#7C0732\"></path>\n<path d=\"M20 3.58125C20.3438 3.58125 20.625 3.3 20.625 2.95625V1.875C20.625 1.53125 20.3438 1.25 20 1.25C19.6562 1.25 19.375 1.53125 19.375 1.875V2.95625C19.375 3.3 19.6562 3.58125 20 3.58125Z\" fill=\"#7C0732\"></path>\n<path d=\"M17.3555 5.15039H18.4305C18.7742 5.15039 19.0555 4.86914 19.0555 4.52539C19.0555 4.18164 18.7742 3.90039 18.4305 3.90039H17.3555C17.0117 3.90039 16.7305 4.18164 16.7305 4.52539C16.7305 4.86914 17.0117 5.15039 17.3555 5.15039Z\" fill=\"#7C0732\"></path>\n<path d=\"M20 7.8C20.3438 7.8 20.625 7.51875 20.625 7.175V6.09375C20.625 5.75 20.3438 5.46875 20 5.46875C19.6562 5.46875 19.375 5.75 19.375 6.09375V7.175C19.375 7.51875 19.6562 7.8 20 7.8Z\" fill=\"#7C0732\"></path>\n<path d=\"M21.5684 5.15039H22.6434C22.9871 5.15039 23.2684 4.86914 23.2684 4.52539C23.2684 4.18164 22.9871 3.90039 22.6434 3.90039H21.5684C21.2246 3.90039 20.9434 4.18164 20.9434 4.52539C20.9434 4.86914 21.2246 5.15039 21.5684 5.15039Z\" fill=\"#7C0732\"></path>\n</svg>",
+            "blockheading": "Effortless to Use",
+            "subtext": "Apply Rejuvacote daily as a base coat to boost nail health and strength. Finish with your favorite Duri color, no extra tools needed."
+          }
+        }
+      },
+      "block_order": [
+        "blocks_BLfzCT",
+        "blocks_btNbRV",
+        "blocks_KqxNQU"
+      ],
+      "name": "Duri product2 why u see",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "mbl_padding_top": 0,
+        "mbl_padding_bottom": 0,
+        "back-color": "",
+        "trust-img": "shopify://shop_images/presentation_image_8_42ddac04-67cd-4cbe-871a-49e995dcd305.png",
+        "heading": "Trusted by Real People. Real Results.",
+        "enable_highlight_TRUSTED": false
+      }
+    },
+    "duri_landing_trusted_by_people_4VUpfb": {
+      "type": "duri-landing-trusted-by-people",
+      "blocks": {
+        "blocks_zJMYPd": {
+          "type": "blocks",
+          "settings": {
+            "custom_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"29\" height=\"42\" viewbox=\"0 0 29 42\" fill=\"none\">\n<path d=\"M19.7817 38.4193H27.5535C27.9112 38.4193 28.2011 38.7082 28.2011 39.0645V40.3548C28.2011 40.7111 27.9112 40.9999 27.5535 40.9999H1.64763C1.28996 40.9999 1 40.7111 1 40.3548V39.0645C1 38.7082 1.28996 38.4193 1.64763 38.4193H17.1911\" stroke=\"#B23A48\" stroke-width=\"0.995845\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M27.5529 30.6773H17.1906C16.8329 30.6773 16.543 30.3884 16.543 30.0321V28.7418C16.543 28.3855 16.8329 28.0967 17.1906 28.0967H27.5529C27.9106 28.0967 28.2005 28.3855 28.2005 28.7418V30.0321C28.2005 30.3884 27.9106 30.6773 27.5529 30.6773Z\" stroke=\"#B23A48\" stroke-width=\"0.995845\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M21.7248 38.4191C21.7248 35.5686 19.405 33.2578 16.5436 33.2578H12.6577C9.79628 33.2578 7.47656 35.5686 7.47656 38.4191\" stroke=\"#B23A48\" stroke-width=\"0.995845\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M8.32205 35.3024C5.08727 33.2386 2.94336 29.6268 2.94336 25.5161C2.94336 21.2558 5.24627 17.5313 8.67972 15.5106\" stroke=\"#B23A48\" stroke-width=\"0.995845\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M24.9631 30.8408C24.041 32.6178 22.6719 34.1272 21.0039 35.2214\" stroke=\"#B23A48\" stroke-width=\"0.995845\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M20.3946 30.6775C18.9715 32.2614 16.9036 33.2581 14.6018 33.2581C10.3097 33.2581 6.83008 29.792 6.83008 25.5162C6.83008 22.7042 8.335 20.2424 10.5862 18.8864\" stroke=\"#B23A48\" stroke-width=\"0.995845\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M12.0097 19.0645C13.7982 19.0645 15.248 17.6202 15.248 15.8386C15.248 14.0571 13.7982 12.6128 12.0097 12.6128C10.2213 12.6128 8.77148 14.0571 8.77148 15.8386C8.77148 17.6202 10.2213 19.0645 12.0097 19.0645Z\" stroke=\"#B23A48\" stroke-width=\"0.995845\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M8.80413 10.8359L6.26853 6.46091C6.08966 6.15233 6.19582 5.75772 6.50558 5.57962L12.1144 2.35377C12.4241 2.17558 12.8203 2.28134 12.999 2.58991L21.4185 17.1168C21.5973 17.4254 21.4912 17.82 21.1814 17.9981L15.5726 21.2239C15.2629 21.4021 14.8667 21.2964 14.6879 20.9878L13.4295 18.8165\" stroke=\"#B23A48\" stroke-width=\"0.995845\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M17.2539 20.2561L18.873 23.0498C19.0519 23.3583 19.4479 23.4641 19.7577 23.2859L20.8794 22.6408C21.1892 22.4626 21.2953 22.068 21.1164 21.7595L19.4974 18.9658\" stroke=\"#B23A48\" stroke-width=\"0.995845\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M7.6267 4.9343L6.65525 3.25816C6.47638 2.94958 6.58254 2.55497 6.8923 2.37686L9.13583 1.08656C9.44559 0.908369 9.84172 1.01412 10.0205 1.3227L10.992 2.99892\" stroke=\"#B23A48\" stroke-width=\"0.995845\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M14.6019 35.8388C15.3173 35.8388 15.8972 35.2611 15.8972 34.5485C15.8972 33.8359 15.3173 33.2582 14.6019 33.2582C13.8866 33.2582 13.3066 33.8359 13.3066 34.5485C13.3066 35.2611 13.8866 35.8388 14.6019 35.8388Z\" stroke=\"#B23A48\" stroke-width=\"0.995845\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
+            "blockheading": "Results You Can Feel",
+            "subtext": "<p>Carefully formulated with dermatologist-approved ingredients, this product supports nail strength and resilience while preventing breakage.</p>"
+          }
+        },
+        "blocks_ziYErw": {
+          "type": "blocks",
+          "settings": {
+            "custom_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"34\" height=\"40\" viewbox=\"0 0 34 40\" fill=\"none\">\n<path d=\"M19.1996 17.1982C17.9839 15.8832 16.3542 15.0247 14.5822 14.7658V10.4473H6.7855V14.7658C4.8141 15.0659 3.02789 16.097 1.78218 17.6542C0.536474 19.2113 -0.0774378 21.1803 0.0625672 23.1695L0.781547 33.2305C0.850798 34.1058 1.24718 34.9228 1.89174 35.5189C2.53631 36.115 3.38177 36.4465 4.25973 36.4473H17.122C17.9998 36.444 18.8442 36.1101 19.4871 35.5123C20.1299 34.9145 20.524 34.0965 20.5909 33.2212L21.3238 23.1741C21.4039 22.0852 21.2563 20.9915 20.8906 19.9626C20.5249 18.9338 19.949 17.9923 19.1996 17.1982ZM7.71924 14.6678V14.2009H10.3057V13.2672H7.71924V12.8003H11.711V11.8665H7.71924V11.381H13.6485V14.6491H7.71924V14.6678ZM20.3901 23.1088L19.6478 33.1792C19.5921 33.8126 19.3026 34.4025 18.8356 34.8341C18.3687 35.2656 17.7578 35.5078 17.122 35.5135H4.25973C3.62039 35.5136 3.0043 35.2738 2.53319 34.8416C2.06208 34.4093 1.77022 33.8161 1.71529 33.1792L0.991639 23.1088C0.922251 22.1476 1.05198 21.1825 1.37272 20.2737C1.69345 19.365 2.19828 18.5323 2.85562 17.8276C3.51297 17.1229 4.30867 16.5615 5.19294 16.1785C6.07722 15.7954 7.03103 15.599 7.99469 15.6015H13.387C14.3507 15.599 15.3045 15.7954 16.1888 16.1785C17.0731 16.5615 17.8688 17.1229 18.5261 17.8276C19.1835 18.5323 19.6883 19.365 20.009 20.2737C20.3298 21.1825 20.4595 22.1476 20.3901 23.1088Z\" fill=\"#B23A48\"></path>\n<path d=\"M13.2568 17.936H7.97653C7.31108 17.9321 6.65268 18.0724 6.04661 18.3473C5.44055 18.6221 4.9012 19.0249 4.46566 19.5281C4.05309 20.0152 3.74055 20.5789 3.54589 21.187C3.35123 21.795 3.27827 22.4354 3.33117 23.0716L3.91009 31.0924C3.9568 31.6593 4.21428 32.1881 4.63174 32.5744C5.04919 32.9607 5.59629 33.1766 6.16507 33.1793H15.199C15.7699 33.1786 16.3195 32.9621 16.7376 32.5734C17.1557 32.1847 17.4116 31.6524 17.454 31.0831L18.0563 22.9409C18.107 22.2772 18.0141 21.6104 17.7836 20.986C17.5532 20.3616 17.1907 19.7942 16.721 19.3226C16.2629 18.8753 15.7213 18.5226 15.1269 18.2847C14.5325 18.0468 13.897 17.9283 13.2568 17.936ZM17.1225 22.8708L16.5249 31.0224C16.4969 31.3552 16.3452 31.6653 16.0998 31.8918C15.8543 32.1182 15.5329 32.2444 15.199 32.2456H6.16507C5.83014 32.2442 5.50807 32.1165 5.26316 31.888C5.01824 31.6595 4.8685 31.3471 4.84383 31.0131L4.26491 23.0062C4.17455 21.9706 4.49859 20.9414 5.16597 20.1443C5.51377 19.7429 5.94406 19.4213 6.42748 19.2013C6.9109 18.9814 7.43608 18.8683 7.96719 18.8698H13.2568C13.7741 18.8603 14.288 18.9537 14.7689 19.1444C15.2497 19.3352 15.6879 19.6195 16.0581 19.9809C16.4343 20.3567 16.7243 20.8098 16.9081 21.3088C17.0919 21.8078 17.1651 22.3408 17.1225 22.8708Z\" fill=\"#B23A48\"></path>\n<path d=\"M32.4091 33.9333L29.3651 21.1733C29.3263 21.0101 29.2553 20.8564 29.1562 20.7211C29.0571 20.5858 28.9319 20.4717 28.788 20.3856C28.6441 20.2995 28.4844 20.243 28.3183 20.2196C28.1522 20.1962 27.9832 20.2063 27.8211 20.2493L27.4651 20.3453L26.7891 17.5093C26.7634 17.4025 26.7167 17.302 26.6516 17.2136C26.5865 17.1251 26.5045 17.0506 26.4102 16.9943C26.3159 16.938 26.2113 16.9012 26.1026 16.8859C25.9939 16.8706 25.8832 16.8772 25.7771 16.9053L25.0531 17.1013L23.2651 10.4133C23.3439 10.3302 23.404 10.2311 23.4413 10.1228C23.4786 10.0144 23.4921 9.89934 23.4811 9.7853L22.7571 4.7453C22.7456 4.65437 22.7151 4.56689 22.6674 4.48865C22.6197 4.4104 22.5559 4.34317 22.4803 4.29138C22.4047 4.23959 22.319 4.20442 22.2288 4.18821C22.1386 4.17199 22.046 4.17509 21.9571 4.1973L20.5371 4.5973C20.4478 4.62194 20.3649 4.6653 20.2937 4.72449C20.2225 4.78369 20.1648 4.85736 20.1243 4.94061C20.0838 5.02386 20.0615 5.11478 20.0589 5.20731C20.0562 5.29985 20.0733 5.39189 20.1091 5.4773L21.9851 10.1853C22.0304 10.2935 22.0996 10.39 22.1876 10.4676C22.2756 10.5452 22.38 10.6019 22.4931 10.6333L24.2811 17.3053L23.6091 17.4853C23.5023 17.5134 23.4022 17.5627 23.3148 17.6302C23.2275 17.6978 23.1546 17.7822 23.1005 17.8784C23.0464 17.9747 23.0122 18.0809 22.9999 18.1906C22.9876 18.3004 22.9975 18.4115 23.0291 18.5173L23.8611 21.3173L23.4611 21.4253C23.2994 21.4678 23.1478 21.5422 23.0153 21.6441C22.8827 21.746 22.7718 21.8733 22.6891 22.0186C22.6064 22.1639 22.5535 22.3243 22.5336 22.4903C22.5137 22.6562 22.5271 22.8246 22.5731 22.9853L26.3091 35.5613C26.3703 35.7697 26.4972 35.9528 26.6709 36.0833C26.8446 36.2138 27.0558 36.2846 27.2731 36.2853C27.3636 36.2849 27.4536 36.2728 27.5411 36.2493L31.6851 35.1453C31.9404 35.0783 32.1593 34.9138 32.2947 34.6872C32.4301 34.4606 32.4711 34.1899 32.4091 33.9333ZM30.9131 31.1333L31.0731 31.8013L26.3931 33.0533L26.2011 32.3773L30.9131 31.1333ZM24.6291 21.0893L23.8291 18.2573L26.0291 17.6973L26.7051 20.5373L26.0331 20.7173L25.2611 20.9253L24.6411 21.0933C24.6411 21.0933 24.6331 21.0933 24.6291 21.0893ZM23.4011 22.4093C23.4306 22.3562 23.4707 22.3096 23.5188 22.2725C23.567 22.2354 23.6222 22.2084 23.6811 22.1933L28.0491 21.0213H28.1651C28.247 21.0198 28.3275 21.042 28.3971 21.0853C28.4499 21.1157 28.4959 21.1566 28.5323 21.2054C28.5688 21.2543 28.5949 21.31 28.6091 21.3693L30.7491 30.3493L25.9891 31.6253L23.3411 22.7613C23.3256 22.7017 23.323 22.6395 23.3334 22.5789C23.3437 22.5182 23.3668 22.4604 23.4011 22.4093ZM31.4771 34.3733L27.3331 35.4813C27.28 35.4961 27.2233 35.4892 27.1753 35.4622C27.1273 35.4352 27.092 35.3903 27.0771 35.3373L26.6211 33.8053L31.2571 32.5853L31.6291 34.1413C31.6367 34.1919 31.6254 34.2435 31.5974 34.2863C31.5693 34.3291 31.5265 34.3601 31.4771 34.3733Z\" fill=\"#B23A48\"></path>\n</svg>",
+            "blockheading": "Preferred by Pros 1994",
+            "subtext": "<p>Trusted in over 20,000 salons for its proven ability to repair damage from acrylics, gels, and daily wear. This highly effective formula restores and strengthens nails, tackling wear and tear with remarkable results.</p>"
+          }
+        },
+        "blocks_gcb9W6": {
+          "type": "blocks",
+          "settings": {
+            "custom_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\" viewbox=\"0 0 40 40\" fill=\"none\">\n<path d=\"M25.0688 12.4375C25.0312 12.2125 24.8813 12.0312 24.6688 11.95C21.2688 10.7 18.7375 10.7 15.3313 11.95C15.1188 12.025 14.9687 12.2125 14.9312 12.4375C14.6312 14.2562 14.4188 15.95 14.2813 17.6C13.9688 17.9312 13.675 18.275 13.4312 18.625C12.125 20.4625 11.4062 22.8062 11.4062 25.2187V38.125C11.4062 38.4687 11.6875 38.75 12.0312 38.75C12.375 38.75 12.6562 38.4687 12.6562 38.125V25.2187C12.6562 23.2624 13.1812 21.375 14.1437 19.8187C14.0312 22.6124 14.1438 25.3874 14.5 28.5437C14.525 28.7562 14.6562 28.9437 14.8438 29.0375C16.5563 29.875 18.275 30.2937 20 30.2937C21.725 30.2937 23.4438 29.875 25.1562 29.0375C25.35 28.9437 25.4812 28.7562 25.5 28.5437C25.85 25.3874 25.9625 22.6187 25.8562 19.825C26.8125 21.3687 27.3375 23.2499 27.3375 25.2187V38.125C27.3375 38.4687 27.6188 38.75 27.9625 38.75C28.3063 38.75 28.5875 38.4687 28.5875 38.125V25.2187C28.5875 22.2999 27.5375 19.5437 25.7188 17.6062C25.5813 15.95 25.3688 14.2625 25.0688 12.4375ZM24.2937 28.0625C21.4062 29.3875 18.5875 29.3875 15.7 28.0625C15.1188 22.5812 15.225 18.425 16.1 13.0062C18.9375 12.0187 21.05 12.0187 23.8875 13.0062C24.7625 18.4312 24.875 22.5875 24.2875 28.0625H24.2937Z\" fill=\"#B23A48\"></path>\n<path d=\"M10.2754 7.03748C9.93164 7.03748 9.65039 7.31873 9.65039 7.66248V8.74373C9.65039 9.08748 9.93164 9.36873 10.2754 9.36873C10.6191 9.36873 10.9004 9.08748 10.9004 8.74373V7.66248C10.9004 7.31873 10.6191 7.03748 10.2754 7.03748Z\" fill=\"#B23A48\"></path>\n<path d=\"M8.70586 9.6875H7.63086C7.28711 9.6875 7.00586 9.96875 7.00586 10.3125C7.00586 10.6562 7.28711 10.9375 7.63086 10.9375H8.70586C9.04961 10.9375 9.33086 10.6562 9.33086 10.3125C9.33086 9.96875 9.04961 9.6875 8.70586 9.6875Z\" fill=\"#B23A48\"></path>\n<path d=\"M10.2754 11.2625C9.93164 11.2625 9.65039 11.5437 9.65039 11.8875V12.9687C9.65039 13.3125 9.93164 13.5937 10.2754 13.5937C10.6191 13.5937 10.9004 13.3125 10.9004 12.9687V11.8875C10.9004 11.5437 10.6191 11.2625 10.2754 11.2625Z\" fill=\"#B23A48\"></path>\n<path d=\"M12.9187 10.9375C13.2625 10.9375 13.5437 10.6562 13.5437 10.3125C13.5437 9.96875 13.2625 9.6875 12.9187 9.6875H11.8437C11.5 9.6875 11.2188 9.96875 11.2188 10.3125C11.2188 10.6562 11.5 10.9375 11.8437 10.9375H12.9187Z\" fill=\"#B23A48\"></path>\n<path d=\"M29.7246 7.03748C29.3809 7.03748 29.0996 7.31873 29.0996 7.66248V8.74373C29.0996 9.08748 29.3809 9.36873 29.7246 9.36873C30.0684 9.36873 30.3496 9.08748 30.3496 8.74373V7.66248C30.3496 7.31873 30.0684 7.03748 29.7246 7.03748Z\" fill=\"#B23A48\"></path>\n<path d=\"M32.368 9.6875H31.293C30.9492 9.6875 30.668 9.96875 30.668 10.3125C30.668 10.6562 30.9492 10.9375 31.293 10.9375H32.368C32.7117 10.9375 32.993 10.6562 32.993 10.3125C32.993 9.96875 32.7117 9.6875 32.368 9.6875Z\" fill=\"#B23A48\"></path>\n<path d=\"M29.7246 11.2625C29.3809 11.2625 29.0996 11.5437 29.0996 11.8875V12.9687C29.0996 13.3125 29.3809 13.5937 29.7246 13.5937C30.0684 13.5937 30.3496 13.3125 30.3496 12.9687V11.8875C30.3496 11.5437 30.0684 11.2625 29.7246 11.2625Z\" fill=\"#B23A48\"></path>\n<path d=\"M28.1629 9.6875H27.0879C26.7441 9.6875 26.4629 9.96875 26.4629 10.3125C26.4629 10.6562 26.7441 10.9375 27.0879 10.9375H28.1629C28.5066 10.9375 28.7879 10.6562 28.7879 10.3125C28.7879 9.96875 28.5066 9.6875 28.1629 9.6875Z\" fill=\"#B23A48\"></path>\n<path d=\"M20 3.58125C20.3438 3.58125 20.625 3.3 20.625 2.95625V1.875C20.625 1.53125 20.3438 1.25 20 1.25C19.6562 1.25 19.375 1.53125 19.375 1.875V2.95625C19.375 3.3 19.6562 3.58125 20 3.58125Z\" fill=\"#B23A48\"></path>\n<path d=\"M17.3555 5.15002H18.4305C18.7742 5.15002 19.0555 4.86877 19.0555 4.52502C19.0555 4.18127 18.7742 3.90002 18.4305 3.90002H17.3555C17.0117 3.90002 16.7305 4.18127 16.7305 4.52502C16.7305 4.86877 17.0117 5.15002 17.3555 5.15002Z\" fill=\"#B23A48\"></path>\n<path d=\"M20 7.8C20.3438 7.8 20.625 7.51875 20.625 7.175V6.09375C20.625 5.75 20.3438 5.46875 20 5.46875C19.6562 5.46875 19.375 5.75 19.375 6.09375V7.175C19.375 7.51875 19.6562 7.8 20 7.8Z\" fill=\"#B23A48\"></path>\n<path d=\"M21.5684 5.15002H22.6434C22.9871 5.15002 23.2684 4.86877 23.2684 4.52502C23.2684 4.18127 22.9871 3.90002 22.6434 3.90002H21.5684C21.2246 3.90002 20.9434 4.18127 20.9434 4.52502C20.9434 4.86877 21.2246 5.15002 21.5684 5.15002Z\" fill=\"#B23A48\"></path>\n</svg>",
+            "blockheading": "Effortless to Use",
+            "subtext": "<p>Apply Rejuvacote daily as a base coat to boost nail health and strength. Finish with your favorite Duri color, no extra tools needed.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "blocks_zJMYPd",
+        "blocks_ziYErw",
+        "blocks_gcb9W6"
+      ],
+      "disabled": true,
+      "name": "Duri Landing Trusted ppl",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "back-color": "",
+        "trust-img": "shopify://shop_images/presentation_image_15.png",
+        "heading": "Trusted by Real People. Real Results.",
+        "enable_highlight_TRUSTED": false
+      }
+    },
+    "duri_landing_loved_by_thasnd_UcRX6R": {
+      "type": "duri-landing-loved-by-thasnd",
+      "blocks": {
+        "featured_blocks_XRCmnp": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "product": "",
+            "title12": "",
+            "title34": ""
+          }
+        },
+        "featured_blocks_Ee3wrT": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "product": "",
+            "title12": "",
+            "title34": ""
+          }
+        },
+        "featured_blocks_rXKLVq": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "product": "",
+            "title12": "",
+            "title34": ""
+          }
+        },
+        "featured_blocks_mUEiWB": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "product": "",
+            "title12": "",
+            "title34": ""
+          }
+        },
+        "featured_blocks_4NxQ3X": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "product": "",
+            "title12": "",
+            "title34": ""
+          }
+        },
+        "featured_blocks_dMtLzR": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "product": "",
+            "title12": "",
+            "title34": ""
+          }
+        },
+        "featured_blocks_7JkPzz": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "product": "",
+            "title12": "",
+            "title34": ""
+          }
+        }
+      },
+      "block_order": [
+        "featured_blocks_XRCmnp",
+        "featured_blocks_Ee3wrT",
+        "featured_blocks_rXKLVq",
+        "featured_blocks_mUEiWB",
+        "featured_blocks_4NxQ3X",
+        "featured_blocks_dMtLzR",
+        "featured_blocks_7JkPzz"
+      ],
+      "disabled": true,
+      "name": "Duri Landing lvd by 1000",
+      "settings": {
+        "desktop-padding-top": 80,
+        "desktop-padding-bottom": 16,
+        "padding-top-mbl": 16,
+        "padding-bottom-mbl": 16,
+        "back-color": "",
+        "heading": "<p>Loved by Thousands of Women Who Do It All</p>",
+        "subhead": "Empowering women to maintain style, confidence, and effortless beauty while staying on-the-go, no matter their busy lives.",
+        "subheadmbl": "Join thousands of women who do it all and trust in our products to keep them stylish, confident, and unstoppable every day."
+      }
+    },
+    "video_slider_duri_WFJtV3": {
+      "type": "video-slider-duri",
+      "blocks": {
+        "video_product_GUWcNV": {
+          "type": "video_product",
+          "settings": {
+            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "product": ""
+          }
+        },
+        "video_product_q6yx7L": {
+          "type": "video_product",
+          "settings": {
+            "video": "shopify://files/videos/billo1_rejuvacote 1_.mp4",
+            "product": ""
+          }
+        },
+        "video_product_z3fiCY": {
+          "type": "video_product",
+          "settings": {
+            "video": "shopify://files/videos/30PEALPINKVIDEO_af95ed9e-a233-42ee-823e-a554e4815340.MOV",
+            "product": ""
+          }
+        },
+        "video_product_AeYTMj": {
+          "type": "video_product",
+          "settings": {
+            "video": "shopify://files/videos/welcomejunepop_d8727356-83ea-48db-9728-e1023c6d10b3.mp4",
+            "product": ""
+          }
+        },
+        "video_product_RGhdFy": {
+          "type": "video_product",
+          "settings": {
+            "video": "shopify://files/videos/Valentine's Pouring out Nail Polishes .MP4",
+            "product": ""
+          }
+        },
+        "video_product_EqQJJi": {
+          "type": "video_product",
+          "settings": {
+            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "product": ""
+          }
+        },
+        "video_product_4Cghyt": {
+          "type": "video_product",
+          "settings": {
+            "video": "shopify://files/videos/billo1_rejuvacote 1_.mp4",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_product_GUWcNV",
+        "video_product_q6yx7L",
+        "video_product_z3fiCY",
+        "video_product_AeYTMj",
+        "video_product_RGhdFy",
+        "video_product_EqQJJi",
+        "video_product_4Cghyt"
+      ],
+      "name": "Video Product Slider",
+      "settings": {
+        "progress_clr": "#D99CA580",
+        "active_clr": "#D99CA5",
+        "heading": "Loved by Thousands of Women Who Do It All",
+        "description": "Join thousands of women who do it all and trust in our products to keep them stylish, confident, and unstoppable every day.",
+        "play_icon_svg": "<svg width=\"60\" height=\"60\" viewbox=\"0 0 24 24\" fill=\"white\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"rgba(0,0,0,0.6)\"></circle><polygon points=\"10,8 16,12 10,16\" fill=\"white\"></polygon></svg>",
+        "mobile_layout": "swiper",
+        "padding_top_desktop": 48,
+        "padding_bottom_desktop": 56,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "duri_landing_educational_4RKXnb": {
+      "type": "duri-landing-educational",
+      "blocks": {
+        "how_to_image_TwTL9D": {
+          "type": "how_to_image",
+          "settings": {
+            "image": "shopify://shop_images/image_66.png",
+            "label": "BEFORE"
+          }
+        },
+        "how_to_image_8GJHL3": {
+          "type": "how_to_image",
+          "settings": {
+            "image": "shopify://shop_images/image_67.png",
+            "label": "AFTER"
+          }
+        },
+        "how_to_image_mxFWHa": {
+          "type": "how_to_image",
+          "settings": {
+            "image": "shopify://shop_images/image_68.png",
+            "label": "AFTER 4 WEEKS"
+          }
+        },
+        "faq_TxPkBr": {
+          "type": "faq",
+          "settings": {
+            "question": "Should I go with Rejuvacote 1 or Rejuvacote 2?",
+            "answer": "If you have flexible, peeling nails with stunted growth and constant chipping, go for Rejuvacote 1. If you have thin, brittle nails with ridges, then Rejuvacote 2 is for you."
+          }
+        },
+        "faq_9MUHxH": {
+          "type": "faq",
+          "settings": {
+            "question": "Should I go with Rejuvacote 1 or Rejuvacote 2?",
+            "answer": "If you have flexible, peeling nails with stunted growth and constant chipping, go for Rejuvacote 1. If you have thin, brittle nails with ridges, then Rejuvacote 2 is for you."
+          }
+        },
+        "faq_YjzTkc": {
+          "type": "faq",
+          "settings": {
+            "question": "Should I go with Rejuvacote 1 or Rejuvacote 2?",
+            "answer": "If you have flexible, peeling nails with stunted growth and constant chipping, go for Rejuvacote 1. If you have thin, brittle nails with ridges, then Rejuvacote 2 is for you."
+          }
+        },
+        "faq_AJ8g43": {
+          "type": "faq",
+          "settings": {
+            "question": "Should I go with Rejuvacote 1 or Rejuvacote 2?",
+            "answer": "If you have flexible, peeling nails with stunted growth and constant chipping, go for Rejuvacote 1. If you have thin, brittle nails with ridges, then Rejuvacote 2 is for you."
+          }
+        },
+        "ingredient_mmCKGF": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Rejuvacote 1",
+            "image": "shopify://shop_images/newpicsu.webp",
+            "description": "Rejuvacote 1 by Duri Cosmetics is an award-winning nail growth treatment that repairs brittle nails, doubles as a base/top coat, and uses wheat protein, soy protein, and calcium to nourish, prevent peeling, and promote growth."
+          }
+        },
+        "ingredient_yFpL36": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Nail Pain 2",
+            "image": "shopify://shop_images/newpicsu.webp",
+            "description": "Hello, this is your captain speaking, i'm sorry to say... \"tail muki gya ay\""
+          }
+        },
+        "ingredient_kqhwrk": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Nail Polish 3",
+            "image": "shopify://shop_images/newpicsu.webp",
+            "description": "Rejuvacote 1 by Duri Cosmetics is an award-winning nail growth treatment that repairs brittle nails, doubles as a base/top coat, and uses wheat protein, soy protein, and calcium to nourish, prevent peeling, and promote growth."
+          }
+        }
+      },
+      "block_order": [
+        "how_to_image_TwTL9D",
+        "how_to_image_8GJHL3",
+        "how_to_image_mxFWHa",
+        "faq_TxPkBr",
+        "faq_9MUHxH",
+        "faq_YjzTkc",
+        "faq_AJ8g43",
+        "ingredient_mmCKGF",
+        "ingredient_yFpL36",
+        "ingredient_kqhwrk"
+      ],
+      "name": "DURI Landing Educational",
+      "settings": {
+        "title": "Educational Detail Section",
+        "subtitle": "Use as a base coat, top coat, or alone. Apply daily for 7 days, then remove and repeat. For optimal results, use for 3+ weeks.  ",
+        "tab1_title": "How to Use Rejuvacote",
+        "tab2_title": "FAQs",
+        "tab3_title": "Ingredients",
+        "tab4_title": "Nail Growth Guide",
+        "how_to_text": "",
+        "growth_text": ""
+      }
+    },
+    "duri_product_loved_by_thsnd_TexFML": {
+      "type": "duri-product-loved-by-thsnd",
+      "blocks": {
+        "blocks_m9pGgH": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-02_at_12_52_37_PM_1_png.png",
+            "block-heading": "Long-Lasting Manicures",
+            "para": "<p>Products are reliably good. I can generally get 2–3 weeks from one home-done manicure. Get tons of compliments. Duri simply better than store-bought polish.</p>",
+            "name": "Emily K.",
+            "varified-text": "Verified Buyer"
+          }
+        },
+        "blocks_fiDFaa": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-02_at_12.52.37_PM_1.png_1_a533ec27-500b-4ca7-91b0-da74fbf217fa.png",
+            "block-heading": "Long-Lasting Manicures",
+            "para": "<p>The polish stayed on for almost 10 days and I wash my dishes and forget to wear gloves, I wash my hands several times a day because of caring for my sick husband  and the polish endures.</p>",
+            "name": "Toni G.",
+            "varified-text": "Verified Buyer"
+          }
+        },
+        "blocks_JAdqY7": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-02_at_12.52.37_PM_1.png_2_1cbd3e63-16e5-4996-b438-bf8c25c31931.png",
+            "block-heading": "Long-Lasting Manicures",
+            "para": "<p>Love my selection of new colors Duri polish doesn’t chip and my nails look great for several weeks.</p>",
+            "name": "Marcia F.",
+            "varified-text": "Verified Buyer"
+          }
+        },
+        "blocks_PnfKBp": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-02_at_12.52.37_PM_1.png_1.png",
+            "block-heading": "Long-Lasting Manicures",
+            "para": "<p>Very easy to order and check-out is a breeze!! I also love the variety of nail polish colors!!!\"</p>",
+            "name": "Lola L.",
+            "varified-text": "Verified Buyer"
+          }
+        },
+        "blocks_wwNP9w": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-02_at_12_52_37_PM_1_png.png",
+            "block-heading": "Long-Lasting Manicures",
+            "para": "<p>Products are reliably good. I can generally get 2–3 weeks from one home-done manicure. Get tons of compliments. Duri simply better than store-bought polish.</p>",
+            "name": "Emily K.",
+            "varified-text": "Verified Buyer"
+          }
+        },
+        "blocks_tnqzjk": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-02_at_12.52.37_PM_1.png_1_a533ec27-500b-4ca7-91b0-da74fbf217fa.png",
+            "block-heading": "Long-Lasting Manicures",
+            "para": "<p>The polish stayed on for almost 10 days and I wash my dishes and forget to wear gloves, I wash my hands several times a day because of caring for my sick husband  and the polish endures.</p>",
+            "name": "Toni G.",
+            "varified-text": "Verified Buyer"
+          }
+        },
+        "blocks_6iP9xT": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-02_at_12.52.37_PM_1.png_2_1cbd3e63-16e5-4996-b438-bf8c25c31931.png",
+            "block-heading": "Long-Lasting Manicures",
+            "para": "<p>Love my selection of new colors Duri polish doesn’t chip and my nails look great for several weeks.</p>",
+            "name": "Marcia F.",
+            "varified-text": "Verified Buyer"
+          }
+        },
+        "blocks_ct4XcE": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-02_at_12.52.37_PM_1.png_1.png",
+            "block-heading": "Long-Lasting Manicures",
+            "para": "<p>Very easy to order and check-out is a breeze!! I also love the variety of nail polish colors!!!\"</p>",
+            "name": "Lola L.",
+            "varified-text": "Verified Buyer"
+          }
+        }
+      },
+      "block_order": [
+        "blocks_m9pGgH",
+        "blocks_fiDFaa",
+        "blocks_JAdqY7",
+        "blocks_PnfKBp",
+        "blocks_wwNP9w",
+        "blocks_tnqzjk",
+        "blocks_6iP9xT",
+        "blocks_ct4XcE"
+      ],
+      "name": "Duri Product Lvd by Thsnd",
+      "settings": {
+        "heading": "<p>Loved by Thousands of Women Who Do It All</p>",
+        "sub-heading": "",
+        "padding_top": 80,
+        "padding_bottom": 30,
+        "padding_top_mob": 40,
+        "padding_bottom_mob": 40,
+        "back-ground": "rgba(0,0,0,0)",
+        "bg_card": "#D99CA599",
+        "image_stars": "shopify://shop_images/Frame_2147226171.svg",
+        "image_buyer": "shopify://shop_images/Container_1.svg"
+      }
+    },
+    "duri_landing_lvd_by_thsnd_women_PtM3FT": {
+      "type": "duri-landing-lvd-by-thsnd-women",
+      "blocks": {
+        "review_block_KMEXwr": {
+          "type": "review-block",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-02_at_12.52.37_PM_1.png_2.png",
+            "block-heading": "Long-Lasting Manicures",
+            "para": "<p>Products are reliably good. I can generally get 2–3 weeks from one home-done manicure. Get tons of compliments. Duri simply better than store-bought polish.</p>",
+            "name": "Emily K.",
+            "varified-text": "Verified Buyer"
+          }
+        },
+        "review_block_RqG3iW": {
+          "type": "review-block",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-02_at_12.52.37_PM_1.png_1.png",
+            "block-heading": "Long-Lasting Manicures",
+            "para": "<p>Products are reliably good. I can generally get 2–3 weeks from one home-done manicure. Get tons of compliments. Duri simply better than store-bought polish.</p>",
+            "name": "Emily K.",
+            "varified-text": "Verified Buyer"
+          }
+        },
+        "review_block_bBp9Ji": {
+          "type": "review-block",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-02_at_12.52.37_PM_1.png_1.png",
+            "block-heading": "Long-Lasting Manicures",
+            "para": "<p>Products are reliably good. I can generally get 2–3 weeks from one home-done manicure. Get tons of compliments. Duri simply better than store-bought polish.</p>",
+            "name": "Emily K.",
+            "varified-text": "Verified Buyer"
+          }
+        },
+        "review_block_cDaTgR": {
+          "type": "review-block",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-02_at_12.52.37_PM_1.png_1.png",
+            "block-heading": "Long-Lasting Manicures",
+            "para": "<p>Products are reliably good. I can generally get 2–3 weeks from one home-done manicure. Get tons of compliments. Duri simply better than store-bought polish.</p>",
+            "name": "Emily K.",
+            "varified-text": "Verified Buyer"
+          }
+        },
+        "review_block_XXLtjK": {
+          "type": "review-block",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-02_at_12.52.37_PM_1.png_1.png",
+            "block-heading": "Long-Lasting Manicures",
+            "para": "<p>Products are reliably good. I can generally get 2–3 weeks from one home-done manicure. Get tons of compliments. Duri simply better than store-bought polish.</p>",
+            "name": "Emily K.",
+            "varified-text": "Verified Buyer"
+          }
+        },
+        "review_block_EmEywP": {
+          "type": "review-block",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-02_at_12.52.37_PM_1.png_1.png",
+            "block-heading": "Long-Lasting Manicures",
+            "para": "<p>Products are reliably good. I can generally get 2–3 weeks from one home-done manicure. Get tons of compliments. Duri simply better than store-bought polish.</p>",
+            "name": "Emily K.",
+            "varified-text": "Verified Buyer"
+          }
+        },
+        "review_block_fChayT": {
+          "type": "review-block",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-02_at_12.52.37_PM_1.png_1.png",
+            "block-heading": "Long-Lasting Manicures",
+            "para": "<p>Products are reliably good. I can generally get 2–3 weeks from one home-done manicure. Get tons of compliments. Duri simply better than store-bought polish.</p>",
+            "name": "Emily K.",
+            "varified-text": "Verified Buyer"
+          }
+        }
+      },
+      "block_order": [
+        "review_block_KMEXwr",
+        "review_block_RqG3iW",
+        "review_block_bBp9Ji",
+        "review_block_cDaTgR",
+        "review_block_XXLtjK",
+        "review_block_EmEywP",
+        "review_block_fChayT"
+      ],
+      "disabled": true,
+      "name": "Duri Landing lvd by wmen",
+      "settings": {
+        "heading": "<p>Loved by Thousands of Women Who Do It All</p>",
+        "sub-heading": "",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "back-ground": ""
+      }
+    },
+    "duri_product_frequently_ask_WNXqHP": {
+      "type": "duri-product-frequently-ask",
+      "blocks": {
+        "blocks_gMqcDi": {
+          "type": "blocks",
+          "settings": {
+            "custom_svg": "",
+            "blockheading": "Should I go with Rejuvacote 1 or Rejuvacote 2?",
+            "subtext": "If you have flexible, peeling nails with stunted growth and constant chipping, go for Rejuvacote 1. If you have thin, brittle nails with ridges, then Rejuvacote 2 is for you."
+          }
+        },
+        "blocks_iJ8dVE": {
+          "type": "blocks",
+          "settings": {
+            "custom_svg": "",
+            "blockheading": "Does Rejuvacote 1 or Rejuvacote 2 contain formaldehyde?",
+            "subtext": "We are thrilled to say after years of ingredient testing and research neither Rejuvacote 1 nor Rejuvacote 2 contain formaldehyde as of August 2025."
+          }
+        },
+        "blocks_xnn6ch": {
+          "type": "blocks",
+          "settings": {
+            "custom_svg": "",
+            "blockheading": "Do I use Rejuvacote 1 and Rejuvacote 2 together?",
+            "subtext": "No, you don't need to use them together.  Choose which nail growth system fits your nail needs."
+          }
+        }
+      },
+      "block_order": [
+        "blocks_gMqcDi",
+        "blocks_iJ8dVE",
+        "blocks_xnn6ch"
+      ],
+      "name": "Duri product freqntly ask",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "mbl_padding_top": 0,
+        "mbl_padding_bottom": 0,
+        "back-color": "#fff4f3",
+        "bg_faq": "#ffffff",
+        "trust-img": "shopify://shop_images/presentation_image_12.png",
+        "heading": "Frequently Asked Questions",
+        "ir_subtexxtt": "Still have questions? Feel free to reach out to us at <a href=\"mailto:support@duri.com\" target=\"_blank\" title=\"mailto:support@duri.com\">support@duri.com</a>",
+        "enable_highlight_TRUSTED": false
+      }
+    },
+    "duri_landing_ready_wnpYJ4": {
+      "type": "duri-landing-ready",
+      "name": "Duri Landing Prdct Ready",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "mbl_padding_top": 40,
+        "mbl_padding_bottom": 40,
+        "back-color": "",
+        "duri-ready-img": "shopify://shop_images/image_69.png",
+        "duriFirsttext": "Ready for Stronger, Prettier Nails",
+        "duriFirsttext2": "Bundles ship fast – limited quantities available, so don't wait! Secure yours today before they're gone",
+        "duri-button_link": "#",
+        "duri-btnbutton_label": "Build your bundle"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "duri_landing_banner_dC8cNU",
+    "ads_banner_LxBAbT",
+    "duri_marquee_first_3TmXAk",
+    "marquee_P8yQbG",
+    "bundle_collection_cy8naR",
+    "featured_product_Rk3tJE",
+    "duri_why_you_ill_see_ec6DqJ",
+    "duri_landing_trusted_by_people_4VUpfb",
+    "duri_landing_loved_by_thasnd_UcRX6R",
+    "video_slider_duri_WFJtV3",
+    "duri_landing_educational_4RKXnb",
+    "duri_product_loved_by_thsnd_TexFML",
+    "duri_landing_lvd_by_thsnd_women_PtM3FT",
+    "duri_product_frequently_ask_WNXqHP",
+    "duri_landing_ready_wnpYJ4"
+  ]
+}

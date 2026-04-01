@@ -1,0 +1,555 @@
+{% style %}
+
+@media screen and (min-width: 769px){
+  .section-{{ section.id }} .page-width {
+    padding: 0 100px;
+  }  
+}
+
+.section-{{ section.id }} {
+  padding-top: {{ section.settings.padding_top_desktop }}px;
+  padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+}
+
+.collection-tabs-content {
+    display: none;
+}
+
+.collection-tabs-content.active {
+    display: block;
+}
+
+.collection-tabs-card-image {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}
+
+.collection-tabs-card-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 4/5;
+}
+
+.collection-tabs-card-content {
+    background-color: #7C0732;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 32px;
+}
+
+h3.collection-tabs-card-title {
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 30px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: #fff;
+    margin: 0;
+    text-decoration: none;
+}
+
+span.collection-tabs-card-arrow {
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
+    display: block;
+}
+
+span.collection-tabs-card-arrow svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+a.collection-tabs-card {
+    display: block;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.collection-tabs-buttons {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+button.collection-tabs-btn {
+    background-color: transparent;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 36.2px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    text-transform: capitalize;
+    color: #00000066;
+    padding: 0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+span.collection-tabs-btn_circle {
+    height: 20px;
+    width: 20px;
+    border: 2px solid #00000066;
+    border-radius: 50%;
+    position: relative;
+    margin-bottom: 6px;
+}
+
+button.collection-tabs-btn.active {
+    color: #000;
+}
+
+button.collection-tabs-btn.active span.collection-tabs-btn_circle {
+    border-color: #000;
+}
+
+button.collection-tabs-btn.active span.collection-tabs-btn_circle:before {
+    content: "";
+    height: 13px;
+    width: 13px;
+    background-color: #000;
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.collection-tabs-head {
+    margin-bottom: 24px;
+}
+
+.collection-tabs-swiper_bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 22px;
+    margin-top: 24px;
+}
+
+.collection-tabs-navigation {
+    display: flex;
+    gap: 7px;
+    align-items: center;
+}
+
+.collection-tabs-arrow {
+    width: 48px;
+    height: 48px;
+    display: block;
+    min-width: 48px;
+    cursor: pointer;
+}
+
+.collection-tabs-arrow svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.collection-tabs-progress {
+    position: static;
+    background-color: #7BA69D66;
+    height: 2px !important;
+}
+
+.collection-tabs-progress span.swiper-pagination-progressbar-fill {
+    background-color: #7BA69D !important;
+}
+
+.collection-tabs-arrow.swiper-button-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+a.collection-tabs-card:hover {
+    transform: translateY(-3px);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+@media screen and (max-width: 749px) {
+  .section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+  {% if section.settings.mobile_layout == 'grid' %}
+  .section-{{ section.id }} .collection-tabs-slider-wrapper.mobile-grid .swiper-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .collection-tabs-slide.swiper-slide {
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+  a.collection-tabs-card {
+    display: flex;
+}
+
+.collection-tabs-card-image {
+    max-width: 80px;
+    height: auto;
+    aspect-ratio: 1;
+}
+
+.collection-tabs-card-content {
+    padding: 20px 16px;
+    max-width: 100%;
+    width: 100%;
+}
+
+.collection-tabs-swiper_bottom {
+    display: none;
+}
+
+  {% endif %}
+
+  button.collection-tabs-btn {
+    font-size: 20px;
+    line-height: 24px;
+    gap: 5px;
+}
+
+.collection-tabs-buttons {
+    flex-direction: column;
+    align-items: self-start;
+    gap: 12px;
+}
+
+span.collection-tabs-btn_circle {
+    width: 16px;
+    height: 16px;
+    border-width: 2px;
+}
+
+button.collection-tabs-btn.active span.collection-tabs-btn_circle:before {
+    height: 10px;
+    width: 10px;
+}
+
+.collection-tabs-card-content {
+    padding: 20px 16px;
+}
+
+h3.collection-tabs-card-title {
+    font-size: 18px;
+    line-height: 30px;
+}
+
+span.collection-tabs-card-arrow {
+    width: 26px;
+    min-width: 26px;
+    height: 26px;
+}
+
+.collection-tabs-arrow {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+}
+
+}
+{% endstyle %}
+
+<section class="collection-tabs-section section-{{ section.id }}">
+  <div class="page-width">
+
+    <!-- Tabs Header -->
+    <div class="collection-tabs-head">
+      <div class="collection-tabs-buttons">
+        {% for block in section.blocks %}
+          {% if block.type == 'tab' %}
+            <button 
+              class="collection-tabs-btn {% if forloop.first %}active{% endif %}" 
+              data-tab="{{ block.id }}"
+              {{ block.shopify_attributes }}>
+              <span class="collection-tabs-btn_circle"></span>
+              {{ block.settings.tab_title }}
+            </button>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Tabs Content -->
+    <div class="collection-tabs-contents">
+      {% for block in section.blocks %}
+        {% if block.type == 'tab' %}
+          <div 
+            class="collection-tabs-content {% if forloop.first %}active{% endif %}" 
+            data-tab-content="{{ block.id }}">
+
+            <div class="collection-tabs-slider-wrapper {% if section.settings.mobile_layout == 'grid' %}mobile-grid{% endif %}">
+              
+              <div class="collection-tabs-slider swiper">
+                <div class="swiper-wrapper">
+
+                  {% for collection in block.settings.collection_list %}
+                    <div class="collection-tabs-slide swiper-slide">
+                      <a href="{{ collection.url }}" class="collection-tabs-card">
+
+                        <div class="collection-tabs-card-image">
+                          {% if collection.featured_image != blank %}
+                            {{ collection.featured_image | image_url: width: 1600 | image_tag:
+                                widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                                alt: "image",
+                                loading: "lazy"
+                            }}
+                          {% else %}
+                            {{ collection.metafields.custom.collection_image | image_url: width: 1600 | image_tag:
+                                widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                                alt: "image",
+                                loading: "lazy"
+                            }}
+                          {% endif %}
+                        </div>
+
+                        <div class="collection-tabs-card-content">
+                          <h3 class="collection-tabs-card-title">
+                            {{ collection.title }}
+                          </h3>
+                          <span class="collection-tabs-card-arrow">
+                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.50027 13.7497H24.4828L17.8665 7.13349C17.7471 7.01818 17.6519 6.88025 17.5864 6.72774C17.5209 6.57524 17.4864 6.41121 17.485 6.24524C17.4835 6.07926 17.5151 5.91466 17.578 5.76104C17.6408 5.60742 17.7337 5.46786 17.851 5.35049C17.9684 5.23313 18.108 5.14031 18.2616 5.07746C18.4152 5.01461 18.5798 4.98298 18.7458 4.98442C18.9117 4.98586 19.0758 5.02035 19.2283 5.08586C19.3808 5.15137 19.5187 5.2466 19.634 5.36599L28.384 14.116C28.6184 14.3504 28.75 14.6683 28.75 14.9997C28.75 15.3312 28.6184 15.6491 28.384 15.8835L19.634 24.6335C19.3983 24.8612 19.0825 24.9872 18.7548 24.9843C18.427 24.9815 18.1135 24.85 17.8817 24.6183C17.65 24.3865 17.5185 24.073 17.5157 23.7452C17.5128 23.4175 17.6388 23.1017 17.8665 22.866L24.4828 16.2497H2.50027C2.16874 16.2497 1.8508 16.118 1.61638 15.8836C1.38196 15.6492 1.25027 15.3313 1.25027 14.9997C1.25027 14.6682 1.38196 14.3503 1.61638 14.1159C1.8508 13.8814 2.16874 13.7497 2.50027 13.7497Z" fill="white"/>
+                            </svg>
+                          </span>
+                        </div>
+
+                      </a>
+                    </div>
+                  {% endfor %}
+
+                </div>
+
+                <div class="collection-tabs-swiper_bottom">
+                    <!-- Desktop Navigation -->
+                    <div class="collection-tabs-navigation">
+                      <div class="collection-tabs-arrow collection-tabs-prev">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g opacity="1">
+                            <rect x="47.5" y="47.5" width="47" height="47" transform="rotate(180 47.5 47.5)" stroke="#7C0732" stroke-opacity="1"/>
+                            <rect x="47.5" y="47.5" width="47" height="47" transform="rotate(180 47.5 47.5)" fill="white"/>
+                            <rect x="47.5" y="47.5" width="47" height="47" transform="rotate(180 47.5 47.5)" stroke="#7BA69D"/>
+                            <g clip-path="url(#clip0_9188_512)">
+                            <path d="M20.5139 24.4502L27.1798 30.8135C27.2417 30.8726 27.3152 30.9195 27.3962 30.9515C27.4771 30.9835 27.5638 31 27.6514 31C27.739 31 27.8257 30.9835 27.9066 30.9515C27.9876 30.9195 28.0611 30.8726 28.123 30.8135C28.1849 30.7544 28.2341 30.6842 28.2676 30.607C28.3011 30.5297 28.3184 30.4469 28.3184 30.3633C28.3184 30.2797 28.3011 30.1969 28.2676 30.1197C28.2341 30.0424 28.1849 29.9722 28.123 29.9131L21.9279 24L28.123 18.0869C28.2481 17.9675 28.3184 17.8055 28.3184 17.6367C28.3184 17.4678 28.2481 17.3059 28.123 17.1865C27.9979 17.0671 27.8283 17 27.6514 17C27.4745 17 27.3049 17.0671 27.1798 17.1865L20.5139 23.5498C20.4519 23.6089 20.4027 23.6791 20.3692 23.7563C20.3356 23.8336 20.3184 23.9164 20.3184 24C20.3184 24.0836 20.3356 24.1664 20.3692 24.2437C20.4027 24.3209 20.4519 24.3911 20.5139 24.4502Z" fill="#7BA69D"/>
+                            </g>
+                            </g>
+                            <defs>
+                            <clipPath id="clip0_9188_512">
+                            <rect width="9" height="14" fill="white" transform="matrix(-1 0 0 -1 28.5 31)"/>
+                            </clipPath>
+                            </defs>
+                        </svg>
+                      </div>
+                      <div class="collection-tabs-arrow collection-tabs-next">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.5" y="0.5" width="47" height="47" stroke="#7C0732"/>
+                            <rect x="0.5" y="0.5" width="47" height="47" fill="white"/>
+                            <rect x="0.5" y="0.5" width="47" height="47" stroke="#7BA69D"/>
+                            <g clip-path="url(#clip0_9188_516)">
+                            <path d="M27.4861 23.5498L20.8202 17.1865C20.7583 17.1274 20.6848 17.0805 20.6038 17.0485C20.5229 17.0165 20.4362 17 20.3486 17C20.261 17 20.1743 17.0165 20.0934 17.0485C20.0124 17.0805 19.9389 17.1274 19.877 17.1865C19.8151 17.2456 19.7659 17.3158 19.7324 17.393C19.6989 17.4703 19.6816 17.5531 19.6816 17.6367C19.6816 17.7203 19.6989 17.8031 19.7324 17.8803C19.7659 17.9576 19.8151 18.0278 19.877 18.0869L26.0721 24L19.877 29.9131C19.7519 30.0325 19.6816 30.1945 19.6816 30.3633C19.6816 30.5322 19.7519 30.6941 19.877 30.8135C20.0021 30.9329 20.1717 31 20.3486 31C20.5255 31 20.6951 30.9329 20.8202 30.8135L27.4861 24.4502C27.5481 24.3911 27.5973 24.3209 27.6308 24.2437C27.6644 24.1664 27.6816 24.0836 27.6816 24C27.6816 23.9164 27.6644 23.8336 27.6308 23.7563C27.5973 23.6791 27.5481 23.6089 27.4861 23.5498Z" fill="#7BA69D"/>
+                            </g>
+                            <defs>
+                            <clipPath id="clip0_9188_516">
+                            <rect width="9" height="14" fill="white" transform="translate(19.5 17)"/>
+                            </clipPath>
+                            </defs>
+                        </svg>
+                      </div>
+                    </div>
+                    <!-- Progress -->
+                    <div class="collection-tabs-progress swiper-pagination"></div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  const section = document.querySelector('.section-{{ section.id }}');
+  if (!section) return;
+
+  const isMobile = window.innerWidth < 750;
+  const mobileLayout = "{{ section.settings.mobile_layout }}";
+
+  section.querySelectorAll('.swiper').forEach(function(swiperEl) {
+
+    // If mobile layout is grid AND screen is mobile → don't init swiper
+    if (mobileLayout === 'grid' && isMobile) {
+      swiperEl.classList.add('swiper-initialized-disabled');
+      return;
+    }
+
+    new Swiper(swiperEl, {
+      slidesPerView: 3,
+      spaceBetween: 20,
+      speed: 1500,
+      navigation: {
+        nextEl: swiperEl.querySelector('.collection-tabs-next'),
+        prevEl: swiperEl.querySelector('.collection-tabs-prev'),
+      },
+      pagination: {
+        el: swiperEl.querySelector('.swiper-pagination'),
+        type: 'progressbar',
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1.2
+        },
+        750: {
+          slidesPerView: 3
+        }
+      }
+    });
+
+  });
+
+  // Tabs Switching
+  const buttons = section.querySelectorAll('.collection-tabs-btn');
+  const contents = section.querySelectorAll('.collection-tabs-content');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', function() {
+
+      buttons.forEach(b => b.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+
+      btn.classList.add('active');
+
+      const target = section.querySelector('[data-tab-content="' + btn.dataset.tab + '"]');
+      if (target) target.classList.add('active');
+
+    });
+  });
+
+});
+</script>
+
+
+{% schema %}
+{
+  "name": "Collection Tabs Slider",
+  "settings": [
+    {
+      "type": "select",
+      "id": "mobile_layout",
+      "label": "Mobile Layout",
+      "options": [
+        { "value": "swiper", "label": "Swiper" },
+        { "value": "grid", "label": "Grid" }
+      ],
+      "default": "swiper"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Tab Title",
+          "default": "Shop By Concern"
+        },
+        {
+          "type": "collection_list",
+          "id": "collection_list",
+          "label": "Collections"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Collection Tabs Slider",
+      "category": "Duri",
+      "blocks": [
+        { "type": "tab" },
+        { "type": "tab" }
+      ]
+    }
+  ]
+}
+{% endschema %}

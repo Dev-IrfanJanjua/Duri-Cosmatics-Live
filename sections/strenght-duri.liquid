@@ -1,0 +1,327 @@
+{% style %}
+  .section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    }
+
+/* .section-{{ section.id }} .page-width{
+    padding: 0;
+} */
+
+  .strenght-block-abs-image {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}
+
+.strenght-block-abs-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+h3.strenght-block-title {
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 37px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: #000;
+    text-align: left;
+    margin: 0 0 5px;
+}
+
+p.strenght-block-desc {
+    font-family: PP Mori;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19.6px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: #000;
+    margin: 0;
+}
+
+a.strenght-block-btn {
+    background-color: #7C0732;
+    padding: 14px 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+    text-transform: uppercase;
+    cursor: pointer;
+    min-width: fit-content;
+    border: 1px solid #7C0732;
+}
+
+a.strenght-block-btn:hover{
+    /* transform: translateY(-3px); */
+    border: 1px solid #7C0732;
+    background-color: transparent;
+    color: #7C0732;
+}
+
+.strenght-block {
+    position: relative;
+    max-width: 50%;
+    width: 100%;
+}
+
+.strenght-block-content {
+    position: absolute;
+    bottom: 36px;
+    left: 84px;
+    right: 64px;
+    top: auto;
+    z-index: 1;
+}
+
+.strenght-desc-btn {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    justify-content: space-between;
+}
+
+.strenght-wrapper {
+    display: flex;
+    height: auto;
+}
+
+.strenght-block-img_mob{
+    display: none !important;
+}
+
+  @media screen and (max-width: 900px) {
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    .strenght-wrapper {
+    flex-direction: column;
+}
+
+.strenght-block {
+    max-width: 100%;
+}
+
+.strenght-block-content {
+    bottom: 27px;
+    left: 32px;
+    right: 32px;
+}
+
+h3.strenght-block-title {
+    font-size: 24px;
+    line-height: 31.2px;
+    margin-bottom: 3px;
+    text-align: center;
+}
+
+.strenght-desc-btn {
+    flex-direction: column;
+    gap: 11px;
+}
+
+p.strenght-block-desc {
+    line-height: 21px;
+    text-align: center;
+}
+
+.strenght-block-img_mob{
+    display: block !important;
+}
+
+.strenght-block-img_desk{
+    display: none !important;
+}
+
+
+
+  }
+{% endstyle %}
+
+<section class="strenght-section section-{{ section.id }}">
+  {% comment %} <div class="page-width"> {% endcomment %}
+    <div class="strenght-wrapper">
+
+      {% for block in section.blocks %}
+        <div class="strenght-block" {{ block.shopify_attributes }}>
+          
+          <div class="strenght-block-abs-image">
+            {% if block.settings.image_desk != blank %}
+             {{ block.settings.image_desk | image_url: width: 1600 | image_tag:
+                widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                alt: "image",
+                loading: "lazy",
+                class: 'strenght-block-img_desk'
+            }}
+            {% endif %}
+            {% if block.settings.image_mob != blank %}
+             {{ block.settings.image_mob | image_url: width: 1600 | image_tag:
+                widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                alt: "image",
+                loading: "lazy",
+                class: 'strenght-block-img_mob'
+            }}
+            {% endif %}
+          </div>
+
+          <div class="strenght-block-content">
+            <div class="strenght-block-head">
+              
+              {% if block.settings.title != blank %}
+                <h3 class="strenght-block-title">
+                  {{ block.settings.title }}
+                </h3>
+              {% endif %}
+
+                <div class="strenght-desc-btn">
+                    {% if block.settings.description != blank %}
+                      <p class="strenght-block-desc">
+                        {{ block.settings.description }}
+                      </p>
+                    {% endif %}
+                    {% if block.settings.button_text != blank %}
+                        <a href="{{ block.settings.button_link }}" class="strenght-block-btn">
+                            {{ block.settings.button_text }}
+                        </a>
+                    {% endif %}
+                </div>
+
+            </div>
+
+
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+  {% comment %} </div> {% endcomment %}
+</section>
+
+{% schema %}
+{
+  "name": "Strength Section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Top (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top (Mobile)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom (Mobile)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "strength_block",
+      "name": "Strength Block",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_desk",
+          "label": "Block Image Desktop"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mob",
+          "label": "Block Image Mobile"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Block Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Add block description here."
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 2,
+  "presets": [
+    {
+      "name": "Strength Section",
+      "category": "Duri",
+      "blocks": [
+        {
+          "type": "strength_block"
+        },
+        {
+          "type": "strength_block"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

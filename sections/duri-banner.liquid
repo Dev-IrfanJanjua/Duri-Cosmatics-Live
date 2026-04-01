@@ -1,0 +1,607 @@
+<style>
+.section-{{ section.id }}-padding {
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+  background-color: {{ section.settings.back-color}};
+  position: relative;
+}
+.hero-banner {
+  position: relative;
+  color: #fff;
+  text-align: left;
+  padding: 100px 20px;
+  background-size: cover;
+  background-position: center;
+}
+.hero-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+.hero-banner-content {
+    position: absolute;
+    top: 50%;
+    left: 80px;
+    transform: translateY(-50%);
+}
+.hero-stars {
+  font-family: Libre Franklin;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  color: #fff;
+}
+.hero-heading {
+  letter-spacing: 0px;
+  margin: 0;
+  color: #FFF;
+  font-family: "PP Mori";
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 62.4px;
+  max-width: 426px;
+  padding-bottom: 8px;
+}
+.hero-heading-subtext p {
+    margin: 0;
+    padding-bottom: 24px;
+    letter-spacing: 0;
+}
+.hero-button {
+  background-color: #1E4851;
+  color: white;
+  padding: 14px 50px;
+  border: none;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  max-width: fit-content;
+  transition: background-color 0.4s ease, color 0.4s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+  .hero-button:hover {
+  background-color: #27606C; /* 🎯 Darker version on hover */
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+  
+.cheese-bnr-icon {
+  display: flex;
+  gap: 10px;
+  padding-top: 12px;
+  padding-bottom: 48px;
+}
+.cheese-bnr-icon {
+    display: none;
+}
+.bnr-cheese-btn-text {
+  margin: 0;
+  letter-spacing: 0px;
+  transition: color 0.4s ease;
+  color: #FFF;
+    text-align: center;
+    font-family: "PP Mori";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    text-transform: uppercase;
+    }
+.hero-icons {
+  
+}
+.bnr-cheese-logo {
+  display: flex;
+  gap: 32px;
+}
+.hero-icons img {
+  width: 103px;
+  height: 72px;
+}
+.hero-icons .icon-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  color: black;
+  padding: 9px 24.5px;
+  font-family: Libre Franklin;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  text-align: center;
+}
+  .cheese-bnr-Img {
+  width: 100%;
+  height: 100%; /* full screen height */
+  object-fit: cover;
+  display: block;
+}
+  .cheese-bnr-Img1 {
+    display: none;
+  }
+  
+  
+
+
+  .CheeseBanner .cheese-bnr-Img{
+    display: block;
+  }
+  .CheeseBanner .hero-banner-content {
+    max-width: 785px;
+  }
+  .CheeseBanner .cheese-stars {
+    display: none;
+  }
+  .cheese-stars {
+    display: none;
+}
+   
+  
+  .CheeseBanner .hero-heading-subtext {
+    display: block;
+  }
+  .hero-heading-subtext {
+    text-decoration: none;
+    color: #FFF;
+    font-family: "PP Mori";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+    max-width: 417px;
+  }
+  .CheeseBanner .hero-button {
+    display: none;
+  }
+  .new-btn-claass {
+    display: none;
+  }
+  .CheeseBanner .new-btn-claass {
+    display: flex;
+    gap: 12px;
+  }
+  .bnr-cheese-btn-text4 {
+    margin: 0;
+    color: var(--Light-100, #FFF);
+    text-align: center;
+    font-family: "Libre Franklin";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+    text-transform: uppercase;
+}
+  a.hero-button4 {
+    display: flex;
+    height: 60px;
+    padding: 14px 40px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #732727;
+    text-decoration: none;
+}
+  .CheeseBanner .hero-icons {
+    display: none;
+  }
+
+  .hero-button4::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.2) 100%);
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-button4:hover::before {
+  left: 125%;
+}
+
+.hero-button4 {
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.4s ease, border-color 0.4s ease;
+}
+
+.hero-button4::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  transition: all 0.5s ease;
+  z-index: 0;
+}
+
+.hero-button4:hover::before {
+  left: 0;
+}
+
+.hero-button4:hover {
+  color: #FFF6E5;
+  border-color: #fff;
+  {% comment %} background-color: #501B1B; {% endcomment %}
+}
+
+.bnr-cheese-btn-text4 {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+}
+.CheeseBanner-Coutry-Page .new-btn-claass {
+  display: none;
+}
+.CheeseBanner-Coutry-Page .hero-heading-subtext p{
+  margin: 0;
+}
+.CheeseBanner-Coutry-Page .hero-heading {
+  padding-bottom: 20px;
+}
+.hero-heading {
+  display: block;
+}
+.hero-heading-mbl {
+  display: none;
+}
+@media (max-width: 768px) {
+  .cheese-bnr-Img {
+    height: 100vh;
+    display: none;
+  }
+  .cheese-bnr-Img1 {
+    display: block; /* always hide image */
+    height: 85vh;
+  }
+  .hero-banner-content {
+    position: absolute;
+        top: unset;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        padding: 0 16px;
+        text-align: start;
+        align-items: center;
+        width: 100%;
+        bottom: 0%;
+        padding-bottom: 30px;
+  } 
+
+  {% comment %} .hero-banner-content {
+    position: absolute;
+    top: 59%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    padding: 0 20px;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    bottom: 300px;
+  } {% endcomment %}
+
+  .hero-heading-subtext p {
+    padding-bottom: 16px;
+    line-height: 22px;
+    text-align: start;
+  }
+      .hero-heading {
+        padding-top: 12px;
+        padding-bottom: 8px;
+        letter-spacing: 0px;
+        text-align: center;
+        color: #FFF;
+        font-family: "PP Mori";
+        font-size: 38px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 49.4px;
+    }
+
+  .hero-stars {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .hero-button {
+    padding: 10px 32px;
+    {% comment %} margin-bottom: 10px; {% endcomment %}
+  }
+
+  .bnr-cheese-btn-text {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .cheese-bnr-icon {
+    gap: 8px;
+    padding: 0;
+    margin-bottom: 16px;
+    justify-content: center;
+  }
+
+  .icon-label {
+    justify-content: center;
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+  .hero-icons .icon-label {
+    padding: 9px 10px;
+  }
+
+  .bnr-cheese-logo {
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .hero-icons img {
+    width: 60px;
+    height: auto;
+  }
+
+  .cheese-bnr-Img {
+    width: 100%;
+    height: 100vh;
+  }
+  .hero-heading-subtext {
+    color: #FFF;
+    font-family: "PP Mori";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22.4px;
+}
+.CheeseBanner .new-btn-claass {
+  gap: 8.76px;
+  flex-direction: column;
+}
+a.hero-button4 {
+    display: flex;
+    height: 60px;
+    padding: 15px 32.92px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #732727;
+    max-width: 196px;
+    margin: 0 auto;
+    width: 100%;
+}
+.bnr-cheese-btn-text4 {
+  font-size: 16px;
+  line-height: 19.2px;
+}
+.CheeseBanner .hero-heading {
+    text-align: center;
+    max-width: 288px;
+    margin: 0 auto;
+  }
+  .hero-heading {
+  display: none;
+}
+.hero-heading-mbl {
+  display: block;
+  padding-top: 12px;
+  padding-bottom: 8px;
+  letter-spacing: 0px;
+  text-align: start;
+  color: #FFF;
+  font-family: "PP Mori";
+  font-size: 38px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 49.4px;
+  margin: 0;
+}
+}
+
+</style>
+
+<section class="section-{{ section.id }}-padding {% if section.settings.enable_highlight-chz-bnr %}CheeseBanner{% endif %} {% if section.settings.enable_highlight-country-page %}CheeseBanner-Coutry-Page{% endif %}">
+  <div class="bnr-background-img">
+    {{ section.settings.cf-banner-video | video_tag:
+            widths: '50, 100, 150, 200, 250, 300, 400, 500, 600',
+            alt: "video",
+            class: 'cheese-bnr-Img',
+            loading: "eager",
+            autoplay: true,
+            loop: true,
+            muted: true,
+            playsinline: true,
+            id: 'cf-banner-video'
+          }}
+     {% if section.settings.cheeseBnrImg != blank %}
+     <img class="cheese-bnr-Img ch424" src="{{ section.settings.cheeseBnrImg | image_url }}" loading="lazy" width="100%" height="">
+     {% endif %}
+     {% if section.settings.cheeseBnrImg1 != blank %}
+     <img class="cheese-bnr-Img1" src="{{ section.settings.cheeseBnrImg1 | image_url }}" loading="lazy" width="100%" height="">
+     {% endif %}
+  </div>
+  
+  <div class="hero-banner-content">
+    <div class="cheese-stars">
+    <div class="hero-stars">★★★★★</div>
+    <div class="hero-stars">1000+ Reviews</div>
+    </div>
+    <h1 class="hero-heading">{{ section.settings.heading }}</h1>
+    <h1 class="hero-heading-mbl">{{ section.settings.headingMBL }}</h1>
+    <div class="hero-heading-subtext">{{ section.settings.subtextt }}</div>
+    <a href="{{ section.settings.button_link }}" class="hero-button"><p class="bnr-cheese-btn-text">{{ section.settings.button_label }}</p></a>
+    <div class="new-btn-claass">
+      <a href="{{ section.settings.button_link4 }}" class="hero-button4"><p class="bnr-cheese-btn-text4">{{ section.settings.button_label4 }}</p></a>
+      <a href="{{ section.settings.button_link5 }}" class="hero-button4"><p class="bnr-cheese-btn-text4">{{ section.settings.button_label5 }}</p></a>
+    </div>
+    <div class="hero-icons">
+      <div class="cheese-bnr-icon">
+      <div class="icon-label">  {% render 'cheese-logo1' %} 100% Risk Free</div>
+      <div class="icon-label"> {% render 'cheese-logo' %} 500,000+ Sold</div>
+      </div>
+      <div class="bnr-cheese-logo">
+      {% if section.settings.logo1 != blank %}
+        <img src="{{ section.settings.logo1 | image_url: width: 120 }}" alt="Logo 1">
+      {% endif %}
+      {% if section.settings.logo2 != blank %}
+        <img src="{{ section.settings.logo2 | image_url: width: 120 }}" alt="Logo 2">
+      {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Duri Banner",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Top Padding",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px", 
+      "label": "Mobile Bottom Padding",              
+      "default": 10
+    },
+    {
+      "type": "color", 
+      "id": "back-color",
+      "label": "Background Color"
+    },
+    {
+      "type": "image_picker",
+      "id": "cheeseBnrImg",
+      "label": "cheeseBnrImg"
+    },
+    {
+      "type": "video",
+      "id": "cf-banner-video",
+      "label": "cheeseBnrImg"
+    },
+    {
+      "type": "image_picker",
+      "id": "cheeseBnrImg1",
+      "label": "cheeseBnrImg1"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+    },
+    {
+      "type": "text",
+      "id": "headingMBL",
+      "label": "Heading Mobile",
+    },
+    {
+      "type": "richtext",
+      "id": "subtextt",
+      "label": "subtext",
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "text",
+      "id": "button_label4",
+      "label": "Button Label",
+      "default": "Request Form"
+    },
+    {
+      "type": "text",
+      "id": "button_label5",
+      "label": "Button Label",
+      "default": "CALL US"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "url",
+      "id": "button_link4",
+      "label": "Button Link"
+    },
+    {
+      "type": "url",
+      "id": "button_link5",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo1",
+      "label": "Logo 1 (e.g. PA Preferred)"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo2",
+      "label": "Logo 2 (e.g. Dairy of Distinction)"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_highlight-chz-bnr",
+      "label": "Cheese Banner",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_highlight-country-page",
+      "label": "Cheese Banner Country Page",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Duri Banner",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

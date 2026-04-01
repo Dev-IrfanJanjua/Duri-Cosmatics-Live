@@ -1,0 +1,327 @@
+{% style %}
+.section-{{ section.id }}-review-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.back-ground }};
+    position: relative;
+}
+
+.review-container {
+    padding-left: 80px;
+    padding-right: 80px;
+}
+
+.review-heading p strong {
+    margin: 0;
+    font-family: Poppins;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 37px;
+    letter-spacing: 0.5px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: linear-gradient(90deg, #0D2628 5.47%, #32999E 52.73%, #0D2628 100%);
+}
+
+.review-heading p {
+    margin: 0;
+    text-align: center;
+    padding-bottom: 24px;
+    color: #000 !important;
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 46.8px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+}
+
+.review-card-bottom {
+    padding: 20px 10px;
+    text-align: center;
+    background: #fff4f3;
+}
+
+.review-block-content {
+    background: #fff4f3;
+}
+
+.review-block-content img {
+    max-width: 100%;
+    max-height: 290px;
+    object-fit: cover;
+}
+
+.review-stars {
+    line-height: 0;
+    padding-bottom: 16px;
+}
+
+.review-block-title {
+    margin: 0;
+    text-transform: capitalize;
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20.8px;
+    letter-spacing: 0;
+    vertical-align: middle;
+    color: #000;
+}
+
+.review-text p {
+    margin: 0;
+    text-align: center;
+    padding: 12px 0;
+    font-family: PP Mori;
+    font-weight: 400;
+    font-size: 13.5px;
+    line-height: 21px;
+    vertical-align: middle;
+    color: #000;
+}
+
+.review-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.review-user-name {
+    margin: 0;
+    font-family: PP Mori;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    vertical-align: middle;
+    color: #404040;
+}
+
+.review-verified-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3px;
+    border-radius: 1084px;
+    padding: 2px 11px 2px 8px;
+    line-height: 0;
+}
+
+.review-verified-text {
+    margin: 0;
+    font-family: PP Mori;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    vertical-align: middle;
+}
+
+.review-slider .slick-next {
+    bottom: 0 !important;
+    top: unset;
+    width: 40px !important;
+    text-align: start;
+    right: 46%;
+    height: 40px;
+    background: #6c4e72;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+}
+
+.review-slider .slick-prev {
+    bottom: 0 !important;
+    top: unset;
+    text-align: end;
+    left: 47%;
+    background: #6c4e72;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+}
+
+.review-slider .slick-prev:before {
+    display: none;
+}
+
+.review-slider .slick-track {
+    display: flex;
+    gap: 14px;
+}
+
+.review-section-top svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    line-height: 0;
+}
+
+.review-section-top {
+    position: absolute;
+    top: -77px;
+    width: 100%;
+}
+
+.review-section-top-mobile {
+    display: none;
+}
+
+.slick-prev svg {
+    transform: rotate(180deg);
+}
+
+.slick-arrow svg circle { stroke: none; fill: none; }
+.slick-arrow svg path { stroke: white; }
+
+@media (max-width: 768px) {
+  .section-{{ section.id }}-review-padding {
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+  .review-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .review-stars svg {
+    height: auto;
+    width: 88px;
+  }
+  .review-block-content img {
+    max-height: 240px;
+  }
+  .review-heading p {
+    font-size: 35px;
+    line-height: 30.6px;
+    padding-bottom: 20px;
+  }
+  .review-block-title {
+    font-size: 14px;
+    line-height: 21px;
+  }
+  .review-text p {
+    font-size: 14px;
+    line-height: 21px;
+    padding: 12px 0;
+  }
+  .review-user-name {
+    font-size: 12px;
+    line-height: 18.3px;
+  }
+  .review-heading p strong {
+    font-size: 35px;
+    line-height: 30px;
+  }
+  .review-verified-text {
+    font-size: 11px;
+    line-height: 16.77px;
+  }
+  .review-block-content {
+    padding: 15px 13px 0px 13px;
+  }
+  .review-slider .slick-track 
+  { 
+    gap: 13px; 
+  }
+  .review-block-stars { 
+    margin: 0; 
+  }
+  .review-slider .slick-prev { 
+    left: 39%; 
+    z-index: 2; 
+  }
+  .review-slider .slick-next { right: 39%; z-index: 2; }
+  .review-slider .slick-dots li { width: 6px; height: 6px; }
+  .review-slider .slick-dots li.slick-active button:before { outline: 1px solid #194C4F; border-radius: 50%; }
+  .review-slider .slick-dots li button:before { font-size: 8px; color: #194C4F; opacity: 1; width: 12px; height: 12px; line-height: 14px; }
+  .review-slider .slick-dots { bottom: -27px; }
+  .review-section-top { top: -20px; display: none; }
+  .review-section-top-mobile { display: block; width: 100%; position: absolute; top: -48px; }
+  .review-section-top-mobile svg { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .review-heading p { font-size: 24px; line-height: 31.2px; font-weight: 600; max-width: 300px; text-align: center; margin: 0 auto; }
+}
+{% endstyle %}
+
+<div class="reviews-wrapper">
+  <section class="section-{{ section.id }}-review-padding">
+    <div class="review-container">
+      <div class="review-heading">
+        {{ section.settings.heading }}
+      </div>
+
+      <div class="review-slider swiper my-reviews-Swiper">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+          <div class="swiper-slide">
+            <div class="review-block-content">
+              <img src="{{ block.settings.image | image_url }}" loading="lazy">
+              <div class="review-card-bottom">
+                <div class="review-stars">{% render 'custom-reviews-block-stars' %}</div>
+                <h2 class="review-block-title">{{ block.settings.block-heading }}</h2>
+                <div class="review-text">{{ block.settings.para }}</div>
+                <div class="review-footer">
+                  <div class="review-user-name">{{ block.settings.name }}</div>
+                  <div class="review-verified-wrapper">
+                    <span class="review-verified-icon">{% render 'custom-reviews-verified-icon-svg' %}</span>
+                    <span class="review-verified-text">{{ block.settings.varified-text }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+var swiper = new Swiper(".my-reviews-Swiper", {
+  slidesPerView: 4,
+  spaceBetween: 20,
+  centeredSlides: true,
+  loop: true,
+  navigation: {
+    nextEl: ".cs_reviews_next",
+    prevEl: ".cs_reviews_prev",
+  },
+  breakpoints: {
+    0: { slidesPerView: 1.2, spaceBetween: 10, centeredSlides: false },
+    768: { slidesPerView: 2, spaceBetween: 15, centeredSlides: false },
+    1024: { slidesPerView: 4, spaceBetween: 20, centeredSlides: false }
+  },
+});
+</script>
+
+{% schema %}
+{
+  "name": "Duri Landing lvd by wmen",
+  "settings": [
+    { "type": "richtext", "id": "heading", "label": "Heading" },
+    { "type": "text", "id": "sub-heading", "label": "Sub Heading" },
+    { "type": "range", "id": "padding_top", "label": "Top Padding", "min": 0, "max": 200, "step": 2, "unit": "px", "default": 10 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom Padding", "min": 0, "max": 200, "step": 2, "unit": "px", "default": 10 },
+    { "type": "color", "id": "back-ground", "label": "Background Color" }
+  ],
+  "blocks": [
+    {
+      "type": "review-block",
+      "name": "Review Block",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "block-heading", "label": "Review Heading" },
+        { "type": "richtext", "id": "para", "label": "Review Text" },
+        { "type": "text", "id": "name", "label": "Reviewer Name" },
+        { "type": "text", "id": "varified-text", "label": "Verified Text" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "Duri Landing lvd by wmen" } ]
+}
+{% endschema %}

@@ -1,0 +1,189 @@
+{% style %}
+.sec-{{ section.id }} {
+    padding-block: {{ section.settings.padding_block }}px;
+    overflow: hidden;
+    background-color: {{ section.settings.background_color }};
+    {% if section.settings.border %}
+        border-top: 1px solid {{ section.settings.border_color }};
+        border-bottom: 1px solid {{ section.settings.border_color }};
+    {% endif %}
+}
+
+.csym_pdp-track-mf {
+    display: flex;
+      animation: scroll-left 30s linear infinite; /* fast */
+    width: max-content;
+    will-change: transform; /* Helps with smooth rendering */
+}
+
+.cysm_pdp-feature-icon-item-mf {
+    display: flex;
+    align-items: center;
+    margin-right: 24px;
+    white-space: nowrap;
+}
+
+.cysm_pdp-feature-icon-item-mf img {
+    min-width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+    margin-right: 12px;
+    width: 26px;
+}
+
+.cysm_pdp-feature-icon-item-mf span {
+    color: {{ section.settings.text_color }};
+    font-family: PP Mori !important;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 15.6px;
+    letter-spacing: 0.65px;
+    vertical-align: middle;
+    text-transform: uppercase;
+}
+
+
+/* Keyframes for continuous scroll */
+@keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@media screen and (max-width: 768px){
+    .sec-{{ section.id }} {
+        padding-block: {{ section.settings.padding_block_mob }}px;
+    }
+    .cysm_pdp-feature-icon-item-mf {
+        margin-right: 20px;
+    }
+
+    .cysm_pdp-feature-icon-item-mf span {
+        font-size: 13.3px;
+        line-height: 12.98px;
+    }
+    .cysm_pdp-feature-icon-item-mf img {
+        min-width: 22px;
+        height: 22px;
+        margin-right: 10px;
+        width: 22px;
+    }
+
+}
+
+{% endstyle %}
+
+{% if section.settings.hide %}
+<style>
+    @media (min-width: 768px) {
+        .sec-{{ section.id }} {
+            display: none;
+        }
+    }
+</style>
+{% endif %}
+
+<div class="csym_pdp-container-mf sec-{{ section.id }}" style="background-color: {{section.settings.background_color}};">
+    <div class="csym_pdp-track-mf">
+        {% for block in section.blocks %}
+            <div class="cysm_pdp-feature-icon-item-mf">
+                {% if block.settings.icon %}
+                    <img src="{{ block.settings.icon | image_url }}" alt="{{ block.settings.icon.alt }}" width="auto" height="auto" loading="eager" fetchpriority="high">
+                {% endif %}
+                <span>{{ block.settings.title }}</span>
+            </div>
+        {% endfor %}
+
+        <!-- Duplicate the content once for seamless looping -->
+        {% for block in section.blocks %}
+            <div class="cysm_pdp-feature-icon-item-mf">
+                {% if block.settings.icon %}
+                    <img src="{{ block.settings.icon | image_url }}" alt="{{ block.settings.icon.alt }}" width="auto" height="auto" loading="eager" fetchpriority="high">
+                {% endif %}
+                <span>{{ block.settings.title }}</span>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "CSTM Marquee PDP",
+    "tag": "section",
+    "class": "scrolling-feature-icons_pdp",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "hide",
+            "label": "Hide Desktop"
+        },
+        {
+            "type": "checkbox",
+            "id": "border",
+            "label": "Show Border"
+        },
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background Color",
+            "default": "#E2F1C4",
+            "info": "Choose a background color for the section"
+        },
+        {
+            "type": "color",
+            "id": "border_color",
+            "label": "Border Color"
+        },
+        {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text Color",
+            "default": "#000"
+        },
+        {
+            "type": "range",
+            "id": "padding_block",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "label": "Padding Block",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_block_mob",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "label": "Padding Block Mobile",
+            "default": 0
+        }
+    ],
+    "blocks": [
+        {
+            "type": "feature",
+            "name": "Feature",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "icon",
+                    "label": "Icon"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Feature Title",
+                    "default": "Feature"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "CSTM Marquee PDP",
+            "category": "Custom"
+        }
+    ]
+}
+{% endschema %}

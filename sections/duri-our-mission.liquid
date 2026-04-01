@@ -1,0 +1,315 @@
+<section class="mission-section section-{{ section.id }}">
+  <div class="page-width">
+    <div class="mission-grid">
+      
+      <!-- Left Column -->
+      <div class="mission-left">
+        {% for block in section.blocks %}
+          <div class="mission-item">
+            <div class="mission-img-main">
+            {% if block.settings.icon != blank %}
+              <img class="mission-icon" src="{{ block.settings.icon | image_url}}" width="auto" height="auto" alt="icon" loading="lazy">
+            {% endif %}
+          </div>
+            <div class="mission-text">
+              <h3>{{ block.settings.title }}</h3>
+              <p>{{ block.settings.text }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+  
+      <!-- Right Column -->
+      <div class="mission-right">
+        <div class="mission-right-content">
+          {% if section.settings.heading != blank %}
+            <h3 class="mission-right-content-title">{{ section.settings.heading }}</h3>
+          {% endif %}
+          {% if section.settings.description != blank %}
+            <p class="mission-right-content-desc">{{ section.settings.description }}</p>
+          {% endif %}
+        </div>
+        <div class="mission-right_images">
+          {% if section.settings.image_desk != blank %}
+            <img class="mission-right_img_desk" src="{{ section.settings.image_desk | image_url }}" width="auto" height="auto" alt="mission image" loading="lazy">
+          {% endif %}
+  
+          {% if section.settings.image_mob != blank %}
+            <img class="mission-right_img_mob" src="{{ section.settings.image_mob | image_url }}" width="auto" height="auto" alt="mission image" loading="lazy" style="display: none;">
+          {% endif %}
+        </div>
+      </div>
+  
+    </div>
+  </div>
+</section>
+
+<style>
+.section-{{ section.id }} {
+  padding: 0px 0px;
+  background: #fff;
+}
+.mission-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  line-height: 0;
+  justify-content: right;
+}
+.mission-left {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  justify-content: center;
+  align-items: center;
+}
+.mission-item {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.mission-icon {
+  width: 100px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.mission-text h3 {
+    margin: 0;
+    color: #000;
+    font-family: "PP Mori";
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 30px; /* 150% */
+    letter-spacing: 0;
+}
+.mission-text p {
+    margin: 0;
+    color: #1D130A;
+    font-family: "PP Mori";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19.6px;
+    letter-spacing: 0;
+    padding-top: 8px;
+    max-width: 428px;
+}
+.mission-right h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.mission-desc {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+.mission-right img {
+  width: 100%;
+  object-fit: cover;
+  display: block
+}
+.mission-right {
+    max-width: 50%;
+    width: 100%;
+    position: relative;
+}
+
+h3.mission-right-content-title {
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 46.8px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    color: #000;
+    margin: 0 0 4px;
+}
+
+p.mission-right-content-desc {
+    margin: 0;
+    font-family: PP Mori;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23.4px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    color: #000;
+}
+
+.mission-right-content {
+    position: absolute;
+    top: 30px;
+    left: 44px;
+    max-width: 496px;
+}
+.mission-left {
+    max-width: 50%;
+    width: 100%;
+    padding: 40px 80px 40px 0;
+}
+
+.mission-img-main {
+    max-width: 78px;
+    width: 100%;
+    height: 135px;
+}
+
+.mission-img-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.mission-text {
+    padding: 12px 0;
+    border-bottom: 0.89px solid #E3E3E3;
+}
+@media (max-width: 768px) {
+
+  .section-{{ section.id }} .page-width{
+    padding: 0;
+  }
+
+  .mission-grid {
+    flex-direction: column-reverse;
+  }
+  .mission-right {
+    text-align: center;
+    max-width: 100%;
+  }
+  .mission-left {
+    max-width: 100%;
+    padding: 40px 16px 40px 16px;
+    gap: 20px;
+}
+  .mission-text h3 {
+    font-size: 16px;
+    line-height: 30px;
+}
+.mission-item {
+    align-items: start;
+    border-bottom: 1px solid #7BA69D66;
+    padding-bottom: 20px;
+    gap: 16px;
+}
+.mission-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.mission-text p {
+   
+    border-bottom: none;
+    padding-bottom: 0px;
+    padding-top: 8px;
+    max-width: 428px;
+}
+
+img.mission-right_img_mob {
+    display: block !important;
+}
+
+img.mission-right_img_desk {
+    display: none;
+}
+
+.mission-right-content {
+    left: 16px;
+    right: 16px;
+}
+
+h3.mission-right-content-title {
+    font-size: 24px;
+    line-height: 31.2px;
+    letter-spacing: 0px;
+    text-transform: capitalize;
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+p.mission-right-content-desc {
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    text-align: left;
+}
+
+.mission-img-main {
+    max-width: 100px;
+    height: 124px;
+    width: 100%;
+}
+
+.mission-text {
+    padding: 0;
+    border-bottom: none;
+}
+
+}
+</style>
+
+{% schema %}
+{
+  "name": "duri Mission Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our Mission"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "To redefine nail wellness with safe, clinically proven care that strengthens, protects, and enhances natural beauty."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desk",
+      "label": "Right Side Image Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mob",
+      "label": "Right Side Image (Mobile)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Mission Feature",
+      "settings": [
+        { 
+            "type": "image_picker", 
+            "id": "icon", 
+            "label": "Icon" 
+        },
+        { 
+            "type": "text", 
+            "id": "title", 
+            "label": "Title", 
+            "default": "Nail Wellness & Longevity" 
+        },
+        { 
+            "type": "textarea", 
+            "id": "text", 
+            "label": "Text", 
+            "default": "Blending science with beauty, we create nail care that strengthens, nourishes, and preserves natural nail health for the long term." 
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "duri Mission Section",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}

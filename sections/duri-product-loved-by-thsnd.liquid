@@ -1,0 +1,673 @@
+{% style %}
+.section-{{ section.id }}--padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.back-ground }};
+    position: relative;
+  }
+.custom-reviews-parent {
+    padding-left: 80px;
+    padding-right: 80px;
+}
+  .custom-reviews-heading p strong{
+    magrin: 0;
+    font-family: Poppins;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 37px;
+    letter-spacing: 0.5px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: linear-gradient(90deg, #0D2628 5.47%, #32999E 52.73%, #0D2628 100%);
+  }
+  
+.custom-reviews-heading p {
+    margin: 0;
+    text-align: center;
+    
+    padding-bottom: 24px;
+    color: #000 !important;
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 46.8px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+}
+.duri-card-btm {
+    padding: 20px 10px;
+    text-align: center;
+    border: 2px solid var(--Mid-Pink, #D99CA5);
+    border-top: none;
+    height: 100%;
+        display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+}
+  /* .custom-reviews-parent-bottom{
+    margin-top: 42px;
+  } */
+  .custom-reviews-block-contant{
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+.custom-reviews-block-contant img {
+    max-width: 100%;
+    max-height: 257px;
+    object-fit: cover;
+    display: block;
+}
+.custom-reviews-block-stars {
+    line-height: 0;
+    width: 88px;
+    height: auto;
+    text-align: center;
+}
+
+.custom-reviews-block-stars img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+  .custom-reviews-block-heading {
+    margin: 0;
+    text-transform: capitalize;
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20.8px;
+    letter-spacing: 0;
+    vertical-align: middle;
+    color: #000;
+}
+.duri-card-btm_head {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: space-between;
+    height: auto;
+}
+.duri-card-btm_head_info {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+  .custom-reviews-para p{
+    margin: 0;
+    text-align: center;
+    padding: 0;
+    font-family: PP Mori;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    color: #000;
+}
+  .custom-reviews-bottom-parent{
+    display: flex;
+   justify-content: space-between;
+    align-items: center;
+  }
+  .custom-reviews-name {
+    margin: 0;
+    font-family: PP Mori;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0px;
+    text-align: center;
+    vertical-align: middle;
+    color: #404040;
+}
+  .custom-reviews-verified-text {
+    margin: 0;
+    font-family: PP Mori;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0;
+    vertical-align: middle;
+    color: #404040;
+}
+.custom-reviews-verified {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4px;
+    line-height: 0;
+}
+  .custom-reviews-parent-bottom .slick-next {
+    bottom: 0px !important;
+    top: unset;
+    /* width: 50%; */
+    width: 40px !important;
+    text-align: start;
+    right: 46%;
+    height: 40px;
+    background: #6c4e72;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+}
+  .custom-reviews-parent-bottom .slick-prev {
+    bottom: 0px !important;
+    top: unset;
+    /* width: 50%; */
+    text-align: end;
+    left: 47%;
+    background: #6c4e72;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+}
+  .custom-reviews-parent-bottom .slick-prev:before{
+    display: none;
+  }
+  .custom-reviews-parent-bottom .slick-track{
+    display: flex;
+    gap: 14px;
+  }
+  .custom-reviews-section-top-section svg{
+   width: 100%;
+    height: 100%;
+    display: block;
+    line-height: 0;
+  }
+  .custom-reviews-section-top-section{
+    position: absolute;
+    top: -77px;
+    width: 100%;
+  }
+  .custom-reviews-section-top-section-mobile{
+       display: none;
+     }
+  .slick-prev svg{
+      transform: rotate(180deg);
+  }
+  .slick-arrow svg circle {
+    stroke: none;
+    fill: none;
+  }
+  .slick-arrow svg path {
+    stroke: white;
+  }
+span.custom-reviews-verified-icon {
+    min-width: 16px;
+    max-width: 16px;
+    height: 16px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+span.custom-reviews-verified-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.custom-reviews-swiper_bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 22px;
+    margin-top: 24px;
+}
+
+.custom-reviews-navigation {
+    display: flex;
+    gap: 7px;
+    align-items: center;
+}
+
+.custom-reviews-arrow {
+    width: 48px;
+    height: 48px;
+    display: block;
+    min-width: 48px;
+    cursor: pointer;
+}
+
+.custom-reviews-arrow svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.custom-reviews-progress {
+    position: static;
+    background-color: #D99CA580;
+    height: 2px !important;
+}
+
+.custom-reviews-progress span.swiper-pagination-progressbar-fill {
+    background-color: #D99CA5 !important;
+}
+
+.custom-reviews-arrow.swiper-button-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+
+.section-{{ section.id }}--padding .swiper-slide {
+    display: flex;
+    height: auto;
+}
+   @media (max-width: 768px) {
+    .section-{{ section.id }}--padding {
+      padding-top: {{ section.settings.padding_top_mob }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mob }}px;
+    }
+
+    .section-{{ section.id }}--padding .page-width {
+    padding-right: 0;
+}
+     .custom-reviews-block-stars svg {
+        height: auto;
+        width: 88px;
+    }
+    .custom-reviews-block-contant img{
+        max-height: 219px;
+    }
+     .custom-reviews-heading p{
+       font-size: 35px;
+       line-height: 30.6px;
+       padding-bottom: 20px;
+     }
+     .custom-reviews-block-heading{
+       font-size: 14px;
+       line-height: 21px;
+     }
+     .custom-reviews-para p{
+       font-size: 14px;
+       line-height: 21px;
+        padding: 0;
+     }
+     .custom-reviews-name{
+        font-size: 12px;
+       line-height: 18.3px;
+     }
+     .custom-reviews-heading p strong{
+        font-size: 35px;
+       line-height: 30px;
+     } 
+     .custom-reviews-verified-text{
+        font-size: 11px;
+       line-height: 16.77px;
+     }
+     .custom-reviews-parent-bottom .slick-track {
+        gap: 13px;
+   }
+     .custom-reviews-block-stars {
+       margin: 0;
+     }
+     .custom-reviews-parent-bottom .slick-prev{
+          left: 39%;
+      z-index: 2;
+    }
+    .custom-reviews-parent-bottom .slick-next{
+      z-index: 2;
+      right: 39%;
+    }
+    .custom-reviews-parent-bottom .slick-dots li{
+    width: 6px;
+    height: 6px;
+  }
+   .custom-reviews-parent-bottom .slick-dots li.slick-active button:before{
+    outline: 1px solid #194C4F;
+    border-radius: 50%;
+  }
+  .custom-reviews-parent-bottom .slick-dots li button:before{
+    font-size: 8px;
+    color: #194C4F;
+    opacity: 1;
+    width: 12px;
+    height: 12px;
+    line-height: 14px;
+  }
+  .custom-reviews-parent-bottom .slick-dots{
+        bottom: -27px;
+  }
+  .custom-reviews-section-top-section {
+    top: -20px;
+    display: none;
+ }
+     .custom-reviews-section-top-section-mobile{
+        display: block;
+        width: 100%;
+        position: absolute;
+        top: -48px;
+     }
+    .custom-reviews-section-top-section-mobile svg{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+     }
+.custom-reviews-heading p {
+    font-size: 24px;
+    line-height: 31.2px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 auto;
+    padding-right: 23px;
+    padding-left: 7px;
+    padding-bottom: 16px;
+}
+
+    .custom-reviews-swiper_bottom {
+    display: none;
+}
+     
+   }
+  {% endstyle %}
+  {% comment %} <div class="happy-top-div"> {% endcomment %}
+   <section class="section-{{ section.id }}--padding" id="reviews_sec">
+     <!-- <div class="custom-reviews-section-top-section">{% render 'custom-reviews-section-top-section-svg' %}</div>
+     <div class="custom-reviews-section-top-section-mobile">{% render 'custom-reviews-section-top-section-mobile-svg' %}</div> -->
+     <div class="page-width">
+       <div class="custom-reviews-parent-top">
+         <div class="custom-reviews-heading">{{ section.settings.heading }}</div>
+       </div>
+       <div class="custom-reviews-parent-bottom">
+        <div class="swiper my-reviews-Swiper">
+          <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+              <div class="swiper-slide">
+                <div class="custom-reviews-block-contant" style="background-color: {{ section.settings.bg_card }}">
+                    <img src="{{ block.settings.image | image_url }}" loading="lazy" width="100%" height="auto">
+                    <div class="duri-card-btm">
+                      <div class="duri-card-btm_head">
+                        <div class="duri-card-btm_head_info">
+                          {% if section.settings.image_stars != blank %}
+                            <div class="custom-reviews-block-stars">
+                              {{ section.settings.image_stars | image_url: width: 500 | image_tag:
+                                    widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                                    alt: "image",
+                                    loading: "lazy"
+                                }}
+                            </div>
+                          {% endif %}
+                          <h2 class="custom-reviews-block-heading">{{ block.settings.block-heading }}</h2>
+                        </div>
+                        {% if block.settings.para != blank %}
+                          <div class="custom-reviews-para">{{ block.settings.para }}</div>
+                        {% endif %}
+                      </div>
+                      <div class="custom-reviews-bottom-parent">
+                        <div class="custom-reviews-name">{{ block.settings.name }}</div>
+                        <div class="custom-reviews-verified">
+                          {% if section.settings.image_buyer != blank %}
+                            <span class="custom-reviews-verified-icon">
+                              {{ section.settings.image_buyer | image_url: width: 500 | image_tag:
+                                  widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                                  alt: "image",
+                                  loading: "lazy"
+                              }}
+                          </span>
+                          {% endif %}
+                          <span class="custom-reviews-verified-text">{{ block.settings.varified-text }}</span>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="custom-reviews-swiper_bottom">
+          <!-- Desktop Navigation -->
+          <div class="custom-reviews-navigation">
+            <div class="custom-reviews-arrow custom-reviews-prev">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g opacity="1">
+                  <rect x="47.5" y="47.5" width="47" height="47" transform="rotate(180 47.5 47.5)" stroke="#7C0732" stroke-opacity="1"/>
+                  <rect x="47.5" y="47.5" width="47" height="47" transform="rotate(180 47.5 47.5)" fill="white"/>
+                  <rect x="47.5" y="47.5" width="47" height="47" transform="rotate(180 47.5 47.5)" stroke="#D99CA5"/>
+                  <g clip-path="url(#clip0_9188_512)">
+                  <path d="M20.5139 24.4502L27.1798 30.8135C27.2417 30.8726 27.3152 30.9195 27.3962 30.9515C27.4771 30.9835 27.5638 31 27.6514 31C27.739 31 27.8257 30.9835 27.9066 30.9515C27.9876 30.9195 28.0611 30.8726 28.123 30.8135C28.1849 30.7544 28.2341 30.6842 28.2676 30.607C28.3011 30.5297 28.3184 30.4469 28.3184 30.3633C28.3184 30.2797 28.3011 30.1969 28.2676 30.1197C28.2341 30.0424 28.1849 29.9722 28.123 29.9131L21.9279 24L28.123 18.0869C28.2481 17.9675 28.3184 17.8055 28.3184 17.6367C28.3184 17.4678 28.2481 17.3059 28.123 17.1865C27.9979 17.0671 27.8283 17 27.6514 17C27.4745 17 27.3049 17.0671 27.1798 17.1865L20.5139 23.5498C20.4519 23.6089 20.4027 23.6791 20.3692 23.7563C20.3356 23.8336 20.3184 23.9164 20.3184 24C20.3184 24.0836 20.3356 24.1664 20.3692 24.2437C20.4027 24.3209 20.4519 24.3911 20.5139 24.4502Z" fill="#D99CA5"/>
+                  </g>
+                  </g>
+                  <defs>
+                  <clipPath id="clip0_9188_512">
+                  <rect width="9" height="14" fill="white" transform="matrix(-1 0 0 -1 28.5 31)"/>
+                  </clipPath>
+                  </defs>
+              </svg>
+            </div>
+            <div class="custom-reviews-arrow custom-reviews-next">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="0.5" y="0.5" width="47" height="47" stroke="#7C0732"/>
+                  <rect x="0.5" y="0.5" width="47" height="47" fill="white"/>
+                  <rect x="0.5" y="0.5" width="47" height="47" stroke="#D99CA5"/>
+                  <g clip-path="url(#clip0_9188_516)">
+                  <path d="M27.4861 23.5498L20.8202 17.1865C20.7583 17.1274 20.6848 17.0805 20.6038 17.0485C20.5229 17.0165 20.4362 17 20.3486 17C20.261 17 20.1743 17.0165 20.0934 17.0485C20.0124 17.0805 19.9389 17.1274 19.877 17.1865C19.8151 17.2456 19.7659 17.3158 19.7324 17.393C19.6989 17.4703 19.6816 17.5531 19.6816 17.6367C19.6816 17.7203 19.6989 17.8031 19.7324 17.8803C19.7659 17.9576 19.8151 18.0278 19.877 18.0869L26.0721 24L19.877 29.9131C19.7519 30.0325 19.6816 30.1945 19.6816 30.3633C19.6816 30.5322 19.7519 30.6941 19.877 30.8135C20.0021 30.9329 20.1717 31 20.3486 31C20.5255 31 20.6951 30.9329 20.8202 30.8135L27.4861 24.4502C27.5481 24.3911 27.5973 24.3209 27.6308 24.2437C27.6644 24.1664 27.6816 24.0836 27.6816 24C27.6816 23.9164 27.6644 23.8336 27.6308 23.7563C27.5973 23.6791 27.5481 23.6089 27.4861 23.5498Z" fill="#D99CA5"/>
+                  </g>
+                  <defs>
+                  <clipPath id="clip0_9188_516">
+                  <rect width="9" height="14" fill="white" transform="translate(19.5 17)"/>
+                  </clipPath>
+                  </defs>
+              </svg>
+            </div>
+          </div>
+          <!-- Progress -->
+          <div class="custom-reviews-progress swiper-pagination"></div>
+      </div>
+        {% comment %} <button class='slick-prev slick-arrow cs_reviews_prev'><svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 30 30' fill='none'><circle cx='15' cy='15' r='14.5' fill='white' stroke='#194C4F'/><path d='M12.5811 19.355L17.4198 15.0001L12.5811 10.6453' stroke='#194C4F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg></button>
+        <button class='slick-next slick-arrow cs_reviews_next'><svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 30 30' fill='none'><circle cx='15' cy='15' r='14.5' fill='white' stroke='#194C4F'/><path d='M12.5811 19.355L17.4198 15.0001L12.5811 10.6453' stroke='#194C4F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg></button> {% endcomment %}
+       </div>
+     </div>
+   </section>
+  {% comment %} </div> {% endcomment %}
+<script>
+    var swiper = new Swiper(".my-reviews-Swiper", {
+    slidesPerView: 4,
+    spaceBetween: 20,
+    centeredSlides: true,
+    loop: true,
+    navigation: {
+      nextEl: ".custom-reviews-next", // ✅ your custom button
+      prevEl: ".custom-reviews-prev", // ✅ your custom button
+    },
+    pagination: {
+      el:('.swiper-pagination'),
+      type: 'progressbar',
+    },
+    breakpoints: {
+      0: {
+        slidesPerView: 1.2,
+        spaceBetween: 10,
+        centeredSlides: false,
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 15,
+        centeredSlides: false,
+      },
+      1024: {
+        slidesPerView: 4,
+        spaceBetween: 20,
+        centeredSlides: false,
+      }
+    },
+  });
+</script>
+   {% comment %}
+     
+   
+   <script>
+  $(document).ready(function () {
+    $('.custom-reviews-parent-bottom').slick({
+      slidesToShow: 4,
+      centerMode: true,
+      centerPadding: '0px', /* ❌ Removed space between arrows */
+      arrows: true,
+      dots: false, /* ❌ Dots off by default */
+      speed: 300,
+      infinite: true,
+      autoplay: false,
+      autoplaySpeed: 5000,
+      prevArrow: "<button class='slick-prev slick-arrow'><svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 30 30' fill='none'><circle cx='15' cy='15' r='14.5' fill='white' stroke='#194C4F'/><path d='M12.5811 19.355L17.4198 15.0001L12.5811 10.6453' stroke='#194C4F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg></button>",
+      nextArrow: "<button class='slick-next slick-arrow'><svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 30 30' fill='none'><circle cx='15' cy='15' r='14.5' fill='white' stroke='#194C4F'/><path d='M12.5811 19.355L17.4198 15.0001L12.5811 10.6453' stroke='#194C4F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg></button>",
+      
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 2,
+            centerMode: true,
+            centerPadding: '0px',
+            dots: false,
+            arrows: true
+          },
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 1,
+            centerMode: true,
+            centerPadding: '0px',
+            dots: false,
+            arrows: true
+          },
+        },
+      ],
+    });
+  });
+</script>
+{% endcomment %}
+
+{% schema %}
+  {
+      "name": "Duri Product Lvd by Thsnd",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "heading",
+        "label": "Hading"
+      },
+      {
+        "type": "text",
+        "id": "sub-heading",
+        "label": "Counting"
+      },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 10
+    },
+       {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 10
+    },  
+    {
+      "type": "range",
+      "id": "padding_top_mob",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Padding Mobile",
+      "default": 40
+    },
+       {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom Padding Mobile",
+      "default": 10
+    },  
+    {
+      "type": "color",
+      "id": "back-ground",
+      "label": "Section Background Color"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_card",
+      "label": "Cards Background Color"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_stars",
+      "label": "Stars Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_buyer",
+      "label": "Buyer Icon Image"
+    }
+     
+    ],
+    "blocks": [
+      {
+        "type": "blocks",
+        "name": "blocks",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "block-heading",
+            "label": "Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "para",
+            "label": "Block Para"
+          },
+          {
+            "type": "text",
+            "id": "name",
+            "label": "Name"
+          },
+          {
+            "type": "text",
+            "id": "varified-text",
+            "label": "Varified Text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Duri Product Lvd by Thsnd"
+      }
+    ]
+  }
+{% endschema %}

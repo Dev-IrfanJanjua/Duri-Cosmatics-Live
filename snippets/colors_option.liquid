@@ -1,0 +1,810 @@
+{% comment %}
+  ============================================================
+  collection-bundle.liquid  (SNIPPET)
+  ============================================================
+  Renders the full bundle color-picker widget.
+
+  USAGE
+  ──────────────────────────────────────────────────────────
+  {% render 'collection-bundle',
+    block:     block,
+    section:   section,
+    product_1: block.settings.product_1,
+    product_2: block.settings.product_2
+  %}
+
+  PARAMETERS
+  ──────────────────────────────────────────────────────────
+  block      — the calling block (for block.settings.*)
+  section    — the parent section (for section.id scoping)
+  product_1  — first child product (Shopify product object)
+  product_2  — second child product (Shopify product object)
+
+  Previously these came from:
+    product.metafields.custom.landing_page_products.value
+  They are now passed in directly from block.settings so no
+  metafields or featured-product section are required.
+
+  All collection picker, tier, swatch, tray, and ATC logic
+  is identical to the original bundle-collection-picker.
+  ============================================================
+{% endcomment %}
+
+{%- liquid
+  comment
+    Build child_products array from the two passed-in products.
+    Filter out blank values so the loop is clean.
+  endcomment
+  assign child_products = ''
+-%}
+
+{%- comment -%}
+  Liquid doesn't support dynamic arrays, so we iterate
+  an inline comma-separated count and branch on index.
+  We use a simple forloop over a 2-item range and pick
+  the right variable each time.
+{%- endcomment -%}
+
+{%- liquid
+  assign cp_list_str = ''
+  if product_1 != blank
+    if cp_list_str == ''
+      assign cp_list_str = '1'
+    else
+      assign cp_list_str = cp_list_str | append: ',1'
+    endif
+  endif
+  if product_2 != blank
+    if cp_list_str == ''
+      assign cp_list_str = '2'
+    else
+      assign cp_list_str = cp_list_str | append: ',2'
+    endif
+  endif
+  assign cp_items = cp_list_str | split: ','
+-%}
+
+{%- comment -%} Pull tier / label settings from block or section {%- endcomment -%}
+{%- liquid
+  assign tier_2_price   = block.settings.tier_2_price   | default: section.settings.tier_2_price
+  assign tier_4_price   = block.settings.tier_4_price   | default: section.settings.tier_4_price
+  assign tier_6_price   = block.settings.tier_6_price   | default: section.settings.tier_6_price
+  assign tier_2_compare = block.settings.tier_2_compare_price | default: section.settings.tier_2_compare_price
+  assign tier_4_compare = block.settings.tier_4_compare_price | default: section.settings.tier_4_compare_price
+  assign tier_6_compare = block.settings.tier_6_compare_price | default: section.settings.tier_6_compare_price
+  assign tier_2_label   = block.settings.tier_2_label | default: section.settings.tier_2_label | default: '2 Products'
+  assign tier_4_label   = block.settings.tier_4_label | default: section.settings.tier_4_label | default: '4 Products'
+  assign tier_6_label   = block.settings.tier_6_label | default: section.settings.tier_6_label | default: '6 Products'
+  assign bundle_label   = block.settings.bundle_label  | default: section.settings.bundle_label  | default: 'Select Your Bundle:'
+  assign product_heading = block.settings.product_heading | default: section.settings.product_heading | default: 'Choose'
+  assign color_heading   = block.settings.color_heading   | default: section.settings.color_heading   | default: 'Select Products'
+  assign selected_heading = block.settings.selected_heading | default: section.settings.selected_heading | default: 'Selected Products'
+-%}
+
+<section
+  class="bundle-section"
+  id="bundle-section-{{ section.id }}"
+  data-section-id="{{ section.id }}"
+>
+  <div class="bundle-section__inner">
+
+    {%- comment -%}══════════════════ TIER SELECTOR ══════════════════{%- endcomment -%}
+    <div class="bundle-tiers">
+      <p class="bundle-tiers__heading">
+        <span class="bundle-tiers__heading-label">{{ bundle_label }}</span>
+        <span class="bundle-tiers__heading-count js-tier-count">
+          {{- block.settings.tier_2_colors | default: section.settings.tier_2_colors | default: 2 -}} Colors
+        </span>
+      </p>
+
+      <div class="bundle-tiers__grid">
+        {%- assign tiers = '2,4,6' | split: ',' -%}
+        {%- for tier in tiers -%}
+          {%- liquid
+            case tier
+              when '2'
+                assign t_label   = tier_2_label
+                assign t_price   = tier_2_price
+                assign t_compare = tier_2_compare
+                assign t_qty     = block.settings.tier_2_colors | default: section.settings.tier_2_colors | default: 2
+                assign t_badge   = block.settings.tier_2_badge  | default: section.settings.tier_2_badge
+                assign t_active  = true
+              when '4'
+                assign t_label   = tier_4_label
+                assign t_price   = tier_4_price
+                assign t_compare = tier_4_compare
+                assign t_qty     = block.settings.tier_4_colors | default: section.settings.tier_4_colors | default: 4
+                assign t_badge   = block.settings.tier_4_badge  | default: section.settings.tier_4_badge
+                assign t_active  = false
+              when '6'
+                assign t_label   = tier_6_label
+                assign t_price   = tier_6_price
+                assign t_compare = tier_6_compare
+                assign t_qty     = block.settings.tier_6_colors | default: section.settings.tier_6_colors | default: 6
+                assign t_badge   = block.settings.tier_6_badge  | default: section.settings.tier_6_badge
+                assign t_active  = false
+            endcase
+          -%}
+          <button
+            class="bundle-tier{% if t_active %} is-active{% endif %}"
+            data-tier="{{ t_qty }}"
+            data-price="{{ t_price }}"
+            data-compare-price="{{ t_compare }}"
+            data-default-price="{{ t_price }}"
+            type="button"
+            aria-pressed="{% if t_active %}true{% else %}false{% endif %}"
+          >
+            {%- if t_badge != blank -%}
+              <span class="bundle-tier__badge">{{ t_badge }}</span>
+            {%- endif -%}
+            <span class="bundle-tier__label">{{ t_label }}</span>
+            <span class="bundle-tier__pricing">
+              <span class="bundle-tier__price">{{ t_price }}</span>
+              {%- if t_compare != blank -%}
+                <s class="bundle-tier__compare">{{ t_compare }}</s>
+              {%- endif -%}
+            </span>
+          </button>
+        {%- endfor -%}
+      </div>
+    </div>
+
+
+    {%- comment -%}══════════════════ CHILD PRODUCT SELECTOR ══════════════════
+      Previously read from: product.metafields.custom.landing_page_products.value
+      Now reads from:       product_1 and product_2 render parameters
+    ══════════════════{%- endcomment -%}
+
+    {%- if product_1 != blank or product_2 != blank -%}
+      <div class="bundle-products">
+        <p class="bundle-products__heading">
+          {{ product_heading }}
+          <span class="bundle-products__selected-name js-selected-product-name">
+            {%- if product_1 != blank -%}{{ product_1.title }}{%- elsif product_2 != blank -%}{{ product_2.title }}{%- endif -%}
+          </span>
+        </p>
+
+        <div class="bundle-products__grid">
+          {%- comment -%} Product 1 {%- endcomment -%}
+          {%- if product_1 != blank -%}
+            {%- assign cp = product_1 -%}
+            <button
+              class="bundle-product is-active"
+              data-product-id="{{ cp.selected_or_first_available_variant.id }}"
+              data-variant-qty="1"
+              data-product-handle="{{ cp.handle }}"
+              data-product-title="{{ cp.title | escape }}"
+              data-price="{{ cp.price | money }}"
+              data-compare-price="{{ cp.compare_at_price | money }}"
+              type="button"
+              aria-pressed="true"
+            >
+              <div class="bundle-product__img-wrap">
+                {%- if cp.featured_image -%}
+                  {{- cp.featured_image | image_url: width: 80 | image_tag: loading: 'lazy', alt: cp.title -}}
+                {%- endif -%}
+              </div>
+              <div class="bundle-product__info">
+                <span class="bundle-product__name">{{ cp.title }}</span>
+                {%- if cp.description != blank -%}
+                  <span class="bundle-product__desc">{{ cp.description | strip_html | truncate: 60 }}</span>
+                {%- endif -%}
+              </div>
+              <div
+                class="bundle-product__info-btn js-open-popup"
+                data-popup-index="1"
+                aria-label="More info about {{ cp.title }}"
+                title="{{ cp.title | escape }}"
+                data-product-title="{{ cp.title | escape }}"
+              >
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_8900_4078)">
+                    <path d="M8 16C6.9203 16 5.87247 15.7884 4.88584 15.3711C3.93318 14.9682 3.07768 14.3914 2.34314 13.6569C1.60859 12.9223 1.0319 12.0668 0.62889 11.1142C0.211621 10.1275 0 9.0797 0 8C0 6.9203 0.211621 5.87247 0.62889 4.88584C1.0318 3.93318 1.60859 3.07768 2.34314 2.34314C3.07768 1.60859 3.93318 1.0319 4.88584 0.62889C5.87257 0.211621 6.9203 0 8 0C9.0797 0 10.1275 0.211621 11.1142 0.62889C12.0668 1.0318 12.9223 1.60859 13.6569 2.34314C14.3914 3.07768 14.9681 3.93318 15.3711 4.88584C15.7885 5.87247 16 6.9203 16 8C16 9.0797 15.7884 10.1275 15.3711 11.1142C14.9682 12.0668 14.3914 12.9223 13.6569 13.6569C12.9223 14.3914 12.0668 14.9681 11.1142 15.3711C10.1275 15.7885 9.0797 16 8 16ZM8 1.19479C7.08109 1.19479 6.18985 1.37465 5.35133 1.72934C4.541 2.07209 3.81317 2.56283 3.18805 3.18795C2.56293 3.81306 2.07209 4.5409 1.72945 5.35122C1.37475 6.18985 1.19489 7.08098 1.19489 7.9999C1.19489 8.91881 1.37475 9.81005 1.72945 10.6486C2.07219 11.4589 2.56293 12.1867 3.18805 12.8118C3.81327 13.4371 4.541 13.9278 5.35133 14.2706C6.18995 14.6252 7.08109 14.8051 8 14.8051C8.91891 14.8051 9.81015 14.6252 10.6487 14.2706C11.459 13.9278 12.1868 13.4371 12.8119 12.8118C13.4372 12.1867 13.9279 11.4589 14.2706 10.6486C14.6252 9.80994 14.8051 8.91881 14.8051 7.9999C14.8051 7.08098 14.6252 6.18974 14.2706 5.35122C13.9278 4.5409 13.4371 3.81306 12.8119 3.18795C12.1868 2.56283 11.459 2.07198 10.6487 1.72934C9.81005 1.37465 8.91891 1.19479 8 1.19479Z" fill="black"/>
+                    <path d="M9.35789 11.4115C9.30727 11.3921 9.25004 11.4063 9.20748 11.4398C8.85593 11.716 8.5678 11.7717 8.31855 11.6425C8.08596 11.5219 8.03565 11.1731 8.13407 10.8635C8.3481 10.1906 8.63949 9.28108 8.9139 8.42506C9.09449 7.86157 9.26712 7.15952 9.04848 6.70337C8.85593 6.30171 8.50376 6.11745 8.02014 6.16304C7.41127 6.22048 6.66907 6.66133 6.17194 7.05324C6.01188 7.17944 5.97415 7.39074 6.07656 7.55006C6.17487 7.70299 6.38377 7.75487 6.57348 7.63748C6.80219 7.49598 7.12554 7.29295 7.32993 7.19086C7.25006 7.4529 7.16181 7.76965 7.01643 8.26773C6.85711 8.81371 6.63878 9.56156 6.30631 10.6897C6.09395 11.41 6.24793 11.9126 6.41458 12.2072C6.60503 12.5441 6.92 12.791 7.27868 12.8846C7.40414 12.9174 7.55382 12.9386 7.71628 12.9386C8.31289 12.9386 9.08076 12.6521 9.44594 11.5983C9.47151 11.5244 9.43535 11.4413 9.35789 11.4115Z" fill="black"/>
+                    <path d="M8.75792 5.26027C9.34153 5.22159 9.78332 4.71723 9.74465 4.13362C9.70597 3.55001 9.2016 3.10821 8.61799 3.14689C8.03438 3.18556 7.59259 3.68993 7.63126 4.27354C7.66994 4.85715 8.17431 5.29895 8.75792 5.26027Z" fill="black"/>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_8900_4078">
+                    <rect width="16" height="16" fill="white"/>
+                    </clipPath>
+                    </defs>
+                </svg>
+              </div>
+            </button>
+          {%- endif -%}
+
+          {%- comment -%} Product 2 {%- endcomment -%}
+          {%- if product_2 != blank -%}
+            {%- assign cp = product_2 -%}
+            <button
+              class="bundle-product{% if product_1 == blank %} is-active{% endif %}"
+              data-product-id="{{ cp.selected_or_first_available_variant.id }}"
+              data-variant-qty="1"
+              data-product-handle="{{ cp.handle }}"
+              data-product-title="{{ cp.title | escape }}"
+              data-price="{{ cp.price | money }}"
+              data-compare-price="{{ cp.compare_at_price | money }}"
+              type="button"
+              aria-pressed="{% if product_1 == blank %}true{% else %}false{% endif %}"
+            >
+              <div class="bundle-product__img-wrap">
+                {%- if cp.featured_image -%}
+                  {{- cp.featured_image | image_url: width: 80 | image_tag: loading: 'lazy', alt: cp.title -}}
+                {%- endif -%}
+              </div>
+              <div class="bundle-product__info">
+                <span class="bundle-product__name">{{ cp.title }}</span>
+                {%- if cp.description != blank -%}
+                  <span class="bundle-product__desc">{{ cp.description | strip_html | truncate: 60 }}</span>
+                {%- endif -%}
+              </div>
+              <div
+                class="bundle-product__info-btn js-open-popup"
+                data-popup-index="2"
+                aria-label="More info about {{ cp.title }}"
+                title="{{ cp.title | escape }}"
+                data-product-title="{{ cp.title | escape }}"
+              >
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_8900_4078)">
+                    <path d="M8 16C6.9203 16 5.87247 15.7884 4.88584 15.3711C3.93318 14.9682 3.07768 14.3914 2.34314 13.6569C1.60859 12.9223 1.0319 12.0668 0.62889 11.1142C0.211621 10.1275 0 9.0797 0 8C0 6.9203 0.211621 5.87247 0.62889 4.88584C1.0318 3.93318 1.60859 3.07768 2.34314 2.34314C3.07768 1.60859 3.93318 1.0319 4.88584 0.62889C5.87257 0.211621 6.9203 0 8 0C9.0797 0 10.1275 0.211621 11.1142 0.62889C12.0668 1.0318 12.9223 1.60859 13.6569 2.34314C14.3914 3.07768 14.9681 3.93318 15.3711 4.88584C15.7885 5.87247 16 6.9203 16 8C16 9.0797 15.7884 10.1275 15.3711 11.1142C14.9682 12.0668 14.3914 12.9223 13.6569 13.6569C12.9223 14.3914 12.0668 14.9681 11.1142 15.3711C10.1275 15.7885 9.0797 16 8 16ZM8 1.19479C7.08109 1.19479 6.18985 1.37465 5.35133 1.72934C4.541 2.07209 3.81317 2.56283 3.18805 3.18795C2.56293 3.81306 2.07209 4.5409 1.72945 5.35122C1.37475 6.18985 1.19489 7.08098 1.19489 7.9999C1.19489 8.91881 1.37475 9.81005 1.72945 10.6486C2.07219 11.4589 2.56293 12.1867 3.18805 12.8118C3.81327 13.4371 4.541 13.9278 5.35133 14.2706C6.18995 14.6252 7.08109 14.8051 8 14.8051C8.91891 14.8051 9.81015 14.6252 10.6487 14.2706C11.459 13.9278 12.1868 13.4371 12.8119 12.8118C13.4372 12.1867 13.9279 11.4589 14.2706 10.6486C14.6252 9.80994 14.8051 8.91881 14.8051 7.9999C14.8051 7.08098 14.6252 6.18974 14.2706 5.35122C13.9278 4.5409 13.4371 3.81306 12.8119 3.18795C12.1868 2.56283 11.459 2.07198 10.6487 1.72934C9.81005 1.37465 8.91891 1.19479 8 1.19479Z" fill="black"/>
+                    <path d="M9.35789 11.4115C9.30727 11.3921 9.25004 11.4063 9.20748 11.4398C8.85593 11.716 8.5678 11.7717 8.31855 11.6425C8.08596 11.5219 8.03565 11.1731 8.13407 10.8635C8.3481 10.1906 8.63949 9.28108 8.9139 8.42506C9.09449 7.86157 9.26712 7.15952 9.04848 6.70337C8.85593 6.30171 8.50376 6.11745 8.02014 6.16304C7.41127 6.22048 6.66907 6.66133 6.17194 7.05324C6.01188 7.17944 5.97415 7.39074 6.07656 7.55006C6.17487 7.70299 6.38377 7.75487 6.57348 7.63748C6.80219 7.49598 7.12554 7.29295 7.32993 7.19086C7.25006 7.4529 7.16181 7.76965 7.01643 8.26773C6.85711 8.81371 6.63878 9.56156 6.30631 10.6897C6.09395 11.41 6.24793 11.9126 6.41458 12.2072C6.60503 12.5441 6.92 12.791 7.27868 12.8846C7.40414 12.9174 7.55382 12.9386 7.71628 12.9386C8.31289 12.9386 9.08076 12.6521 9.44594 11.5983C9.47151 11.5244 9.43535 11.4413 9.35789 11.4115Z" fill="black"/>
+                    <path d="M8.75792 5.26027C9.34153 5.22159 9.78332 4.71723 9.74465 4.13362C9.70597 3.55001 9.2016 3.10821 8.61799 3.14689C8.03438 3.18556 7.59259 3.68993 7.63126 4.27354C7.66994 4.85715 8.17431 5.29895 8.75792 5.26027Z" fill="black"/>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_8900_4078">
+                    <rect width="16" height="16" fill="white"/>
+                    </clipPath>
+                    </defs>
+                </svg>
+              </div>
+            </button>
+          {%- endif -%}
+
+        </div>
+      </div>
+    {%- endif -%}
+
+
+    {%- comment -%}══════════════════ COLLECTION DROPDOWN + PRODUCT GRID ══════════════════{%- endcomment -%}
+    <div class="bundle-colors">
+      <p class="bundle-colors__heading">{{ color_heading }}</p>
+
+      <div class="bundle-colors__filter js-collection-trigger" role="button" tabindex="0" aria-expanded="false" aria-haspopup="listbox">
+        <span class="bundle-colors__filter-label js-active-coll-label">
+          {%- if block.settings.collection_1 != blank -%}
+            {{ block.settings.collection_1.title }}
+          {%- else -%}
+            All Products
+          {%- endif -%}
+        </span>
+        <span class="bundle-colors__filter-sub js-active-coll-count"></span>
+        <svg class="bundle-colors__filter-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="bcp-dropdown" id="bcp-dropdown-{{ section.id }}" role="listbox" aria-label="Select a collection" hidden>
+        {%- for i in (1..8) -%}
+          {%- assign key  = 'collection_' | append: i -%}
+          {%- assign coll = block.settings[key] -%}
+          {%- if coll != blank -%}
+            <button
+              class="bcp-dropdown__item{% if i == 1 %} is-active{% endif %}"
+              type="button"
+              role="option"
+              aria-selected="{% if i == 1 %}true{% else %}false{% endif %}"
+              data-coll-handle="{{ coll.handle }}"
+              data-coll-title="{{ coll.title | escape }}"
+            >
+              {{ coll.title }}
+              <span class="bcp-dropdown__count">({{ coll.products_count }})</span>
+            </button>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <div class="bundle-colors__grid js-color-grid">
+        {%- for i in (1..8) -%}
+          {%- assign key  = 'collection_' | append: i -%}
+          {%- assign coll = block.settings[key] -%}
+          {%- if coll != blank -%}
+            {%- for prod in coll.products -%}
+              {%- assign first_variant = prod.selected_or_first_available_variant -%}
+              <button
+                class="color-swatch js-color-swatch"
+                type="button"
+                data-coll-handle="{{ coll.handle }}"
+                data-product-id="{{ prod.id }}"
+                data-variant-id="{{ first_variant.id }}"
+                data-variant-sku="{{ first_variant.sku | escape }}"
+                data-variant-title="{{ first_variant.title | escape }}"
+                data-product-handle="{{ prod.handle | escape }}"
+                data-product-title="{{ prod.title | escape }}"
+                data-product-price="{{ first_variant.price | money }}"
+                data-product-compare="{{ first_variant.compare_at_price | money }}"
+                data-available="{{ first_variant.available }}"
+                data-img-src="{{ prod.featured_image | image_url: width: 160 }}"
+                data-img-alt="{{ prod.featured_image.alt | default: prod.title | escape }}"
+                aria-label="{{ prod.title | escape }}"
+                aria-pressed="false"
+                title="{{ prod.title | escape }}"
+                {% unless i == 1 %}style="display:none"{% endunless %}
+              >
+                {%- if prod.featured_image -%}
+                  <img
+                    src="{{ prod.featured_image | image_url: width: 160 }}"
+                    alt="{{ prod.featured_image.alt | default: prod.title | escape }}"
+                    width="160"
+                    height="160"
+                    loading="lazy"
+                  >
+                {%- else -%}
+                  <span class="color-swatch__fallback">{{ prod.title | truncate: 3, '' }}</span>
+                {%- endif -%}
+              </button>
+            {%- endfor -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+
+    {%- comment -%}══════════════════ SELECTED TRAY ══════════════════{%- endcomment -%}
+    <div class="bundle-selected">
+      <p class="bundle-selected__heading">{{ selected_heading }}</p>
+      <div class="bundle-selected__tray js-selected-tray" data-variant-id="{{ product.selected_or_first_available_variant.id }}"></div>
+    </div>
+
+  </div>
+</section>
+
+
+{%- comment -%}════════════════════════════════════════════════
+  ATC FORM WRAPPER
+  Mirrors the hooks from buy-buttons.liquid so BundleCollectionPicker
+  can find form[data-type="add-to-cart-form"] and .js-bundle-submit.
+  The form is scoped to section.id, matching the data-section-id
+  on the <section> above.
+════════════════════════════════════════════════{%- endcomment -%}
+
+{%- liquid
+  comment
+    Pick the "parent" product for the Shopify form tag.
+    Prefer product_1; fall back to product_2.
+    If neither is set we cannot render a valid form — show nothing.
+  endcomment
+  assign form_product = product_1
+  if form_product == blank
+    assign form_product = product_2
+  endif
+-%}
+
+
+{%- comment -%}════════════════════════════════════════════════
+  STYLES  (bundle-section styles + dropdown styles)
+  These are the same as in bundle-collection-picker.liquid.
+  If both snippets are used on the same page the rules will
+  simply be declared twice — harmless duplication.
+════════════════════════════════════════════════{%- endcomment -%}
+{% style %}
+
+/* ── Bundle section base ── */
+.bundle-section {
+  --bundle-accent: #c94b7b;
+  --bundle-accent-light: #fde8f0;
+  --bundle-border: #e5e5e5;
+  --bundle-text: #1a1a1a;
+  --bundle-muted: #777;
+  --bundle-radius: 10px;
+  --bundle-radius-sm: 6px;
+  --bundle-transition: 0.18s ease;
+  font-family: inherit;
+  color: var(--bundle-text);
+  max-width: 100%;
+  padding: 0 0 24px;
+}
+
+.bundle-section__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Tiers */
+.bundle-tiers__heading { margin: 0 0 28px; }
+span.bundle-tiers__heading-label { font-weight: 600; font-size: 14px; line-height: 20.8px; color: #000; vertical-align: middle; }
+.bundle-tiers__heading-count { font-weight: 100; font-size: 14px; line-height: 20.8px; color: #000; vertical-align: middle; }
+.bundle-tiers__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+
+.bundle-tier {
+  position: relative; display: flex; flex-direction: column; align-items: center;
+  gap: 8px; padding: 14px 20px; background: #fff; cursor: pointer;
+  transition: all 0.3s ease; text-align: center;
+  border: 1px solid #D99CA580;
+}
+.bundle-tier:hover { border-color: #D99CA5; }
+.bundle-tier.is-active { border-color: #D99CA5; box-shadow: 0px 4px 0px 0px #D99CA5; }
+
+.bundle-tier__badge {
+  position: absolute; top: -19px; left: 50%; transform: translateX(-50%);
+  background: #D99CA5; color: #fff; padding: 2px 12px; white-space: nowrap;
+  font-size: 12px; line-height: 14.4px; letter-spacing: 0; text-align: center;
+}
+button.bundle-tier.is-active .bundle-tier__badge { background: #7C0732; }
+
+.bundle-tier__label { color: #000; font-weight: 600; font-size: 14px; line-height: 21px; text-align: center; max-width: 100px; }
+.bundle-tier__pricing { display: flex; align-items: center; gap: 5px; margin-top: 4px; }
+.bundle-tier__price { font-size: 14px; font-weight: 700; color: #1a1a1a; }
+.bundle-tier__compare { font-size: 12px; color: #777; text-decoration: line-through; }
+
+/* Child products */
+.bundle-products__heading { margin: 0 0 8px; font-weight: 600; font-size: 14px; line-height: 20.8px; color: #000; }
+.bundle-products__selected-name { font-weight: 200; font-size: 14px; line-height: 20.8px; color: #000; }
+.bundle-products__grid { display: flex; gap: 10px; }
+
+.bundle-product {
+  position: relative; display: flex; align-items: center; gap: 10px;
+  padding: 14px 10px; background: #fff; cursor: pointer; text-align: left;
+  transition: all 0.3s ease; width: 100%; max-width: calc(50% - 5px);
+  border: 1px solid #D99CA580;
+}
+.bundle-product:hover { border-color: #D99CA5; }
+.bundle-product.is-active { box-shadow: 0px 4px 0px 0px #D99CA5; border-color: #D99CA5; }
+
+.bundle-product__img-wrap { width: 46px; flex-shrink: 0; overflow: hidden; }
+.bundle-product__img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.bundle-product__info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.bundle-product__name { font-weight: 600; font-size: 14px; line-height: 16.4px; color: #000; }
+.bundle-product__desc { font-weight: 400; font-size: 14px; line-height: 18.8px; color: #000; }
+.bundle-product__info-btn { position: absolute; top: 13px; right: 13px; cursor: pointer; padding: 0; z-index: 2; width: 16px; height: 16px; transition: all 0.3s ease; }
+.bundle-product__info-btn svg { width: 100%; height: 100%; display: block; }
+.bundle-product__info-btn:hover { transform: scale(1.1) !important; }
+
+/* Collection filter */
+.bundle-colors__heading { margin: 0 0 8px; font-weight: 600; font-size: 14px; line-height: 20.8px; color: #000; }
+.bundle-colors__filter { display: flex; align-items: center; gap: 10px; padding: 12px 22px; margin-bottom: 12px; cursor: pointer; background: #fff; border: 1px solid #D99CA580; }
+.bundle-colors__filter:focus-visible { outline: 2px solid #D99CA5; outline-offset: 2px; }
+.bundle-colors__filter-label { font-weight: 600; font-size: 14px; line-height: 20.4px; color: #000; text-align: center; vertical-align: middle; }
+.bundle-colors__filter-sub { color: #000; flex: 1; font-weight: 400; font-size: 14px; }
+.bundle-colors__filter-chevron { color: #2D444A; }
+
+/* Dropdown */
+.bcp-dropdown { position: relative; z-index: 100; background: #fff; border: 1px solid #D99CA5; box-shadow: 0 4px 16px rgba(0,0,0,0.10); margin-bottom: 12px; display: flex; flex-direction: column; top: -13px; }
+.bcp-dropdown[hidden] { display: none; }
+.bcp-dropdown__item { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; padding: 10px 18px; background: transparent; border: none; border-bottom: 1px solid #f0e8eb; cursor: pointer; font-size: 14px; font-weight: 400; color: #000; text-align: left; transition: background 0.15s ease; }
+.bcp-dropdown__item:last-child { border-bottom: none; }
+.bcp-dropdown__item:hover { background: #fde8f0; }
+.bcp-dropdown__item.is-active { background: #fde8f0; font-weight: 600; }
+.bcp-dropdown__count { font-size: 12px; font-weight: 400; color: #999; margin-left: auto; }
+
+/* Color grid */
+.bundle-colors__grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; max-height: 482px; overflow-y: scroll; padding:4px 16px 4px 4px; scrollbar-width: thin; scrollbar-color: #D99CA5 transparent; }
+.bundle-colors__grid::-webkit-scrollbar { width: 4px; }
+.bundle-colors__grid::-webkit-scrollbar-track { background: transparent; }
+.bundle-colors__grid::-webkit-scrollbar-thumb { background: #D99CA5; border-radius: 10px; }
+
+/* Swatches */
+.color-swatch {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+    border: 1px solid var(--mid-pink-50, #D99CA580);
+    width: 100%;
+    height: max-content;
+}
+
+
+.color-swatch img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.color-swatch__fallback { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-size: 10px; font-weight: 700; color: #777; }
+.color-swatch:hover { border-color: #c94b7b; transform: scale(1.05); }
+.color-swatch.is-selected { border-color: #D99CA5; box-shadow: 0px 4px 0px 0px #D99CA5 !important; background: #fff !important; }
+.color-swatch::after { content: attr(title); position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); background: #1a1a1a; color: #fff; font-size: 10px; white-space: nowrap; padding: 3px 8px; border-radius: 3px; pointer-events: none; opacity: 0; transition: opacity 0.15s ease; z-index: 10; }
+.color-swatch:hover::after { opacity: 1; }
+
+/* Selected tray */
+.bundle-selected__heading { margin: 0 0 8px; font-weight: 600; font-size: 14px; line-height: 20.8px; color: #000; }
+.bundle-selected__tray { display: flex; gap: 8px; flex-wrap: wrap; }
+.selected-slot { max-width: calc(16.66% - 6.66px); width: 100%; aspect-ratio: 1; overflow: hidden; background: transparent; position: relative; cursor: default; transition: all 0.3s ease; border: 1px solid #D99CA580; }
+.selected-slot.is-filled { border-color: #D99CA5; box-shadow: 0px 4px 0px 0px #D99CA5; }
+.selected-slot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.selected-slot__remove { position: absolute; top: 3px; right: 3px; width: 18px; height: 18px; border-radius: 50%; background: rgba(0,0,0,0.5); border: none; color: #fff; font-size: 11px; line-height: normal; box-sizing: border-box; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.18s ease; padding: 0; }
+.selected-slot:hover .selected-slot__remove { opacity: 1; }
+.selected-slot__placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+.selected-slot__placeholder svg { color: #ccc; }
+.selected-slot__label { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.55); color: #fff; font-size: 8px; line-height: 1.2; padding: 2px 4px; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Tooltip */
+.bundle-tooltip { position: fixed; z-index: 9999; max-width: 260px; background: #1a1a1a; color: #fff; font-size: 12px; line-height: 1.5; padding: 10px 14px; border-radius: 6px; pointer-events: none; opacity: 0; transition: opacity 0.15s ease; }
+.bundle-tooltip.is-visible { opacity: 1; }
+
+/* ATC button */
+.bundle-atc-form { margin-top: 4px; }
+.bundle-atc-btn { width: 100%; }
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .bundle-section__inner { gap: 20px; }
+  .bundle-tiers__heading { margin: 0 0 24px; }
+  .bundle-tier { gap: 6px; padding: 11px 14px; }
+  .bundle-tier__label { font-size: 12px; line-height: 15.6px; }
+  .bundle-tier__badge { top: -19px; }
+  .bundle-products__grid { flex-direction: column !important; }
+  .bundle-product { max-width: 100%; padding: 10px; }
+  .bundle-colors__filter { padding: 10px 16px; }
+  .bundle-colors__filter-label { font-size: 12px; line-height: 16.4px; }
+  .bundle-colors__filter-sub { font-size: 12px; }
+  .bundle-colors__grid { grid-template-columns: repeat(4, 1fr); max-height: 352px; }
+  .selected-slot { max-width: calc(25% - 6px); }
+}
+
+{% endstyle %}
+
+
+<script>
+/* ============================================================
+   BundleCollectionPicker — Real-Time Additive Pricing
+   ============================================================ */
+(function () {
+  'use strict';
+
+  var q = (sel, root) => (root || document).querySelector(sel);
+  var qq = (sel, root) => Array.from((root || document).querySelectorAll(sel));
+
+  const EMPTY_SLOT_SVG = `
+    <span class="selected-slot__placeholder">
+    {% if block.settings.placeholder  != blank %}
+     {{ block.settings.placeholder | image_url: width: 1600 | image_tag:
+          widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+          alt: "image",
+          loading: "lazy"
+      }}
+    {% else %}
+      <svg width="32" height="48" viewBox="0 0 32 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="0" width="16" height="6" rx="3" fill="#ddd"/>
+        <rect x="5" y="5" width="22" height="43" rx="4" fill="#e8e8e8"/>
+      </svg>
+    {% endif %}
+    </span>`;
+
+  function BundleUI(section) {
+    this.section = section;
+    this.sectionId = section.dataset.sectionId;
+    this.activeTier = 2; 
+    this.selectedItems = [];
+
+    this.tierBtns = qq('.bundle-tier', section);
+    this.productBtns = qq('.bundle-product', section);
+    this.swatches = qq('.js-color-swatch', section);
+    this.tray = q('.js-selected-tray', section);
+    this.themeAtcBtn = q('#ProductSubmitButton-' + this.sectionId);
+    
+    this.collTrigger = q('.js-collection-trigger', section);
+    this.collDropdown = q('.bcp-dropdown', section);
+    this.collLabel = q('.js-active-coll-label', section);
+
+    this.init();
+  }
+
+  BundleUI.prototype.init = function() {
+    this._initTier();
+    this._initProductBtns();
+    this._initSwatches();
+    this._initCollectionDropdown();
+    this._renderTray();
+    this._updateAtcState();
+    
+    if (this.productBtns[0]) this._setProduct(this.productBtns[0]);
+    const firstColl = q('.bcp-dropdown__item', this.collDropdown);
+    if (firstColl) this._selectCollection(firstColl);
+
+    this._updatePricing();
+  };
+
+  BundleUI.prototype._parseMoney = function(str) {
+    if (!str) return 0;
+    // Cleans strings like "$12.50" or "Rs. 12.00" into 12.50
+    return parseFloat(String(str).replace(/[^0-9.-]+/g,"")) || 0;
+  };
+
+  BundleUI.prototype._formatMoney = function(num) {
+    return '$' + num.toFixed(2);
+  };
+
+  /**
+   * REAL-TIME ADDITIVE PRICING
+   * Adds base product + each item as it is selected.
+   */
+  BundleUI.prototype._updatePricing = function() {
+    const activeBase = this.productBtns.find(b => b.classList.contains('is-active'));
+    const basePrice = activeBase ? this._parseMoney(activeBase.dataset.price) : 0;
+    const baseCompare = activeBase ? this._parseMoney(activeBase.dataset.comparePrice) : 0;
+
+    this.tierBtns.forEach(btn => {
+      const tierSize = parseInt(btn.dataset.tier, 10);
+      
+      // Look at the items currently in the tray that fall within this tier's range
+      const itemsForThisTier = this.selectedItems.slice(0, tierSize);
+      
+      let currentTotal = basePrice;
+      let currentCompare = baseCompare;
+
+      if (this.selectedItems.length > 0) {
+        // Add only the items that are actually selected
+        itemsForThisTier.forEach(item => {
+          currentTotal += this._parseMoney(item.price);
+          currentCompare += this._parseMoney(item.com_price);
+        });
+
+        // SCENARIO: If user is building a larger bundle, 
+        // we show the partial price of the smaller tiers based on items 1 & 2.
+      } else {
+        // If nothing at all is selected, show the default placeholder from customizer
+        currentTotal = this._parseMoney(btn.dataset.defaultPrice);
+        currentCompare = this._parseMoney(btn.dataset.defaultCompare);
+      }
+
+      const priceEl = btn.querySelector('.bundle-tier__price');
+      const compareEl = btn.querySelector('.bundle-tier__compare');
+
+      if (priceEl) priceEl.textContent = this._formatMoney(currentTotal);
+      if (compareEl) {
+        compareEl.textContent = currentCompare > currentTotal ? this._formatMoney(currentCompare) : '';
+      }
+    });
+  };
+
+  /* --- UI Events --- */
+
+  BundleUI.prototype._initCollectionDropdown = function () {
+    if (!this.collTrigger || !this.collDropdown) return;
+    this.collTrigger.addEventListener('click', () => {
+      const isExpanded = this.collTrigger.getAttribute('aria-expanded') === 'true';
+      this.collTrigger.setAttribute('aria-expanded', !isExpanded);
+      this.collDropdown.toggleAttribute('hidden');
+    });
+    qq('.bcp-dropdown__item', this.collDropdown).forEach(item => {
+      item.addEventListener('click', () => {
+        this._selectCollection(item);
+        this.collDropdown.setAttribute('hidden', '');
+        this.collTrigger.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.addEventListener('click', (e) => {
+      if (!this.section.contains(e.target)) {
+        this.collDropdown.setAttribute('hidden', '');
+        this.collTrigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  };
+
+  BundleUI.prototype._selectCollection = function (item) {
+    const handle = item.dataset.collHandle;
+    const title = item.dataset.collTitle;
+    qq('.bcp-dropdown__item', this.collDropdown).forEach(i => i.classList.toggle('is-active', i === item));
+    this.swatches.forEach(sw => {
+      sw.style.display = (sw.dataset.collHandle === handle) ? '' : 'none';
+    });
+    if (this.collLabel) this.collLabel.textContent = title;
+  };
+
+  BundleUI.prototype._setTier = function (tier, btn) {
+    this.activeTier = tier;
+    if (this.selectedItems.length > tier) {
+        this.selectedItems = this.selectedItems.slice(0, tier);
+        this._syncSwatchStates();
+    }
+    this.tierBtns.forEach(b => b.classList.toggle('is-active', b === btn));
+    this._renderTray();
+    this._updateAtcState();
+    this._updatePricing(); 
+  };
+
+  BundleUI.prototype._initTier = function () {
+    this.tierBtns.forEach(btn => {
+      btn.addEventListener('click', () => this._setTier(parseInt(btn.dataset.tier, 10), btn));
+    });
+  };
+
+  BundleUI.prototype._initProductBtns = function () {
+    this.productBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        if (!e.target.closest('.bundle-product__info-btn')) {
+            this._setProduct(btn);
+            this._updatePricing(); 
+        }
+      });
+    });
+  };
+
+  BundleUI.prototype._setProduct = function (btn) {
+    this.productBtns.forEach(b => b.classList.remove('is-active'));
+    btn.classList.add('is-active');
+    const label = q('.js-selected-product-name', this.section);
+    if (label) label.textContent = btn.dataset.productTitle || '';
+  };
+
+  BundleUI.prototype._initSwatches = function () {
+    this.swatches.forEach(sw => {
+      sw.addEventListener('click', () => this._toggleSwatch(sw));
+    });
+  };
+
+  BundleUI.prototype._toggleSwatch = function (sw) {
+    const variantId = sw.dataset.variantId;
+    const idx = this.selectedItems.findIndex(i => i.variantId === variantId);
+
+    if (idx !== -1) {
+      this.selectedItems.splice(idx, 1);
+      sw.classList.remove('is-selected');
+    } else {
+      if (this.selectedItems.length >= this.activeTier) return;
+      this.selectedItems.push({
+        variantId: variantId,
+        price: sw.dataset.productPrice || '',
+        com_price: sw.dataset.productCompare || '',
+        handle: sw.dataset.productHandle || '',
+        title: sw.dataset.productTitle || '',
+        imgSrc: sw.dataset.imgSrc || '',
+        imgAlt: sw.dataset.imgAlt || ''
+      });
+      sw.classList.add('is-selected');
+    }
+    this._renderTray();
+    this._updateAtcState();
+    this._updatePricing(); 
+  };
+
+  BundleUI.prototype._syncSwatchStates = function () {
+    const ids = new Set(this.selectedItems.map(i => i.variantId));
+    this.swatches.forEach(sw => sw.classList.toggle('is-selected', ids.has(sw.dataset.variantId)));
+  };
+
+  BundleUI.prototype._updateAtcState = function () {
+    if (!this.themeAtcBtn) return;
+    const ready = (this.selectedItems.length === this.activeTier);
+    this.themeAtcBtn.disabled = !ready;
+    this.themeAtcBtn.dataset.bundleReady = ready;
+  };
+
+  BundleUI.prototype._renderTray = function () {
+    if (!this.tray) return;
+    let html = '';
+    for (let i = 0; i < this.activeTier; i++) {
+      const item = this.selectedItems[i];
+      if (item) {
+        html += `
+          <div class="selected-slot is-filled" data-slot="${i}" data-variant-id="${item.variantId}" data-product-handle="${item.handle}" data-price="${item.price}" data-compare-price="${item.com_price}">
+            <img src="${item.imgSrc}" alt="${item.imgAlt}" loading="lazy">
+            <button class="selected-slot__remove" type="button" data-id="${item.variantId}" aria-label="Remove item">✕</button>
+          </div>`;
+      } else {
+        html += `<div class="selected-slot" data-slot="${i}">${EMPTY_SLOT_SVG}</div>`;
+      }
+    }
+    this.tray.innerHTML = html;
+    qq('.selected-slot__remove', this.tray).forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const sw = this.swatches.find(s => s.dataset.variantId === btn.dataset.id);
+        if (sw) this._toggleSwatch(sw);
+      });
+    });
+  };
+
+  window.BundleUIInstances = window.BundleUIInstances || {};
+  function init() {
+    const section = document.getElementById('bundle-section-{{ section.id }}');
+    if (section && !section._bcpInit) {
+      section._bcpInit = true;
+      window.BundleUIInstances['{{ section.id }}'] = new BundleUI(section);
+    }
+  }
+  document.addEventListener('DOMContentLoaded', init);
+  document.addEventListener('shopify:section:load', init);
+})();
+</script>

@@ -1,0 +1,164 @@
+<section class="blogs-top-section section-{{ section.id }}">
+  <div class="page-width">
+    <div class="blogs-top-wrapper">
+      {% if section.settings.title != blank %}
+        <h2 class="blogs-top-title">
+          {{ section.settings.title }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.description != blank %}
+        <p class="blogs-top-desc">
+          {{ section.settings.description }}
+        </p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% style %}
+
+.section-{{ section.id }}{
+  background: {{ section.settings.bg_color }};
+  padding-top: {{ section.settings.padding_top_desktop }}px;
+  padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+}
+
+.section-{{ section.id }} .blogs-top-title{
+  font-family: "PP Mori", sans-serif;
+  font-weight: 600;
+  font-size: 46px;
+  line-height: 55px;
+  letter-spacing: 0px;
+  vertical-align: middle;
+  color: {{ section.settings.title_color }};
+  margin:0;
+  max-width: 660px;
+  width: 100%;
+    margin: 0 0 8px;
+}
+
+.section-{{ section.id }} .blogs-top-desc{
+  font-family: "Work Sans", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  color: {{ section.settings.desc_color }};
+  margin-top:12px;
+    max-width: 600px;
+    width: 100%;
+    margin: 0;
+}
+
+@media screen and (max-width: 768px){
+
+.section-{{ section.id }}{
+  padding-top: {{ section.settings.padding_top_mobile }}px;
+  padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+}
+
+.section-{{ section.id }} .blogs-top-title{
+    font-size: 28px;
+    line-height: 36.4px;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.section-{{ section.id }} p.blogs-top-desc {
+    text-align: center;
+}
+
+}
+
+{% endstyle %}
+
+
+{% schema %}
+{
+  "name": "Blogs Top Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Our Blog"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Latest tips, guides and stories."
+    },
+
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#000000"
+    },
+
+    {
+      "type": "color",
+      "id": "desc_color",
+      "label": "Description Color",
+      "default": "#555555"
+    },
+
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Top (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top (Mobile)",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom (Mobile)",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blogs Top Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

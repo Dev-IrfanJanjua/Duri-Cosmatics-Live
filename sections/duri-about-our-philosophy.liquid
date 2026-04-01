@@ -1,0 +1,282 @@
+<style> 
+.duri-sec-{{ section.id }}-pad {
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+  background-color: {{ section.settings.back-color }};
+}
+
+.duri-sec-{{ section.id }}-pad .page-width{
+  padding: 0;
+}
+
+.duri-ready-wrap-505 {
+  display: flex;
+}
+
+.duri-left-area-505 {
+    max-width: 50%;
+    width: 100%;
+    padding: 40px 80px;
+    display: flex;
+    align-items: center;
+}
+
+.duri-left-inner-505 {
+    width: 100%;
+    max-width: 480px;
+    padding: 40px;
+}
+
+h4.duri-sub-text-505 ul li {
+    font-size: 14px;
+    line-height: 25.2px;
+}
+
+.duri-right-area-505 {
+  max-width: 50%;
+  width: 100%;
+}
+
+a.duri-btn-505 {
+  display: flex;
+  height: 42px;
+  padding: 14px 50px;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  background: #1e4851;
+  max-width: 190px;
+  text-decoration: none;
+}
+
+p.duri-btn-label-505 {
+  margin: 0;
+  color: var(--1, #1E4851);
+  text-align: center;
+  font-family: "PP Mori";
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+  text-transform: uppercase;
+}
+
+p.duri-main-text-505 {
+  color: #000;
+  text-align: left;
+  font-family: "PP Mori";
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 46.8px;
+  margin: 0 auto;
+  letter-spacing: 0;
+}
+
+h4.duri-sub-text-505 {
+  font-family: "PP Mori";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  text-align: left;
+  vertical-align: middle;
+  margin: 0;
+  padding-top: 16px;
+  padding-bottom: 36px;
+  color: #000;
+}
+.duri-sub-text-505 ul {
+    padding-left: 21px;
+    margin: 16px 0px 0px 0px;
+}
+img.duri-img-505 {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* button hover effect */
+a.duri-btn-505 {
+  display: flex;
+  height: 42px;
+  padding: 14px 50px;
+  justify-content: center;
+  align-items: center;
+  background: #1E4851;
+  max-width: 190px;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+a.duri-btn-505::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: white;
+  transition: all 0.3s ease;
+  z-index: 0;
+}
+a.duri-btn-505:hover::before {
+  left: 0;
+}
+a.duri-btn-505:hover {
+  transform: scale(1.05);
+}
+p.duri-btn-label-505 {
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
+  color: #fff;
+}
+a.duri-btn-505:hover p.duri-btn-label-505 {
+  color: #1e4851;
+}
+
+/* responsive */
+@media screen and (max-width: 768px) {
+  .duri-sec-{{ section.id }}-pad {
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: {{ section.settings.back-color }};
+  }
+  .duri-ready-wrap-505 {
+    flex-direction: column;
+  }
+  .duri-right-area-505 {
+    max-width: 100%;
+    line-height: 0;
+  }
+  .duri-left-area-505 {
+    max-width: 100%;
+    padding: 56px 16px;
+  }
+  .duri-left-inner-505 {
+      max-width: 100%;
+      padding: 0;
+  }
+  p.duri-main-text-505 {
+    font-size: 28px;
+    line-height: 36.4px;
+  }
+  h4.duri-sub-text-505 {
+    font-size: 14px;
+    line-height: 21px;
+    padding-bottom: 0;
+  }
+
+}
+</style>
+
+<section class="duri-sec-{{ section.id }}-pad">
+  <div class="page-width">
+    <div class="duri-ready-wrap-505">
+      <div class="duri-right-area-505">
+        {% if section.settings.duri-ready-img != blank %}
+          <img class="duri-img-505" src="{{ section.settings.duri-ready-img | image_url }}" loading="lazy" width="100%" height="">
+        {% endif %}
+      </div>
+      <div class="duri-left-area-505">
+        <div class="duri-left-inner-505">
+          <div class="duri-left-content-505">
+            <p class="duri-main-text-505">{{ section.settings.duriFirsttext }}</p>
+            <h4 class="duri-sub-text-505">{{ section.settings.duriFirsttext2 | replace: '<p>', '' | replace: '</p>', '' }}</h4>
+            {% if section.settings.duri-button_link != blank and section.settings.duri-btnbutton_label != blank %}
+              <a href="{{ section.settings.duri-button_link }}" class="duri-btn-505">
+                  <p class="duri-btn-label-505">{{ section.settings.duri-btnbutton_label }}</p>
+              </a>
+            {% endif %}
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Duri About our philosophy",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Top Padding",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Bottom Padding",
+      "default": 10
+    },
+    {
+      "type": "color",
+      "id": "back-color",
+      "label": "Background Color"
+    },
+    {
+      "type": "image_picker",
+      "id": "duri-ready-img",
+      "label": "Ready Image"
+    },
+    {
+      "type": "text",
+      "id": "duriFirsttext",
+      "label": "Main Text"
+    },
+    {
+      "type": "richtext",
+      "id": "duriFirsttext2",
+      "label": "Sub Text"
+    },
+    {
+      "type": "url",
+      "id": "duri-button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "duri-btnbutton_label",
+      "label": "Button Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Duri About our philosophy"
+    }
+  ]
+}
+{% endschema %}

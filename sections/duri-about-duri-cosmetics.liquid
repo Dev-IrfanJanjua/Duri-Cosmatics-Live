@@ -1,0 +1,278 @@
+<style>
+.unique-sec-{{ section.id }}-padding {
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+  background-color: {{ section.settings.back-color}};
+}
+
+.unique-sec-{{ section.id }}-padding .page-width {
+    padding: 0;
+}
+
+.uniq-ready-wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.uniq-ready-left {
+    max-width: 50%;
+    background: #fff;
+    width: 100%;
+    padding: 40px 80px;
+}
+.uniq-ready-right {
+  max-width: 50%;
+  width: 100%;
+}
+p.uniq-btn-label {
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+    color: #fff;
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+    text-transform: uppercase;
+}
+p.uniq-main-text {
+  color: #000;
+  text-align: left;
+  font-family: "PP Mori";
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 46.8px;
+  margin: 0 auto;
+  letter-spacing: 0;
+}
+p.uniq-sub-text {
+  margin: 0;
+  padding-top: 16px;
+  padding-bottom: 36px;
+  color: #FFF;
+  text-align: left;
+  font-family: "PP Mori";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0;
+}
+h4.uniq-sub-text {
+    font-family: PP Mori;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    text-align: left;
+    margin: 20px 0px;
+}
+img.uniq-ready-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* button hover effect */
+a.uniq-ready-btn {
+  display: flex;
+  height: 42px;
+  padding: 14px 24px;
+  justify-content: center;
+  align-items: center;
+  background: {{ section.settings.btn_color }};
+  max-width: 190px;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  border: 1px solid {{ section.settings.btn_color }};
+}
+a.uniq-ready-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: white;
+  transition: all 0.3s ease;
+  z-index: 0;
+}
+a.uniq-ready-btn:hover::before {
+  left: 0;
+}
+a.uniq-ready-btn:hover {
+  {% comment %} transform: scale(1.05); {% endcomment %}
+}
+
+a.uniq-ready-btn:hover p.uniq-btn-label {
+  color: {{ section.settings.btn_color }};
+}
+
+/* responsive */
+@media screen and (max-width: 768px) {
+  .unique-sec-{{ section.id }}-padding {
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: {{ section.settings.back-color}};
+  }
+  .uniq-ready-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  h4.uniq-sub-text {
+    margin: 16px 0px;
+}
+  .uniq-ready-right {
+    max-width: 100%;
+    line-height: 0;
+  }
+  .uniq-ready-left {
+    max-width: 100%;
+    padding: 40px 16px;
+  }
+  .uniq-left-inner {
+      padding: 25px 0;
+  }
+  p.uniq-main-text {
+    font-size: 28px;
+    line-height: 36.4px;
+  }
+  p.uniq-sub-text {
+    font-size: 14px;
+    line-height: 18.2px;
+  }
+  .uniq-page-width {
+    padding: 0;
+  }
+  p.uniq-btn-label {
+    font-size: 14px;
+}
+a.uniq-ready-btn {
+    padding: 11px 20px;
+    max-width: 130px;
+}
+}
+</style>
+
+<section class="unique-sec-{{ section.id }}-padding">
+  <div class="page-width">
+    <div class="uniq-ready-wrapper">
+      <div class="uniq-ready-right">
+        {% if section.settings.duri-ready-img != blank %}
+          <img class="uniq-ready-img" src="{{ section.settings.duri-ready-img | image_url }}" loading="lazy" width="100%" height="">
+        {% endif %}
+      </div>
+      <div class="uniq-ready-left">
+        <div class="uniq-left-inner">
+          <div class="uniq-left-content">
+            <p class="uniq-main-text">{{ section.settings.duriFirsttext }}</p>
+            <h4 class="uniq-sub-text">{{ section.settings.duriFirsttext2 | replace: '<p>', '' | replace: '</p>', '' }}</h4>
+            {% if section.settings.duri-button_link != blank and section.settings.duri-btnbutton_label != blank %}
+                <a href="{{ section.settings.duri-button_link }}" class="uniq-ready-btn">
+                    <p class="uniq-btn-label">{{ section.settings.duri-btnbutton_label }}</p>
+                </a>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+</section>
+
+{% schema %}
+{
+  "name": "Duri About Cosmetics",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Top Padding",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Bottom Padding",
+      "default": 10
+    },
+    {
+      "type": "color",
+      "id": "back-color",
+      "label": "Background Color"
+    },
+    {
+      "type": "color",
+      "id": "btn_color",
+      "label": "Button Color",
+      "default": "#7C0732"
+    },
+    {
+      "type": "image_picker",
+      "id": "duri-ready-img",
+      "label": "Ready Image"
+    },
+    {
+      "type": "text",
+      "id": "duriFirsttext",
+      "label": "Main Text"
+    },
+    {
+      "type": "richtext",
+      "id": "duriFirsttext2",
+      "label": "Sub Text"
+    },
+    {
+      "type": "url",
+      "id": "duri-button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "duri-btnbutton_label",
+      "label": "Button Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Duri About Cosmetics"
+    }
+  ]
+}
+{% endschema %}

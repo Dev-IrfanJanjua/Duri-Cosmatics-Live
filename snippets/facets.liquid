@@ -1,0 +1,1220 @@
+{% comment %}
+  Renders facets (filtering and sorting)
+
+  Accepts:
+  - results: {Object} Collection or Search object
+  - enable_filtering: {Boolean} Show filtering when true
+  - enable_sorting: {Boolean} Show sorting when true
+  - filter_type: {String} Type of filter
+  - paginate: {Object}
+
+  Usage:
+  {% render 'facets', results: collection, enable_filtering: true, enable_sorting: true, filter_type: 'vertical', paginate: paginate %}
+{% endcomment %}
+
+{{ 'component-show-more.css' | asset_url | stylesheet_tag }}
+{{ 'component-swatch-input.css' | asset_url | stylesheet_tag }}
+{{ 'component-swatch.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign sort_by = results.sort_by | default: results.default_sort_by
+  assign total_active_values = 0
+  assign default_presentation = 'text'
+  if results.url
+    assign results_url = results.url
+  else
+    assign terms = results.terms | escape
+    assign results_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
+  endif
+-%}
+
+<style>
+  .new-facet {
+    padding: 12px 20px;
+    background: #fff;
+  }
+  .my-facet-head {
+    margin: 0;
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0;
+    text-transform: capitalize;
+    
+  }
+  
+  .mynew-copy {
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0;
+    text-transform: capitalize;
+    padding: 12px 20px;
+    background: #fff;
+  }
+ 
+  .my-new2 {
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0;
+    text-transform: capitalize;
+    padding: 12px 20px;
+    background: #fff;
+  }
+  #FacetsWrapperDesktop {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  } 
+  .mynewCart {
+    background: #fff;
+    padding: 0 20px;
+  }
+  .new-cs-my {
+    padding: 0px 20px;
+    background: #fff;
+  }
+  .facet-checkbox__text {
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0;
+    text-transform: capitalize;
+  }
+  .facets__selected {
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0;
+    text-transform: capitalize;
+  }
+  .field-currency {
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0;
+    text-transform: capitalize;
+  }
+  .field__label {
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0;
+    text-transform: capitalize;
+  }
+</style>
+
+<div class="facets-container{% if filter_type == 'drawer' %} facets-container-drawer{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+  {%- if filter_type == 'vertical' or filter_type == 'horizontal' -%}
+    <facet-filters-form class="facets small-hide">
+      <form
+        id="FacetFiltersForm"
+        class="{% if filter_type == 'horizontal' %}facets__form{% else %}facets__form-vertical{% endif %}"
+      >
+        {%- if results.terms -%}
+          <input type="hidden" name="q" value="{{ results.terms | escape }}">
+          <input name="options[prefix]" type="hidden" value="last">
+        {%- endif -%}
+
+        {% if enable_filtering %}
+          {% comment %} Heading is the first tabbable element on filter type horizontal {% endcomment %}
+          <div
+            id="FacetsWrapperDesktop"
+            {% if filter_type == 'horizontal' %}
+              class="facets__wrapper"
+            {% endif %}
+          >
+            {%- if filter_type == 'horizontal' and results.filters != empty -%}
+              <h2 class="facets__heading caption-large text-body" id="verticalTitle" tabindex="-1">
+                {{ 'products.facets.filter_by_label' | t }}
+              </h2>
+            {%- endif -%}
+            {% comment %} Pills are right below the title for filter type vertical {% endcomment %}
+            {%- if filter_type == 'vertical' -%}
+              <div class="active-facets active-facets-desktop">
+                <div class="active-facets-vertical-filter new-facet">
+                  {%- unless results.filters == empty -%}
+                    <h2
+                      class="facets__heading facets__heading--vertical caption-large text-body my-facet-head"
+                      id="verticalTitle"
+                      tabindex="-1"
+                    >
+                      {{ 'products.facets.filter_by_label' | t }}
+                    </h2>
+                  {%- endunless -%}
+                  <facet-remove class="active-facets__button-wrapper">
+                    <a href="{{ results_url }}" class="active-facets__button-remove underlined-link">
+                      <span>{{ 'products.facets.clear_all' | t }}</span>
+                    </a>
+                  </facet-remove>
+                </div>
+                {%- for filter in results.filters -%}
+                  {%- for value in filter.active_values -%}
+                    <facet-remove>
+                      <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
+                        <span class="active-facets__button-inner button button--tertiary">
+                          {{ filter.label | escape }}: {{ value.label | escape }}
+                          <span class="svg-wrapper">
+                            {{- 'icon-close-small.svg' | inline_asset_content -}}
+                          </span>
+                          <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
+                        </span>
+                      </a>
+                    </facet-remove>
+                  {%- endfor -%}
+                  {% if filter.type == 'price_range' %}
+                    {% assign min = filter.min_value.value %}
+                    {% assign max = filter.max_value.value %}
+                    {%- if min != null or max != null -%}
+                      <facet-remove>
+                        <a href="{{ filter.url_to_remove }}" class="active-facets__button active-facets__button--light">
+                          <span class="active-facets__button-inner button button--tertiary">
+                            {{ min | default: 0 | money }} - {{ max | default: filter.range_max | money }}
+                            <span class="svg-wrapper">
+                              {{- 'icon-close-small.svg' | inline_asset_content -}}
+                            </span>
+                            <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
+                          </span>
+                        </a>
+                      </facet-remove>
+                    {%- endif -%}
+                  {% endif %}
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+
+            <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
+            {% comment %} Filters for both horizontal and vertical filter {% endcomment %}
+            {%- for filter in results.filters -%}
+              {% liquid
+                assign total_active_values = total_active_values | plus: filter.active_values.size
+                assign presentation = filter.presentation | default: default_presentation
+
+                if presentation == 'image'
+                  assign show_more_number = 12
+                  assign visual_layout_class = 'facets-layout facets-layout-grid facets-layout-grid--' | append: presentation
+                else
+                  assign show_more_number = 1000
+                  assign visual_layout_class = 'facets-layout facets-layout-list facets-layout-list--' | append: presentation
+                endif
+              %}
+
+              {% case filter.type %}
+                {% when 'boolean', 'list' %}
+                  <details
+                    id="Details-{{ filter.param_name | escape }}-{{ section.id }}"
+                    class="{% if filter_type == 'horizontal' %}disclosure-has-popup facets__disclosure{% else %} facets__disclosure-vertical{% endif %} js-filter"
+                    data-index="{{ forloop.index }}"
+                    {% if filter_type == 'vertical' and forloop.index == 1 %}
+                      open
+                    {% endif %}
+                  >
+                    <summary
+                      class="facets__summary caption-large focus-offset my-new2"
+                      aria-label="{{ filter.label | escape }} ({{ 'products.facets.filters_selected.one' | t: count: filter.active_values.size }})"
+                    >
+                      <div>
+                        <span class="facets__summary-label">
+                          {{- filter.label | escape }}
+                          {%- if filter_type == 'vertical' -%}
+                            <span class="facets__selected{% if filter.active_values.size == 0 %} hidden{% endif %}">
+                              ({{ filter.active_values.size }})</span
+                            >
+                          {%- endif -%}
+                        </span>
+                        {%- if filter_type == 'vertical' and filter.operator == 'AND' -%}
+                          <span class="facets__and-helptext">
+                            {{ 'products.facets.filter_and_operator_subtitle' | t }}
+                          </span>
+                        {%- endif -%}
+                        {{- 'icon-caret.svg' | inline_asset_content -}}
+                      </div>
+                    </summary>
+                    <div
+                      id="Facet-{{ forloop.index }}-{{ section.id }}"
+                      class="parent-display mynewCart {% if filter_type == 'horizontal' %}facets__display{% else %}facets__display-vertical{% endif %} my-cs-newOne"
+                    >
+                      {%- if filter_type != 'vertical' -%}
+                        <div class="facets__header">
+                          <div>
+                            <span class="facets__selected">
+                              {{- 'products.facets.filters_selected' | t: count: filter.active_values.size -}}
+                            </span>
+                            {%- if filter.operator == 'AND' -%}
+                              <span class="facets__and-helptext">
+                                {{ 'products.facets.filter_and_operator_subtitle' | t }}
+                              </span>
+                            {%- endif -%}
+                          </div>
+                          <facet-remove>
+                            <a href="{{ filter.url_to_remove }}" class="facets__reset link underlined-link">
+                              {{ 'products.facets.reset' | t }}
+                            </a>
+                          </facet-remove>
+                        </div>
+                      {%- endif -%}
+                      <fieldset class="facets-wrap parent-wrap {% if filter_type == 'vertical' %} facets-wrap-vertical{% endif %}">
+                        <legend class="visually-hidden">{{ filter.label | escape }}</legend>
+                        {%- liquid
+                          assign sorted_values = filter.values
+                          # Keep the selected values grouped together when operator is AND
+                          if filter.operator == 'AND'
+                            assign active_filter_values = filter.values | where: 'active', true
+                            assign inactive_filter_values = filter.values | where: 'active', false
+                            assign sorted_values = active_filter_values | concat: inactive_filter_values
+                          endif
+                        -%}
+                        <ul
+                          class="{{ visual_layout_class }}{% if filter_type == 'vertical' %} facets__list--vertical{% else %} facets__list{% endif %} list-unstyled"
+                          role="list"
+                        >
+                          {% comment %} {%- for value in sorted_values -%}
+                            {% liquid
+                              assign input_id = 'Filter-' | append: filter.param_name | escape | append: '-' | append: forloop.index
+                              assign is_disabled = false
+                              if value.count == 0 and value.active == false
+                                assign is_disabled = true
+                              endif
+                            %}
+                            {%- capture label_class -%}
+                            facets__label facet-checkbox{% if is_disabled %} disabled{% endif %}{% if value.active %} active{% endif %}
+                            {%- endcapture -%}
+
+                            {%- capture text_value -%}
+                              <span class="facet-checkbox__text" aria-hidden="true">
+                                <span class="facet-checkbox__text-label">{{- value.label | escape }}</span> 
+                                <span class="cstm_filter-count"> ({{- value.count -}}) </span>
+                              </span>
+                              <span class="visually-hidden">
+                                {{- value.label | escape }} (
+                                {%- if value.count == 1 -%}
+                                  {{- 'products.facets.product_count_simple.one' | t: count: value.count -}}
+                                {%- else -%}
+                                  {{- 'products.facets.product_count_simple.other' | t: count: value.count -}}
+                                {%- endif -%}
+                                )
+                              </span>
+                            {%- endcapture -%}
+
+                            <li class="list-menu__item facets__item{% if forloop.index > show_more_number and filter_type == 'vertical' %} show-more-item hidden{% endif %}">
+                              {%- if presentation == 'swatch' -%}
+                                <div class="{{ label_class }}">
+                                  <div class="swatch-input-wrapper">
+                                    {% render 'swatch-input',
+                                      id: input_id,
+                                      type: 'checkbox',
+                                      name: value.param_name,
+                                      value: value.value,
+                                      product_form_id: 'FacetFiltersForm',
+                                      swatch: value.swatch,
+                                      checked: value.active,
+                                      disabled: is_disabled
+                                    %}
+                                  </div>
+
+                                  {{ text_value }}
+                                </div>
+                              {%- else -%}
+                                <label for="{{ input_id }}" class="{{ label_class }}">
+                                  <input
+                                    type="checkbox"
+                                    name="{{ value.param_name }}"
+                                    value="{{ value.value }}"
+                                    id="{{ input_id }}"
+                                    {% if value.active %}
+                                      checked
+                                    {% endif %}
+                                    {% if is_disabled %}
+                                      disabled
+                                    {% endif %}
+                                  >
+
+                                  {%- if presentation == 'image' -%}
+                                    <div class="facets__image-wrapper">
+                                      {%- if value.image -%}
+                                        {{
+                                          value.image
+                                          | image_url: width: 300
+                                          | image_tag: class: 'facets__image', alt: value.alt
+                                        }}
+                                      {%- endif -%}
+                                    </div>
+                                  {%- else -%}
+                                    {{- 'square.svg' | inline_asset_content -}}
+
+                                    <div class="svg-wrapper">
+                                      {{- 'icon-checkmark.svg' | inline_asset_content -}}
+                                    </div>
+                                  {%- endif -%}
+
+                                  {{ text_value }}
+                                </label>
+                              {%- endif -%}
+                            </li>
+                          {%- endfor -%} {% endcomment %}
+                           {%- for value in sorted_values -%}
+  {% assign color_name = value.label | downcase | strip %}
+
+  {%- comment -%}
+  Only keep these values inside the Colors filter
+  {%- endcomment -%}
+  {% assign allowed_color = false %}
+
+  {% case color_name %}
+    {% when 'pink', 'blue', 'red', 'green', 'yellow', 'white', 'nude', 'purple', 'beige', 'black', 'brown', 'grey', 'gray', 'orange', 'coral', 'peach', 'lavender', 'mauve', 'gold' %}
+      {% assign allowed_color = true %}
+  {% endcase %}
+
+  {%- comment -%}
+  If this is the Colors filter, skip non-color values completely
+  {%- endcomment -%}
+  {% if filter.label == 'Colors' and allowed_color == false %}
+    {% continue %}
+  {% endif %}
+
+  {% liquid
+    assign input_id = 'Filter-' | append: filter.param_name | append: '-' | append: forloop.index
+    assign is_disabled = false
+    if value.count == 0 and value.active == false
+      assign is_disabled = true
+    endif
+  %}
+
+  <li class="list-menu__item facets__item{% if forloop.index > show_more_number and filter_type == 'vertical' %} show-more-item hidden{% endif %}">
+    <label for="{{ input_id }}" class="facets__label facet-checkbox{% if is_disabled %} disabled{% endif %}{% if value.active %} active{% endif %}">
+      <input
+        type="checkbox"
+        name="{{ value.param_name }}"
+        value="{{ value.value }}"
+        id="{{ input_id }}"
+        {% if value.active %}checked{% endif %}
+        {% if is_disabled %}disabled{% endif %}
+      >
+
+      {{- 'square.svg' | inline_asset_content -}}
+
+      <div class="svg-wrapper">
+        {{- 'icon-checkmark.svg' | inline_asset_content -}}
+      </div>
+
+      {% if filter.label == 'Colors' %}
+        <span class="custom-color-swatch custom-color-swatch--{{ color_name | handle }}"></span>
+      {% endif %}
+
+      <span class="facet-checkbox__text" aria-hidden="true">
+        <span class="facet-checkbox__text-label">{{ value.label }}</span>
+        <span class="cstm_filter-count">({{ value.count }})</span>
+      </span>
+    </label>
+  </li>
+{%- endfor -%}
+                        </ul>
+                      </fieldset>
+                      {% assign visible_color_count = 0 %}
+
+{% if filter.label == 'Colors' %}
+  {% for value in sorted_values %}
+    {% assign color_name = value.label | downcase | strip %}
+
+    {% case color_name %}
+      {% when 'pink', 'blue', 'red', 'green', 'yellow', 'white', 'nude', 'purple', 'beige', 'black', 'brown', 'grey', 'gray', 'orange', 'coral', 'peach', 'lavender', 'mauve', 'gold' %}
+        {% assign visible_color_count = visible_color_count | plus: 1 %}
+    {% endcase %}
+  {% endfor %}
+{% else %}
+  {% assign visible_color_count = filter.values.size %}
+{% endif %}
+
+{% comment %} {%- if visible_color_count > show_more_number and filter_type == 'vertical' -%} {% endcomment %}
+                      {%- if filter.values.size > show_more_number and filter_type == 'vertical' -%} 
+                        <show-more-button>
+                          <button
+                            class="button-show-more link underlined-link"
+                            id="Show-More-{{ forloop.index }}-{{ section.id }}"
+                            type="button"
+                          >
+                            <span class="label-show-more label-text"
+                              ><span aria-hidden="true">+ </span>{{ 'products.facets.show_more' | t -}}
+                            </span>
+                            <span class="label-show-less label-text hidden"
+                              ><span aria-hidden="true">- </span>{{ 'products.facets.show_less' | t -}}
+                            </span>
+                          </button>
+                        </show-more-button>
+                      {%- endif %}
+                    </div>
+                  </details>
+                {% when 'price_range' %}
+                  <details
+                    id="Details-{{ filter.param_name | escape }}-{{ section.id }}"
+                    class="{% if filter_type == 'horizontal' %}disclosure-has-popup facets__disclosure{% else %} facets__disclosure-vertical{% endif %} js-filter"
+                    data-index="{{ forloop.index }}"
+                    {% if filter_type == 'vertical' and forloop.index == 1 %}
+                      open
+                    {% endif %}
+                  >
+                    <summary class="facets__summary caption-large focus-offset mynew-copy">
+                      <div>
+                        <span>{{ filter.label | escape }}</span>
+                        {{- 'icon-caret.svg' | inline_asset_content -}}
+                      </div>
+                    </summary>
+                    <div
+                      id="Facet-{{ forloop.index }}-{{ section.id }}"
+                      class="{% if filter_type == 'horizontal' %}facets__display{% else %}facets__display-vertical{% endif %} new-cs-my"
+                    >
+                      <div class="{% if filter_type == 'horizontal' %}facets__header{% else %}facets__header-vertical{% endif %}">
+                        {%- assign max_price_amount = filter.range_max | money | strip_html | escape -%}
+                        <span class="facets__selected">
+                          {{- 'products.facets.max_price' | t: price: max_price_amount -}}
+                        </span>
+                        {%- if filter_type != 'vertical' -%}
+                          <facet-remove>
+                            <a href="{{ filter.url_to_remove }}" class="facets__reset link underlined-link">
+                              {{ 'products.facets.reset' | t }}
+                            </a>
+                          </facet-remove>
+                        {%- endif -%}
+                      </div>
+                      <price-range class="facets__price">
+                        {% render 'price-facet', filter: filter, id_prefix: 'Filter-', filter_type: filter_type %}
+                      </price-range>
+                    </div>
+                  </details>
+              {% endcase %}
+            {%- endfor -%}
+          </div>
+          {% comment %} Pills after filtes on filter type horizontal {% endcomment %}
+          {%- if filter_type == 'horizontal' -%}
+            <div class="active-facets active-facets-desktop">
+              {%- for filter in results.filters -%}
+                {%- for value in filter.active_values -%}
+                  <facet-remove>
+                    <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
+                      <span class="active-facets__button-inner button button--tertiary">
+                        {{ filter.label | escape }}: {{ value.label | escape }}
+                        <span class="svg-wrapper">
+                          {{- 'icon-close-small.svg' | inline_asset_content -}}
+                        </span>
+                        <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
+                      </span>
+                    </a>
+                  </facet-remove>
+                {%- endfor -%}
+                {% if filter.type == 'price_range' %}
+                  {% assign min = filter.min_value.value %}
+                  {% assign max = filter.max_value.value %}
+                  {%- if min != null or max != null -%}
+                    <facet-remove>
+                      <a href="{{ filter.url_to_remove }}" class="active-facets__button active-facets__button--light">
+                        <span class="active-facets__button-inner button button--tertiary">
+                          {{ min | default: 0 | money }} - {{ max | default: filter.range_max | money }}
+                          <span class="svg-wrapper">
+                            {{- 'icon-close-small.svg' | inline_asset_content -}}
+                          </span>
+                          <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
+                        </span>
+                      </a>
+                    </facet-remove>
+                  {%- endif -%}
+                {% endif %}
+              {%- endfor -%}
+              <facet-remove class="active-facets__button-wrapper">
+                <a href="{{ results_url }}" class="active-facets__button-remove underlined-link">
+                  <span>{{ 'products.facets.clear_all' | t }}</span>
+                </a>
+              </facet-remove>
+            </div>
+          {%- endif -%}
+        {% endif %}
+
+        {% if results.current_vendor or results.current_type %}
+          <input type="hidden" name="q" value="{{ results.current_vendor }}{{ results.current_type }}">
+        {% endif %}
+
+        {%- if filter_type == 'horizontal' -%}
+          {% comment %} Sorting and product count are the last elements when filter type is horizontal {% endcomment %}
+          {%- if enable_sorting -%}
+            <div class="facet-filters sorting caption my-own-filtr">
+              <div class="facet-filters__field">
+                <h2 class="facet-filters__label caption-large text-body">
+                  <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
+                </h2>
+                <div class="select">
+                  {%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
+                  <select
+                    name="sort_by"
+                    class="facet-filters__sort select__select caption-large"
+                    id="SortBy"
+                    aria-describedby="a11y-refresh-page-message"
+                  >
+                    {%- for option in results.sort_options -%}
+                      <option
+                        value="{{ option.value | escape }}"
+                        {% if option.value == sort_by %}
+                          selected="selected"
+                        {% endif %}
+                      >
+                        {{ option.name | escape }}
+                      </option>
+                    {%- endfor -%}
+                  </select>
+                  <span class="svg-wrapper">
+                    {{- 'icon-caret.svg' | inline_asset_content -}}
+                  </span>
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+          <div class="product-count light" role="status">
+            <h2 class="product-count__text text-body">
+              <span id="ProductCountDesktop">
+                {%- if results.results_count -%}
+                  {{ 'templates.search.results_with_count' | t: terms: results.terms, count: results.results_count }}
+                {%- elsif results.products_count == results.all_products_count -%}
+                  {{ 'products.facets.product_count_simple' | t: count: results.products_count }}
+                {%- else -%}
+                  {{
+                    'products.facets.product_count'
+                    | t: product_count: results.products_count, count: results.all_products_count
+                  }}
+                {%- endif -%}
+              </span>
+            </h2>
+            {%- render 'loading-spinner' -%}
+          </div>
+        {%- endif -%}
+      </form>
+    </facet-filters-form>
+  {%- endif -%}
+  {% comment %}  Drawer and mobile filter {% endcomment %}
+  <menu-drawer
+    class="mobile-facets__wrapper{% if filter_type == 'horizontal' or filter_type == 'vertical' %} medium-hide large-up-hide{% endif %}"
+    data-breakpoint="mobile"
+  >
+    <details class="mobile-facets__disclosure disclosure-has-popup">
+      <summary class="mobile-facets__open-wrapper focus-offset">
+        <span class="mobile-facets__open{% if filter_type == 'drawer' and enable_filtering == false %} medium-hide large-up-hide{% endif %}">
+          <span class="svg-wrapper">
+            {% if section.settings.cstm_style %}
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_8900_13210)">
+                <path d="M0.4375 3.65389H7.5609C7.75739 4.44779 8.47555 5.03822 9.3293 5.03822C10.1831 5.03822 10.9012 4.44779 11.0977 3.65389H13.5625C13.8041 3.65389 14 3.458 14 3.21639C14 2.97478 13.8041 2.77889 13.5625 2.77889H11.0977C10.9012 1.98499 10.1831 1.39453 9.32928 1.39453C8.4755 1.39453 7.75734 1.98499 7.56087 2.77889H0.4375C0.195891 2.77889 0 2.97478 0 3.21639C0 3.458 0.195891 3.65389 0.4375 3.65389ZM9.3293 2.26953C9.85141 2.26953 10.2762 2.69429 10.2762 3.21636C10.2762 3.73847 9.85141 4.16322 9.3293 4.16322C8.8072 4.16322 8.38245 3.73847 8.38245 3.21636C8.38245 2.69429 8.8072 2.26953 9.3293 2.26953ZM0.4375 7.43794H2.90232C3.09881 8.23184 3.81694 8.82227 4.67072 8.82227C5.5245 8.82227 6.24263 8.23184 6.43913 7.43794H13.5625C13.8041 7.43794 14 7.24205 14 7.00044C14 6.75883 13.8041 6.56294 13.5625 6.56294H6.4391C6.24261 5.76904 5.52448 5.17858 4.6707 5.17858C3.81691 5.17858 3.09879 5.76904 2.90229 6.56294H0.4375C0.195891 6.56294 0 6.75883 0 7.00044C0 7.24205 0.195863 7.43794 0.4375 7.43794ZM4.6707 6.05358C5.1928 6.05358 5.61755 6.47834 5.61755 7.00044C5.61755 7.52251 5.1928 7.94727 4.6707 7.94727C4.14859 7.94727 3.72384 7.52251 3.72384 7.00044C3.72384 6.47834 4.14859 6.05358 4.6707 6.05358ZM13.5625 10.347H11.0977C10.9012 9.55309 10.1831 8.96263 9.32928 8.96263C8.4755 8.96263 7.75737 9.55309 7.56087 10.347H0.4375C0.195891 10.347 0 10.5429 0 10.7845C0 11.0261 0.195891 11.222 0.4375 11.222H7.5609C7.75739 12.0159 8.47552 12.6063 9.3293 12.6063C10.1831 12.6063 10.9012 12.0159 11.0977 11.222H13.5625C13.8041 11.222 14 11.0261 14 10.7845C14 10.5429 13.8041 10.347 13.5625 10.347ZM9.3293 11.7313C8.8072 11.7313 8.38245 11.3066 8.38245 10.7845C8.38245 10.2624 8.8072 9.83763 9.3293 9.83763C9.85141 9.83763 10.2762 10.2624 10.2762 10.7845C10.2762 11.3066 9.85141 11.7313 9.3293 11.7313Z" fill="black"/>
+                </g>
+                <defs>
+                <clipPath id="clip0_8900_13210">
+                <rect width="14" height="14" fill="white"/>
+                </clipPath>
+                </defs>
+              </svg>
+            {% else %}
+              {{- 'icon-filter.svg' | inline_asset_content -}}
+            {% endif %}
+          </span>
+          <span class="mobile-facets__open-label button-label medium-hide large-up-hide">
+            {%- if enable_filtering and enable_sorting -%}
+              {{ 'products.facets.filter_and_sort' | t }}
+            {%- elsif enable_filtering -%}
+              {{ 'products.facets.filter_button' | t }}
+            {%- elsif enable_sorting -%}
+              {{ 'products.facets.sort_button' | t }}
+            {%- endif -%}
+          </span>
+          <span class="mobile-facets__open-label button-label small-hide">
+            {%- if enable_filtering -%}
+              {{ 'products.facets.filter_button' | t }}
+            {%- endif -%}
+          </span>
+        </span>
+        <span tabindex="0" class="mobile-facets__close">
+          <span class="svg-wrapper">
+            {{- 'icon-close.svg' | inline_asset_content -}}
+          </span>
+        </span>
+      </summary>
+      <facet-filters-form>
+        <form id="FacetFiltersFormMobile" class="mobile-facets">
+          <div class="mobile-facets__inner gradient">
+            <div class="mobile-facets__header">
+              <div class="mobile-facets__header-inner">
+                <h2 class="mobile-facets__heading medium-hide large-up-hide">
+                  {%- if enable_filtering and enable_sorting -%}
+                    {{ 'products.facets.filter_and_sort' | t }}
+                  {%- elsif enable_filtering -%}
+                    {{ 'products.facets.filter_button' | t }}
+                  {%- elsif enable_sorting -%}
+                    {{ 'products.facets.sort_button' | t }}
+                  {%- endif -%}
+                </h2>
+                <h2 class="mobile-facets__heading small-hide">
+                  {%- if enable_filtering -%}
+                    {{ 'products.facets.filter_button' | t }}
+                  {%- endif -%}
+                </h2>
+                <p class="mobile-facets__count">
+                  {%- if results.results_count -%}
+                    {{ 'templates.search.results_with_count' | t: terms: results.terms, count: results.results_count }}
+                  {%- elsif results.products_count == results.all_products_count -%}
+                    {{ 'products.facets.product_count_simple' | t: count: results.products_count }}
+                  {%- else -%}
+                    {{
+                      'products.facets.product_count'
+                      | t: product_count: results.products_count, count: results.all_products_count
+                    }}
+                  {%- endif -%}
+                </p>
+              </div>
+            </div>
+            <div
+              id="FacetsWrapperMobile"
+              class="mobile-facets__main has-submenu gradient"
+            >
+              {%- if enable_filtering -%}
+                {%- for filter in results.filters -%}
+                  {% liquid
+                    assign presentation = filter.presentation | default: default_presentation
+                    if presentation == 'image'
+                      assign visual_layout_class = 'facets-layout facets-layout-grid facets-layout-grid--' | append: presentation
+                    else
+                      assign visual_layout_class = 'facets-layout facets-layout-list facets-layout-list--' | append: presentation
+                    endif
+                  %}
+
+                  {% case filter.type %}
+                    {% when 'boolean', 'list' %}
+                      <details
+                        id="Details-Mobile-{{ filter.param_name | escape }}-{{ section.id }}"
+                        class="mobile-facets__details js-filter"
+                        data-index="mobile-{{ forloop.index }}"
+                      >
+                        <summary class="mobile-facets__summary focus-inset">
+                          <div>
+                            <span>{{ filter.label | escape }}</span>
+                            <span class="mobile-facets__arrow">
+                              {{- 'icon-arrow.svg' | inline_asset_content -}}
+                            </span>
+                          </div>
+                        </summary>
+                        <div
+                          id="FacetMobile-{{ forloop.index }}-{{ section.id }}"
+                          class="mobile-facets__submenu gradient"
+                        >
+                          <button
+                            class="mobile-facets__close-button link link--text focus-inset"
+                            aria-expanded="true"
+                            type="button"
+                          >
+                            {{- 'icon-arrow.svg' | inline_asset_content -}}
+                            <span>{{ filter.label | escape }}</span>
+                            {%- if filter.operator == 'AND' -%}
+                              <span class="facets__and-helptext">
+                                {{ 'products.facets.filter_and_operator_subtitle' | t }}
+                              </span>
+                            {%- endif -%}
+                          </button>
+                          <ul class="{{ visual_layout_class }} mobile-facets__list list-unstyled" role="list">
+                            {%- liquid
+                              assign sorted_values = filter.values
+                              # Keep the selected values grouped together when operator is AND
+                              if filter.operator == 'AND'
+                                assign active_filter_values = filter.values | where: 'active', true
+                                assign inactive_filter_values = filter.values | where: 'active', false
+                                assign sorted_values = active_filter_values | concat: inactive_filter_values
+                              endif
+                            -%}
+                            {% comment %} {%- for value in sorted_values -%}
+                              {% liquid
+                                assign input_id = 'Filter-' | append: filter.param_name | escape | append: '-mobile-' | append: forloop.index
+                                assign is_disabled = false
+                                if value.count == 0 and value.active == false
+                                  assign is_disabled = true
+                                endif
+                              %}
+
+                              {%- capture label_class -%}
+                              facets__label mobile-facets__label{% if is_disabled %} disabled{% endif %}{% if value.active %} active{% endif %}
+                              {%- endcapture -%}
+
+                              {%- capture text_value -%}
+                                <span class="facet-checkbox__text" aria-hidden="true">
+                                  <span class="facet-checkbox__text-label">{{- value.label | escape }}</span> ({{- value.count -}})
+                                </span>
+                                <span class="visually-hidden">
+                                  {{- value.label | escape }} (
+                                  {%- if value.count == '1' -%}
+                                    {{- 'products.facets.product_count_simple.one' | t: count: value.count -}}
+                                  {%- else -%}
+                                    {{- 'products.facets.product_count_simple.other' | t: count: value.count -}}
+                                  {%- endif -%}
+                                  )
+                                </span>
+                              {%- endcapture -%}
+
+                              <li class="mobile-facets__item list-menu__item">
+                                {% if presentation == 'swatch' %}
+                                  <div class="{{ label_class }}">
+                                    <div class="swatch-input-wrapper">
+                                      {% render 'swatch-input',
+                                        id: input_id,
+                                        type: 'checkbox',
+                                        name: value.param_name,
+                                        value: value.value,
+                                        product_form_id: 'FacetFiltersFormMobile',
+                                        swatch: value.swatch,
+                                        checked: value.active,
+                                        disabled: is_disabled
+                                      %}
+                                    </div>
+
+                                    {{ text_value }}
+                                  </div>
+                                {% else %}
+                                  <label for="{{ input_id }}" class="{{ label_class }}">
+                                    <input
+                                      class="mobile-facets__checkbox"
+                                      type="checkbox"
+                                      name="{{ value.param_name }}"
+                                      value="{{ value.value }}"
+                                      id="{{ input_id }}"
+                                      {% if value.active %}
+                                        checked
+                                      {% endif %}
+                                      {% if is_disabled %}
+                                        disabled
+                                      {% endif %}
+                                    >
+
+                                    {%- if presentation == 'image' -%}
+                                      <div class="facets__image-wrapper">
+                                        {%- if value.image -%}
+                                          {{
+                                            value.image
+                                            | image_url: width: 300
+                                            | image_tag: class: 'facets__image', alt: value.alt
+                                          }}
+                                        {%- endif -%}
+                                      </div>
+                                    {%- else -%}
+                                      <span class="mobile-facets__highlight"></span>
+                                      {{- 'square.svg' | inline_asset_content -}}
+                                      {{- 'icon-checkmark.svg' | inline_asset_content -}}
+                                    {%- endif %}
+
+                                    {{ text_value }}
+                                  </label>
+                                {% endif %}
+                              </li>
+                            {%- endfor -%} {% endcomment %}
+                             {%- for value in sorted_values -%}
+  {% assign color_name = value.label | downcase | strip %}
+
+  {%- comment -%}
+  Only keep these values inside the Colors filter
+  {%- endcomment -%}
+  {% assign allowed_color = false %}
+
+  {% case color_name %}
+    {% when 'pink', 'blue', 'red', 'green', 'yellow', 'white', 'nude', 'purple', 'beige', 'black', 'brown', 'grey', 'gray', 'orange', 'coral', 'peach', 'lavender', 'mauve', 'gold' %}
+      {% assign allowed_color = true %}
+  {% endcase %}
+
+  {%- comment -%}
+  If this is the Colors filter, skip non-color values completely
+  {%- endcomment -%}
+  {% if filter.label == 'Colors' and allowed_color == false %}
+    {% continue %}
+  {% endif %}
+
+  {% liquid
+    assign input_id = 'Filter-' | append: filter.param_name | append: '-' | append: forloop.index
+    assign is_disabled = false
+    if value.count == 0 and value.active == false
+      assign is_disabled = true
+    endif
+  %}
+
+  <li class="list-menu__item facets__item{% if forloop.index > show_more_number and filter_type == 'vertical' %} show-more-item hidden{% endif %}">
+    <label for="{{ input_id }}" class="facets__label facet-checkbox{% if is_disabled %} disabled{% endif %}{% if value.active %} active{% endif %}">
+      <input
+        type="checkbox"
+        name="{{ value.param_name }}"
+        value="{{ value.value }}"
+        id="{{ input_id }}"
+        {% if value.active %}checked{% endif %}
+        {% if is_disabled %}disabled{% endif %}
+      >
+
+      {{- 'square.svg' | inline_asset_content -}}
+
+      <div class="svg-wrapper">
+        {{- 'icon-checkmark.svg' | inline_asset_content -}}
+      </div>
+
+      {% if filter.label == 'Colors' %}
+        <span class="custom-color-swatch custom-color-swatch--{{ color_name | handle }}"></span>
+      {% endif %}
+
+      <span class="facet-checkbox__text" aria-hidden="true">
+        <span class="facet-checkbox__text-label">{{ value.label }}</span>
+        <span class="cstm_filter-count">({{ value.count }})</span>
+      </span>
+    </label>
+  </li>
+{%- endfor -%}
+                          </ul>
+
+                          <div class="mobile-facets__footer gradient">
+                            <facet-remove class="mobile-facets__clear-wrapper">
+                              <a href="{{ filter.url_to_remove }}" class="mobile-facets__clear underlined-link">
+                                {{- 'products.facets.clear' | t -}}
+                              </a>
+                            </facet-remove>
+                            <button
+                              type="button"
+                              class="button button--primary"
+                              onclick="this.closest('.mobile-facets__wrapper').querySelector('summary').click()"
+                            >
+                              {{ 'products.facets.apply' | t }}
+                            </button>
+                          </div>
+                        </div>
+                      </details>
+                    {% when 'price_range' %}
+                      <details
+                        id="Details-Mobile-{{ filter.param_name | escape }}-{{ section.id }}"
+                        class="mobile-facets__details js-filter"
+                        data-index="mobile-{{ forloop.index }}"
+                      >
+                        <summary class="mobile-facets__summary focus-inset">
+                          <div>
+                            <span>{{ filter.label | escape }}</span>
+                            <span class="mobile-facets__arrow">
+                              {{- 'icon-arrow.svg' | inline_asset_content -}}
+                            </span>
+                          </div>
+                        </summary>
+                        <div
+                          id="FacetMobile-{{ forloop.index }}-{{ section.id }}"
+                          class="mobile-facets__submenu gradient"
+                        >
+                          <button
+                            class="mobile-facets__close-button link link--text focus-inset"
+                            aria-expanded="true"
+                            type="button"
+                          >
+                            {{- 'icon-arrow.svg' | inline_asset_content -}}
+                            {{ filter.label | escape }}
+                          </button>
+
+                          {%- assign max_price_amount = filter.range_max | money | strip_html | escape -%}
+                          <p class="mobile-facets__info">
+                            {{ 'products.facets.max_price' | t: price: max_price_amount }}
+                          </p>
+
+                          <price-range class="facets__price">
+                            {% render 'price-facet', filter: filter, id_prefix: 'Mobile-Filter-' %}
+                          </price-range>
+                          <div class="mobile-facets__footer">
+                            <facet-remove class="mobile-facets__clear-wrapper">
+                              <a href="{{ filter.url_to_remove }}" class="mobile-facets__clear underlined-link">
+                                {{- 'products.facets.clear' | t -}}
+                              </a>
+                            </facet-remove>
+                            <button
+                              type="button"
+                              class="button button--primary"
+                              onclick="this.closest('.mobile-facets__wrapper').querySelector('summary').click()"
+                            >
+                              {{ 'products.facets.apply' | t }}
+                            </button>
+                          </div>
+                        </div>
+                      </details>
+                  {% endcase %}
+                {%- endfor -%}
+              {%- endif -%}
+
+              {%- if enable_sorting -%}
+                <div
+                  id="Details-Mobile-SortBy-{{ section.id }}"
+                  class="mobile-facets__details js-filter{% if filter_type == 'drawer' %} medium-hide large-up-hide{% endif %}"
+                  data-index="mobile-{{ forloop.index }}"
+                >
+                  <div class="mobile-facets__summary">
+                    <div class="mobile-facets__sort">
+                      <label for="SortBy-mobile">{{ 'products.facets.sort_by_label' | t }}</label>
+                      <div class="select">
+                        <select
+                          name="sort_by"
+                          class="select__select"
+                          id="SortBy-mobile"
+                          aria-describedby="a11y-refresh-page-message"
+                        >
+                          {%- for option in results.sort_options -%}
+                            <option
+                              value="{{ option.value | escape }}"
+                              {% if option.value == sort_by %}
+                                selected="selected"
+                              {% endif %}
+                            >
+                              {{ option.name | escape }}
+                            </option>
+                          {%- endfor -%}
+                        </select>
+                        <span class="svg-wrapper">
+                          {{- 'icon-caret.svg' | inline_asset_content -}}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {%- endif -%}
+
+              <div class="mobile-facets__footer">
+                <facet-remove class="mobile-facets__clear-wrapper">
+                  <a href="{{ results_url }}" class="mobile-facets__clear underlined-link">
+                    {{- 'products.facets.clear_all' | t -}}
+                  </a>
+                </facet-remove>
+                <button
+                  type="button"
+                  class="button button--primary"
+                  onclick="this.closest('.mobile-facets__wrapper').querySelector('summary').click()"
+                >
+                  {{ 'products.facets.apply' | t }}
+                </button>
+              </div>
+            </div>
+
+            {% if results.current_vendor or results.current_type %}
+              <input type="hidden" name="q" value="{{ results.current_vendor }}{{ results.current_type }}">
+            {% endif %}
+
+            {%- if results.terms -%}
+              <input type="hidden" name="q" value="{{ results.terms | escape }}">
+              <input name="options[prefix]" type="hidden" value="last">
+            {%- endif -%}
+          </div>
+        </form>
+      </facet-filters-form>
+    </details>
+  </menu-drawer>
+
+  <div class="active-facets active-facets-mobile medium-hide large-up-hide">
+    {%- for filter in results.filters -%}
+      {%- for value in filter.active_values -%}
+        <facet-remove>
+          <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
+            <span class="active-facets__button-inner button button--tertiary">
+              {{ filter.label | escape }}: {{ value.label | escape }}
+              <span class="svg-wrapper">
+                {{- 'icon-close-small.svg' | inline_asset_content -}}
+              </span>
+              <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
+            </span>
+          </a>
+        </facet-remove>
+      {%- endfor -%}
+
+      {%- if filter.type == 'price_range' -%}
+        {% assign min = filter.min_value.value %}
+        {% assign max = filter.max_value.value %}
+        {%- if min != null or max != null -%}
+          <facet-remove>
+            <a href="{{ filter.url_to_remove }}" class="active-facets__button active-facets__button--light">
+              <span class="active-facets__button-inner button button--tertiary">
+                {{ min | default: 0 | money }} - {{ max | default: filter.range_max | money }}
+                <span class="svg-wrapper">
+                  {{- 'icon-close-small.svg' | inline_asset_content -}}
+                </span>
+                <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
+              </span>
+            </a>
+          </facet-remove>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+    <facet-remove class="active-facets__button-wrapper">
+      <a href="{{ results_url }}" class="active-facets__button-remove underlined-link">
+        <span>{{ 'products.facets.clear_all' | t }}</span>
+      </a>
+    </facet-remove>
+  </div>
+  {% comment %} Sort, product count and filter pills at the end when filter is type of Drawer for the correct tabbing order {% endcomment %}
+  {%- if enable_sorting and filter_type == 'drawer' -%}
+    <facet-filters-form class="facets small-hide">
+      <form id="FacetSortDrawerForm" class="facets__form">
+        <div class="facet-filters sorting caption small-hide">
+          <div class="facet-filters__field">
+            <h2 class="facet-filters__label caption-large text-body">
+              <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
+            </h2>
+            <div class="select">
+              {%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
+              <select
+                name="sort_by"
+                class="facet-filters__sort select__select caption-large"
+                id="SortBy"
+                aria-describedby="a11y-refresh-page-message"
+              >
+                {%- for option in results.sort_options -%}
+                  <option
+                    value="{{ option.value | escape }}"
+                    {% if option.value == sort_by %}
+                      selected="selected"
+                    {% endif %}
+                  >
+                    {{ option.name | escape }}
+                  </option>
+                {%- endfor -%}
+              </select>
+              <span class="svg-wrapper">
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {% if results.current_vendor or results.current_type %}
+          <input type="hidden" name="q" value="{{ results.current_vendor }}{{ results.current_type }}">
+        {% endif %}
+
+        {%- if results.terms -%}
+          <input type="hidden" name="q" value="{{ results.terms | escape }}">
+          <input name="options[prefix]" type="hidden" value="last">
+        {%- endif -%}
+      </form>
+    </facet-filters-form>
+  {%- endif -%}
+  <div
+    class="product-count light{% if filter_type == 'vertical' or filter_type == 'horizontal' %} medium-hide large-up-hide{% endif %}"
+    role="status"
+  >
+    <h2 class="product-count__text text-body">
+      <span id="ProductCount">
+        {%- if results.results_count -%}
+          {{ 'templates.search.results_with_count' | t: terms: results.terms, count: results.results_count }}
+        {%- elsif results.products_count == results.all_products_count -%}
+          {{ 'products.facets.product_count_simple' | t: count: results.products_count }}
+        {%- else -%}
+          {{
+            'products.facets.product_count'
+            | t: product_count: results.products_count, count: results.all_products_count
+          }}
+        {%- endif -%}
+      </span>
+    </h2>
+    {%- render 'loading-spinner' -%}
+  </div>
+  {%- if filter_type == 'drawer' -%}
+    <facet-filters-form class="facets facets-pill small-hide">
+      <form id="FacetFiltersPillsForm" class="facets__form">
+        <div class="active-facets active-facets-desktop">
+          {%- for filter in results.filters -%}
+            {%- for value in filter.active_values -%}
+              <facet-remove>
+                <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
+                  <span class="active-facets__button-inner button button--tertiary">
+                    {{ filter.label | escape }}: {{ value.label | escape }}
+                    <span class="svg-wrapper">
+                      {{- 'icon-close-small.svg' | inline_asset_content -}}
+                    </span>
+                    <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
+                  </span>
+                </a>
+              </facet-remove>
+            {%- endfor -%}
+
+            {%- if filter.type == 'price_range' -%}
+              {% assign min = filter.min_value.value %}
+              {% assign max = filter.max_value.value %}
+              {%- if min != null or max != null -%}
+                <facet-remove>
+                  <a href="{{ filter.url_to_remove }}" class="active-facets__button active-facets__button--light">
+                    <span class="active-facets__button-inner button button--tertiary">
+                      {{ min | default: 0 | money }} - {{ max | default: filter.range_max | money }}
+                      <span class="svg-wrapper">
+                        {{- 'icon-close-small.svg' | inline_asset_content -}}
+                      </span>
+                      <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
+                    </span>
+                  </a>
+                </facet-remove>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endfor -%}
+          <facet-remove class="active-facets__button-wrapper">
+            <a href="{{ results_url }}" class="active-facets__button-remove underlined-link">
+              <span>{{ 'products.facets.clear_all' | t }}</span>
+            </a>
+          </facet-remove>
+        </div>
+      </form>
+    </facet-filters-form>
+  {%- endif -%}
+</div>
+
+
+{% style %}
+
+span.facets__and-helptext {
+    display: none !important;
+}
+
+.facets__label.facet-checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.custom-color-swatch {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 10px 0 8px;
+  border: 1px solid #ddd;
+  flex-shrink: 0;
+}
+
+.custom-color-swatch--pink { background: #ff69b4; }
+.custom-color-swatch--blue { background: #3b82f6; }
+.custom-color-swatch--red { background: #ef4444; }
+.custom-color-swatch--green { background: #22c55e; }
+.custom-color-swatch--yellow { background: #facc15; }
+.custom-color-swatch--white { background: #fff; border: 1px solid #bbb; }
+.custom-color-swatch--nude { background: #d6b08c; }
+.custom-color-swatch--purple { background: #9d4edd; }
+.custom-color-swatch--beige { background: #d8c3a5; }
+.custom-color-swatch--black { background: #000; }
+.custom-color-swatch--brown { background: #7a5230; }
+.custom-color-swatch--grey,
+.custom-color-swatch--gray { background: #9ca3af; }
+.custom-color-swatch--orange { background: #fb923c; }
+.custom-color-swatch--coral { background: #ff7f50; }
+.custom-color-swatch--peach { background: #ffcba4; }
+.custom-color-swatch--lavender { background: #c4a1ff; }
+.custom-color-swatch--mauve { background: #b784a7; }
+.custom-color-swatch--gold { background: #d4af37; }
+
+@media screen and (max-width: 768px){
+  ul.facets-layout.mobile-facets__list {
+    max-width: 100%;
+    width: 100%;
+    padding: 0 20px;
+}
+
+span.cstm_filter-count {
+    right: 0;
+}
+
+}
+
+{% endstyle %}

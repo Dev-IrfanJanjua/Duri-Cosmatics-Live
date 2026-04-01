@@ -1,0 +1,255 @@
+<section class="about-mission-section section-{{ section.id }}" id="about-mission-sec"> 
+  <div class="page-width">
+    <div class="about-mission-grid">
+      
+      <!-- Left Column -->
+      <div class="about-mission-left">
+          <div class= "head-nd-txct">
+          <h3 class="rjvt-heading">{{ section.settings.headingrjv }}</h3>
+          <p class="rjvt-SUBheading">{{ section.settings.subheadingrjv }}</p>
+          </div>
+          <div class="about-mission-left_blocks">
+            {% for block in section.blocks %}
+              <div class="about-mission-item {% if forloop.last %} about-mission-item_last {% endif %}">
+                {% if block.settings.icon != blank %}
+                  <img class="about-mission-icon" src="{{ block.settings.icon | image_url }}" alt="icon" width="auto" height="auto" loading="lazy">
+                {% endif %}
+                <div class="about-mission-text">
+                  <h3>{{ block.settings.title }}</h3>
+                  <p>{{ block.settings.text }}</p>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+      </div>
+  
+      <!-- Right Column -->
+      <div class="about-mission-right">
+        {% if section.settings.image != blank %}
+          <img src="{{ section.settings.image | image_url}}" width="800" alt="mission image" loading="lazy">
+        {% endif %}
+      </div>
+  
+    </div>
+  </div>
+</section>
+
+<style>
+.about-mission-section {
+  padding: 0px 0px;
+  background: #fff;
+}
+.about-mission-grid {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 0px;
+  align-items: center;
+  line-height: 0;
+  justify-content: start;
+}
+.about-mission-left {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.about-mission-left_blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.about-mission-item {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.about-mission-icon {
+    max-width: 122px;
+    width: 100%;
+    object-fit: contain;
+    flex-shrink: 0;
+    height: 122px;
+    display: block;
+}
+.about-mission-text {
+    padding: 12px 0;
+    border-bottom: 0.89px solid #E3E3E3;
+}
+.about-mission-text h3 {
+    margin: 0;
+    color: #000;
+    font-family: "PP Mori";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 30px; /* 150% */
+    letter-spacing: 0;
+    padding-bottom: 8px;
+}
+.about-mission-text p {
+    margin: 0;
+    color: #1D130A;
+    font-family: "PP Mori";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19.6px;
+    letter-spacing: 0;
+}
+.about-mission-right h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.about-mission-desc {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+.about-mission-right img {
+  width: 100%;
+  object-fit: cover;
+}
+.about-mission-right {
+    width: 100%;
+    max-width: 50%;
+}
+.about-mission-left {
+    width: 100%;
+    padding: 40px 12px 40px 80px;
+    max-width: 50%;
+}
+h3.rjvt-heading {
+    margin: 0;
+    color: #000;
+    font-family: "PP Mori";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 46.8px;
+    padding-bottom: 8px;
+}
+p.rjvt-SUBheading {
+    margin: 0;
+    color: #000;
+    font-family: "PP Mori";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0;
+}
+@media (max-width: 768px) {
+
+  .section-{{ section.id }} .page-width{
+    padding: 0;
+  }
+
+  .about-mission-grid {
+    flex-direction: column-reverse;
+  }
+  .about-mission-right {
+    text-align: center;
+    max-width: 100%;
+  }
+  .about-mission-left {
+    max-width: 100%;
+    padding: 18px 16px 40px 16px;
+    gap: 10px;
+}
+  .about-mission-text h3 {
+    font-size: 16px;
+    line-height: 30px;
+    padding-bottom: 8px;
+}
+  h3.rjvt-heading {
+    font-size: 24px;
+    line-height: 31.2px;
+    text-align: center;
+}
+p.rjvt-SUBheading {
+    text-align: center;
+}
+.about-mission-left_blocks {
+    gap: 20px;
+}
+.about-mission-item {
+    gap: 16px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #7BA69D66;
+}
+img.about-mission-icon {
+    max-width: 109px;
+    height: 136px;
+    object-fit: cover;
+    object-position: center;
+}
+.about-mission-text {
+    padding: 0;
+    border-bottom: 0;
+}
+.about-mission-item.about-mission-item_last {
+    padding: 0;
+    border: none;
+}
+
+}
+</style>
+
+{% schema %}
+{
+  "name": "Duri Product benifit rejv",
+  "settings": [
+    
+    {
+      "type": "text",
+      "id": "headingrjv",
+      "label": "Main Heading",
+    },
+    {
+      "type": "text",
+      "id": "subheadingrjv",
+      "label": "First Subtext",
+    },
+    
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Right Side Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Mission Feature",
+      "settings": [
+        { 
+            "type": "image_picker", 
+            "id": "icon", 
+            "label": "Icon" 
+        },
+        { 
+            "type": "text", 
+            "id": "title", 
+            "label": "Title", 
+            "default": "Nail Wellness & Longevity" 
+        },
+        { 
+            "type": "textarea", 
+            "id": "text", 
+            "label": "Text", 
+            "default": "Blending science with beauty, we create nail care that strengthens, nourishes, and preserves natural nail health for the long term." 
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Duri Product benifit rejv",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}

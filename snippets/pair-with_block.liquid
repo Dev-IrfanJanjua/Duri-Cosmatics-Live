@@ -1,0 +1,302 @@
+{% style %}
+
+.pair-with-img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--mid-pink-50, #D99CA580);
+    background-color: #fff;
+}
+
+.pair-with-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.pair-with-content {
+    display: flex;
+    gap: 12px;
+    height: auto;
+    align-items: stretch;
+    /* flex-wrap: wrap; */
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+
+.pair-with-card {
+    min-width: calc(33.33% - 8px);
+    width: 100%;
+    border: 1px solid var(--mid-pink-50, #D99CA580);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+    cursor: pointer;
+}
+
+input.pair-with-input {
+    margin: 0;
+    padding: 0;
+    appearance: none;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    /* z-index: -1; */
+}
+
+.pair-with_check-icon {
+    min-height: 20px;
+    width: 20px;
+    min-width: 20px;
+    border: 1px solid #7C0732;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    /* position: relative; */
+    transition: all 0.3s ease;
+}
+
+.pair-with_check-icon svg {
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+
+.pair-with-card:has(input[type="checkbox"]:checked) .pair-with_check-icon svg {
+    display: block;
+}
+
+.pair-width-content_content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    height: 100%;
+    justify-content: space-between;
+}
+
+h4.pair-with-content_title {
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: center;
+    color: #000;
+    margin: 0;
+}
+
+p.pair-with-content_desc {
+    font-family: PP Mori;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18.8px;
+    letter-spacing: 0px;
+    text-align: center;
+    vertical-align: middle;
+    color: #000;
+    margin: 0;
+}
+
+span.pair-with-content_price {
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    color: #000 !important;
+    margin-right: 4px;
+}
+
+span.pair-with-content_comp-price {
+    font-family: PP Mori;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 28px;
+    letter-spacing: 0px;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: line-through;
+    color: #7E7E7E;
+}
+
+h3.pair-width-title {
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20.8px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    text-transform: capitalize;
+    color: #000;
+    margin: 0 0 12px;
+}
+
+.pair-with-block {
+    margin: 0;
+    padding: 20px 0 24px;
+}
+
+@media screen and (max-width: 768px){
+    .pair-with-card {
+        min-width: calc(50% - 6px);
+    }
+    .pair-with-block {
+        padding: 32px 0;
+    }
+}
+
+{% endstyle %}
+
+
+<div class="pair-with-block">
+    {% if block.settings.pair_title != blank %}
+        <h3 class="pair-width-title">{{ block.settings.pair_title }}</h3>
+    {% endif %}
+    <div class="pair-with-content">
+        {% for pair_product in product.metafields.custom.pair_with.value %}
+            <div class="pair-with-card">
+                <input type="checkbox" class="pair-with-input" name="pair_product" value="{{ pair_product.selected_or_first_available_variant.id }}"
+                    data-variant-id="{{ pair_product.selected_or_first_available_variant.id }}"
+                    data-price="{{ pair_product.price }}"
+                    data-compare-price="{{ pair_product.compare_at_price }}"
+                    checked>
+                <div class="pair-with-img">
+                    {{ pair_product.featured_image | image_url: width: 1600 | image_tag:
+                        widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                        alt: "image",
+                        loading: "lazy"
+                    }}
+                </div>
+                <div class="pair-with_check-icon">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="20" height="20" fill="#7C0732"/>
+                        <path d="M16.5119 4.93113L9.81008 16.0179C9.56385 16.4246 9.15059 16.6673 8.70355 16.6673C8.3081 16.6673 7.93352 16.4769 7.67685 16.1446L3.55468 10.8251C3.22554 10.4001 3.26914 9.77592 3.65477 9.40392C4.02935 9.04138 4.65875 9.03444 5.04193 9.38942L8.54451 12.6327L14.8128 3.75902C15.1248 3.31767 15.7714 3.19851 16.2135 3.50367C16.6728 3.82081 16.8042 4.44816 16.5119 4.93113Z" fill="white"/>
+                    </svg>
+                </div>
+                <div class="pair-width-content_content">
+                    <h4 class="pair-with-content_title">{{ pair_product.title | truncatewords: 5 }}</h4>
+                    <p class="pair-with-content_desc">{{ pair_product.metafields.custom.product_description | truncatewords: 20 }}</p>
+                    <div class="pair-with-content_prices">
+                        <span class="pair-with-content_price">{{ pair_product.price | money }}</span>
+                        <span class="pair-with-content_comp-price">{{ pair_product.compare_at_price | money }}</span>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  const form = document.querySelector('form[action="/cart/add"]');
+  const checkboxes = document.querySelectorAll(".pair-with-input");
+
+  const priceElement = document.getElementById("one-time-price-btn");
+  const compareElement = document.getElementById("bundle-compare-price");
+
+  if(!priceElement || !form) return;
+
+  const basePrice = parseInt(priceElement.dataset.mainPrice) || 0;
+  {% comment %} const baseCompare = parseInt(priceElement.dataset.mainCompare) || 0; {% endcomment %}
+   let baseCompare = parseInt(priceElement.dataset.mainCompare) || 0;
+
+    if(!baseCompare){
+    baseCompare = basePrice;
+    }
+
+  function formatMoney(cents){
+    return (cents/100).toLocaleString('en-US',{
+      style:'currency',
+      currency: Shopify.currency.active
+    });
+  }
+
+  function updateBundle(){
+
+    let totalPrice = basePrice;
+    let totalCompare = baseCompare;
+
+    /* remove old hidden inputs */
+    form.querySelectorAll(".pair-hidden-input").forEach(el => el.remove());
+
+    let index = 0;
+
+    checkboxes.forEach(cb => {
+
+      if(cb.checked){
+
+        {% comment %} const price = parseInt(cb.dataset.price) || 0;
+        const compare = parseInt(cb.dataset.comparePrice) || 0; {% endcomment %}
+        const price = parseInt(cb.dataset.price) || 0;
+        let compare = parseInt(cb.dataset.comparePrice) || 0;
+
+        /* if no compare price → use price */
+        if(!compare){
+        compare = price;
+        }
+        const variantId = cb.dataset.variantId;
+
+        totalPrice += price;
+        totalCompare += compare;
+
+        /* hidden input for ATC */
+        const idInput = document.createElement("input");
+        idInput.type = "hidden";
+        idInput.name = `items[${index}][id]`;
+        idInput.value = variantId;
+        idInput.classList.add("pair-hidden-input");
+
+        const qtyInput = document.createElement("input");
+        qtyInput.type = "hidden";
+        qtyInput.name = `items[${index}][quantity]`;
+        qtyInput.value = 1;
+        qtyInput.classList.add("pair-hidden-input");
+
+        form.appendChild(idInput);
+        form.appendChild(qtyInput);
+
+        index++;
+
+      }
+
+    });
+
+    /* update selling price */
+    priceElement.childNodes[0].nodeValue = formatMoney(totalPrice) + " ";
+
+    /* update compare price */
+    {% comment %} if(compareElement){
+
+      if(totalCompare > totalPrice){
+        compareElement.innerText = formatMoney(totalCompare);
+        compareElement.style.display = "inline";
+      }else{
+        compareElement.style.display = "none";
+      }
+
+    } {% endcomment %}
+    if(compareElement){
+        compareElement.innerText = formatMoney(totalCompare);
+        compareElement.style.display = "inline";
+    }
+
+  }
+
+  checkboxes.forEach(cb=>{
+    cb.addEventListener("change", updateBundle);
+  });
+
+  updateBundle();
+
+});
+</script>

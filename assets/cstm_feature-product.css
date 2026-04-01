@@ -1,0 +1,488 @@
+
+.cstm_feature-product .featured-product {
+    gap: 80px;
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.cstm_feature-product .grid__item.product__media-wrapper {
+    max-width: calc(50% - 40px);
+    width: 100%;
+}
+
+.cstm_feature-product  .product__info-wrapper {
+    max-width: calc(50% -  40px);
+    width: 100%;
+    padding: 0 !important;
+}
+
+.cstm_feature-product  h2.product__title {
+    margin: 16px 0 0px;
+    font-family: PP Mori;
+    font-weight: 600;
+    font-style: ;
+    font-size: 32px;
+    line-height: 35.2px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    color: #000;
+}
+
+.cstm_feature-product .ad-to-cart-neww,
+.cstm_feature-product product-form.product-form {
+    margin: 0;
+}
+
+.cstm_feature-product .product-form__submit {
+    max-width: 100%;
+    width: 100%;
+    background: #7C0732;
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+}
+
+.cstm_feature-product .product-form__submit:after{
+    display: none;
+}
+
+.cpf-block.cpf-block--button .product-form__submit {
+    max-width: 100%;
+    width: 100%;
+    background: #7C0732;
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+}
+
+..cpf-block.cpf-block--button .product-form__submit:after{
+    display: none;
+}
+
+.cstm_feature-product .product-form__buttons {
+    max-width: 100%;
+}
+
+.cstm_feature-product a.link.product__view-details {
+    display: none;
+}
+
+.cpf-block.cpf-block--button .product-form__buttons {
+    max-width: 100%;
+}
+
+.cpf-block.cpf-block--button a.link.product__view-details {
+    display: none;
+}
+
+
+
+
+.cstm-reviews-block_img {
+    max-width: 100px;
+    width: 100%;
+    height: auto;
+}
+
+.cstm-reviews-block_img img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+a.cstm-reviews-block_link {
+    display: flex;
+    gap: 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+span.cstm-reviews-block_text {
+    font-family: PP Mori;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    color: #000;
+}
+
+ .new-des {
+  margin: 0;
+  color: #000;
+  font-family: "PP Mori";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0px;
+  padding: 20px 0px;
+}
+
+.info-icons-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 20px 0 0;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.info-icon-item {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.info-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+}
+.info-icon-wrapper img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.info-icon-text {
+  font-family: inherit;
+  font-size: 18px;
+  line-height: 1.2;
+  color: #1e1e1e;
+  margin: 0;
+  max-width: 200px;
+}
+
+
+.custom-announcement-block {
+  width: 100%;
+  padding: 15px 20px;
+  text-align: center;
+  margin: 20px 0 0 !important;
+  border: 1px dashed var(--Burgundy, #7C0732);
+}
+
+.announcement-title {
+    margin: 0;
+    font-family: PP Mori;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 16px;
+    leading-trim: NONE;
+    line-height: 20.8px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: #000;
+}
+
+.announcement-subtext {
+    margin: 4px 0 0;
+    font-family: PP Mori;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0px;
+    color: #000;
+}
+
+
+ /* Tubs Selector Container */
+.tubs-selector {
+  margin: 0;
+}
+
+.cstm_feature-product .tubs-text {
+    max-width: 95px;
+}
+
+h3.tubs-selector_title {
+  font-family: "PP Mori", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20.8px;
+  color: #000;
+  margin: 0;
+}
+
+.tubs-options {
+  display: flex;
+  gap: 10px;
+  margin: 28px 0 24px;
+}
+
+.tubs-options label {
+  width: 100%;
+  position: relative;
+}
+
+/* Individual Tub Box */
+.tub-box {
+  border: 1px solid #D99CA580;
+  padding: 14px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  position: relative;
+}
+
+/* Hidden Radio Input */
+.tub-box input.qty-input {
+  opacity: 0;
+  appearance: none;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* Checked State */
+.tub-box:has(input[type="radio"]:checked) {
+  border: 1.5px solid #D99CA5;
+  background: #FFF;
+  box-shadow: 0 4px 0 0 #D99CA5;
+}
+
+/* Badge (Most Popular / Best Value) */
+.tub-box .badge {
+  position: absolute;
+  top: -20px; /* Adjusted to sit on border */
+  left: 50%;
+  transform: translateX(-50%);
+  color: #FFF;
+  text-align: center;
+  font-family: "PP Mori", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.4px;
+  background: #D99CA5;
+  width: 100%;
+  max-width: 122px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  border-radius: 0;
+}
+
+/* Darker badge when parent is selected */
+.tub-box:has(input.qty-input:checked) .badge {
+  background: #7C0732;
+}
+
+/* Typography & Price Inside Boxes */
+.tubs-text {
+  color: #000;
+  font-family: "PP Mori", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  padding-bottom: 8px;
+}
+
+.tubs-price-wrapper, 
+.tubs-price-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.tubs-price-flex {
+  flex-direction: row-reverse;
+}
+
+.tubs-price1 {
+  color: #000;
+  font-family: "PP Mori", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.tubs-price {
+  color: #00000099;
+  font-family: "PP Mori", sans-serif;
+  font-size: 14px;
+  text-decoration: line-through;
+  font-weight: 400;
+}
+
+
+.cstm_atc-btn:after{
+    display: none
+}
+
+
+@media screen and (max-width: 768px){
+
+.new-des {
+    margin: 0;
+    padding: 12px 0px 16px;
+}
+
+.info-icons-container {
+    gap: 14px;
+    padding: 0;
+    margin-top: 16px;
+  }
+
+  .tubs-price {
+    font-size: 12px;
+    line-height: 16.4px;
+}
+
+  .tub-box {
+    padding: 12px 10px;
+  }
+
+  .tubs-text {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .tubs-price1, 
+  .tubs-price {
+    font-size: 12px;
+  }
+
+  .tub-box .badge {
+    font-size: 10px;
+    max-width: 80px;
+    height: 17px;
+    top: -8px;
+  }
+
+.cstm_feature-product .featured-product {
+    flex-direction: column;
+    gap: 32px;
+}
+
+.cstm_feature-product .grid__item.product__media-wrapper {
+    max-width: 100%;
+    width: 100%;
+}
+
+.cstm_feature-product .product__info-wrapper {
+    max-width: 100%;
+}
+
+.cstm_feature-product h2.product__title {
+    margin: 10px 0 0;
+    font-size: 24px;
+    line-height: 31.2px;
+}
+
+.bundle-section__inner {
+    gap: 20px;
+}
+
+.bundle-tiers__heading {
+    margin: 0 0 24px;
+}
+
+.bundle-tier {
+    gap: 6px;
+    padding: 11px 14px;
+}
+
+.bundle-tier__label {
+    font-size: 12px;
+    line-height: 15.6px;
+}
+
+.bundle-products__grid {
+    flex-direction: column;
+}
+
+.bundle-product {
+    gap: 10px;
+    padding: 10px;
+}
+
+.bundle-colors__filter {
+    padding: 10px 16px;
+}
+
+.bundle-colors__filter-label {
+    font-size: 12px;
+    line-height: 16.4px;
+}
+
+.bundle-colors__filter-sub {
+    font-size: 12px;
+}
+
+.bundle-colors__grid {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.info-icon-wrapper {
+    width: 42px;
+    height: 42px;
+    margin-bottom: 5px;
+}
+
+.info-icon-text {
+    font-size: 12px;
+}
+
+.announcement-title {
+    font-size: 14px;
+}
+
+.announcement-subtext {
+    font-size: 12px;
+}
+
+.addon-product__inner {
+    padding: 8px;
+}
+
+.addon-product__inner_wrapper {
+    gap: 14px;
+}
+
+.addon-product__image {
+    width: 83px;
+    height: 83px;
+    flex-shrink: 0;
+}
+
+.addon-product__title {
+    font-size: 13px;
+}
+
+.addon-product__desc {
+    font-size: 12px;
+}
+
+.addon-product__price span.price {
+    font-size: 12px;
+}
+
+.bundle-tier__badge {
+    top: -19px;
+}
+
+
+}

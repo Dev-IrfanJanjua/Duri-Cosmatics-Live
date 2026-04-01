@@ -1,0 +1,269 @@
+<style>
+    .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.back-color}};
+}
+.duri-ready-main {
+    display: flex;
+}
+.duri-readyleft {
+    max-width: 50%;
+    text-align: center;
+    align-items: center;
+    background: #7C0732;
+    display: flex;
+    width: 100%;
+    padding: 0 80px;
+}
+.duri-left-1st {
+    width: 100%;
+    {% comment %} max-width: 480px; {% endcomment %}
+}
+.duri-readyright {
+    max-width: 50%;
+    width: 100%;
+}
+a.duri-ready-button {
+    display: flex;
+    height: 42px;
+    padding: 14px 50px;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+    background: white;
+    max-width: 190px;
+    text-decoration: none;
+}
+p.duri-ready-btn-text {
+    text-decoration: none;
+    margin: 0;
+    color: #7C0732;
+    text-align: center;
+    font-family: "PP Mori";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    text-transform: uppercase;
+}
+p.duri-first-text {
+    color: #FFF;
+    text-align: left;
+    font-family: "PP Mori";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 46.8px;
+    margin: 0 auto;
+    letter-spacing: 0;
+}
+
+p.duri-first-text2 {
+    margin: 0;
+    padding-top: 16px;
+    padding-bottom: 36px;
+    color: #FFF;
+    text-align: left;
+    font-family: "PP Mori";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0;
+}
+img.duri-ready-image {
+    height: 100%;
+}
+
+
+a.duri-ready-button {
+    display: flex;
+    height: 42px;
+    padding: 14px 50px;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    max-width: 190px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+a.duri-ready-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #7C0732; /* same as left section bg */
+    transition: all 0.3s ease;
+    z-index: 0;
+}
+
+a.duri-ready-button:hover::before {
+    left: 0;
+}
+
+a.duri-ready-button:hover {
+    transform: scale(1.05);
+}
+
+p.duri-ready-btn-text {
+    margin: 0;
+    color: #7C0732;
+    text-align: center;
+    font-family: "PP Mori";
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+
+a.duri-ready-button:hover p.duri-ready-btn-text {
+    color: #fff;
+}
+
+
+@media screen and (max-width: 768px) {
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mbl_padding_top }}px;
+    padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
+}
+
+.section-{{ section.id }}-padding .page-width {
+    padding: 0;
+}
+
+.duri-ready-main {
+    display: flex;
+    flex-direction: column;
+}
+.duri-readyright {
+    max-width: 100%;
+    width: 100%;
+    line-height: 0;
+} 
+.duri-readyleft {
+    max-width: 100%;
+    width: 100%;
+    padding: 60px 36px;
+}
+p.duri-first-text {
+    font-size: 24px;
+    line-height: 31.2px;
+}
+p.duri-first-text2 {
+    font-size: 14px;
+    line-height: 18.2px;
+}
+.my-new-page-width {
+    padding: 0;
+}
+}
+</style>
+<section class="section-{{ section.id }}-padding">
+    <div class="page-width">
+        <div class="duri-ready-main">
+            <div class="duri-readyright">
+                <img class="duri-ready-image" src="{{ section.settings.duri-ready-img | image_url }}" loading="lazy" width="100%" height="">
+            </div>
+            <div class="duri-readyleft">
+                <div class="duri-left-1st">
+                    <div class="duri-left-2nd">
+                        <p class="duri-first-text">{{ section.settings.duriFirsttext}}</p>
+                        <p class="duri-first-text2">{{ section.settings.duriFirsttext2}}</p>
+                        <a href="{{ section.settings.duri-button_link }}" class="duri-ready-button"> <p class="duri-ready-btn-text">{{ section.settings.duri-btnbutton_label }}</p></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% schema %}
+  {
+    "name": "Duri Product Ready",
+    "settings": [
+        {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 10
+        },
+        {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 10
+        },
+        {
+        "type": "range",
+        "id": "mbl_padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Mobile Top Padding",
+        "default": 10
+        },
+        {
+        "type": "range",
+        "id": "mbl_padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px", 
+        "label": "Mobile Bottom Padding",              
+        "default": 10
+        },
+        {
+        "type": "color", 
+        "id": "back-color",
+        "label": "Background Color"
+        },
+        {
+        "type" : "image_picker",
+        "id": "duri-ready-img",
+        "label": "ready IMAGE"
+        },
+        {
+        "type" : "text",
+        "id": "duriFirsttext",
+        "label": "Duri text"
+        },
+        {
+        "type" : "text",
+        "id": "duriFirsttext2",
+        "label": "Duri text"
+        },
+        {
+        "type" : "url",
+        "id": "duri-button_link",
+        "label": "duri button link"
+        },
+        {
+        "type" : "text",
+        "id": "duri-btnbutton_label",
+        "label": "Duri btn text"
+        }
+    ],
+    "presets": [
+      {
+        "name": "Duri Product Ready"
+      }
+    ]
+  }
+{% endschema %}

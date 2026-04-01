@@ -1,0 +1,301 @@
+<section class="prideblk-sec-{{ section.id }}-padding section-{{ section.id }}">
+  <div class="page-width">
+    <div class="prideblk-grid-1000">
+  
+      <!-- Left Content -->
+      <div class="prideblk-left-1000">
+          <div class="prideblk-in-1000">
+  
+              {% if section.settings.duriVeryFirsttextmy != blank %}
+              <p class="uniqueblk-main-title1stmy">{{ section.settings.duriVeryFirsttextmy }}</p>
+              {% endif %}
+  
+              {% if section.settings.heading != blank %}
+                  <h2 class="prideblk-heading-1000">{{ section.settings.heading }}</h2>
+              {% endif %}
+  
+              {% if section.settings.text != blank %}
+                  <p class="prideblk-desc-1000">{{ section.settings.text }}</p>
+              {% endif %}
+  
+              {% if section.blocks.size > 0 %}
+                  <div class="prideblk-icons-1000">
+                  {% for block in section.blocks %}
+                      <div class="prideblk-icon-box-1000">
+                      {% if block.settings.icon != blank %}
+                          <img class="prideblk-icon-img-1000" src="{{ block.settings.icon | image_url }}" width="50" alt="icon" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.label != blank %}
+                          <p class="prideblk-icon-text-1000">{{ block.settings.label }}</p>
+                      {% endif %}
+                      </div>
+                  {% endfor %}
+                  </div>
+              {% endif %}
+          </div>
+      </div>
+  
+      <!-- Right Image -->
+      <div class="prideblk-right-1000">
+        {% if section.settings.image != blank %}
+          <img class="prideblk-main-img-1000" src="{{ section.settings.image | image_url }}" width="800" alt="Feature Image" loading="lazy">
+        {% endif %}
+      </div>
+  
+    </div>
+  </div>
+</section>
+
+<style>
+.prideblk-sec-{{ section.id }}-padding {
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+  background-color: {{ section.settings.back-color }};
+}
+
+.section-{{ section.id }} .page-width{
+  padding: 0;
+}
+
+.uniqueblk-main-title1stmy {
+  margin: 0;
+  padding-bottom: 12px;
+  font-family: PP Mori;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 3px;
+  vertical-align: middle;
+  color: #000;
+  text-align: left;
+}
+.prideblk-grid-1000 {
+  display: flex;
+  align-items: center;
+  line-height: 0;
+  flex-direction: row-reverse;
+}
+
+.prideblk-left-1000 {
+    padding: 40px 80px;
+    max-width: 50%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.prideblk-heading-1000 {
+  margin: 0;
+  color: #000;
+  font-family: "PP Mori";
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 46.8px;
+  letter-spacing: 0;
+}
+
+.prideblk-desc-1000 {
+    margin: 0;
+    color: #000;
+    font-family: "PP Mori";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    padding: 12px 0 32px;
+    letter-spacing: 0;
+}
+
+.prideblk-icons-1000 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.prideblk-in-1000 {
+    max-width: 480px;
+    width: 100%;
+}
+
+.prideblk-icon-box-1000 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 33.3%;
+    width: 100%;
+}
+
+.prideblk-icon-img-1000 {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.prideblk-icon-text-1000 {
+  color: #000;
+  text-align: center;
+  font-family: "PP Mori";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  margin: 0;
+  padding-top: 12px;
+  letter-spacing: 0;
+}
+.prideblk-right-1000 {
+    width: 50%;
+}
+.prideblk-right-1000 img {
+  width: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+
+  .prideblk-sec-{{ section.id }}-padding{
+    padding-top: {{ section.settings.mbl_padding_top }}px;
+    padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
+  }
+
+  .prideblk-grid-1000 {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .uniqueblk-main-title1stmy {
+    padding-bottom: 8px;
+  }
+
+  .prideblk-in-1000 {
+    padding: 40px 16px 50px;
+}
+  .prideblk-right-1000 {
+    width: 100%;
+}
+  .prideblk-left-1000 {
+    padding: 0px;
+    background: #FFF;
+    text-align: start;
+    max-width: 100%;
+  }
+
+  .prideblk-heading-1000 {
+    font-size: 28px;
+    line-height: 36.4px;
+    padding: 0 0 12px 0;
+  }
+
+  .prideblk-desc-1000 {
+        font-size: 14px;
+        line-height: 21px;
+        padding: 0 0 32px 0;
+    }
+  .prideblk-icon-img-1000 {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+
+  .prideblk-icon-text-1000 {
+    margin: 0;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Duri our stry V R Proudly",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Top Padding",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Bottom Padding",
+      "default": 10
+    },
+    {
+      "type": "color",
+      "id": "back-color",
+      "label": "Background Color"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "RapidShield Polish Drying Drops"
+    }, 
+    {
+      "type": "text",
+      "id": "duriVeryFirsttextmy",
+      "label": "First Text",
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "Say goodbye to accidental smudges and hello to a long-lasting, professional finish..."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Right Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon",
+      "name": "Feature Icon",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Clean, 8-Free Formulas"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Duri our stry V R Proudly",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}

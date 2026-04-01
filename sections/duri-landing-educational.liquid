@@ -1,0 +1,641 @@
+<style>
+.educational-detail-section {
+  padding: 40px 0;
+  font-family: inherit;
+  text-align: center;
+  background: #FFF4F3;
+}
+
+.edu-title {
+    margin: 0 0 24px;
+    color: #000;
+    font-family: "PP Mori";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 46.8px;
+}
+
+.edu-subtitle {
+  font-size: 16px;
+  color: #555;
+  margin: 0 0 20px;
+  color: #000;
+  font-family: "PP Mori";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+}
+
+.edu-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+}
+
+.edu-tab {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  padding: 12px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex: 1 0 0;
+  max-width: 302px;
+  color: #000;
+  text-align: center;
+  font-family: "PP Mori";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20.8px;
+  {% comment %} border: 1px solid #CADBD8; {% endcomment %}
+}
+
+.edu-tab.active {
+        color: #000;
+    border: 1px solid #D99CA5;
+    background: #FFF;
+    box-shadow: 0 4px 0 0 #7C0732;
+}
+
+.edu-content {
+  display: none;
+  margin-top: 0px;
+}
+
+.edu-content.active {
+  display: block;
+}
+
+.how-to-images {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.how-to-card {
+      position: relative;
+    line-height: 0;
+    max-width: calc( 33.3% - 13.7px);
+    width: 100%;
+}
+.how-to-card img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.how-label {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: #fff;
+    padding: 5px 10px;
+    display: block !important;
+    border-radius: 0;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100% !important;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    font-family: 'PP Mori';
+    color: #7C0732;
+}
+
+.faq-wrapper {
+  text-align: left;
+  max-width: 910px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.faq-item {
+    padding: 15px 24px;
+    border: 1.2px solid #FDCED2;
+    background: #fff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    gap: 10px;
+}
+
+.faq-item_content {
+    max-width: 100%;
+    width: 100%;
+}
+
+.faq-question {
+    cursor: pointer;
+    font-family: 'PP Mori';
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    color: #65243F;
+    transition: all 0.3s ease;
+}
+
+.faq-item.active .faq-question {
+    padding-bottom: 10px;
+}
+
+.faq-answer {
+    {% comment %} display: none; {% endcomment %}
+      max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    font-family: 'PP Mori';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22.4px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    color: #65243F;
+}
+
+.faq-item .faq-item_icon{
+  width: 15px;
+  height: 8px;
+}
+
+.faq-item .faq-item_icon svg{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.faq-item.active .faq-item_icon {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+
+.ingredients-wrapper {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  max-width: 909px;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.ingredient-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 200px;
+    width: 100%;
+    text-align: left;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.ingredient-item {
+    padding: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    color: #000;
+    font-family: 'PP Mori';
+    font-weight: 600;
+    font-size: 13.75px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    vertical-align: middle;
+}
+
+.ingredient-item.active {
+    background: #FED0BB;
+    color: #000;
+}
+
+.ingredient-details {
+  flex: 1;
+  text-align: left;
+}
+
+.ingredient-detail {
+    display: none;
+    background: #fff;
+    border-radius: 10px;
+    padding: 8px 20px;
+}
+
+.ingredient-detail.active {
+    display: flex;
+    align-items: center;
+}
+.ingredient-detail img {
+    max-width: 200px;
+}
+
+.ingredient-detail p {
+    font-family: 'PP Mori';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22.4px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    color: #000;
+    margin: 0;
+}
+@media screen and (max-width: 768px) {
+  .edu-tabs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.educational-detail-section {
+    padding: 40px 0;
+}
+.how-to-card img {
+    max-width: 100%; 
+}
+.edu-title {
+  font-size: 24px;
+  line-height: 31px;
+  margin-bottom: 8px;
+}
+.edu-subtitle {
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+.how-to-images {
+    gap: 16px;
+}
+
+.how-to-card {
+    max-width: 100%;
+}
+
+.faq-question {
+    font-size: 14px;
+}
+
+.faq-answer {
+    font-size: 12px;
+    line-height: 120%;
+}
+
+.edu-tab {
+  font-size: 14px;
+  padding: 12px 8px;
+}
+.ingredients-wrapper {
+  flex-direction: column;
+}
+.ingredient-detail img {
+  max-width: 100%;
+  width: 100%;
+}
+.ingredient-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
+    width: 100% !important;
+    padding: 20px;
+    gap: 12px;
+}
+
+.ingredient-detail {
+    padding: 20px;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ingredient-detail p {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.ingredient-list {
+  width: unset;
+}
+}
+</style>
+
+<div class="educational-detail-section">
+  <div class="page-width">
+    <div class="educational-detail-container">
+      <h2 class="edu-title">{{ section.settings.title }}</h2>
+  
+      <!-- Tabs Navigation -->
+      <ul class="edu-tabs">
+        <li class="edu-tab active" data-tab="how-to">{{ section.settings.tab1_title }}</li>
+        <li class="edu-tab" data-tab="faqs">{{ section.settings.tab2_title }}</li>
+        <li class="edu-tab" data-tab="ingredients">{{ section.settings.tab3_title }}</li>
+        {% comment %} <li class="edu-tab" data-tab="growth">{{ section.settings.tab4_title }}</li> {% endcomment %}
+      </ul>
+  
+      <p class="edu-subtitle">{{ section.settings.subtitle }}</p>
+      <!-- Tab Content -->
+      <div class="edu-tab-content">
+  
+        <!-- TAB 1: How to Use -->
+        <div class="edu-content active" id="how-to">
+          <div class="how-to-images">
+            {% for block in section.blocks %}
+              {% if block.type == 'how_to_image' %}
+                <div class="how-to-card">
+                  <img src="{{ block.settings.image | img_url: '600x' }}" alt="">
+                  {% if block.settings.label != blank %}
+                    <span class="how-label">{{ block.settings.label }}</span>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <p class="how-to-text">{{ section.settings.how_to_text }}</p>
+        </div>
+  
+        <!-- TAB 2: FAQs -->
+        <div class="edu-content" id="faqs">
+          <div class="faq-wrapper">
+            {% for block in section.blocks %}
+              {% if block.type == 'faq' %}
+                <div class="faq-item">
+                  <div class="faq-item_content">
+                    <div class="faq-question">{{ block.settings.question }}</div>
+                    <div class="faq-answer">{{ block.settings.answer }}</div>
+                  </div>
+                  <div class="faq-item_icon">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1.625 9.42188L9.42368 1.62319L17.2224 9.42188" stroke="black" stroke-width="3.24945" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+  
+        <!-- TAB 3: Ingredients -->
+        <div class="edu-content" id="ingredients">
+          <div class="ingredients-wrapper">
+            <div class="ingredient-list">
+              {% for block in section.blocks %}
+                {% if block.type == 'ingredient' %}
+                  <div class="ingredient-item {% if forloop.first %}active{% endif %}" data-target="ingredient-{{ forloop.index }}">
+                    {{ block.settings.name }}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+            <div class="ingredient-details">
+              {% for block in section.blocks %}
+                {% if block.type == 'ingredient' %}
+                  <div class="ingredient-detail {% if forloop.first %}active{% endif %}" id="ingredient-{{ forloop.index }}">
+                    <img src="{{ block.settings.image | img_url: '400x' }}" alt="">
+                    <p>{{ block.settings.description }}</p>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+  
+        <!-- TAB 4: Nail Growth Guide -->
+        {% comment %} <div class="edu-content" id="growth">
+          <p>{{ section.settings.growth_text }}</p>
+        </div> {% endcomment %}
+  
+      </div>
+    </div>
+  </div>
+</div>
+
+{% comment %} <script>
+    document.addEventListener("DOMContentLoaded", function () {
+  // Tabs switching
+  const tabs = document.querySelectorAll(".edu-tab");
+  const contents = document.querySelectorAll(".edu-content");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", function () {
+      tabs.forEach(t => t.classList.remove("active"));
+      contents.forEach(c => c.classList.remove("active"));
+
+      tab.classList.add("active");
+      document.getElementById(tab.dataset.tab).classList.add("active");
+    });
+  });
+
+  // FAQ toggle
+  document.querySelectorAll(".faq-question").forEach(q => {
+    q.addEventListener("click", function () {
+      const answer = this.nextElementSibling;
+      answer.style.display = answer.style.display === "block" ? "none" : "block";
+    });
+  });
+
+  // Ingredients tab inside
+  const ingItems = document.querySelectorAll(".ingredient-item");
+  const ingDetails = document.querySelectorAll(".ingredient-detail");
+
+  ingItems.forEach(item => {
+    item.addEventListener("click", function () {
+      ingItems.forEach(i => i.classList.remove("active"));
+      ingDetails.forEach(d => d.classList.remove("active"));
+
+      item.classList.add("active");
+      document.getElementById(item.dataset.target).classList.add("active");
+    });
+  });
+});
+
+</script> {% endcomment %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  // ✅ Tabs switching (no change, just cleaner)
+  const tabs = document.querySelectorAll(".edu-tab");
+  const contents = document.querySelectorAll(".edu-content");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", function () {
+      tabs.forEach(t => t.classList.remove("active"));
+      contents.forEach(c => c.classList.remove("active"));
+
+      tab.classList.add("active");
+      document.getElementById(tab.dataset.tab).classList.add("active");
+    });
+  });
+
+  // ✅ FAQ ACCORDION WITH SMOOTH ANIMATION
+  const faqItems = document.querySelectorAll(".faq-item");
+
+  faqItems.forEach(item => {
+    const question = item.querySelector(".faq-question");
+    const answer = item.querySelector(".faq-answer");
+
+    // Initial state
+    answer.style.maxHeight = "0px";
+    answer.style.overflow = "hidden";
+    answer.style.transition = "max-height 0.35s ease";
+
+    question.addEventListener("click", function () {
+
+      const isOpen = item.classList.contains("active");
+
+      // ✅ Close all
+      faqItems.forEach(i => {
+        i.classList.remove("active");
+        const ans = i.querySelector(".faq-answer");
+        ans.style.maxHeight = "0px";
+      });
+
+      // ✅ Open current (if not already open)
+      if (!isOpen) {
+        item.classList.add("active");
+        answer.style.maxHeight = answer.scrollHeight + "px";
+      }
+
+    });
+  });
+
+  // ✅ Ingredients (clean + unchanged behavior)
+  const ingItems = document.querySelectorAll(".ingredient-item");
+  const ingDetails = document.querySelectorAll(".ingredient-detail");
+
+  ingItems.forEach(item => {
+    item.addEventListener("click", function () {
+      ingItems.forEach(i => i.classList.remove("active"));
+      ingDetails.forEach(d => d.classList.remove("active"));
+
+      item.classList.add("active");
+      document.getElementById(item.dataset.target).classList.add("active");
+    });
+  });
+
+});
+</script>
+
+
+{% schema %}
+{
+  "name": "DURI Landing Educational",
+  "settings": [
+    { 
+        "type": "text", 
+        "id": "title", 
+        "label": "Title", 
+        "default": "Educational Detail Section" 
+    },
+    { 
+        "type": "text", 
+        "id": "subtitle", 
+        "label": "Subtitle", 
+        "default": "Learn the essential tips and science..." 
+    },
+    { 
+        "type": "text", 
+        "id": "tab1_title", 
+        "label": "Tab 1 Title", 
+        "default": "How to Use Rejuvacote" 
+    },
+    { 
+        "type": "text", 
+        "id": "tab2_title", 
+        "label": "Tab 2 Title", 
+        "default": "FAQs" 
+    },
+    { 
+        "type": "text", 
+        "id": "tab3_title", 
+        "label": "Tab 3 Title", 
+        "default": "Ingredients" 
+    },
+    { 
+        "type": "text", 
+        "id": "tab4_title", 
+        "label": "Tab 4 Title", 
+        "default": "Nail Growth Guide" 
+    },
+    { 
+        "type": "textarea", 
+        "id": "how_to_text", 
+        "label": "How to Use Text" 
+    },
+    { 
+        "type": "textarea", 
+        "id": "growth_text", 
+        "label": "Nail Growth Guide Text" 
+    }
+  ],
+  "blocks": [
+    {
+      "type": "how_to_image",
+      "name": "How To Image",
+      "settings": [
+        { 
+            "type": "image_picker", 
+            "id": "image", 
+            "label": "Image" 
+        },
+        { 
+            "type": "text", 
+            "id": "label", 
+            "label": "Label" 
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+        { "type": "text", 
+            "id": "question", 
+            "label": "Question" 
+        },
+        { "type": "textarea", 
+            "id": "answer", 
+            "label": "Answer" 
+        }
+      ]
+    },
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        { 
+            "type": "text", 
+            "id": "name", 
+            "label": "Ingredient Name" 
+        },
+        { 
+            "type": "image_picker", 
+            "id": "image", 
+            "label": "Ingredient Image" 
+        },
+        { 
+            "type": "textarea", 
+            "id": "description", 
+            "label": "Description" 
+        }
+      ]
+    }
+  ],
+  "max_blocks": 50,
+  "presets": [
+    { 
+        "name": "DURI Landing Educational"
+    }
+  ]
+}
+{% endschema %}

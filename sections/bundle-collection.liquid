@@ -1,0 +1,1616 @@
+{{ 'cstm_feature-product.css' | asset_url | stylesheet_tag }}
+
+
+
+{% comment %}
+  ============================================================
+  custom-product-feature.liquid
+  ============================================================
+  Standalone two-column section. No dependency on
+  featured-product or any product metafields.
+
+  LEFT  — Image gallery (section image blocks OR multi-image
+          setting, thumbnails + main viewer via Swiper)
+
+  RIGHT — Content blocks rendered via block.type:
+            heading | text | richtext | button |
+            divider | bundle_products
+
+  The bundle_products block selects 2 products directly
+  from the customizer and passes them into the
+  collection-bundle snippet.
+  ============================================================
+{% endcomment %}
+
+{% comment %} ── Collect gallery images ── {% endcomment %}
+{%- liquid
+  assign gallery_images = ''
+  assign gallery_blocks = section.blocks | where: 'type', 'gallery_image'
+  assign has_gallery_blocks = false
+  if gallery_blocks.size > 0
+    assign has_gallery_blocks = true
+  endif
+-%}
+
+<section
+  class="cpf-section section-{{ section.id }}"
+  id="cpf-{{ section.id }}"
+  data-section-id="{{ section.id }}"
+  {{ section.shopify_attributes }}
+>
+    <div class="page-width">
+        <div class="cpf-inner">
+      
+          {%- comment -%}══════════════════════════════════════════
+            LEFT — IMAGE GALLERY
+          ══════════════════════════════════════════{%- endcomment -%}
+          <div class="cpf-gallery" id="cpf-gallery-{{ section.id }}">
+      
+            {%- comment -%} Collect all images into one list.
+              Priority: gallery_image blocks → fallback multi-image setting {%- endcomment -%}
+      
+            {%- liquid
+              assign all_images = ''
+              if has_gallery_blocks
+                comment
+                  Use gallery_image blocks
+                endcomment
+              elsif section.settings.gallery_images != blank
+                comment
+                  Use multi-image setting
+                endcomment
+              endif
+            -%}
+      
+            {%- comment -%} Determine total image count {%- endcomment -%}
+            {%- if has_gallery_blocks -%}
+              {%- assign img_count = gallery_blocks.size -%}
+            {%- elsif section.settings.gallery_images != blank -%}
+              {%- assign img_count = section.settings.gallery_images.size -%}
+            {%- else -%}
+              {%- assign img_count = 0 -%}
+            {%- endif -%}
+      
+            {% comment %} ── Main viewer ── {% endcomment %}
+            <div class="cpf-main-viewer">
+      
+              {% comment %} Badge from section setting {% endcomment %}
+              {%- if section.settings.badge_text != blank -%}
+                <span class="cpf-badge
+                  {%- if section.settings.badge_style == 'sale' %} cpf-badge--sale{%- endif -%}
+                  {%- if section.settings.badge_style == 'sold' %} cpf-badge--sold{%- endif -%}
+                ">{{ section.settings.badge_text }}</span>
+              {%- endif -%}
+      
+              <div class="swiper cpf-main-swiper">
+                <div class="swiper-wrapper">
+      
+                  {%- if has_gallery_blocks -%}
+                    {%- for block in gallery_blocks -%}
+                      {%- assign img = block.settings.image -%}
+                      <div class="swiper-slide cpf-main-slide" {{ block.shopify_attributes }}>
+                        <div class="cpf-main-img-wrap">
+                          {%- if img != blank -%}
+                            <img
+                              src="{{ img | image_url: width: 1200 }}"
+                              alt="{{ img.alt | default: section.settings.heading | escape }}"
+                              width="{{ img.width }}"
+                              height="{{ img.height }}"
+                              loading="{{ forloop.first | iif: 'eager', 'lazy' }}"
+                              class="cpf-main-img"
+                            >
+                          {%- else -%}
+                            {{ 'product-1' | placeholder_svg_tag: 'cpf-placeholder-svg' }}
+                          {%- endif -%}
+                        </div>
+                      </div>
+                    {%- endfor -%}
+      
+                  {%- elsif section.settings.gallery_images != blank -%}
+                    {%- for img in section.settings.gallery_images -%}
+                      <div class="swiper-slide cpf-main-slide">
+                        <div class="cpf-main-img-wrap">
+                          <img
+                            src="{{ img | image_url: width: 1200 }}"
+                            alt="{{ img.alt | default: section.settings.heading | escape }}"
+                            width="{{ img.width }}"
+                            height="{{ img.height }}"
+                            loading="{{ forloop.first | iif: 'eager', 'lazy' }}"
+                            class="cpf-main-img"
+                          >
+                        </div>
+                      </div>
+                    {%- endfor -%}
+      
+                  {%- else -%}
+                    <div class="swiper-slide cpf-main-slide">
+                      <div class="cpf-main-img-wrap cpf-main-img-wrap--placeholder">
+                        {{ 'product-1' | placeholder_svg_tag: 'cpf-placeholder-svg' }}
+                      </div>
+                    </div>
+                  {%- endif -%}
+      
+                </div>
+      
+                {%- if img_count > 1 -%}
+                  <button class="cpf-nav cpf-nav--prev" aria-label="Previous image">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="15 18 9 12 15 6"/>
+                    </svg>
+                  </button>
+                  <button class="cpf-nav cpf-nav--next" aria-label="Next image">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                  </button>
+                  <div class="cpf-counter">
+                    <span class="cpf-counter__current">1</span>
+                    <span class="cpf-counter__sep">/</span>
+                    <span class="cpf-counter__total">{{ img_count }}</span>
+                  </div>
+                {%- endif -%}
+      
+              </div>
+            </div>
+      
+            {% comment %} ── Thumbnail strip ── {% endcomment %}
+            {%- if img_count > 1 -%}
+              <div class="cpf-thumb-area">
+      
+                <button class="cpf-thumb-nav cpf-thumb-nav--prev" aria-label="Previous thumbnails">
+                  <svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.000267982 7.48315C0.000267982 7.6571 0.0667524 7.83122 0.199552 7.96402L7.00105 14.7655C7.26682 15.0313 7.69718 15.0313 7.96278 14.7655C8.22838 14.4997 8.22855 14.0694 7.96278 13.8038L1.64215 7.48315L7.96278 1.16252C8.22855 0.89675 8.22855 0.466385 7.96278 0.200787C7.69701 -0.0648126 7.26665 -0.0649824 7.00105 0.200787L0.199552 7.00229C0.0667524 7.13509 0.000267982 7.3092 0.000267982 7.48315Z" fill="black"/>
+                  </svg>
+                </button>
+      
+                <div class="swiper cpf-thumb-swiper">
+                  <div class="swiper-wrapper">
+      
+                    {%- if has_gallery_blocks -%}
+                      {%- for block in gallery_blocks -%}
+                        {%- assign img = block.settings.image -%}
+                        <div class="swiper-slide cpf-thumb-slide {% if forloop.first %}is-active{% endif %}" data-index="{{ forloop.index0 }}">
+                          {%- if img != blank -%}
+                            <img
+                              src="{{ img | image_url: width: 200 }}"
+                              alt="{{ img.alt | default: '' | escape }}"
+                              loading="lazy"
+                              width="200"
+                              height="200"
+                              class="cpf-thumb-img"
+                            >
+                          {%- else -%}
+                            {{ 'product-1' | placeholder_svg_tag: 'cpf-thumb-placeholder' }}
+                          {%- endif -%}
+                        </div>
+                      {%- endfor -%}
+      
+                    {%- elsif section.settings.gallery_images != blank -%}
+                      {%- for img in section.settings.gallery_images -%}
+                        <div class="swiper-slide cpf-thumb-slide {% if forloop.first %}is-active{% endif %}" data-index="{{ forloop.index0 }}">
+                          <img
+                            src="{{ img | image_url: width: 200 }}"
+                            alt="{{ img.alt | default: '' | escape }}"
+                            loading="lazy"
+                            width="200"
+                            height="200"
+                            class="cpf-thumb-img"
+                          >
+                        </div>
+                      {%- endfor -%}
+                    {%- endif -%}
+      
+                  </div>
+                </div>
+      
+                <button class="cpf-thumb-nav cpf-thumb-nav--next" aria-label="Next thumbnails">
+                  <svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.16184 7.48315C8.16184 7.6571 8.09536 7.83122 7.96256 7.96402L1.16106 14.7655C0.895289 15.0313 0.464925 15.0313 0.199326 14.7655C-0.0662721 14.4997 -0.0664421 14.0694 0.199326 13.8038L6.51996 7.48315L0.199326 1.16252C-0.0664421 0.89675 -0.0664421 0.466385 0.199326 0.200787C0.465095 -0.0648126 0.89546 -0.0649824 1.16106 0.200787L7.96256 7.00229C8.09536 7.13509 8.16184 7.3092 8.16184 7.48315Z" fill="black"/>
+                  </svg>
+                </button>
+      
+              </div>
+            {%- endif -%}
+      
+          </div>
+          {%- comment -%} end .cpf-gallery {%- endcomment -%}
+      
+      
+          {%- comment -%}══════════════════════════════════════════
+            RIGHT — CONTENT BLOCKS
+          ══════════════════════════════════════════{%- endcomment -%}
+          <div class="cpf-content">
+      
+              {%- assign product_form_id = 'product-form-' | append: section.id -%}
+              
+      
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+      
+                {%- comment -%}────────── gallery_image (left column only, skip here) ──────────{%- endcomment -%}
+                {%- when 'gallery_image' -%}
+                  {%- comment -%} Gallery images are rendered in the left column above. Skip. {%- endcomment -%}
+      
+                {%- comment -%}────────── heading ──────────{%- endcomment -%}
+                {%- when 'heading' -%}
+                  <div class="cpf-block cpf-block--heading" {{ block.shopify_attributes }}>
+                    {%- if block.settings.heading != blank -%}
+                      <{{ block.settings.heading_tag | default: 'h2' }}
+                        class="cpf-heading"
+                        style="
+                          font-size: {{ block.settings.heading_size | default: 28 }}px;
+                          color: {{ block.settings.heading_color | default: '#000000' }};
+                        "
+                      >
+                        {{ block.settings.heading | escape }}
+                      </{{ block.settings.heading_tag | default: 'h2' }}>
+                    {%- endif -%}
+                    {%- if block.settings.subheading != blank -%}
+                      <p class="cpf-subheading">{{ block.settings.subheading | escape }}</p>
+                    {%- endif -%}
+                  </div>
+      
+                {%- comment -%}────────── text ──────────{%- endcomment -%}
+                {%- when 'text' -%}
+                  <div class="cpf-block cpf-block--text" {{ block.shopify_attributes }}>
+                    {%- if block.settings.text != blank -%}
+                      <p class="cpf-text" style="color: {{ block.settings.text_color | default: '#1a1a1a' }};">
+                        {{ block.settings.text | escape }}
+                      </p>
+                    {%- endif -%}
+                  </div>
+      
+                {%- comment -%}────────── richtext ──────────{%- endcomment -%}
+                {%- when 'richtext' -%}
+                  <div class="cpf-block cpf-block--richtext" {{ block.shopify_attributes }}>
+                    {%- if block.settings.content != blank -%}
+                      <div class="cpf-richtext">
+                        {{ block.settings.content | replace: '<p>', '' | replace: '</p>', '' }}
+                      </div>
+                    {%- endif -%}
+                  </div>
+      
+                {%- comment -%}────────── button ──────────{%- endcomment -%}
+                {%- when 'button' -%}
+      
+                      {% liquid
+                          assign selected_product_1 = nil
+                          assign selected_product_2 = nil
+      
+                          for block in section.blocks
+                              if block.type == 'bundle_products'
+                              assign selected_product_1 = block.settings.product_1
+                              assign selected_product_2 = block.settings.product_2
+                              break
+                              endif
+                          endfor
+                      %}
+      
+                    <div class="cpf-block cpf-block--button" {{ block.shopify_attributes }}>
+                      {%- render 'buy-button-landing',
+                          block: block,
+                          product: selected_product_1,
+                          second_product: selected_product_2,
+                          product_form_id: product_form_id,
+                          section_id: section.id
+                      -%}
+                    </div>
+      
+                {%- comment -%}────────── divider / spacing ──────────{%- endcomment -%}
+                {%- when 'divider' -%}
+                  <div
+                    class="cpf-block cpf-block--divider"
+                    {{ block.shopify_attributes }}
+                    style="padding-top: {{ block.settings.space_top | default: 0 }}px; padding-bottom: {{ block.settings.space_bottom | default: 0 }}px;"
+                  >
+                    {%- if block.settings.show_line -%}
+                      <hr class="cpf-divider-line" style="border-color: {{ block.settings.line_color | default: '#e5e5e5' }};">
+                    {%- endif -%}
+                  </div>
+      
+                  {% when 'info_icons' %}
+                      {%- if block.settings.title_1 != blank or block.settings.title_2 != blank or block.settings.title_3 != blank -%}
+                      <div class="info-icons-container" {{ block.shopify_attributes }}>
+                          
+                          {%- if block.settings.title_1 != blank -%}
+                          <div class="info-icon-item">
+                              <div class="info-icon-wrapper">
+                              {%- if block.settings.icon_1 != blank -%}
+                                  {{ block.settings.icon_1 | image_url: width: 100 | image_tag: loading: 'lazy' }}
+                              {%- endif -%}
+                              </div>
+                              <p class="info-icon-text">{{ block.settings.title_1 }}</p>
+                          </div>
+                          {%- endif -%}
+      
+                          {%- if block.settings.title_2 != blank -%}
+                          <div class="info-icon-item">
+                              <div class="info-icon-wrapper">
+                              {%- if block.settings.icon_2 != blank -%}
+                                  {{ block.settings.icon_2 | image_url: width: 100 | image_tag: loading: 'lazy' }}
+                              {%- endif -%}
+                              </div>
+                              <p class="info-icon-text">{{ block.settings.title_2 }}</p>
+                          </div>
+                          {%- endif -%}
+      
+                          {%- if block.settings.title_3 != blank -%}
+                          <div class="info-icon-item">
+                              <div class="info-icon-wrapper">
+                              {%- if block.settings.icon_3 != blank -%}
+                                  {{ block.settings.icon_3 | image_url: width: 100 | image_tag: loading: 'lazy' }}
+                              {%- endif -%}
+                              </div>
+                              <p class="info-icon-text">{{ block.settings.title_3 }}</p>
+                          </div>
+                          {%- endif -%}
+      
+                      </div>
+                      {%- endif -%}
+      
+                  {%- when 'announcement_bar' -%}
+                      {%- if block.settings.text != blank -%}
+                      <div class="custom-announcement-block" 
+                          style="background-color: {{ block.settings.bg_color }};" 
+                          {{ block.shopify_attributes }}>
+                          <div class="announcement-content">
+                          <h4 class="announcement-title">{{ block.settings.text }}</h4>
+                          {%- if block.settings.subtext != blank -%}
+                              <p class="announcement-subtext">{{ block.settings.subtext }}</p>
+                          {%- endif -%}
+                          </div>
+                      </div>
+                      {%- endif -%}
+      
+                  {%- when 'cstm_review' -%}
+                      <div class="cstm-reviews-block">
+                          <a href="{{ block.setttings.review_url }}" class="cstm-reviews-block_link" >
+                          {% if block.settings.review_img != blank %}
+                              <div class="cstm-reviews-block_img">
+                              {{ block.settings.review_img | image_url: width: 1600 | image_tag:
+                                  widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                                  alt: "image",
+                                  loading: "lazy"
+                              }}
+                              </div>
+                          {% endif %}
+                          {% if block.settings.review_text != blank %}
+                              <span class="cstm-reviews-block_text">{{ block.settings.review_text }}</span>
+                          {% endif %}
+                          </a>
+                      </div>
+      
+                  {% when 'add_ons' %}
+                      {% render 'add-ons', block: block,
+                      addon_product: block.settings.product
+                      %}
+      
+                {%- comment -%}────────── bundle_products ──────────{%- endcomment -%}
+                {%- when 'bundle_products' -%}
+                  {%- liquid
+                    assign bp1 = block.settings.product_1
+                    assign bp2 = block.settings.product_2
+                  -%}
+                  {%- if bp1 != blank or bp2 != blank -%}
+                    <div class="cpf-block cpf-block--bundle" {{ block.shopify_attributes }}>
+                      {%- render 'colors_option',
+                        block: block,
+                        section: section,
+                        product_1: bp1,
+                        product_2: bp2
+                      -%}
+                    </div>
+                  {%- else -%}
+                    {%- if request.design_mode -%}
+                      <div class="cpf-block cpf-block--bundle cpf-bundle-placeholder">
+                        <p>Select products in the Bundle Products block settings.</p>
+                      </div>
+                    {%- endif -%}
+                  {%- endif -%}
+      
+              {%- endcase -%}
+            {%- endfor -%}
+      
+            {%- comment -%} Fallback when no content blocks added {%- endcomment -%}
+            {%- if section.blocks.size == 0 -%}
+              {%- if request.design_mode -%}
+                <div class="cpf-empty-state">
+                  <p>Add content blocks in the customizer to populate this column.</p>
+                </div>
+              {%- endif -%}
+            {%- endif -%}
+      
+          </div>
+          {%- comment -%} end .cpf-content {%- endcomment -%}
+      
+        </div>
+    </div>
+
+  {% assign popup_counter = 0 %}
+    {% for block in section.blocks %}
+      {% if block.type == 'popup' %}
+        {% assign popup_counter = popup_counter | plus: 1 %}
+
+        {% render 'popup-landing',
+          block: block,
+          popup_index: popup_counter
+        %}
+      {% endif %}
+    {% endfor %}
+
+</section>
+
+
+{%- comment -%}════════════════════════════════════════════════
+  STYLES
+════════════════════════════════════════════════{%- endcomment -%}
+{% style %}
+
+/* ── Reset ── */
+#cpf-{{ section.id }} *,
+#cpf-{{ section.id }} *::before,
+#cpf-{{ section.id }} *::after {
+  box-sizing: border-box;
+}
+
+/* ── Section wrapper ── */
+.cpf-section {
+  width: 100%;
+  padding: {{ section.settings.section_padding_top | default: 40 }}px {{ section.settings.section_padding_side | default: 0 }}px {{ section.settings.section_padding_bottom | default: 40 }}px;
+}
+
+/* ── Two-column inner ── */
+.cpf-inner {
+    display: flex;
+    gap: 80px;
+    align-items: flex-start;
+}
+
+/* ═══════════════════════════════════════════════
+   GALLERY — LEFT
+═══════════════════════════════════════════════ */
+
+.cpf-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    position: sticky;
+    top: 20px;
+    max-width: calc(50% - 40px);
+}
+
+/* Main viewer */
+.cpf-main-viewer {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #f7f5f2;
+    border: 1px solid #D9D9D9;
+}
+
+.cpf-main-swiper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.cpf-main-slide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cpf-main-img-wrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    overflow: hidden;
+    aspect-ratio: 1;
+}
+
+.cpf-main-img-wrap--placeholder {
+  background: #f0eee9;
+}
+
+.cpf-main-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.cpf-main-img:hover {
+  transform: scale(1.04);
+}
+
+.cpf-placeholder-svg {
+  width: 60%;
+  height: 60%;
+  opacity: 0.25;
+}
+
+/* Badge */
+.cpf-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+  background: #fff;
+  color: #7C0732;
+  padding: 4px 8px;
+  pointer-events: none;
+  border: 1px solid #7C0732;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.cpf-badge--sale { background: #e63946; color: #fff; border-color: #e63946; }
+.cpf-badge--sold { background: #999; color: #fff; border-color: #999; }
+
+/* Prev/Next arrows */
+.cpf-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(255,255,255,0.92);
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  display: none !important;
+}
+
+.cpf-main-viewer:hover .cpf-nav { opacity: 1; }
+.cpf-nav svg { width: 16px; height: 16px; }
+.cpf-nav--prev { left: 10px; }
+.cpf-nav--next { right: 10px; }
+.cpf-nav:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.15); background: #fff; }
+.cpf-nav.swiper-button-disabled { opacity: 0.25 !important; pointer-events: none; }
+
+/* Counter */
+.cpf-counter {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  z-index: 10;
+  background: rgba(0,0,0,0.42);
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  padding: 3px 9px;
+  border-radius: 20px;
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  pointer-events: none;
+  display: none !important;
+}
+
+/* ── Thumbnail strip ── */
+.cpf-thumb-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.cpf-thumb-swiper {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.cpf-thumb-swiper .swiper-wrapper {
+  align-items: center;
+}
+
+.cpf-thumb-slide {
+  width: 68px !important;
+  height: 68px !important;
+  flex-shrink: 0;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid #D9D9D9;
+  transition: border-color 0.2s, opacity 0.2s;
+  background: #f0eee9;
+  position: relative;
+}
+
+.cpf-thumb-slide:not(.is-active) { opacity: 0.65; }
+.cpf-thumb-slide:hover { border-color: #aaa; }
+.cpf-thumb-slide.is-active { border-color: #7C0732; opacity: 1; }
+
+.cpf-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Thumb nav buttons */
+.cpf-thumb-nav {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.cpf-thumb-nav:hover { background: #f0eee9; }
+.cpf-thumb-nav.swiper-button-disabled { opacity: 0.3; pointer-events: none; }
+
+
+/* ═══════════════════════════════════════════════
+   CONTENT — RIGHT
+═══════════════════════════════════════════════ */
+
+.cpf-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: calc(50% - 40px);
+    width: 100%;
+}
+
+/* ── Shared block base ── */
+.cpf-block {
+  width: 100%;
+}
+
+/* ── Heading block ── */
+.cpf-heading {
+    margin: 16px 0 20px;
+    font-family: PP Mori;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 32px !important;
+    leading-trim: NONE;
+    line-height: 35.2px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+}
+
+.cpf-subheading {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: #666;
+  font-family: inherit;
+}
+
+/* ── Text block ── */
+.cpf-text {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  font-family: inherit;
+}
+
+/* ── Richtext block ── */
+.cpf-richtext {
+    color: #000;
+    font-family: PP Mori;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 21px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    margin-bottom: 20px;
+}
+
+.cpf-richtext p { margin: 0 0 0.75em; }
+.cpf-richtext p:last-child { margin-bottom: 0; }
+.cpf-richtext ul,
+.cpf-richtext ol { padding-left: 1.4em; margin: 0 0 0.75em; }
+.cpf-richtext li { margin-bottom: 0.3em; }
+.cpf-richtext strong { font-weight: 600; }
+.cpf-richtext a { color: #7C0732; text-decoration: underline; }
+
+/* ── Button block ── */
+.cpf-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 28px;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  border: 1px solid transparent;
+}
+
+.cpf-btn--primary {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+.cpf-btn--primary:hover {
+  background: #7C0732;
+  border-color: #7C0732;
+}
+
+.cpf-btn--secondary {
+  background: transparent;
+  color: #000;
+  border-color: #000;
+}
+
+.cpf-btn--secondary:hover {
+  background: #000;
+  color: #fff;
+}
+
+.cpf-btn--link {
+  background: transparent;
+  color: #7C0732;
+  border-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+/* ── Divider block ── */
+.cpf-divider-line {
+  border: none;
+  border-top: 1px solid #e5e5e5;
+  margin: 0;
+}
+
+/* ── Bundle placeholder (editor only) ── */
+.cpf-bundle-placeholder {
+  padding: 20px;
+  background: #fde8f0;
+  border: 1px dashed #D99CA5;
+  font-size: 13px;
+  color: #7C0732;
+  text-align: center;
+}
+
+.cpf-empty-state {
+  padding: 20px;
+  background: #f7f7f7;
+  border: 1px dashed #ccc;
+  font-size: 13px;
+  color: #999;
+  text-align: center;
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+
+@media screen and (max-width: 768px) {
+  .cpf-inner {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .section-{{ section.id }} .page-width{
+    padding: 0 ;
+  }
+
+  .cpf-gallery {
+    position: static;
+    max-width: 100%;
+    width: 100%;
+  }
+
+    .cpf-content {
+        max-width: 100%;
+        width: 100%;
+        padding: 0 16px;
+    }
+
+    .cpf-heading {
+        margin: 10px 0 12px;
+        font-size: 24px !important;
+        line-height: 31.2px;
+    }
+
+    .cpf-richtext {
+        margin-bottom: 16px;
+    }
+
+  .cpf-thumb-slide {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  .cpf-nav {
+    opacity: 1;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .cpf-section {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .cpf-thumb-slide {
+    width: 54px !important;
+    height: 54px !important;
+  }
+}
+
+{% endstyle %}
+
+
+{%- comment -%}════════════════════════════════════════════════
+  SWIPER — load once per page
+════════════════════════════════════════════════{%- endcomment -%}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+<script>
+(function () {
+  'use strict';
+
+  function initGallery(sectionId) {
+    var wrapper    = document.getElementById('cpf-gallery-' + sectionId);
+    if (!wrapper) return;
+
+    var totalSlides = wrapper.querySelectorAll('.cpf-main-slide').length;
+    if (totalSlides < 1) return;
+
+    /* ── Thumbnail Swiper ── */
+    var thumbSwiperEl = wrapper.querySelector('.cpf-thumb-swiper');
+    var thumbSwiper   = null;
+
+    if (thumbSwiperEl && totalSlides > 1) {
+      thumbSwiper = new Swiper(thumbSwiperEl, {
+        slidesPerView : 'auto',
+        spaceBetween  : 8,
+        freeMode      : true,
+        watchSlidesProgress: true,
+        navigation: {
+          prevEl: wrapper.querySelector('.cpf-thumb-nav--prev'),
+          nextEl: wrapper.querySelector('.cpf-thumb-nav--next'),
+        }
+      });
+    }
+
+    /* ── Main Swiper ── */
+    var mainSwiperEl = wrapper.querySelector('.cpf-main-swiper');
+    if (!mainSwiperEl) return;
+
+    var mainSwiper = new Swiper(mainSwiperEl, {
+      loop         : false,
+      allowTouchMove: true,
+      grabCursor   : true,
+      keyboard     : { enabled: true },
+      navigation   : {
+        prevEl: wrapper.querySelector('.cpf-nav--prev'),
+        nextEl: wrapper.querySelector('.cpf-nav--next'),
+      },
+      on: {
+        slideChange: function () {
+          updateCounter(this.activeIndex);
+          updateThumbs(this.activeIndex);
+        }
+      }
+    });
+
+    /* ── Counter ── */
+    function updateCounter(index) {
+      var cur = wrapper.querySelector('.cpf-counter__current');
+      if (cur) cur.textContent = index + 1;
+    }
+
+    /* ── Thumb active state ── */
+    function updateThumbs(index) {
+      var thumbSlides = wrapper.querySelectorAll('.cpf-thumb-slide');
+      thumbSlides.forEach(function (slide, i) {
+        slide.classList.toggle('is-active', i === index);
+      });
+      if (thumbSwiper) {
+        thumbSwiper.slideTo(Math.max(0, index - 1));
+      }
+    }
+
+    /* ── Click thumb → go to main slide ── */
+    wrapper.querySelectorAll('.cpf-thumb-slide').forEach(function (slide) {
+      slide.addEventListener('click', function () {
+        var idx = parseInt(this.dataset.index, 10);
+        mainSwiper.slideTo(idx);
+        updateThumbs(idx);
+      });
+    });
+  }
+
+  /* ── Init ── */
+  function tryInit() {
+    if (typeof Swiper === 'undefined') {
+      setTimeout(tryInit, 80);
+      return;
+    }
+    initGallery('{{ section.id }}');
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', tryInit);
+  } else {
+    tryInit();
+  }
+
+  /* Re-init on theme editor section load */
+  document.addEventListener('shopify:section:load', function (e) {
+    var sid = e.target.dataset && e.target.dataset.sectionId;
+    if (sid === '{{ section.id }}') {
+      setTimeout(function () { tryInit(); }, 100);
+    }
+  });
+
+})();
+</script>
+
+
+{%- comment -%}════════════════════════════════════════════════
+  SCHEMA
+════════════════════════════════════════════════{%- endcomment -%}
+{% schema %}
+{
+  "name": "Custom Product Feature",
+  "tag": "section",
+  "class": "section-custom-product-feature",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Padding top (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Padding bottom (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "section_padding_side",
+      "label": "Padding sides (px)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Gallery (fallback multi-image)"
+    },
+    {
+      "type": "image_picker",
+      "id": "gallery_image_1",
+      "label": "Gallery image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "gallery_image_2",
+      "label": "Gallery image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "gallery_image_3",
+      "label": "Gallery image 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "gallery_image_4",
+      "label": "Gallery image 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "gallery_image_5",
+      "label": "Gallery image 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "gallery_image_6",
+      "label": "Gallery image 6"
+    },
+    {
+      "type": "header",
+      "content": "Badge"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "info": "Leave empty to hide"
+    },
+    {
+      "type": "select",
+      "id": "badge_style",
+      "label": "Badge style",
+      "options": [
+        { "value": "default", "label": "Default (burgundy)" },
+        { "value": "sale",    "label": "Sale (red)" },
+        { "value": "sold",    "label": "Sold out (grey)" }
+      ],
+      "default": "default"
+    },
+    {
+      "type": "header",
+      "content": "Bundle widget — tier settings"
+    },
+    {
+      "type": "text",
+      "id": "bundle_label",
+      "label": "Bundle heading label",
+      "default": "Select Your Bundle:"
+    },
+    {
+      "type": "text",
+      "id": "product_heading",
+      "label": "Product selector heading",
+      "default": "Choose"
+    },
+    {
+      "type": "text",
+      "id": "color_heading",
+      "label": "Collection grid heading",
+      "default": "Select Products"
+    },
+    {
+      "type": "text",
+      "id": "selected_heading",
+      "label": "Selected tray heading",
+      "default": "Selected Products"
+    },
+    {
+      "type": "header",
+      "content": "Tier 1"
+    },
+    {
+      "type": "text",
+      "id": "tier_2_label",
+      "label": "Tier 1 label",
+      "default": "2 Products"
+    },
+    {
+      "type": "text",
+      "id": "tier_2_badge",
+      "label": "Tier 1 badge text",
+      "info": "Leave empty to hide badge"
+    },
+    {
+      "type": "number",
+      "id": "tier_2_colors",
+      "label": "Tier 1 slot count",
+      "default": 2
+    },
+    {
+      "type": "text",
+      "id": "tier_2_price",
+      "label": "Tier 1 price (formatted)",
+      "default": "$29.99"
+    },
+    {
+      "type": "text",
+      "id": "tier_2_compare_price",
+      "label": "Tier 1 compare-at price",
+      "info": "Leave empty to hide"
+    },
+    {
+      "type": "header",
+      "content": "Tier 2"
+    },
+    {
+      "type": "text",
+      "id": "tier_4_label",
+      "label": "Tier 2 label",
+      "default": "4 Products"
+    },
+    {
+      "type": "text",
+      "id": "tier_4_badge",
+      "label": "Tier 2 badge text"
+    },
+    {
+      "type": "number",
+      "id": "tier_4_colors",
+      "label": "Tier 2 slot count",
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "tier_4_price",
+      "label": "Tier 2 price (formatted)",
+      "default": "$49.99"
+    },
+    {
+      "type": "text",
+      "id": "tier_4_compare_price",
+      "label": "Tier 2 compare-at price"
+    },
+    {
+      "type": "header",
+      "content": "Tier 3"
+    },
+    {
+      "type": "text",
+      "id": "tier_6_label",
+      "label": "Tier 3 label",
+      "default": "6 Products"
+    },
+    {
+      "type": "text",
+      "id": "tier_6_badge",
+      "label": "Tier 3 badge text"
+    },
+    {
+      "type": "number",
+      "id": "tier_6_colors",
+      "label": "Tier 3 slot count",
+      "default": 6
+    },
+    {
+      "type": "text",
+      "id": "tier_6_price",
+      "label": "Tier 3 price (formatted)",
+      "default": "$69.99"
+    },
+    {
+      "type": "text",
+      "id": "tier_6_compare_price",
+      "label": "Tier 3 compare-at price"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "gallery_image",
+      "name": "Gallery Image",
+      "limit": 12,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt text",
+          "info": "Overrides image alt if set"
+        }
+      ]
+    },
+    {
+      "type": "cstm_review",
+      "name": "Custom Review Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "review_img",
+          "label": "Reviews Image"
+        },
+        {
+          "type": "text",
+          "id": "review_text",
+          "label": "Reviews Text"
+        },
+        {
+          "type": "url",
+          "id": "review_url",
+          "label": "Reviews Url"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading text",
+          "default": "Product Title"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading text"
+        },
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "label": "HTML tag",
+          "options": [
+            { "value": "h1", "label": "H1" },
+            { "value": "h2", "label": "H2" },
+            { "value": "h3", "label": "H3" },
+            { "value": "h4", "label": "H4" }
+          ],
+          "default": "h2"
+        },
+        {
+          "type": "range",
+          "id": "heading_size",
+          "label": "Font size (px)",
+          "min": 14,
+          "max": 64,
+          "step": 2,
+          "default": 28
+        },
+        {
+          "type": "color",
+          "id": "heading_color",
+          "label": "Text color",
+          "default": "#000000"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text content"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#1a1a1a"
+        }
+      ]
+    },
+    {
+      "type": "richtext",
+      "name": "Rich Text",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": []
+    },
+    {
+      "type": "divider",
+      "name": "Divider / Spacing",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_line",
+          "label": "Show divider line",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "line_color",
+          "label": "Line color",
+          "default": "#e5e5e5"
+        },
+        {
+          "type": "range",
+          "id": "space_top",
+          "label": "Space above (px)",
+          "min": 0,
+          "max": 80,
+          "step": 4,
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "space_bottom",
+          "label": "Space below (px)",
+          "min": 0,
+          "max": 80,
+          "step": 4,
+          "default": 16
+        }
+      ]
+    },
+    {
+      "type": "bundle_products",
+      "name": "Bundle Products",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Select exactly 2 products to power the bundle widget. Collections are configured in the Bundle Collections block below."
+        },
+        {
+          "type": "product",
+          "id": "product_1",
+          "label": "First product"
+        },
+        {
+          "type": "product",
+          "id": "product_2",
+          "label": "Second product"
+        },
+        {
+          "type": "header",
+          "content": "Collections (up to 8)"
+        },
+        {
+          "type": "collection",
+          "id": "collection_1",
+          "label": "Collection 1"
+        },
+        {
+          "type": "collection",
+          "id": "collection_2",
+          "label": "Collection 2"
+        },
+        {
+          "type": "collection",
+          "id": "collection_3",
+          "label": "Collection 3"
+        },
+        {
+          "type": "collection",
+          "id": "collection_4",
+          "label": "Collection 4"
+        },
+        {
+          "type": "collection",
+          "id": "collection_5",
+          "label": "Collection 5"
+        },
+        {
+          "type": "collection",
+          "id": "collection_6",
+          "label": "Collection 6"
+        },
+        {
+          "type": "collection",
+          "id": "collection_7",
+          "label": "Collection 7"
+        },
+        {
+          "type": "collection",
+          "id": "collection_8",
+          "label": "Collection 8"
+        },
+        {
+          "type": "header",
+          "content": "Placeholder image"
+        },
+        {
+          "type": "image_picker",
+          "id": "placeholder",
+          "label": "Empty slot placeholder image"
+        }
+      ]
+    },
+    {
+      "type": "info_icons",
+      "name": "Info Icons Bar",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Item 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_1",
+          "label": "Icon 1"
+        },
+        {
+          "type": "text",
+          "id": "title_1",
+          "label": "Text 1",
+          "default": "Multi-Award Winning Formula"
+        },
+        {
+          "type": "header",
+          "content": "Item 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_2",
+          "label": "Icon 2"
+        },
+        {
+          "type": "text",
+          "id": "title_2",
+          "label": "Text 2",
+          "default": "Free Delivery 3-5 Days"
+        },
+        {
+          "type": "header",
+          "content": "Item 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_3",
+          "label": "Icon 3"
+        },
+        {
+          "type": "text",
+          "id": "title_3",
+          "label": "Text 3",
+          "default": "3 Days Risk-Free Manicure"
+        }
+      ]
+    },
+    {
+      "type": "announcement_bar",
+      "name": "Announcement Bar",
+      "settings": [
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background Color",
+          "default": "#f8d7da"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Heading",
+          "default": "Free Nail File Included"
+        },
+        {
+          "type": "text",
+          "id": "subtext",
+          "label": "Subtext",
+          "default": "Take care of your nails with every order"
+        }
+      ]
+    },
+    {
+      "name": "Add On Product",
+      "type": "add_ons",
+      "settings": [
+        {
+          "type": "text",
+          "id": "main_title",
+          "label": "Main Heading"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select Product"
+        },
+        {
+          "type": "text",
+          "id": "custom_title",
+          "label": "Custom Title"
+        },
+        {
+          "type": "textarea",
+          "id": "custom_desc",
+          "label": "Custom Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_image",
+          "label": "Custom Image"
+        }
+      ]
+    },
+    {
+      "type": "popup",
+      "name": "PopUp",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Feature Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Rejuvacote 2 Nail Growth System"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Enter your product description here..."
+        },
+        {
+          "type": "header",
+          "content": "Accordion 1"
+        },
+        {
+          "type": "text",
+          "id": "question_1",
+          "label": "Question 1",
+          "default": "Strengthens and protects natural nails"
+        },
+        {
+          "type": "textarea",
+          "id": "answer_1",
+          "label": "Answer 1"
+        },
+        {
+          "type": "header",
+          "content": "Accordion 2"
+        },
+        {
+          "type": "text",
+          "id": "question_2",
+          "label": "Question 2",
+          "default": "Easy to use"
+        },
+        {
+          "type": "textarea",
+          "id": "answer_2",
+          "label": "Answer 2"
+        },
+        {
+          "type": "header",
+          "content": "Accordion 3"
+        },
+        {
+          "type": "text",
+          "id": "question_3",
+          "label": "Question 3",
+          "default": "Enhances manicure results"
+        },
+        {
+          "type": "textarea",
+          "id": "answer_3",
+          "label": "Answer 3"
+        }
+      ]
+    },
+  ],
+  "presets": [
+    {
+      "name": "Custom Product Feature",
+      "blocks": [
+        { "type": "gallery_image" },
+        { "type": "heading" },
+        { "type": "richtext" },
+        { "type": "divider" },
+        { "type": "bundle_products" },
+        { "type": "button" }
+      ]
+    }
+  ]
+}
+{% endschema %}

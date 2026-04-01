@@ -1,0 +1,153 @@
+{% schema %}
+{
+  "name": "Duri First Marquee",
+  "tag": "section",
+  "class": "scrolling-feature-icons",
+  "settings": [
+    {
+          "type": "checkbox",
+          "id": "hide",
+          "label": "Hide Desktop"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Feature Title",
+          "default": "Feature"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Duri First Marquee",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+.feature-scroll-container-mf {
+    overflow: hidden;
+    background-color: rgba(226, 241, 196, 0.05);
+    padding: 10px 0;
+    border-top: 1px solid rgba(123, 166, 157, 0.40);
+    border-bottom: 1px solid rgba(123, 166, 157, 0.40);
+    background: #FFF;
+}
+
+  .feature-scroll-track-mf {
+    display: flex;
+    animation: scroll-left 40s linear infinite;
+    width: max-content;
+  }
+
+.feature-icon-item-mf {
+    display: flex;
+    align-items: center;
+    margin-right: 24px;
+    white-space: nowrap;
+}
+
+.feature-icon-item-mf img {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    margin-right: 24px;
+}
+
+.feature-icon-item-mf span {
+    color: #000;
+    font-family: Helvetica !important;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 15.6px;
+    letter-spacing: 0.65px;
+    text-transform: uppercase;
+}
+
+  /* Keyframes for continuous scroll */
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  @media screen and (max-width: 768px) {   
+    .feature-icon-item-mf span {
+    font-size: 14px;
+  } 
+  .feature-icon-item-mf img {
+    width: 46%;
+    height: 46px;
+    margin-right: 10px;
+  }
+  .feature-icon-item-mf {
+    margin-right: 20px;
+}
+
+.feature-scroll-container-mf {
+    padding-block: 4px;
+}
+
+  }
+{% endstylesheet %}
+{% if section.settings.hide %}
+<style>
+  @media (min-width: 768px) {
+  .sec-{{ section.id }} {
+      display: none;
+  }
+  .feature-icon-item-mf span {
+    font-size: 14px;
+  }
+  }
+</style>
+  {% endif %}
+<div class="feature-scroll-container-mf sec-{{ section.id }}">
+  <div class="feature-scroll-track-mf">
+    {% for block in section.blocks %}
+      <div class="feature-icon-item-mf">
+        {% if block.settings.icon %}
+          <img src="{{  block.settings.icon | image_url }}" alt="{{ block.settings.icon.alt }}" width="auto" height="auto" loading="eager" fetchpriority="high">
+
+         {% endif %}
+        <span>{{ block.settings.title }}</span>
+      </div>
+    {% endfor %}
+
+    {% for block in section.blocks %}
+      <div class="feature-icon-item-mf">
+        {% if block.settings.icon %}
+             <img src="{{  block.settings.icon | image_url }}" alt="{{ block.settings.icon.alt }}" width="auto" height="auto" loading="eager" fetchpriority="high">
+
+        {% endif %}
+        <span>{{ block.settings.title }}</span>
+      </div>
+    {% endfor %}
+       {% for block in section.blocks %}
+      <div class="feature-icon-item-mf">
+        {% if block.settings.icon %}
+             <img src="{{  block.settings.icon | image_url }}" alt="{{ block.settings.icon.alt }}" width="auto" height="auto" loading="eager" fetchpriority="high">
+
+        {% endif %}
+        <span>{{ block.settings.title }}</span>
+      </div>
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,455 @@
+<style>
+  .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      background-color: {{ section.settings.back-color}};
+  }
+  a{
+    text-decoration:none;
+  }
+    .single-product-image img {
+      width: 100%;
+      height: auto;
+      background-size: contain;
+      object-fit: cover;
+      display: block;
+  }
+  .single-product-card {
+    background: #FFF;
+    border-radius: 12px;
+     /*padding: 20px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 280px;*/
+  }
+  .discount-text{
+        color: black;
+      text-align: center;
+      font-family: 'PP Mori';
+      font-size: 19px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 14.3px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 15px;
+  }
+  .discount-off{
+      color: black;
+      font-family: 'PP Mori';
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 14.3px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  .single-product-image {
+    position: relative;
+    border-radius: 12px;
+    /* overflow: hidden; */
+  }
+
+  .discount-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #FFF4F3;
+      padding: 0px 0px;
+      border-radius: 50%;
+      text-align: center;
+      width: 60px;
+      height: 60px;
+  }
+
+  .rating-stars {
+    display: flex;
+    gap: 6px;
+  }
+
+  .single-product-title {
+    color: var(--DARK-GREY, #333232);
+    font-family: Satoshi;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px;
+    /* min-height:60px; */
+  }
+
+  .product-description {
+    {% comment %} min-height: 84px; {% endcomment %}
+    margin: 0;
+    color: #000;
+    font-family: "PP Mori";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+}
+
+  .price-container {
+    margin-bottom: 4px;
+  }
+
+  .collection-compare-price {
+    color: #A9A9A9;
+  text-align: right;
+  font-family: Satoshi;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
+  text-decoration-line: line-through;
+  }
+
+  .collection-price {
+      font-family: Satoshi;
+      color: #3B3B3B;
+      text-align: right;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 18px;
+  }
+
+  .collection-btn-shop-now {
+        background-color: #3f4fff;
+      transition: background-color 0.6s ease, color 0.6s ease, border 0.6s ease !important;
+      border: none;
+      padding: 12px 0;
+      border-radius: 25px;
+      cursor: pointer;
+      width: 100%;
+      color: #FFF;
+      text-align: center;
+      font-family: Satoshi;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 22px;
+  }
+
+  .collection-btn-shop-now:hover {
+      background-color: transparent;
+      color: #3f4fff;
+      border: 1px solid;
+  }
+  .rate-text .metafield-rich_text_field p{
+  color: #3B3B3B;
+  text-align: right;
+  font-family: Satoshi;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
+  }
+  .main-wrapper-title-rating-cont{
+  display: flex;
+  padding:20px;
+  justify-content: center;
+  /* align-items: center; */
+  flex-direction: column;
+  gap: 7.17px;
+  {% comment %} padding-bottom: 0; {% endcomment %}
+   background: #fff;
+  }
+  .my-new-wrapr {
+    padding: 16px;
+  }
+  .collection-wrap{
+    display: flex;
+    justify-content: center;
+  }
+  .main-heading-collection {
+      text-align: start;
+      color: #000;
+      font-family: "PP Mori";
+      font-size: 36px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 46.8px; /* 130% */
+      margin: 0;
+      padding-bottom: 24px;
+  }
+
+  .main-text-with-collection{
+    margin: 0 auto;
+    padding-left: 80px;
+  }
+  .single-product-image .best-seller-badge{
+    margin: 10px;
+    position: absolute;
+    right: 10px;
+    background-color: #121A5B;
+  }
+  .collection-btn-shop {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    padding: 0.5px;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+}
+.price-and-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.subtext-collection p {
+    margin: 0;
+    color: #000;
+    font-family: "PP Mori";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: center;
+    padding-bottom: 24px;
+    letter-spacing: 0;
+}
+.my-newWcLss {
+  text-align: center;
+  padding-bottom: 14px;
+}
+  @media screen and (max-width: 768px){
+  .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.mbl_padding_top }}px;
+      padding-bottom: {{ section.settings.mbl_padding_bottom}}px;
+  }
+  .single-product-title{
+    font-size:18px;
+  }
+  .price-container{
+    margin-bottom: 20px;
+  }
+  .main-text-with-collection {
+    padding-left: 0;
+  }
+  .main-heading-collection {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 31.2px;
+  }
+  .collection-price{
+    margin-left:6px;
+  }
+  .price-container {
+    margin-bottom: 0;
+  }
+  .subtext-collection p {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .my-newWcLss {
+    padding-right: 16px;
+  }
+
+
+
+  }
+</style>
+
+<section class="section-{{ section.id }}-padding bounce-up">
+  {% comment %} <div class="page-width"> {% endcomment %}
+    <div class="main-text-with-collection">
+      <div class="main-text-box">
+        <h3 class="main-heading-collection my-newWcLss">{{ section.settings['heading-discover'] }}</h3>
+        <div class="subtext-collection">{{ section.settings.subheading }}</div>
+
+        {% comment %} <div class="shopeAll-button">
+          <a href="{{ section.settings.shopeAll-href }}" class="btn-shopeAll">
+            {{- section.settings['btn-shopeAll'] }}
+          </a>
+        </div> {% endcomment %}
+      </div>
+      <div class="collection-wrap">
+        <div class="new-collection-products-wrapper swiper collections-cards-slider">
+          <div class="swiper-wrapper">
+            {% for product in section.settings.collection.products %}
+              <div class="single-product-card swiper-slide">
+                <a href="{{ product.url }}">
+                  <div class="single-product-image">
+                    {% if product.tags contains 'Best Seller' %}
+                      <div class="best-seller-badge">Best Seller</div>
+                    {% endif %}
+                    <img
+                      src="{{ product.featured_image | img_url: '400x400' }}"
+                      loading="lazy"
+                      class="product-image-primary"
+                      alt="{{ product.title }}"
+                    >
+                    {% if product.compare_at_price > product.price %}
+                      {% assign discount = product.compare_at_price
+                        | minus: product.price
+                        | times: 100
+                        | divided_by: product.compare_at_price
+                        | round
+                      %}
+                      <div class="discount-badge">
+                        <span class="discount-text"> {{ discount }}% </span>
+                        <span class="discount-off">OFF</span>
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="main-wrapper-title-rating-cont my-new-wrapr">
+                    <div class="rating-stars">
+                      {% render 'star-svg' %}
+                      <span class="rate-text">{{ product.metafields.custom.rating_text | metafield_tag }}</span>
+                      <!-- Replace 200 with dynamic if needed -->
+                    </div>
+                    {% comment %} <p class="single-product-title">{{ product.title | truncate: 50 }}</p> {% endcomment %}
+                    <p class="product-description">{{ product.description | strip_html | truncate: 95 }}</p>
+                    <div class="price-and-btn">
+                        <div class="price-container">
+                        {% if product.compare_at_price > product.price %}
+                            <span class="collection-compare-price">{{ product.compare_at_price | money }}</span>
+                        {% endif %}
+                        <span class="collection-price">{{ product.price | money }}</span>
+                        </div>
+                        <button class="collection-btn-shop">{% render 'btn-svg' %}</button>
+                   </div>
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% comment %} <div class="shopeAll-button-mbl-new">
+        <a href="{{ section.settings.shopeAll-href }}" class="btn-shopeAll">{{ section.settings['btn-shopeAll'] }}</a>
+      </div> {% endcomment %}
+    </div>
+  {% comment %} </div> {% endcomment %}
+</section>
+
+<script>
+  var swiper = new Swiper('.collections-cards-slider', {
+    centeredSlides: false, // Default to false (do not center for larger screens)
+    slidesPerView: 4,
+    spaceBetween: 30,
+    breakpoints: {
+      320: {
+        slidesPerView: 1.2,
+        spaceBetween: 20,
+        centeredSlides: true, // Enable centeredSlides on mobile (320px)
+      },
+      640: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+        centeredSlides: true, // Enable centeredSlides on small tablets (640px)
+      },
+      1024: {
+        slidesPerView: 4,
+        spaceBetween: 30,
+        centeredSlides: false, // Disable centeredSlides for larger screens (1024px)
+      },
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    loop: false,
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Duri Second Collection",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Top Padding",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Bottom Padding",
+      "default": 10
+    },
+    {
+      "type": "color",
+      "id": "back-color",
+      "label": "Background Color"
+    },
+    {
+      "type": "text",
+      "id": "heading-discover",
+      "label": "Heading Discover",
+      "default": "Discover Our Collection"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "subheading",
+    },
+    {
+      "type": "url",
+      "id": "shopeAll-href",
+      "label": "Shop All Link URL",
+      "default": "/collections/all"
+    },
+    {
+      "type": "text",
+      "id": "btn-shopeAll",
+      "label": "Shop All Button Text",
+      "default": "Shop All"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Select Collection"
+    },
+    {
+      "type": "text",
+      "id": "rating-text",
+      "label": "Rating Text",
+      "default": "4.8"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Duri Second Collection",
+      "category": "Featured"
+    }
+  ]
+}
+{% endschema %}

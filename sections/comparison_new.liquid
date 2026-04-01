@@ -1,0 +1,460 @@
+{%- style -%}
+  .section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_mb }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mb }}px;
+    background-color: {{ section.settings.bg_color }};
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_dt }}px;
+      padding-bottom: {{ section.settings.padding_bottom_dt }}px;
+    }
+  }
+
+
+.comparison-header {
+    margin-bottom: 32px;
+}
+
+h2.comparison-title {
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 46.8px;
+    letter-spacing: 0px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0;
+    color: #000;
+}
+
+  .comparison-table_cstm {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  /* Table Grid System */
+.comparison-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.comparison-row.comparison-header-row .coparison-table_quarter,
+.comparison-row.comparison-header-row .coparison-table_half {
+    border: none;
+    height: 100px;
+}
+
+.comparison-row.comparison-header-row .comparison-feature-cell {
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 30px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: #000;
+    margin-top: 24px;
+    display: block;
+}
+
+.coparison-table_half {
+    max-width: 48%;
+    width: 100%;
+    border-bottom: 0.8px solid #B7B6B6;
+    display: flex;
+    align-items: center;
+    height: 68px;
+}
+
+.coparison-table_quarter {
+    max-width: 50%;
+    width: 100%;
+    border-bottom: 0.8px solid #F2EEE9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 68px;
+}
+
+  /* Text & Icon Styling */
+.comparison-feature-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+
+  .comparison-feature-icon {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+}
+
+.comparison-feature-icon img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.comparison-feature-text {
+    color: #000;
+    font-family: PP Mori;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 30px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+}
+
+.comparison-logo, .comparison-label {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.comparison-logo {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+}
+
+.comparison-logo img {
+    height: 100%;
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.comparison-label {
+    color: #6F6D6D;
+    font-family: PP Mori;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.status-icon {
+    display: flex;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+}
+
+.status-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.coparison-table_half_wrap {
+    display: flex;
+    max-width: calc(52% - 24px);
+    width: 100%;
+    gap: 24px;
+    justify-content: space-between;
+}
+
+  /* Mobile Tweaks */
+@media screen and (max-width: 768px) {
+
+    h2.comparison-title {
+    font-size: 24px;
+    line-height: 31.2px;
+}
+
+.comparison-header {
+    margin-bottom: 16px;
+}
+
+.comparison-row {
+    gap: 20px;
+}
+
+.coparison-table_half {
+    max-width: 50%;
+    border: none;
+}
+
+.comparison-row.comparison-header-row .coparison-table_half_wrap {
+    border-bottom: 0.8px solid #F2EEE9;
+}
+
+.coparison-table_half_wrap {
+    max-width: calc(50% - 20px);
+    gap: 2px;
+}
+
+.comparison-feature-icon {
+    width: 25px;
+    height: 25px;
+    min-width: 25px;
+}
+
+span.comparison-feature-text {
+    font-size: 14px;
+    line-height: 19px;
+}
+
+.status-icon {
+    width: 28px;
+    height: 28px;
+}
+
+.comparison-row.comparison-header-row .comparison-feature-cell {
+    font-size: 14px;
+    line-height: 19px;
+    margin: 0;
+}
+
+.comparison-logo {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+}
+
+.comparison-label {
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.coparison-table_quarter,
+.coparison-table_half,
+.comparison-row.comparison-header-row .coparison-table_quarter,
+.comparison-row.comparison-header-row .coparison-table_half {
+    height: 80px;
+}
+
+
+  }
+{%- endstyle -%}
+
+<section class="comparison-section section-{{ section.id }}" id="comaparison_sec">
+  <div class="page-width">
+    <div class="comparison-container">
+      
+      {% if section.settings.title != blank %}
+        <div class="comparison-header">
+          <h2 class="comparison-title">{{ section.settings.title }}</h2>
+        </div>
+      {% endif %}
+
+      <div class="comparison-table_cstm">
+        <div class="comparison-row comparison-header-row">
+            <div class="coparison-table_half">
+                <div class="comparison-feature-cell">
+                  {{ section.settings.feature_label }}
+                </div>
+            </div>
+            
+            <div class="coparison-table_half_wrap">
+                <div class="coparison-table_quarter coparison-table_center">
+                    <div class="comparison-logo">
+                      {% if section.settings.brand_logo != blank %}
+                          {{ section.settings.brand_logo | image_url: width: 1600 | image_tag:
+                              widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                              alt: "image",
+                              loading: "lazy"
+                          }}
+                      {% else %}
+                        <strong>{{ shop.name }}</strong>
+                      {% endif %}
+                    </div>
+                </div>
+                <div class="coparison-table_quarter coparison-table_right">
+                    <div class="comparison-label">
+                      {{ section.settings.competitor_label }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% for block in section.blocks %}
+          <div class="comparison-row comparison-row-{{ forloop.index }}" {{ block.shopify_attributes }}>
+            <div class="coparison-table_half">
+                <div class="comparison-feature-cell">
+                  {% if block.settings.icon_svg != blank %}
+                    <div class="comparison-feature-icon">
+                        {{ block.settings.icon_svg | image_url: width: 1600 | image_tag:
+                            widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                            alt: "image",
+                            loading: "lazy"
+                        }}
+                    </div>
+                  {% endif %}
+                  <span class="comparison-feature-text">{{ block.settings.feature_title }}</span>
+                </div>
+            </div>
+            
+            <div class="coparison-table_half_wrap">
+                <div class="coparison-table_quarter coparison-table_center">
+                    {% if block.settings.tick_icon != blank %}
+                        <div class="status-icon status-icon_tick">
+                            {{ block.settings.tick_icon | image_url: width: 1600 | image_tag:
+                                widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                                alt: "image",
+                                loading: "lazy"
+                            }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="coparison-table_quarter coparison-table_right">
+                    {% if block.settings.cross_icon != blank %}
+                        <div class="status-icon status-icon_cross">
+                            {{ block.settings.cross_icon | image_url: width: 1600 | image_tag:
+                                widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                                alt: "image",
+                                loading: "lazy"
+                            }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Comparison Wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Why Choose Duri?"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Table Headers"
+    },
+    {
+      "type": "text",
+      "id": "feature_label",
+      "label": "Left Column Label",
+      "default": "PRODUCT FEATURES"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_logo",
+      "label": "Your Brand Logo"
+    },
+    {
+      "type": "text",
+      "id": "competitor_label",
+      "label": "Competitor Label",
+      "default": "High street products"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_dt",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_dt",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Mobile Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mb",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top Mobile",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mb",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom Mobile",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Row",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_svg",
+          "label": "Icon SVG"
+        },
+        {
+          "type": "text",
+          "id": "feature_title",
+          "label": "Feature Description",
+          "default": "Long-lasting, high-gloss finish"
+        },
+        {
+          "type": "image_picker",
+          "id": "tick_icon",
+          "label": "Icon Tick"
+        },
+        {
+          "type": "image_picker",
+          "id": "cross_icon",
+          "label": "Icon Cross"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comparison Wrapper",
+      "category": "Duri",
+      "blocks": [
+        { "type": "feature" },
+        { "type": "feature" },
+        { "type": "feature" }
+      ]
+    }
+  ]
+}
+{% endschema %}

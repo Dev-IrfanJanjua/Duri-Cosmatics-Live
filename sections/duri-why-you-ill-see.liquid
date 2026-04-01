@@ -1,0 +1,407 @@
+<style>
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.back-color }};
+}
+
+.section-{{ section.id }}-padding .page-width {
+    padding: 0;
+}
+
+/* Main wrapper */
+.dz-trusted-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.dz-trusted-media {
+    line-height: 0;
+    max-width: 50%;
+    width: 100%;
+    height: auto;
+}
+img.dz-trusted-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.dz-trusted-content {
+    max-width: 50%;
+    width: 100%;
+    padding: 40px 80px;
+}
+
+.dz-trusted-block {
+    padding: 32px 16px;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFF4F3 50%, #FFF4F3 100%);
+    gap: 14px;
+}
+
+.dz-trusted-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dz-trusted-icon img,
+.dz-trusted-icon svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.dz-trusted-itemtext {
+    font-family: PP Mori;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    text-align: left;
+    color: #000;
+}
+
+.dz-trusted-heading {
+    margin: 0;
+    color: #000;
+    font-family: "PP Mori";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 46.8px;
+    text-align: start;
+    letter-spacing: 0;
+}
+
+.dz-trusted-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.dz-trusted-iconrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.dz-trusted-inner {
+    text-align: center;
+    gap: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.dz-trusted-itemtitle {
+    text-align: start;
+    color: #000;
+    font-family: "PP Mori";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 30px;
+    margin: 0;
+    letter-spacing: 0;
+    margin-top: 10px;
+}
+
+.dz-trusted-itemtext p {
+    margin: 0;
+    color: #000;
+    font-family: "PP Mori";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: start;
+    letter-spacing: 0;
+}
+
+/* Highlight Variant */
+.dz-trusted-highlight img.dz-trusted-image {
+    width: 100%;
+    height: auto;
+    max-width: 610px;
+    min-width: 610px;
+    max-height: 610px;
+}
+
+.dz-trusted-highlight .dz-trusted-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+}
+
+.dz-trusted-highlight .dz-trusted-iconrow {
+    display: unset; 
+    align-items: unset; 
+}
+
+.dz-trusted-highlight .dz-trusted-inner {
+    margin-right: 0px;
+    margin-left: 0px;
+    align-items: center;
+    min-width: 600px;
+}
+
+.dz-trusted-highlight .dz-trusted-block {
+    max-width: 100%;
+    padding: 32px 32px 0 32px;
+}
+
+.dz-trusted-highlight .dz-trusted-inner {
+    align-items: unset;
+}
+
+.dz-trusted-highlight .dz-trusted-items {
+    gap: 0;
+}
+
+.dz-trusted-highlight .dz-trusted-itemtext p {
+    padding-bottom: 16px;
+    border-bottom: 1px solid #7BA69D66;
+}
+
+.dz-trusted-highlight .dz-trusted-block:nth-of-type(3) {
+    padding-bottom: 32px;
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+    .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+        background-color: {{ section.settings.back-color }};
+    }
+
+.dz-trusted-media {
+    max-width: 100%;
+}
+
+.dz-trusted-content {
+    max-width: 100%;
+    padding: 40px 16px;
+}
+
+    .dz-trusted-wrapper {
+        flex-direction: column;
+    }
+
+    img.dz-trusted-image {
+        width: 100%;
+        height: auto;
+        max-width: unset;
+        min-width: unset;
+        max-height: unset;
+    }
+
+    .dz-trusted-inner {
+        gap: 16px;
+    }
+
+.dz-trusted-icon {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    display: flex;
+    align-items: center;
+}
+
+    .dz-trusted-block {
+        padding: 16px 16px;
+    }
+
+    .dz-trusted-items {
+        gap: 16px;
+    }
+
+    .dz-trusted-heading {
+        font-size: 24px;
+        line-height: 31.6px;
+        text-align: center;
+        max-width: 300px; 
+    }
+
+    .dz-trusted-inner {
+        align-items: center;
+    }
+
+    .dz-trusted-itemtitle {
+        font-size: 18px;
+        padding-bottom: unset;
+        margin: 0;
+    }
+
+
+    .dz-trusted-highlight .dz-trusted-wrapper {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .dz-trusted-highlight img.dz-trusted-image {
+        max-width: unset;
+        min-width: unset;
+        max-height: unset;
+    }
+
+    .dz-trusted-highlight .dz-trusted-inner {
+        min-width: unset;
+        padding: 0 16px;
+        margin: 0;
+    }
+
+    .dz-trusted-highlight .dz-trusted-heading {
+        text-align: start;
+        max-width: unset;
+    }
+
+    .dz-trusted-highlight .dz-trusted-block {
+        padding: 22px 20px 0 20px;
+    }
+    .dz-trusted-heading {
+        text-align: left;
+    }
+    .dz-trusted-inner {
+        align-items: unset;
+    }
+    
+}
+</style>
+
+<section class="section-{{ section.id }}-padding {% if section.settings.enable_highlight_TRUSTED %}dz-trusted-highlight{% endif %}">
+    <div class="page-width">
+        <div class="dz-trusted-wrapper">
+            <div class="dz-trusted-media">
+                <img class="dz-trusted-image" src="{{ section.settings.trust-img | image_url }}" loading="lazy" width="100%" height="100%">
+            </div>
+            <div class="dz-trusted-content">
+                <div class="dz-trusted-inner">
+                    <p class="dz-trusted-heading">{{ section.settings.heading }}</p>
+                    <div class="dz-trusted-items">
+                        {% for block in section.blocks %}
+                            <div class="dz-trusted-block">
+                                <div class="dz-trusted-iconrow">
+                                    <div class="dz-trusted-icon"> {{ block.settings.custom_svg }} </div>
+                                    <div class="dz-titlewrap">
+                                        <p class="dz-trusted-itemtitle">{{ block.settings.blockheading }}</p>
+                                    </div>
+                                </div>
+                                <div class="dz-textwrap">
+                                    <div class="dz-trusted-itemtext">{{ block.settings.subtext }}</div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Duri product2 why u see",
+    "settings": [
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 10
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 10
+      },
+      {
+        "type": "range",
+        "id": "mbl_padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Mobile Top Padding",
+        "default": 10
+      },
+      {
+        "type": "range",
+        "id": "mbl_padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px", 
+        "label": "Mobile Bottom Padding",              
+        "default": 10
+      },
+      {
+        "type": "color", 
+        "id": "back-color",
+        "label": "Background Color"
+      },
+      {
+        "type": "image_picker",
+        "id": "trust-img",
+        "label": "Main Img"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_highlight_TRUSTED",
+        "label": "Enable Highlight",
+        "default": false
+      }
+    ],
+    "blocks": [
+      {
+        "type": "blocks",
+        "name": "Add Item",
+        "settings": [
+          {
+            "type": "html",
+            "id": "custom_svg",
+            "label": "SVG markup"
+          },
+          {
+            "type": "text",
+            "id": "blockheading",
+            "label": "Block Heading"
+          },
+          {
+            "type": "inline_richtext",
+            "id": "subtext",
+            "label": "Subtext"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Duri product2 why u see"
+      }
+    ]
+  }
+{% endschema %}

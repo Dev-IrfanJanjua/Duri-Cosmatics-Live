@@ -1,0 +1,247 @@
+{% style %}
+
+.addon-product {
+    margin: 0 0 24px;
+}
+
+.addon-product__inner {
+    display: flex;
+    gap: 20px;
+    cursor: pointer;
+    align-items: center;
+    border: 1px solid var(--mid-pink-50, #D99CA580);
+    padding: 10px;
+    position: relative;
+}
+
+.addon-product__inner_wrapper {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex: 1;
+}
+
+h3.addon-product_title {
+    font-family: PP Mori;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 20.8px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: #000;
+    margin: 0 0 12px;
+}
+
+.addon-product__image {
+    border: 1px solid var(--mid-pink-50, #D99CA580);
+    width: 90px;
+    height: 90px;
+}
+
+.addon-product__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.addon-product__title {
+    font-family: PP Mori;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 16px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0px;
+    color: #000;
+    margin: 0 0 4px;
+}
+
+.addon-product__desc {
+    font-family: PP Mori;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 18.8px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    color: #000;
+    margin: 0;
+}
+
+.addon-product__price {
+    margin-top: 4px;
+}
+
+.addon-product__price span.price {
+    font-family: PP Mori;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0px;
+    color: #000;
+}
+
+.addon-product__price .compare-price {
+    text-decoration: line-through;
+    margin-left: 2px;
+    color: #7e7e7e;
+    font-family: PP Mori;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 28px;
+    letter-spacing: 0px;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: line-through;
+}
+
+input.addon-product__checkbox {
+    margin: 0;
+    appearance: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    inset: 0;
+}
+
+.addon-product__inner_tick {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--Burgundy, #7C0732);
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.addon-product__inner_tick svg {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+label.addon-product__inner:has(input:checked) .addon-product__inner_tick svg {
+    opacity: 1;
+}
+
+@media screen and (max-width: 768px){
+
+.addon-product__inner {
+    padding: 8px;
+}
+
+.addon-product__inner_wrapper {
+    gap: 14px;
+}
+
+.addon-product__image {
+    width: 83px;
+    height: 83px;
+    flex-shrink: 0;
+}
+
+.addon-product__title {
+    font-size: 13px;
+}
+
+.addon-product__desc {
+    font-size: 12px;
+}
+
+.addon-product__price span.price {
+    font-size: 12px;
+}
+
+}
+
+
+{% endstyle %}
+
+
+{%- if addon_product != blank -%}
+
+  {%- assign variant = addon_product.selected_or_first_available_variant -%}
+
+  {%- assign title = block.settings.custom_title | default: addon_product.title -%}
+  {%- assign desc  = block.settings.custom_desc  | default: addon_product.description -%}
+  {%- assign image = block.settings.custom_image | default: addon_product.featured_image -%}
+
+  <div class="addon-product" {{ block.shopify_attributes }}>
+
+    <h3 class="addon-product_title">{{ block.settings.main_title }}</h3>
+
+    <label class="addon-product__inner">
+
+        <div class="addon-product__inner_wrapper">
+
+            {% comment %}
+              .js-addon-toggle — BundleCollectionPicker reads:
+                • checked      — whether to include this addon
+                • data-variant-id — Shopify variant ID to add
+                • data-qty        — quantity (default 1)
+              properties.source = 'addon' is set by BundleCollectionPicker
+              so the order line is clearly labelled in the admin.
+            {% endcomment %}
+            <input
+              type="checkbox"
+              class="addon-product__checkbox js-addon-toggle"
+              data-variant-id="{{ variant.id }}"
+              data-qty="1"
+              data-price="{{ variant.price | money }}"
+              data-compare-price="{{ variant.compare_at_price | money }}"
+            >
+
+            <!-- IMAGE -->
+            <div class="addon-product__image">
+              {% if image %}
+                {{ image | image_url: width: 300 | image_tag: loading: 'lazy', alt: title }}
+              {% endif %}
+            </div>
+
+            <!-- CONTENT -->
+            <div class="addon-product__content">
+              <h4 class="addon-product__title">{{ title }}</h4>
+
+              {% if desc != blank %}
+                <p class="addon-product__desc">
+                  {{ desc | strip_html | truncate: 100 }}
+                </p>
+              {% endif %}
+
+              <!-- PRICE -->
+              <div class="addon-product__price">
+                <span class="price">
+                  {{ variant.price | money }}
+                </span>
+
+                {% if variant.compare_at_price > variant.price %}
+                  <span class="compare-price">
+                    {{ variant.compare_at_price | money }}
+                  </span>
+                {% endif %}
+              </div>
+            </div>
+        </div>
+
+        <div class="addon-product__inner_tick">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#7C0732">
+              <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/>
+            </svg>
+        </div>
+
+    </label>
+
+  </div>
+
+{%- endif -%}

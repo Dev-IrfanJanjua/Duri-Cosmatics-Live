@@ -1,0 +1,418 @@
+<section class="shop-by-section"> 
+  {% comment %} <div class="page-width"> {% endcomment %}
+
+    <!-- Toggle Radio Buttons -->
+    <div class="shop-by-tabs">
+      <label class="tab-option">
+        <input type="radio" name="shopBy" value="concern" checked>
+        <span>Shop By Concern</span>
+      </label>
+      <label class="tab-option">
+        <input type="radio" name="shopBy" value="category">
+        <span>Shop By Category</span>
+      </label>
+    </div>
+
+    <!-- Grid Wrapper -->
+    <div class="shop-by-grid-wrapper">
+
+      <!-- Concern Slider -->
+      <div class="shop-by-grid concern-grid active swiper-container">
+        <div class="swiper-wrapper swprREPRnew">
+          {% for block in section.blocks %}
+            {% if block.type == 'concern' %}
+              <div class="swiper-slide">
+                <a href="{{ block.settings.link }}" class="shop-card">
+                  <div class="card-image">
+                    <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title }}" loading="lazy">
+                  </div>
+                  <div class="card-footer">
+                    <span>{{ block.settings.title }}</span>
+                    <span class="arrow">→</span>
+                  </div>
+                </a>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+          <div class="main-btn-clas">
+          <div class="swiper-scrollbar"></div>
+          </div>
+      </div>
+       <div class="btn-maiNNn">
+              <div class="swiper-button-nextttt"> {% render 'my-first-btn' %} </div>
+              <div class="swiper-button-prevvvv"> {% render 'my-second-btn' %} </div>
+            </div>
+      
+      
+
+      <!-- Category Slider -->
+      <div class="shop-by-grid category-grid swiper-container">
+        <div class="swiper-wrapper swprREPRnew">
+          {% for block in section.blocks %}
+            {% if block.type == 'category' %}
+              <div class="swiper-slide">
+                <a href="{{ block.settings.link }}" class="shop-card">
+                  <div class="card-image">
+                    <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title }}" loading="lazy">
+                  </div>
+                  <div class="card-footer">
+                    <span>{{ block.settings.title }}</span>
+                    <span class="arrow"> {% render'myshop-arrow' %} </span>
+                  </div>
+                </a>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <!-- Arrows -->
+          <div class="main-btn-clas">
+            <div class="swiper-scrollbar"></div>
+          </div>
+      </div>
+        <div class="btn-maiNNn">
+            <div class="swiper-button-nextttt"> {% render 'my-first-btn' %} </div>
+            <div class="swiper-button-prevvvv"> {% render 'my-second-btn' %} </div>
+        </div>
+
+    </div>
+  {% comment %} </div> {% endcomment %}
+</section>
+
+<style>
+
+.btn-maiNNn {
+    position: absolute;
+    bottom: -29px;
+    right: 80px;
+    z-index: 99;
+    display: flex;
+    gap: 15px;
+    flex-direction: row-reverse;
+  }
+  .swiper-button-nextttt svg rect,  .swiper-button-prevvvv svg rect{
+    stroke: #9CBCB5;
+  }
+ .swiper-button-disabled svg rect, .swiper-button-disabled rect{
+    stroke: #D9D9D9;
+  }
+   .shop-by-grid-wrapper{
+    position: relative;
+  } 
+  .nv-main-wrapper .swiper-scrollbar-drag {
+    display: block;
+    background: #9CBCB5;
+  }
+  .nv-main-wrapper .swiper-scrollbar.swiper-scrollbar-horizontal {
+    height: 1px;
+    width: 81.4%;
+  }
+  .nv-main-wrapper .main-btn-clas{
+    padding-top: 55px;
+  }
+
+
+.shop-by-section {
+  padding: 80px;
+  background: #fff5f5;
+}
+.shop-by-tabs {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 24px;
+  font-size: 18px;
+}
+.tab-option {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.40);
+  font-family: "PP Mori";
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 43.2px;
+  text-transform: capitalize;
+  letter-spacing: 0;
+}
+.tab-option input {
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #999;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  margin: 0;
+}
+.tab-option input:checked {
+  border-color: #000;
+}
+.tab-option input:checked::after {
+  content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 16px;
+    background: #000;
+    border-radius: 50%;
+}
+.tab-option input:checked + span {
+  color: #000;
+  font-weight: 600;
+}
+.shop-by-grid {
+  display: flex;
+  gap: 20px;
+  display: none;
+}
+.shop-by-grid.active {
+  display: flex;
+}
+.shop-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+.shop-card:hover {
+  transform: translateY(-5px);
+}
+.card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  min-height: 401px;
+}
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #004d46;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  padding: 20px 32px;
+  text-transform: uppercase;
+}
+.card-footer span {
+  letter-spacing: 0;
+  line-height: 0;
+}
+.card-footer .arrow {
+  font-size: 32px;
+}
+.shop-by-grid {
+  overflow: hidden;
+  padding-bottom: 55px;
+}
+.main-btn-clas .swiper-scrollbar-drag {
+  display: block;
+}
+.main-btn-clas .swiper-scrollbar.swiper-scrollbar-horizontal {
+  height: 1px;
+  width: 81.4%;
+}
+.shop-by-grid .swiper-scrollbar.swiper-scrollbar-horizontal {
+  width: 80.4%;
+}
+
+.main-btn-clas .swiper-scrollbar-drag {
+  background: #9CBCB5;
+}
+.card-image img {
+  min-height: 492.92px;
+}
+
+@media screen and (max-width: 768px) {
+    .shop-by-tabs {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 24px;
+    }
+    .btn-maiNNn {
+        display: none; 
+  }
+  .shop-by-grid {
+    padding-bottom: 0;
+  }
+    .shop-by-section {
+      padding: 40px 16px;
+    }
+    .swprREPRnew {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .tab-option input:checked + span {
+        color: #000;
+        font-weight: 600;
+        color: #000;
+        text-align: center;
+        font-family: "PP Mori";
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 31.2px;
+        text-transform: capitalize;
+    }
+    .tab-option {
+        font-size: 24px;
+        line-height: 31.2px;
+    }
+    .shop-card {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+    .card-image img {
+        max-width: 80px;
+        max-height: 80px;
+        min-width: 58.77px;
+        min-height: unset;
+
+    }
+    .card-footer {
+        width: 100%;
+    }
+    .shop-by-grid {
+        gap: 8px;
+    }
+    .shop-by-grid.active {
+        display: flex;
+        flex-direction: column;
+}
+.tab-option input {
+  width: 18px;
+  height: 18px;
+}
+.tab-option input:checked::after{
+  width: 12px;
+  height: 12px;
+}
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #004d46;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: normal;
+    padding: 18px 16px;
+    text-transform: uppercase;
+    line-height: 30px;
+}
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Tab toggle
+  const radios = document.querySelectorAll('.shop-by-tabs input');
+  const concernGrid = document.querySelector('.concern-grid');
+  const categoryGrid = document.querySelector('.category-grid');
+
+  radios.forEach(radio => {
+    radio.addEventListener('change', function() {
+      if (this.value === 'concern') {
+        concernGrid.classList.add('active');
+        categoryGrid.classList.remove('active');
+      } else {
+        categoryGrid.classList.add('active');
+        concernGrid.classList.remove('active');
+      }
+    });
+  });
+
+  // Desktop-only Swiper init
+  let swipers = [];
+
+  function initSwipers() {
+    if (window.innerWidth >= 1024 && swipers.length === 0) {
+      document.querySelectorAll('.shop-by-grid.swiper-container').forEach(slider => {
+        const swiper = new Swiper(slider, {
+          slidesPerView: 3,
+          spaceBetween: 20,
+          scrollbar: {
+        el: ".swiper-scrollbar",
+      },
+          navigation: {
+      nextEl: '.swiper-button-nextttt',
+      prevEl: '.swiper-button-prevvvv',
+    },
+        });
+        swipers.push(swiper);
+      });
+    } else if (window.innerWidth < 1024 && swipers.length > 0) {
+      swipers.forEach(swiper => swiper.destroy(true, true));
+      swipers = [];
+    }
+  }
+
+  initSwipers();
+  window.addEventListener('resize', initSwipers);
+});
+</script>
+
+
+{% schema %}
+{
+  "name": "Duri Shop By Concern",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "concern",
+      "name": "Shop By Concern Item",
+      "settings": [
+        { 
+            "type": "image_picker", 
+            "id": "image", 
+            "label": "Image" 
+        },
+        { 
+            "type": "text", 
+            "id": "title", 
+            "label": "Title", 
+            "default": "Nail Growth" 
+        },
+        { 
+            "type": "url", 
+            "id": "link", 
+            "label": "Link" 
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "name": "Shop By Category Item",
+      "settings": [
+        { 
+            "type": "image_picker", 
+            "id": "image", 
+            "label": "Image" 
+        },
+        { 
+            "type": "text", 
+            "id": "title", 
+            "label": "Title", 
+            "default": "Cuticle Care" 
+        },
+        { 
+            "type": "url", 
+            "id": "link", 
+            "label": "Link" 
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Duri Shop By Concern",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}

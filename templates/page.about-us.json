@@ -1,0 +1,296 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "duri_banner_UpiCTE": {
+      "type": "duri-banner",
+      "disabled": true,
+      "name": "Duri Banner",
+      "settings": {
+        "padding_top": 10,
+        "padding_bottom": 10,
+        "mbl_padding_top": 10,
+        "mbl_padding_bottom": 10,
+        "back-color": "",
+        "cheeseBnrImg": "shopify://shop_images/Component_9.png",
+        "cheeseBnrImg1": "shopify://shop_images/Component_60.png",
+        "heading": "Since 1989: Vegan Care for Strong Nails",
+        "headingMBL": "",
+        "subtextt": "<p>Crafted with Care, Since 1989: A Family Legacy of Vegan Innovation and Science-Backed Excellence, Empowering Women Worldwide to Grow Strong, Healthy, and Beautifully Natural Nails</p>",
+        "button_label": "SHOP NOW",
+        "button_label4": "Request Form",
+        "button_label5": "CALL US",
+        "button_link": "",
+        "button_link4": "#",
+        "button_link5": "",
+        "enable_highlight-chz-bnr": false,
+        "enable_highlight-country-page": false
+      }
+    },
+    "duri_banner_about_us_LeHBrL": {
+      "type": "duri-banner-about-us",
+      "disabled": true,
+      "name": "Duri Banner about us",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "mbl_padding_top": 0,
+        "mbl_padding_bottom": 0,
+        "back-color": "",
+        "cheeseBnrImg": "shopify://shop_images/Component_9_fd5f9eb5-d101-48c0-9849-25c3beccb433.png",
+        "cheeseBnrImg1": "shopify://shop_images/Component_9_1.png",
+        "heading": "Since 1989: Vegan Care for Strong Nails",
+        "headingMBL": "",
+        "subtextt": "<p>Crafted with Care, Since 1989: A Family Legacy of Vegan Innovation and Science-Backed Excellence, Empowering Women Worldwide to Grow Strong, Healthy, and Beautifully Natural Nails.</p>",
+        "button_label": "SHOP NOW",
+        "button_label4": "Request Form",
+        "button_label5": "CALL US",
+        "button_link": "",
+        "button_link4": "#",
+        "button_link5": "",
+        "enable_highlight-chz-bnr": false,
+        "enable_highlight-country-page": false
+      }
+    },
+    "banner_durin_hzRcyA": {
+      "type": "banner-durin",
+      "name": "Custom Banner Section",
+      "settings": {
+        "img_desk": "shopify://shop_images/Component_9_fd5f9eb5-d101-48c0-9849-25c3beccb433.png",
+        "img_mob": "shopify://shop_images/Component_9_1.png",
+        "title": "Since 1989: Vegan Care for Strong Nails",
+        "text_colot": "#ffffff",
+        "description": "Crafted with Care, Since 1989: A Family Legacy of Vegan Innovation and Science-Backed Excellence, Empowering Women Worldwide to Grow Strong, Healthy, and Beautifully Natural Nails",
+        "max_width": 545,
+        "button_text": "Shop Now",
+        "button_link": "shopify://collections/all",
+        "btn_bg": "#7c0732",
+        "btn_text": "#ffffff",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "marquee_qUDxDL": {
+      "type": "marquee",
+      "blocks": {
+        "feature_EnGMPg": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_3.svg",
+            "title": "Non-Toxic Formula"
+          }
+        },
+        "feature_hHD7cB": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_4.svg",
+            "title": "CRUELTY-Free"
+          }
+        },
+        "feature_3TMyqy": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_2.svg",
+            "title": "Long-Lasting"
+          }
+        },
+        "feature_LN8cQi": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_1.svg",
+            "title": "Strengthens Nails"
+          }
+        },
+        "feature_qHr8NU": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_3.svg",
+            "title": "Non-Toxic Formula"
+          }
+        },
+        "feature_CQe4Xk": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_4.svg",
+            "title": "CRUELTY-Free"
+          }
+        },
+        "feature_4CzCbE": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_2.svg",
+            "title": "Long-Lasting"
+          }
+        },
+        "feature_gTpYEt": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_1.svg",
+            "title": "Strengthens Nails"
+          }
+        }
+      },
+      "block_order": [
+        "feature_EnGMPg",
+        "feature_hHD7cB",
+        "feature_3TMyqy",
+        "feature_LN8cQi",
+        "feature_qHr8NU",
+        "feature_CQe4Xk",
+        "feature_4CzCbE",
+        "feature_gTpYEt"
+      ],
+      "name": "CSTM Marquee",
+      "settings": {
+        "hide": false,
+        "border": true,
+        "background_color": "rgba(0,0,0,0)",
+        "border_color": "#d99ca5",
+        "padding_block": 10,
+        "padding_block_mob": 5
+      }
+    },
+    "duri_marquee_first_3ciLEh": {
+      "type": "duri-marquee-first",
+      "blocks": {
+        "feature_jwFBRN": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/manicure.svg",
+            "title": "Strengthens Nails"
+          }
+        },
+        "feature_TtRhzF": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Layer_1.svg",
+            "title": "Long-Lasting"
+          }
+        },
+        "feature_NmBbfG": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Layer_1_1.svg",
+            "title": "Non-Toxic Formula"
+          }
+        },
+        "feature_6RaYck": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_11.svg",
+            "title": "Gluten-Free"
+          }
+        }
+      },
+      "block_order": [
+        "feature_jwFBRN",
+        "feature_TtRhzF",
+        "feature_NmBbfG",
+        "feature_6RaYck"
+      ],
+      "disabled": true,
+      "name": "Duri First Marquee",
+      "settings": {
+        "hide": false
+      }
+    },
+    "duri_about_duri_cosmetics_QNyC9n": {
+      "type": "duri-about-duri-cosmetics",
+      "name": "Duri About Cosmetics",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "mbl_padding_top": 0,
+        "mbl_padding_bottom": 0,
+        "back-color": "",
+        "btn_color": "#7c0732",
+        "duri-ready-img": "shopify://shop_images/image_1445_e057c268-52b1-466c-9956-d25041b4db87.png",
+        "duriFirsttext": "About Duri Cosmetics",
+        "duriFirsttext2": "<p>Duri is a nail-focused cosmetic company headquartered in Brooklyn, New York. It’s a small, family-owned business, now in its third generation, that has helped millions of people repair their nails and feel good about their fingertips. <br/>Instagram<br/><br/>Founded in 1990 by a family with expertise in chemistry and knowledge of the paint industry, Duri launched its line of premium salon-quality nail and body care products aimed at complementing natural beauty.</p>",
+        "duri-button_link": "shopify://collections/all",
+        "duri-btnbutton_label": "Shop Now"
+      }
+    },
+    "duri_about_our_philosophy_q6eJKQ": {
+      "type": "duri-about-our-philosophy",
+      "name": "Duri About our philosophy",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "mbl_padding_top": 0,
+        "mbl_padding_bottom": 0,
+        "back-color": "",
+        "duri-ready-img": "shopify://shop_images/ccd221fb81ad93317cc6705dd304f83dca12afde.png",
+        "duriFirsttext": "Our Philosophy",
+        "duriFirsttext2": "<p>We believe nail care should be as healthy as it is beautiful. That’s why our products are vegan, cruelty-free, paraben-free, and long-lasting—crafted with clean ingredients in state-of-the-art U.S. facilities.</p><ul><li>Vegan & Cruelty-Free – ethically made.</li><li>No Harsh Chemicals – paraben-free formulas.</li><li>Made in the USA – clean, quality ingredients.</li></ul>",
+        "duri-button_link": "#",
+        "duri-btnbutton_label": ""
+      }
+    },
+    "duri_about_we_are_proudly_g7aJxm": {
+      "type": "duri-about-we-are-proudly",
+      "blocks": {
+        "icon_rA4GpJ": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/icon.svg_-_2025-08-21T063640.411_1.svg",
+            "label": "Eco Conscious"
+          }
+        },
+        "icon_WLJhPw": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/icon.svg_-_2025-08-21T064022.603_1.svg",
+            "label": "18 Free"
+          }
+        },
+        "icon_yNFN9i": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/icon.svg_-_2025-08-21T064242.207_1.svg",
+            "label": "Global Care"
+          }
+        }
+      },
+      "block_order": [
+        "icon_rA4GpJ",
+        "icon_WLJhPw",
+        "icon_yNFN9i"
+      ],
+      "name": "Duri About We Are Proudly",
+      "settings": {
+        "heading": "We Are Proudly",
+        "text": "We love creating nail care that inspires confidence and never compromises on quality. | Our formulas are 18-free, packed with nourishing ingredients, and safe for all nail types. | We minimize our environmental footprint with sustainable practices wherever possible. | Experience the global essence of high-quality nail care crafted for you!",
+        "image": "shopify://shop_images/presentation_image_16.png"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "duri_banner_UpiCTE",
+    "duri_banner_about_us_LeHBrL",
+    "banner_durin_hzRcyA",
+    "marquee_qUDxDL",
+    "duri_marquee_first_3ciLEh",
+    "duri_about_duri_cosmetics_QNyC9n",
+    "duri_about_our_philosophy_q6eJKQ",
+    "duri_about_we_are_proudly_g7aJxm"
+  ]
+}

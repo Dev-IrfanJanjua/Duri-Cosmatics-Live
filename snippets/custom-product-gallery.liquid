@@ -1,0 +1,787 @@
+{% comment %}
+  Custom Product Media Gallery
+  Usage: Include in your product section template
+  {% render 'custom-product-gallery', product: product %}
+  
+  Dependencies: Swiper.js (loaded via CDN)
+{% endcomment %}
+
+{% assign media_count = product.media.size %}
+
+<div class="cpg-wrapper" id="cpg-{{ product.id }}">
+
+  {% comment %} ── MAIN IMAGE VIEWER ── {% endcomment %}
+  <div class="cpg-main-viewer">
+
+    {% comment %} Badge {% endcomment %}
+    {%- for tag in product.tags -%}
+      {%- assign tag_lower = tag | downcase -%}
+      {%- if tag_lower contains 'new' -%}
+        <span class="cpg-badge">NEW ARRIVAL</span>
+      {%- elsif tag_lower contains 'sale' -%}
+        <span class="cpg-badge cpg-badge--sale">SALE</span>
+      {%- elsif tag_lower contains 'sold out' -%}
+        <span class="cpg-badge cpg-badge--sold">SOLD OUT</span>
+      {%- endif -%}
+    {%- endfor -%}
+
+    {% comment %} Swiper for main images {% endcomment %}
+    <div class="swiper cpg-main-swiper">
+      <div class="swiper-wrapper">
+        {%- for media in product.media -%}
+          <div class="swiper-slide cpg-main-slide" data-media-id="{{ media.id }}" data-media-type="{{ media.media_type }}">
+
+            {%- if media.media_type == 'image' -%}
+              <div class="cpg-main-img-wrap">
+                <img
+                  src="{{ media | image_url: width: 1200 }}"
+                  alt="{{ media.alt | default: product.title | escape }}"
+                  width="{{ media.width }}"
+                  height="{{ media.height }}"
+                  loading="{{ forloop.first | iif: 'eager', 'lazy' }}"
+                  class="cpg-main-img"
+                >
+              </div>
+
+            {%- elsif media.media_type == 'video' -%}
+              <div class="cpg-main-video-wrap">
+                <video
+                  class="cpg-main-video"
+                  controls
+                  playsinline
+                  preload="none"
+                  poster="{{ media.preview_image | image_url: width: 1200 }}"
+                >
+                  {%- for source in media.sources -%}
+                    <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                  {%- endfor -%}
+                </video>
+              </div>
+
+            {%- elsif media.media_type == 'external_video' -%}
+              <div class="cpg-main-video-wrap cpg-external-video">
+                {%- if media.host == 'youtube' -%}
+                  <iframe
+                    src="https://www.youtube.com/embed/{{ media.external_id }}?autoplay=0&mute=0"
+                    frameborder="0"
+                    allowfullscreen
+                    class="cpg-iframe"
+                    title="{{ media.alt | default: product.title | escape }}"
+                  ></iframe>
+                {%- elsif media.host == 'vimeo' -%}
+                  <iframe
+                    src="https://player.vimeo.com/video/{{ media.external_id }}"
+                    frameborder="0"
+                    allowfullscreen
+                    class="cpg-iframe"
+                    title="{{ media.alt | default: product.title | escape }}"
+                  ></iframe>
+                {%- endif -%}
+              </div>
+
+            {%- elsif media.media_type == 'model' -%}
+              <div class="cpg-model-wrap">
+                <product-model class="cpg-model-viewer">
+                  {{ media | model_viewer_tag:
+                    image_size: '1200x',
+                    toggleable: true,
+                    data-model-id: media.id
+                  }}
+                </product-model>
+                <button class="cpg-model-btn js-cpg-model-btn" data-shopify-feature="1.0">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                  </svg>
+                  View in 3D
+                </button>
+              </div>
+            {%- endif -%}
+
+          </div>
+        {%- endfor -%}
+      </div>
+
+      {% comment %} Prev/Next arrows {% endcomment %}
+      {%- if media_count > 1 -%}
+        <button class="cpg-nav cpg-nav--prev" aria-label="Previous image">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </button>
+        <button class="cpg-nav cpg-nav--next" aria-label="Next image">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </button>
+      {%- endif -%}
+
+      {% comment %} Slide counter {% endcomment %}
+      {%- if media_count > 1 -%}
+        <div class="cpg-counter">
+          <span class="cpg-counter__current">1</span>
+          <span class="cpg-counter__sep">/</span>
+          <span class="cpg-counter__total">{{ media_count }}</span>
+        </div>
+      {%- endif -%}
+
+    </div>{% comment %} end main swiper {% endcomment %}
+
+    {% comment %} Zoom hint {% endcomment %}
+    {% comment %} <div class="cpg-zoom-hint" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+      </svg>
+      Click to zoom
+    </div> {% endcomment %}
+
+  </div>{% comment %} end main viewer {% endcomment %}
+
+  {% comment %} ── THUMBNAIL STRIP ── {% endcomment %}
+  {%- if media_count > 1 -%}
+    <div class="cpg-thumb-area">
+      <button class="cpg-thumb-nav cpg-thumb-nav--prev" aria-label="Scroll thumbnails left">
+        <svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.000267982 7.48315C0.000267982 7.6571 0.0667524 7.83122 0.199552 7.96402L7.00105 14.7655C7.26682 15.0313 7.69718 15.0313 7.96278 14.7655C8.22838 14.4997 8.22855 14.0694 7.96278 13.8038L1.64215 7.48315L7.96278 1.16252C8.22855 0.89675 8.22855 0.466385 7.96278 0.200787C7.69701 -0.0648126 7.26665 -0.0649824 7.00105 0.200787L0.199552 7.00229C0.0667524 7.13509 0.000267982 7.3092 0.000267982 7.48315Z" fill="black"/>
+        </svg>
+      </button>
+
+      <div class="swiper cpg-thumb-swiper">
+        <div class="swiper-wrapper">
+          {%- for media in product.media -%}
+            <div class="swiper-slide cpg-thumb-slide {% if forloop.first %}is-active{% endif %}" data-index="{{ forloop.index0 }}">
+
+              {%- if media.media_type == 'image' -%}
+                <img
+                  src="{{ media | image_url: width: 200 }}"
+                  alt="{{ media.alt | default: product.title | escape }}"
+                  loading="lazy"
+                  width="200"
+                  height="200"
+                  class="cpg-thumb-img"
+                >
+
+              {%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}
+                <div class="cpg-thumb-media-wrap">
+                  <img
+                    src="{{ media.preview_image | image_url: width: 200 }}"
+                    alt="{{ media.alt | default: 'Video' | escape }}"
+                    loading="lazy"
+                    class="cpg-thumb-img"
+                  >
+                  <span class="cpg-thumb-play">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <polygon points="5 3 19 12 5 21 5 3"/>
+                    </svg>
+                  </span>
+                </div>
+
+              {%- elsif media.media_type == 'model' -%}
+                <div class="cpg-thumb-media-wrap">
+                  <img
+                    src="{{ media.preview_image | image_url: width: 200 }}"
+                    alt="{{ media.alt | default: '3D Model' | escape }}"
+                    loading="lazy"
+                    class="cpg-thumb-img"
+                  >
+                  <span class="cpg-thumb-3d">3D</span>
+                </div>
+              {%- endif -%}
+
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <button class="cpg-thumb-nav cpg-thumb-nav--next" aria-label="Scroll thumbnails right">
+        <svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.16184 7.48315C8.16184 7.6571 8.09536 7.83122 7.96256 7.96402L1.16106 14.7655C0.895289 15.0313 0.464925 15.0313 0.199326 14.7655C-0.0662721 14.4997 -0.0664421 14.0694 0.199326 13.8038L6.51996 7.48315L0.199326 1.16252C-0.0664421 0.89675 -0.0664421 0.466385 0.199326 0.200787C0.465095 -0.0648126 0.89546 -0.0649824 1.16106 0.200787L7.96256 7.00229C8.09536 7.13509 8.16184 7.3092 8.16184 7.48315Z" fill="black"/>
+        </svg>      
+      </button>
+    </div>
+  {%- endif -%}
+
+</div>{% comment %} end cpg-wrapper {% endcomment %}
+
+{% comment %} ── LIGHTBOX ── {% endcomment %}
+<div class="cpg-lightbox" id="cpg-lightbox-{{ product.id }}" hidden aria-modal="true" role="dialog">
+  <div class="cpg-lightbox__overlay js-cpg-lb-close"></div>
+  <div class="cpg-lightbox__inner">
+    <button class="cpg-lightbox__close js-cpg-lb-close" aria-label="Close lightbox">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <img class="cpg-lightbox__img" src="" alt="" id="cpg-lb-img-{{ product.id }}">
+  </div>
+</div>
+
+
+{% comment %} ============================================================
+     STYLES
+     ============================================================ {% endcomment %}
+{% style %}
+
+/* ── Reset / Base ── */
+.cpg-wrapper *,
+.cpg-wrapper *::before,
+.cpg-wrapper *::after { box-sizing: border-box; }
+
+/* ── Wrapper ── */
+.cpg-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  user-select: none;
+}
+
+/* ── MAIN VIEWER ── */
+.cpg-main-viewer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #f7f5f2;
+  border-radius: 4px;
+}
+
+.cpg-main-swiper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.cpg-main-slide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cpg-main-img-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: zoom-in;
+  border: 1px solid #D9D9D9;
+}
+
+.cpg-main-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.cpg-main-img:hover {
+  transform: scale(1.04);
+}
+
+/* Video */
+.cpg-main-video-wrap,
+.cpg-external-video {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+.cpg-main-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.cpg-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* 3D Model */
+.cpg-model-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.cpg-model-viewer {
+  width: 100%;
+  height: 100%;
+}
+
+.cpg-model-btn {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 2px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.cpg-model-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.cpg-model-btn:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* Badge */
+.cpg-badge {
+    position: absolute;
+    top: 17px;
+    left: 17px;
+    z-index: 10;
+    background: #fff;
+    color: #7C0732;
+    padding: 4px 6px;
+    pointer-events: none;
+    border: 1px solid var(--Burgundy, #7C0732);
+    font-family: 'PP Mori';
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 13.07px;
+    leading-trim: NONE;
+    line-height: 15.95px;
+    letter-spacing: 0.64px;
+    text-transform: uppercase;
+}
+
+.cpg-badge--sale { background: #e63946; }
+.cpg-badge--sold { background: #999; }
+
+/* Prev/Next arrows */
+.cpg-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(255,255,255,0.92);
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, opacity 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  opacity: 0;
+}
+
+.cpg-main-viewer:hover .cpg-nav { opacity: 1; }
+
+.cpg-nav svg { width: 18px; height: 18px; }
+.cpg-nav--prev { left: 12px; }
+.cpg-nav--next { right: 12px; }
+.cpg-nav:hover { background: #fff; box-shadow: 0 4px 14px rgba(0,0,0,0.15); }
+.cpg-nav.swiper-button-disabled { opacity: 0.3 !important; pointer-events: none; }
+
+/* Counter */
+.cpg-counter {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  z-index: 10;
+  background: rgba(0,0,0,0.42);
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  padding: 3px 9px;
+  border-radius: 20px;
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  pointer-events: none;
+}
+
+/* Zoom hint */
+.cpg-zoom-hint {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  z-index: 10;
+  background: rgba(0,0,0,0.38);
+  color: #fff;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  padding: 3px 9px;
+  border-radius: 20px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.cpg-zoom-hint svg { width: 13px; height: 13px; flex-shrink: 0; }
+.cpg-main-viewer:hover .cpg-zoom-hint { opacity: 1; }
+
+/* ── THUMBNAIL AREA ── */
+.cpg-thumb-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  position: relative;
+}
+
+.cpg-thumb-swiper {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.cpg-thumb-swiper .swiper-wrapper {
+  align-items: center;
+}
+
+.cpg-thumb-slide {
+  width: 72px !important;
+  height: 72px !important;
+  flex-shrink: 0;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid #D9D9D9;
+  transition: all 0.2s, opacity 0.2s;
+  background: #f0eee9;
+  position: relative;
+}
+
+.cpg-thumb-slide:hover { border-color: #aaa; }
+.cpg-thumb-slide.is-active { 
+    border-color: #7C0732; 
+}
+
+.cpg-thumb-slide:not(.is-active) { opacity: 0.72; }
+
+.cpg-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cpg-thumb-media-wrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.cpg-thumb-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.36);
+  color: #fff;
+}
+
+.cpg-thumb-play svg { width: 18px; height: 18px; }
+
+.cpg-thumb-3d {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.36);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* Thumb nav buttons */
+.cpg-thumb-nav {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    z-index: 2;
+    background: transparent;
+}
+
+.cpg-thumb-nav svg { width: 14px; height: 14px; }
+.cpg-thumb-nav.swiper-button-disabled { opacity: 0.3; pointer-events: none; }
+
+/* ── LIGHTBOX ── */
+.cpg-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cpg-lightbox[hidden] { display: none; }
+
+.cpg-lightbox__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  cursor: zoom-out;
+}
+
+.cpg-lightbox__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cpg-lightbox__img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 2px;
+  display: block;
+  animation: cpg-lb-in 0.22s ease;
+}
+
+@keyframes cpg-lb-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.cpg-lightbox__close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  transition: background 0.2s;
+}
+
+.cpg-lightbox__close:hover { background: rgba(255,255,255,0.22); }
+.cpg-lightbox__close svg { width: 18px; height: 18px; }
+
+button.cpg-nav,
+.cpg-counter {
+    display: none;
+}
+
+/* ── Responsive ── */
+@media (max-width: 749px) {
+  .cpg-thumb-slide {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  .cpg-nav {
+    width: 32px;
+    height: 32px;
+    opacity: 1;
+  }
+}
+
+{% endstyle %}
+
+
+{% comment %} ============================================================
+     SCRIPTS
+     ============================================================ {% endcomment %}
+
+{% comment %} Load Swiper if not already loaded {% endcomment %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+<script>
+(function () {
+
+  function initGallery(productId) {
+    const wrapper     = document.getElementById('cpg-' + productId);
+    const lightbox    = document.getElementById('cpg-lightbox-' + productId);
+    const lbImg       = document.getElementById('cpg-lb-img-' + productId);
+
+    if (!wrapper) return;
+
+    const totalSlides = wrapper.querySelectorAll('.cpg-main-slide').length;
+
+    /* ── Thumbnail Swiper ── */
+    const thumbSwiperEl = wrapper.querySelector('.cpg-thumb-swiper');
+    let thumbSwiper = null;
+
+    if (thumbSwiperEl && totalSlides > 1) {
+      thumbSwiper = new Swiper(thumbSwiperEl, {
+        slidesPerView: 'auto',
+        spaceBetween: 8,
+        freeMode: true,
+        watchSlidesProgress: true,
+        navigation: {
+          prevEl: wrapper.querySelector('.cpg-thumb-nav--prev'),
+          nextEl: wrapper.querySelector('.cpg-thumb-nav--next'),
+        },
+        breakpoints: {
+          0:   { slidesPerView: 'auto', spaceBetween: 8 },
+          750: { slidesPerView: 'auto', spaceBetween: 10 }
+        }
+      });
+    }
+
+    /* ── Main Swiper ── */
+    const mainSwiperEl = wrapper.querySelector('.cpg-main-swiper');
+    if (!mainSwiperEl) return;
+
+    const mainSwiper = new Swiper(mainSwiperEl, {
+      loop: false,
+      allowTouchMove: true,
+      grabCursor: true,
+      keyboard: { enabled: true },
+      navigation: {
+        prevEl: wrapper.querySelector('.cpg-nav--prev'),
+        nextEl: wrapper.querySelector('.cpg-nav--next'),
+      },
+      on: {
+        slideChange: function () {
+          updateCounter(this.activeIndex);
+          updateThumbs(this.activeIndex);
+        }
+      }
+    });
+
+    /* ── Counter ── */
+    function updateCounter(index) {
+      const cur = wrapper.querySelector('.cpg-counter__current');
+      if (cur) cur.textContent = index + 1;
+    }
+
+    /* ── Thumbnail active state & scroll ── */
+    function updateThumbs(index) {
+      const thumbSlides = wrapper.querySelectorAll('.cpg-thumb-slide');
+      thumbSlides.forEach(function (slide, i) {
+        slide.classList.toggle('is-active', i === index);
+      });
+      if (thumbSwiper) {
+        thumbSwiper.slideTo(Math.max(0, index - 1));
+      }
+    }
+
+    /* ── Click thumb → go to main slide ── */
+    wrapper.querySelectorAll('.cpg-thumb-slide').forEach(function (slide) {
+      slide.addEventListener('click', function () {
+        const idx = parseInt(this.dataset.index, 10);
+        mainSwiper.slideTo(idx);
+        updateThumbs(idx);
+      });
+    });
+
+    /* ── Lightbox (images only) ── */
+    {% comment %} wrapper.querySelectorAll('.cpg-main-img-wrap').forEach(function (imgWrap) {
+      imgWrap.addEventListener('click', function () {
+        const img = this.querySelector('.cpg-main-img');
+        if (!img || !lightbox || !lbImg) return;
+        lbImg.src = img.src.replace(/width=\d+/, 'width=2400');
+        lbImg.alt = img.alt;
+        lightbox.removeAttribute('hidden');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    if (lightbox) {
+      lightbox.querySelectorAll('.js-cpg-lb-close').forEach(function (el) {
+        el.addEventListener('click', function () {
+          lightbox.setAttribute('hidden', '');
+          document.body.style.overflow = '';
+        });
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !lightbox.hasAttribute('hidden')) {
+          lightbox.setAttribute('hidden', '');
+          document.body.style.overflow = '';
+        }
+      });
+    } {% endcomment %}
+
+    /* ── Variant image switching ──
+       Listen for Shopify variant change events (works with Dawn & most themes) */
+    document.addEventListener('variant:changed', function (e) {
+      const variant = e.detail && e.detail.variant;
+      if (!variant || !variant.featured_media) return;
+      const mediaId = variant.featured_media.id;
+      const targetSlide = wrapper.querySelector(
+        '.cpg-main-slide[data-media-id="' + mediaId + '"]'
+      );
+      if (targetSlide) {
+        const slides = Array.from(wrapper.querySelectorAll('.cpg-main-slide'));
+        const idx = slides.indexOf(targetSlide);
+        if (idx > -1) {
+          mainSwiper.slideTo(idx);
+          updateThumbs(idx);
+        }
+      }
+    });
+
+    /* Dawn theme uses a custom event on the product form */
+    document.querySelectorAll('variant-selects, variant-radios').forEach(function (el) {
+      el.addEventListener('change', function () {
+        setTimeout(function () {
+          const selected = el.querySelector('input[type="radio"]:checked, select');
+          if (!selected) return;
+          /* Dawn dispatches a custom event with the variant — we catch it above */
+        }, 50);
+      });
+    });
+
+  }
+
+  /* ── Init on DOMContentLoaded ── */
+  function tryInit() {
+    if (typeof Swiper === 'undefined') {
+      setTimeout(tryInit, 80);
+      return;
+    }
+    initGallery('{{ product.id }}');
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', tryInit);
+  } else {
+    tryInit();
+  }
+
+})();
+</script>

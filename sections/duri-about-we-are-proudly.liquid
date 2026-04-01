@@ -1,0 +1,239 @@
+<section class="rapidshield-sec-{{ section.id }}-padding">
+  <div class="page-width">
+    <div class="rapidshield-grid-900">
+  
+      <!-- Left Content -->
+      <div class="rapidshield-left-900">
+          <div class="rapidsheild-in-900">
+              {% if section.settings.heading != blank %}
+                  <h2 class="rapidshield-heading-900">{{ section.settings.heading }}</h2>
+              {% endif %}
+  
+              {% if section.settings.text != blank %}
+                  <p class="rapidshield-desc-900">{{ section.settings.text }}</p>
+              {% endif %}
+  
+              {% if section.blocks.size > 0 %}
+                  <div class="rapidshield-icons-900">
+                  {% for block in section.blocks %}
+                      <div class="rapidshield-icon-box-900">
+                      {% if block.settings.icon != blank %}
+                          <img class="rapidshield-icon-img-900" src="{{ block.settings.icon | image_url }}" width="50" alt="icon" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.label != blank %}
+                          <p class="rapidshield-icon-text-900">{{ block.settings.label }}</p>
+                      {% endif %}
+                      </div>
+                  {% endfor %}
+                  </div>
+              {% endif %}
+          </div>
+      </div>
+  
+      <!-- Right Image -->
+      <div class="rapidshield-right-900">
+        {% if section.settings.image != blank %}
+          <img class="rapidshield-main-img-900" src="{{ section.settings.image | image_url }}" width="800" alt="Feature Image" loading="lazy">
+        {% endif %}
+      </div>
+  
+    </div>
+  </div>
+</section>
+
+<style>
+.rapidshield-sec-{{ section.id }}-padding {
+  padding: 0px 0px;
+}
+
+.rapidshield-sec-{{ section.id }}-padding .page-width{
+  padding: 0;
+}
+
+.rapidshield-grid-900 {
+  display: flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.rapidshield-left-900 {
+    padding: 40px 80px;
+    max-width: 50%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.rapidshield-heading-900 {
+  margin: 0;
+  color: #000;
+  font-family: "PP Mori";
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 46.8px;
+  letter-spacing: 0;
+}
+
+.rapidshield-desc-900 {
+  margin: 0;
+  color: #000;
+  font-family: "PP Mori";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  padding: 16px 0 36px 0;
+  letter-spacing: 0;
+}
+
+.rapidshield-icons-900 {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.rapidsheild-in-900 {
+    background: #FFF4F3;
+    padding: 40px 40px 61px 40px;
+}
+
+.rapidshield-icon-box-900 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: calc(33.3% - 13.2px);
+    width: 100%;
+    gap: 12px;
+}
+
+.rapidshield-icon-img-900 {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  display: block;
+}
+
+.rapidshield-icon-text-900 {
+  color: #000;
+  text-align: center;
+  font-family: "PP Mori";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  margin: 0;
+  letter-spacing: 0;
+}
+.rapidshield-right-900 {
+    max-width: 50%;
+    width: 100%;
+}
+.rapidshield-right-900 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .rapidshield-grid-900 {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .rapidsheild-in-900 {
+    padding: 24px;
+}
+  .rapidshield-right-900 {
+    max-width: 100%;
+}
+  .rapidshield-left-900 {
+    padding: 40px;
+    background: #FFF;
+    text-align: start;
+    max-width: 100%;
+  }
+
+  .rapidshield-heading-900 {
+    font-size: 28px;
+    line-height: 36.4px;
+    Padding: 0 0 12px 0;
+  }
+
+  .rapidshield-desc-900 {
+        font-size: 14px;
+        line-height: 21px;
+        padding: 0 0 32px 0;
+    }
+    .rapidshield-icon-text-900 {
+        font-size: 13px;
+    }
+  .rapidshield-icon-img-900 {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+  .rapidshield-icons-900 {
+    gap: 5px;
+    justify-content: space-between;
+  }
+
+.rapidshield-icon-box-900 {
+    max-width: calc(33.3% - 3.3px);
+}
+
+  .rapidshield-icon-text-900 {
+    margin: 0;
+    line-height: 120%;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Duri About We Are Proudly",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "RapidShield Polish Drying Drops"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "Say goodbye to accidental smudges and hello to a long-lasting, professional finish..."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Right Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon",
+      "name": "Feature Icon",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Clean, 8-Free Formulas"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Duri About We Are Proudly",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}

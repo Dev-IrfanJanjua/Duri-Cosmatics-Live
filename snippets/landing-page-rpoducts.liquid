@@ -1,0 +1,137 @@
+{% style %}
+
+.rejuvacote-widget .comparison-grid {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.rejuvacote-widget .comparison-card {
+    border: 1px solid var(--mid-pink-50, #D99CA580);
+    padding: 14px 10px;
+    max-width: calc(50% - 5px);
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.comparison-card.active {
+    border-color: #D99CA5;
+    box-shadow: 0px 4px 0px 0px #D99CA5;
+}
+
+.rejuvacote-widget .card-inner {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    position: relative;
+}
+
+.prod-img-wrap {
+    max-width: 46px;
+    height: 100%;
+    width: 100%;
+}
+
+.prod-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+h4.prod-title {
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16.4px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    color: #000;
+    margin: 0;
+}
+
+p.prod-tag {
+    font-family: PP Mori;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18.8px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    margin: 8px 0 0;
+}
+
+.info-icon-trigger {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.info-icon-trigger svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+{% endstyle %}
+
+
+<div class="rejuvacote-widget" id="rejuvacote-{{ block.id }}">
+  <h3 class="widget-main-title">
+    {{ block.settings.title_text }}: <span class="active-prod-name"></span>
+  </h3>
+
+  <div class="comparison-grid">
+    {% assign main_product = product %}
+
+    {% if main_product and main_product.metafields.custom.landing_page_products.value != blank %}
+        {% for product_ref in main_product.metafields.custom.landing_page_products.value %}
+          {% assign detail = product_ref.metafields.custom.detail_entry.value %}
+          
+          <div class="comparison-card {% if forloop.first %}active{% endif %}" 
+               data-title="{{ product_ref.title }}">
+            
+            <div class="card-inner">
+              <div class="prod-img-wrap">
+                {{ product_ref.featured_image | image_url: width: 300 | image_tag: loading: 'lazy' }}
+              </div>
+              
+              <div class="prod-content">
+                <h4 class="prod-title">{{ product_ref.title }}</h4>
+                <p class="prod-tag">{{ product_ref.metafields.custom.landing_product_tag }}</p>
+              </div>
+    
+              <div class="info-icon-trigger" 
+                   data-img="{{ detail.image | image_url: width: 800 }}"
+                   data-heading="{{ product_ref.title }}"
+                   data-desc="{{ detail.description | escape }}"
+                   data-acc1="{{ detail.strengthen_text | escape }}"
+                   data-acc2="{{ detail.easy_use_text | escape }}"
+                   data-acc3="{{ detail.results_text | escape }}">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_8900_4078)">
+                  <path d="M8 16C6.9203 16 5.87247 15.7884 4.88584 15.3711C3.93318 14.9682 3.07768 14.3914 2.34314 13.6569C1.60859 12.9223 1.0319 12.0668 0.62889 11.1142C0.211621 10.1275 0 9.0797 0 8C0 6.9203 0.211621 5.87247 0.62889 4.88584C1.0318 3.93318 1.60859 3.07768 2.34314 2.34314C3.07768 1.60859 3.93318 1.0319 4.88584 0.62889C5.87257 0.211621 6.9203 0 8 0C9.0797 0 10.1275 0.211621 11.1142 0.62889C12.0668 1.0318 12.9223 1.60859 13.6569 2.34314C14.3914 3.07768 14.9681 3.93318 15.3711 4.88584C15.7885 5.87247 16 6.9203 16 8C16 9.0797 15.7884 10.1275 15.3711 11.1142C14.9682 12.0668 14.3914 12.9223 13.6569 13.6569C12.9223 14.3914 12.0668 14.9681 11.1142 15.3711C10.1275 15.7885 9.0797 16 8 16ZM8 1.19479C7.08109 1.19479 6.18985 1.37465 5.35133 1.72934C4.541 2.07209 3.81317 2.56283 3.18805 3.18795C2.56293 3.81306 2.07209 4.5409 1.72945 5.35122C1.37475 6.18985 1.19489 7.08098 1.19489 7.9999C1.19489 8.91881 1.37475 9.81005 1.72945 10.6486C2.07219 11.4589 2.56293 12.1867 3.18805 12.8118C3.81327 13.4371 4.541 13.9278 5.35133 14.2706C6.18995 14.6252 7.08109 14.8051 8 14.8051C8.91891 14.8051 9.81015 14.6252 10.6487 14.2706C11.459 13.9278 12.1868 13.4371 12.8119 12.8118C13.4372 12.1867 13.9279 11.4589 14.2706 10.6486C14.6252 9.80994 14.8051 8.91881 14.8051 7.9999C14.8051 7.08098 14.6252 6.18974 14.2706 5.35122C13.9278 4.5409 13.4371 3.81306 12.8119 3.18795C12.1868 2.56283 11.459 2.07198 10.6487 1.72934C9.81005 1.37465 8.91891 1.19479 8 1.19479Z" fill="black"/>
+                  <path d="M9.35789 11.4115C9.30727 11.3921 9.25004 11.4063 9.20748 11.4398C8.85593 11.716 8.5678 11.7717 8.31855 11.6425C8.08596 11.5219 8.03565 11.1731 8.13407 10.8635C8.3481 10.1906 8.63949 9.28108 8.9139 8.42506C9.09449 7.86157 9.26712 7.15952 9.04848 6.70337C8.85593 6.30171 8.50376 6.11745 8.02014 6.16304C7.41127 6.22048 6.66907 6.66133 6.17194 7.05324C6.01188 7.17944 5.97415 7.39074 6.07656 7.55006C6.17487 7.70299 6.38377 7.75487 6.57348 7.63748C6.80219 7.49598 7.12554 7.29295 7.32993 7.19086C7.25006 7.4529 7.16181 7.76965 7.01643 8.26773C6.85711 8.81371 6.63878 9.56156 6.30631 10.6897C6.09395 11.41 6.24793 11.9126 6.41458 12.2072C6.60503 12.5441 6.92 12.791 7.27868 12.8846C7.40414 12.9174 7.55382 12.9386 7.71628 12.9386C8.31289 12.9386 9.08076 12.6521 9.44594 11.5983C9.47151 11.5244 9.43535 11.4413 9.35789 11.4115Z" fill="black"/>
+                  <path d="M8.75792 5.26027C9.34153 5.22159 9.78332 4.71723 9.74465 4.13362C9.70597 3.55001 9.2016 3.10821 8.61799 3.14689C8.03438 3.18556 7.59259 3.68993 7.63126 4.27354C7.66994 4.85715 8.17431 5.29895 8.75792 5.26027Z" fill="black"/>
+                  </g>
+                  <defs>
+                  <clipPath id="clip0_8900_4078">
+                  <rect width="16" height="16" fill="white"/>
+                  </clipPath>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+    {% else %}
+        <p>No Product is Selected</p>
+    {% endif %}
+
+  </div>
+</div>
+
+{% render 'rejuvacote-popup-modal' %}

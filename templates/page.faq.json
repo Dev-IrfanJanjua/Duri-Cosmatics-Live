@@ -1,0 +1,124 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "duri_faq_gxC3br": {
+      "type": "duri-FAQ",
+      "blocks": {
+        "faq_item_kLYGAz": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Should I go with Rejuvacote 1 or Rejuvacote 2?",
+            "answer": "If you have flexible, peeling nails with stunted growth and constant chipping, go for Rejuvacote 1. If you have thin, brittle nails with ridges, then Rejuvacote 2 is for you."
+          }
+        },
+        "faq_item_CyJciK": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Does Rejuvacote 1 or Rejuvacote 2 contain formaldehyde?",
+            "answer": "Rejuvacote 1 contains a formaldehyde resin to provide maximum strengthening for severely damaged nails. Rejuvacote 2 is completely formaldehyde-free and is designed specifically for people with sensitive skin or those who prefer a gentler formula."
+          }
+        },
+        "faq_item_bPwcJ7": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do I use Rejuvacote 1 and Rejuvacote 2 together?",
+            "answer": "No, you should use them separately. They are both complete nail treatments; Rejuvacote 1 is for maximum strength, while Rejuvacote 2 is for sensitive nails. Use the one that best matches your nail type."
+          }
+        },
+        "faq_item_ikVG9Q": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your best seller?",
+            "answer": "Our best seller is Rejuvacote 1. It is world-renowned for transforming thin, brittle nails into long, strong ones in a matter of weeks."
+          }
+        },
+        "faq_item_bTCABD": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is the difference between Rejuvacote 1 and Rejuvacote 2?",
+            "answer": "Rejuvacote 1 is the original high-potency formula for severe damage. Rejuvacote 2 is a gentle, formaldehyde-free version designed for people with sensitive skin or allergies to traditional hardeners."
+          }
+        },
+        "faq_item_RLB8fC": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you need to use Rejuvacote 2 and Rejuvacote 1 together?",
+            "answer": "Durilaq is a long-wear nail lacquer system that provides the high-shine, plump look of a gel manicure without needing a UV or LED light. It air-dries and is removed with standard nail polish remover."
+          }
+        },
+        "faq_item_m9GYzr": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is Durilaq Gel Effect Lacquer?",
+            "answer": "Durilaq is a long-wear nail polish system that gives you the high-shine, plump look of a professional gel manicure without the need for a UV or LED lamp. It is designed to air-dry quickly, last longer than traditional polish, and can be easily removed with standard nail polish remover."
+          }
+        },
+        "faq_item_8FmYT4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What store can I purchase Duri products in?",
+            "answer": "The best and easiest way to purchase Duri products is directly through our official website. This ensures you get authentic products and the latest formulas. While we are also available through major online retailers like Amazon and Walmart, we cannot guarantee consistent availability in local physical stores."
+          }
+        },
+        "faq_item_AWUExN": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Where are Duri products made and shipped from?",
+            "answer": "Duri products are proudly made and shipped from the USA. We maintain high quality control standards by keeping our manufacturing and distribution close to home."
+          }
+        },
+        "faq_item_9i3QNt": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you need to use Rejuvacote 2 and Rejuvacote 1 together?",
+            "answer": "No, you should not use them together. They are separate treatments designed for different nail needs. Rejuvacote 1 is the original high-strength formula, while Rejuvacote 2 is the gentle, formaldehyde-free version for sensitive nails. You should choose the one that best fits your nail type and use it as a standalone base and top coat."
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_kLYGAz",
+        "faq_item_CyJciK",
+        "faq_item_bPwcJ7",
+        "faq_item_ikVG9Q",
+        "faq_item_bTCABD",
+        "faq_item_RLB8fC",
+        "faq_item_m9GYzr",
+        "faq_item_8FmYT4",
+        "faq_item_AWUExN",
+        "faq_item_9i3QNt"
+      ],
+      "name": "Duri Faq",
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "button_label": "SHOP NOW",
+        "button_link": "shopify://collections/all",
+        "padding_top": 30,
+        "padding_bottom": 80,
+        "mbl_padding_top": 40,
+        "mbl_padding_bottom": 40,
+        "back-color": "",
+        "btn_color": "#7c0732"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "duri_faq_gxC3br"
+  ]
+}

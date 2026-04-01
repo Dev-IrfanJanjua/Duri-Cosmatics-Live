@@ -1,0 +1,65 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "blog_top_9WkKdg": {
+      "type": "blog-top",
+      "name": "Blogs Top Section",
+      "settings": {
+        "title": "Ultimate AM & PM Nail & Body Care Routine",
+        "description": "A Step-by-Step Guide to Strengthen, Protect, and Beautify Your Nails & Skin with Duri’s Clean Formulations",
+        "bg_color": "#ffffff",
+        "title_color": "#000000",
+        "desc_color": "#000000",
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 20,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "main": {
+      "type": "main-blog",
+      "blocks": {
+        "blog_tab_NxykER": {
+          "type": "blog_tab",
+          "settings": {
+            "blog": "news"
+          }
+        },
+        "blog_tab_hiyfkt": {
+          "type": "blog_tab",
+          "settings": {
+            "blog": "nail-education"
+          }
+        }
+      },
+      "block_order": [
+        "blog_tab_NxykER",
+        "blog_tab_hiyfkt"
+      ],
+      "settings": {
+        "cstm_style": true,
+        "layout": "grid",
+        "show_image": true,
+        "image_height": "medium",
+        "show_date": true,
+        "show_author": true,
+        "padding_top": 40,
+        "padding_bottom": 80,
+        "padding_top_mob": 0,
+        "padding_bottom_mob": 40
+      }
+    }
+  },
+  "order": [
+    "blog_top_9WkKdg",
+    "main"
+  ]
+}

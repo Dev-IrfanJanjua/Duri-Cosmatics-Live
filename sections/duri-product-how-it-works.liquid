@@ -1,0 +1,429 @@
+{% style %}
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.desktop-padding-top }}px;
+    padding-bottom: {{ section.settings.desktop-padding-bottom }}px;
+    background-color: {{ section.settings.back-color }};
+    overflow: hidden;
+}
+.dcvn-content {
+    padding: 0px 80px 80px 80px;
+}
+.count-and-text {
+    display: flex;
+    margin-top: 16px;
+}
+.dcvn-video {
+  width: 100%;
+  height: 364px;
+  object-fit: cover;
+  position: relative;
+  z-index: 12;
+}
+.dcvn-video-container {
+  position: relative;
+  z-index: 10;
+  line-height: 0;
+}
+.dcvn-play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 20;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dcvn-products {
+  display: flex;
+  gap: 16px;
+  padding: 12px 16px;
+  justify-content: center;
+}
+.dcvn-products img {
+  width: 60px;
+  height: 60px;
+}
+p.dcvn-subhead {
+    margin: 0 auto;
+    font-family: PP Mori;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0px;
+    text-align: center;
+    vertical-align: middle;
+    padding-bottom: 24px;
+    max-width: 606px;
+    color: #000;
+}
+p.dcvn-product-title {
+  margin: 0;
+  color: var(--6, #404040);
+  font-family: "Twentieth Century";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  text-transform: uppercase;
+  padding-bottom: 8px;
+}
+span.dcvn-price {
+  color: var(--6, #404040);
+  font-family: "Twentieth Century";
+  font-size: 14px;
+  font-weight: 350;
+}
+span.dcvn-compare {
+  color: var(--7, #A4A4A4);
+  font-family: "Twentieth Century";
+  font-size: 14px;
+  font-weight: 350;
+  text-decoration: underline;
+}
+.dcvn-prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+/* .dcvn-card {
+  border: 1.345px solid var(--4, #F6E2FB);
+} */
+.dcvn-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dcvn-heading {
+  margin: 0;
+  padding: 0px 16px;
+  text-align: center;
+}
+.dcvn-heading p {
+    margin: 0;
+    padding-bottom: 14px;
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 46.8px;
+    letter-spacing: 0px;
+    text-align: center;
+    vertical-align: middle;
+    color: #000;
+}
+.dcvn-heading p strong {
+  color: var(--1, #6A2590);
+  font-weight: 400;
+}
+.dcvn-wrapper {
+  position: relative;
+}
+.dcvn-prev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 24px;
+  z-index: 999;
+  cursor: pointer;
+}
+.dcvn-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 24px;
+  z-index: 999;
+  cursor: pointer;
+}
+/* .dcvn-wrapper::before,
+.dcvn-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 240px;
+  background: linear-gradient(272deg, #FAF7FC 12.2%, rgba(250, 247, 252, 0) 98.36%);
+  z-index: 9;
+} */
+.dcvn-wrapper::before { left: 0; transform: rotate(180deg); }
+.dcvn-wrapper::after { right: 0; }
+
+.dcvn-arrow {
+  display: flex;
+}
+h3.dcvn-prdc-hnd {
+    margin: 0;
+}
+.dcvn-prdc-hnd {
+    font-family: PP Mori;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    line-height: 23.4px;
+    letter-spacing: 0px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #000;
+}
+.dcvn-prdc-hnd strong {
+    font-family: PP Mori;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 48px;
+    line-height: 48px;
+    letter-spacing: 0;
+    text-align: center;
+    display: block;
+    min-width: fit-content;
+}
+
+/* Responsive */
+@media screen and (max-width: 1100px) {
+  .dcvn-wrapper::before,
+  .dcvn-wrapper::after { width: 120px; }
+  .dcvn-products img { width: 50px; height: 50px; }
+}
+@media screen and (max-width: 768px) {
+.section-{{ section.id }}-padding {
+  padding-top: {{ section.settings.padding-top-mob }}px !important;
+  padding-bottom: {{ section.settings.padding-bottom-mob }}px !important;
+}
+.section-{{ section.id }}-padding .page-width {
+    padding-right: 0;
+}
+.dcvn-heading {
+    margin: 0;
+    padding: 0px 32px 0 16px;
+    text-align: center;
+}
+
+p.dcvn-subhead {
+    padding-right: 16px;
+}
+.dcvn-content {
+  padding: unset;
+}
+.dcvn-prdc-hnd {
+    font-size: 14px;
+}
+.dcvn-content {
+    padding-left: 16px !important;
+}
+  .dcvn-wrapper::before,
+  .dcvn-wrapper::after { 
+    content: unset; 
+}
+  .dcvn-prev, .dcvn-next { 
+    display: none; 
+}
+  .dcvn-heading p {
+    font-size: 24px;
+    padding-bottom: 8px;
+    line-height: 31.2px;
+}
+.dcvn-video {
+    height: 358px;
+}
+  .dcvn-products img { 
+    width: 36px; 
+    height: 36px; 
+}
+  p.dcvn-product-title { 
+    font-size: 12px; 
+    padding-bottom: 4px; 
+}
+  span.dcvn-price, span.dcvn-compare { 
+    font-size: 10px; 
+}
+}
+{% endstyle %}
+
+<section class="section-{{ section.id }}-padding dcvn-section">
+  <div class="page-width">
+    <h3 class="dcvn-heading">{{ section.settings.heading }}</h3>
+    <p class="dcvn-subhead">{{ section.settings.subhead }}</p>
+    <div class="dcvn-wrapper">
+      <div class="swiper dcvn-swiper">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+          {% assign product = block.settings.product %}
+          <div class="swiper-slide">
+            <div class="dcvn-card">
+              <div class="dcvn-video-container">
+                {% if block.settings.video != blank %}
+                  {{ block.settings.video | video_tag: class: 'dcvn-video', image_size: '1100x', controls: false, muted: false, id: 'dcvn-video-block' }}
+                {% endif %}
+                <div class="dcvn-play-icon">{% render 'play-svg-new' %}</div>
+              </div>
+              {% comment %} <a href="{{ product.url }}" class="dcvn-products">
+                {% if product.featured_image %}
+                  <img src="{{ product.featured_image | image_url }}">
+                {% endif %}
+                <div class="dcvn-detail">
+                  <p class="dcvn-product-title">{{ product.title }}</p>
+                  <div class="dcvn-bottom">
+                    <div class="dcvn-prices">
+                      <span class="dcvn-price">{{ product.price | money }}</span>
+                      <span class="dcvn-compare">{{ product.compare_at_price | money }}</span>
+                    </div>
+                    <div class="dcvn-arrow">{% render 'arrow-svg-new' %}</div>
+                  </div>
+                </div>
+              </a> {% endcomment %}
+              <div class="count-and-text">
+                <div><h3 class="dcvn-prdc-hnd">{{ block.settings.title12 }}</h3></div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% comment %} <div class="dcvn-prev">{% render 'pre-btn' %}</div>
+      <div class="dcvn-next">{% render 'next-btn' %}</div> {% endcomment %}
+    </div>
+  </div>
+</section>
+
+<script>
+var swiper = new Swiper(".dcvn-swiper", {
+  slidesPerView: 3,
+  spaceBetween: 20,
+  {% comment %} centeredSlides: true, {% endcomment %}
+  speed: 800,
+  loop: true,
+  navigation: {
+    nextEl: ".dcvn-next",
+    prevEl: ".dcvn-prev",
+  },
+  breakpoints: {
+    0: { slidesPerView: 1.2, spaceBetween: 20 },
+    768: { slidesPerView: 3, spaceBetween: 20 },
+    1024: { slidesPerView: 3, spaceBetween: 20 }
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const videoContainers = document.querySelectorAll(".dcvn-video-container");
+
+  videoContainers.forEach(container => {
+    const video = container.querySelector("video");
+    const playIcon = container.querySelector(".dcvn-play-icon");
+
+    playIcon.style.display = "flex";
+
+    playIcon.addEventListener("click", function () {
+      if (video.paused) {
+        video.play();
+        playIcon.style.display = "none";
+      }
+    });
+
+    video.addEventListener("click", function () {
+      if (!video.paused) {
+        video.pause();
+        playIcon.style.display = "flex";
+      }
+    });
+
+    video.addEventListener("play", function () {
+      document.querySelectorAll(".dcvn-video-container video").forEach(v => {
+        if (v !== video) {
+          v.pause();
+          v.closest(".dcvn-video-container").querySelector(".dcvn-play-icon").style.display = "flex";
+        }
+      });
+    });
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Duri Product How It Works",
+  "settings": [
+    { 
+        "type": "range", 
+        "id": "desktop-padding-top", 
+        "label": "Desktop Padding Top", 
+        "min": 0, "max": 100, 
+        "step": 1, 
+        "default": 16 
+    },
+    { 
+        "type": "range", 
+        "id": "desktop-padding-bottom", 
+        "label": "Desktop Padding Bottom", 
+        "min": 0, 
+        "max": 100, 
+        "step": 1, 
+        "default": 16 
+    },
+    { 
+        "type": "range", 
+        "id": "padding-top-mob", 
+        "label": "Mobile Padding Top", 
+        "min": 0, 
+        "max": 100, 
+        "step": 1, 
+        "default": 16 
+    },
+    { 
+        "type": "range", 
+        "id": "padding-bottom-mob", 
+        "label": "Mobile Padding Bottom", 
+        "min": 0, 
+        "max": 100, 
+        "step": 1, 
+        "default": 16 
+    },
+    { 
+        "type": "color", 
+        "id": "back-color", 
+        "label": "Background Color" 
+    },
+    { 
+        "type": "richtext", 
+        "id": "heading", 
+        "label": "Heading" 
+    },
+    { 
+        "type": "text", 
+        "id": "subhead", 
+        "label": "subHeading" 
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured-blocks",
+      "name": "Featured Block",
+      "settings": [
+        { 
+            "type": "video", 
+            "id": "video", 
+            "label": "Video" 
+        },
+        { 
+            "type": "product", 
+            "id": "product", 
+            "label": "Select Product" 
+        },
+        { 
+            "type": "inline_richtext", 
+            "id": "title12", 
+            "label": "Count Number" 
+        },
+        { 
+            "type": "text", 
+            "id": "title34", 
+            "label": "text here" 
+        }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Duri Product How It Works" }
+  ]
+}
+{% endschema %}

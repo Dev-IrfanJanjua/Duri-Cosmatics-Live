@@ -1,0 +1,24 @@
+{% if cart == empty %}
+
+  {% comment %} <span class="svg-wrapper">{{ 'icon-cart-empty.svg' | inline_asset_content }}</span> {% endcomment %}
+   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13.5 7.66953L9 2.26953L4.5 7.66953" stroke="#3D3935" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M0.900391 7.66992L2.70039 14.8699C2.78454 15.3858 3.01075 15.8484 3.33964 16.1773C3.66854 16.5062 4.07928 16.6805 4.50039 16.6699H13.5004C13.9215 16.6805 14.3322 16.5062 14.6611 16.1773C14.99 15.8484 15.2162 15.3858 15.3004 14.8699L17.1004 7.66992H0.900391Z" stroke="#3D3935" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+{% else %}
+  {% comment %} <span class="svg-wrapper">{{ 'icon-cart.svg' | inline_asset_content }}</span> {% endcomment %}
+   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13.5 7.66953L9 2.26953L4.5 7.66953" stroke="#3D3935" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M0.900391 7.66992L2.70039 14.8699C2.78454 15.3858 3.01075 15.8484 3.33964 16.1773C3.66854 16.5062 4.07928 16.6805 4.50039 16.6699H13.5004C13.9215 16.6805 14.3322 16.5062 14.6611 16.1773C14.99 15.8484 15.2162 15.3858 15.3004 14.8699L17.1004 7.66992H0.900391Z" stroke="#3D3935" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+{% endif %}
+
+<span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+{%- if cart != empty -%}
+  <div class="cart-count-bubble">
+    {%- if cart.item_count < 100 -%}
+      <span aria-hidden="true">{{ cart.item_count }}</span>
+    {%- endif -%}
+    <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+  </div>
+{%- endif -%}

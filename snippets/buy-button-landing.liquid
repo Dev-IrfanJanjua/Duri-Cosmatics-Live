@@ -1,0 +1,434 @@
+<div class="ad-to-cart-neww" {{ block.shopify_attributes }}>
+  {%- if product != blank -%}
+
+    {%- liquid
+      assign gift_card_recipient_feature_active = false
+      if block.settings.show_gift_card_recipient and product.gift_card?
+        assign gift_card_recipient_feature_active = true
+      endif
+
+      assign show_dynamic_checkout = false
+      if block.settings.show_dynamic_checkout and gift_card_recipient_feature_active == false
+        assign show_dynamic_checkout = true
+      endif
+    -%}
+
+    <product-form
+      class="product-form"
+      data-hide-errors="{{ gift_card_recipient_feature_active }}"
+      data-section-id="{{ section_id }}"
+    >
+      <div class="product-form__error-message-wrapper" role="alert" hidden>
+        <span class="svg-wrapper">
+          {{- 'icon-error.svg' | inline_asset_content -}}
+        </span>
+        <span class="product-form__error-message"></span>
+      </div>
+
+      {%- form 'product',
+        product,
+        id: product_form_id,
+        class: 'form',
+        novalidate: 'novalidate',
+        data-type: 'add-to-cart-form'
+      -%}
+
+        {% if showQty %}
+          <input
+            type="hidden"
+            name="quantity"
+            id="ProductQuantity-{{ section_id }}"
+            value="1"
+            data-default-quantity="1"
+            class="product-quantity-input buy-button-qty"
+          >
+        {% endif %}
+
+        {% comment %}
+          Base variant — keeps Dawn's product-form web component
+          happy. BundleCollectionPicker reads the active
+          .bundle-product button's data-product-id for the actual
+          variant to add and never uses this input value.
+        {% endcomment %}
+
+
+        {% comment %} <input
+          type="hidden"
+          name="id"
+          value="{{ product.selected_or_first_available_variant.id }}"
+          class="product-variant-id js-atc-variant-id"
+        > {% endcomment %}
+
+        {% comment %}
+          Back-compat container — cleared on bundle reset.
+        {% endcomment %}
+        <div class="js-bundle-properties-container" style="display:none;"></div>
+
+        {%- if gift_card_recipient_feature_active -%}
+          {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
+        {%- endif -%}
+
+        <div class="product-form__buttons">
+
+          {%- liquid
+            assign check_against_inventory = true
+            if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
+              assign check_against_inventory = false
+            endif
+            if product.selected_or_first_available_variant.quantity_rule.min > product.selected_or_first_available_variant.inventory_quantity and check_against_inventory
+              assign quantity_rule_soldout = true
+            endif
+          -%}
+
+          {% comment %}
+            ── WHY WE DON'T SHOW "SOLD OUT" HERE ──────────────
+            product_1 from the bundle_products block is used as
+            the Shopify form anchor only. Its availability does
+            not reflect the bundle state. JS controls the button:
+              • disabled  until all tier slots are filled
+              • enabled   once selection is complete
+            ────────────────────────────────────────────────────
+          {% endcomment %}
+
+          <button
+            id="ProductSubmitButton-{{ section_id }}"
+            type="submit"
+            name="add"
+            class="product-form__submit button button--full-width cstm_atc-btn {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
+            data-bundle-ready="false"
+            disabled
+          >
+            <span class="button-text">
+              {{ 'products.product.add_to_cart' | t }}
+              {% if showQty %}
+                <span class="selected-options-text">
+                  -
+                  <span id="one-time-price-btn" class="btn-price"
+                    data-main-price="{{ product.selected_or_first_available_variant.price }}"
+                    data-main-compare="{{ product.selected_or_first_available_variant.compare_at_price }}"
+                  >
+                    {{ product.selected_or_first_available_variant.price | money }}
+                    {% if section.settings.cstm_style %}
+                      <span id="bundle-compare-price" class="cstm-btn-comp_price">
+                        {{ product.selected_or_first_available_variant.compare_at_price | money }}
+                      </span>
+                    {% endif %}
+                  </span>
+                </span>
+              {% endif %}
+            </span>
+            {%- render 'loading-spinner' -%}
+          </button>
+
+          {%- if show_dynamic_checkout -%}
+            {{ form | payment_button }}
+          {%- endif -%}
+
+        </div>
+      {%- endform -%}
+    </product-form>
+
+  {%- else -%}
+    {% comment %}
+      bundle_products block not configured — show disabled button
+      (no "Sold Out" label since no product is set yet).
+    {% endcomment %}
+    <div class="product-form">
+      <div class="product-form__buttons form">
+        <button
+          type="button"
+          class="product-form__submit button button--full-width button--primary"
+          disabled
+        >
+          {{ 'products.product.add_to_cart' | t }}
+        </button>
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- if show_pickup_availability -%}
+    {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
+    {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities
+      | where: 'pick_up_enabled', true
+    -%}
+    <pickup-availability
+      class="product__pickup-availabilities quick-add-hidden"
+      {% if product.selected_or_first_available_variant.available and pick_up_availabilities.size > 0 %}available{% endif %}
+      data-root-url="{{ routes.root_url }}"
+      data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+      data-has-only-default-variant="{{ product.has_only_default_variant }}"
+      data-product-page-color-scheme="gradient color-{{ section.settings.color_scheme }}"
+    >
+      <template>
+        <pickup-availability-preview class="pickup-availability-preview">
+          <span class="svg-wrapper">{{- 'icon-unavailable.svg' | inline_asset_content -}}</span>
+          <div class="pickup-availability-info">
+            <p class="caption-large">{{ 'products.product.pickup_availability.unavailable' | t }}</p>
+            <button class="pickup-availability-button link link--text underlined-link">
+              {{ 'products.product.pickup_availability.refresh' | t }}
+            </button>
+          </div>
+        </pickup-availability-preview>
+      </template>
+    </pickup-availability>
+    <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
+  {%- endif -%}
+</div>
+
+
+<script>
+/* ── Selling plan enforcer (unchanged) ── */
+document.addEventListener('DOMContentLoaded', () => {
+  const sellingPlanInput  = document.querySelector('.selling_plan_id');
+  const subscriptionRadio = document.querySelector('.subscription_input');
+  const onetimeRadio      = document.querySelector('.onetime_input');
+  function enforceSellingPlan() {
+    if (!sellingPlanInput) return;
+    const selectedTub = document.querySelector('.qty-input:checked');
+    if (!selectedTub) return;
+    const tubSellingPlan = selectedTub.dataset.sellingPlan;
+    if (subscriptionRadio?.checked) {
+      if (tubSellingPlan && sellingPlanInput.value !== tubSellingPlan)
+        sellingPlanInput.value = tubSellingPlan;
+    }
+    if (onetimeRadio?.checked) {
+      if (sellingPlanInput.value !== '') sellingPlanInput.value = '';
+    }
+  }
+  enforceSellingPlan();
+  document.querySelectorAll('input[name="purchase_type"]').forEach(r => r.addEventListener('change', enforceSellingPlan));
+  document.querySelectorAll('.qty-input').forEach(i => i.addEventListener('change', enforceSellingPlan));
+  setInterval(enforceSellingPlan, 300);
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  'use strict';
+
+  const sectionId = "{{ section_id }}";
+  const btn       = document.getElementById(`ProductSubmitButton-${sectionId}`);
+  if (!btn) return;
+
+  /**
+   * HELPERS: Syncing UI State
+   */
+  function getActiveTier() {
+    const active = document.querySelector('.bundle-tier.is-active');
+    return active ? parseInt(active.dataset.tier, 10) : 0;
+  }
+
+  function syncButton() {
+    const tier        = getActiveTier();
+    const filledSlots = document.querySelectorAll('.selected-slot.is-filled');
+    const ready       = filledSlots.length === tier && tier > 0;
+
+    const variantIds = [];
+    document.querySelectorAll('.bundle-product.is-active').forEach(b => {
+      if (b.dataset.productId) variantIds.push(parseInt(b.dataset.productId, 10));
+    });
+    filledSlots.forEach(slot => {
+      if (slot.dataset.variantId) variantIds.push(parseInt(slot.dataset.variantId, 10));
+    });
+    document.querySelectorAll('.js-addon-toggle:checked').forEach(cb => {
+      if (cb.dataset.variantId) variantIds.push(parseInt(cb.dataset.variantId, 10));
+    });
+
+    btn.dataset.bundleVariants = JSON.stringify(variantIds);
+    btn.dataset.bundleReady    = ready ? 'true' : 'false';
+    btn.disabled               = !ready;
+  }
+
+  /**
+   * CORE: Refreshing & Opening Dawn's Cart Drawer
+   */
+  async function refreshDawnCart() {
+    const cartDrawer = document.querySelector('cart-drawer');
+    const sections = ['cart-drawer', 'cart-icon-bubble'];
+    const sectionIds = sections.join(',');
+
+    try {
+      // Fetch fresh HTML from Shopify
+      const response = await fetch(`${window.Shopify.routes.root}cart?sections=${sectionIds}`);
+      const json = await response.json();
+
+      // 1. Update the Cart Drawer internal content
+      if (json['cart-drawer']) {
+        const drawerHTML = new DOMParser().parseFromString(json['cart-drawer'], 'text/html');
+        const contentToReplace = drawerHTML.querySelector('#CartDrawer');
+        const target = document.querySelector('#CartDrawer');
+
+        if (target && contentToReplace) {
+          target.innerHTML = contentToReplace.innerHTML;
+        }
+      }
+
+      // 2. Update the Cart Count Bubble (Header)
+      if (json['cart-icon-bubble']) {
+        const bubbleHTML = new DOMParser().parseFromString(json['cart-icon-bubble'], 'text/html');
+        const targetBubble = document.querySelector('#cart-icon-bubble');
+        if (targetBubble) {
+          targetBubble.innerHTML = bubbleHTML.body.innerHTML;
+        }
+      }
+
+      // 3. OPEN THE DRAWER & REMOVE EMPTY STATE
+      if (cartDrawer) {
+        // Remove the empty class so items are visible
+        cartDrawer.classList.remove('is-empty');
+        
+        // Add the 'active' class to trigger the CSS opening animation
+        cartDrawer.classList.add('active');
+
+        // Trigger Dawn's internal accessibility/focus logic
+        if (typeof cartDrawer.renderContents === 'function') {
+           cartDrawer.renderContents({ item_count: 0 }); 
+        }
+
+        // Standard Dawn method call as a fallback
+        if (typeof cartDrawer.open === 'function') {
+           setTimeout(() => cartDrawer.open(), 50);
+        }
+      }
+
+      // 4. Broadcast for third-party compatibility
+      document.dispatchEvent(new CustomEvent('cart:updated', {
+        bubbles: true,
+        detail: { cart: {} }
+      }));
+
+    } catch (e) {
+      console.error('[BundleATC] Failed to refresh/open cart:', e);
+    }
+  }
+
+  /**
+   * ACTION: Add All to Cart
+   */
+  async function addBundleToCart() {
+    if (btn.disabled) return;
+
+    const textEl   = btn.querySelector('.button-text');
+    const origHTML = textEl ? textEl.innerHTML : btn.innerHTML;
+
+    if (textEl) textEl.innerHTML = `Adding…`;
+    btn.disabled = true;
+
+    try {
+      const items = [];
+
+      // A. Base Block Product
+      const baseBtn = document.querySelector('.bundle-product.is-active');
+      if (baseBtn) {
+        const vid = parseInt(baseBtn.dataset.productId, 10);
+        const qty = parseInt(baseBtn.dataset.variantQty, 10) || 1;
+        if (vid && !isNaN(vid)) {
+          items.push({
+            id: vid,
+            quantity: qty,
+            properties: { 
+              _bundle_role : 'base_product', 
+              _bundle_title: baseBtn.dataset.productTitle || '' 
+            }
+          });
+        }
+      }
+
+      // B. Swatch Selections
+      document.querySelectorAll('.selected-slot.is-filled').forEach((slot, idx) => {
+        const vid = parseInt(slot.dataset.variantId, 10);
+        if (vid && !isNaN(vid)) {
+          items.push({
+            id: vid,
+            quantity: 1,
+            properties: { 
+              _bundle_role: 'selection', 
+              _bundle_slot: String(idx + 1), 
+              _bundle_handle: slot.dataset.productHandle || '' 
+            }
+          });
+        }
+      });
+
+      // C. Add-ons
+      document.querySelectorAll('.js-addon-toggle:checked').forEach(cb => {
+        const vid = parseInt(cb.dataset.variantId, 10);
+        const qty = parseInt(cb.dataset.qty, 10) || 1;
+        if (vid && !isNaN(vid)) {
+          items.push({ id: vid, quantity: qty, properties: { _bundle_role: 'addon' } });
+        }
+      });
+
+      if (!items.length) throw new Error('Nothing to add.');
+
+      const res = await fetch(`${window.Shopify.routes.root}cart/add.js`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ items })
+      });
+
+      if (!res.ok) throw new Error('Add to cart failed');
+
+      // Update UI and Open Drawer
+      await refreshDawnCart();
+      resetBundleUI();
+
+      if (textEl) textEl.innerHTML = origHTML;
+      btn.disabled = false;
+
+    } catch (err) {
+      console.error('[BundleATC] Error:', err);
+      if (textEl) textEl.textContent = 'Error — try again.';
+      setTimeout(() => {
+        if (textEl) textEl.innerHTML = origHTML;
+        btn.disabled = false;
+        syncButton();
+      }, 3000);
+    }
+  }
+
+  /**
+   * RESET: Clear UI after success
+   */
+  function resetBundleUI() {
+    const ui = window.BundleUIInstances?.[sectionId];
+    if (ui) {
+      ui.selectedItems = [];
+      if (typeof ui._syncSwatchStates === 'function') ui._syncSwatchStates();
+      if (typeof ui._renderTray       === 'function') ui._renderTray();
+    }
+    document.querySelectorAll('.js-addon-toggle:checked').forEach(cb => { cb.checked = false; });
+    syncButton();
+  }
+
+  /**
+   * EVENT BINDING
+   */
+  document.querySelectorAll('.bundle-tier').forEach(b =>
+    b.addEventListener('click', () => setTimeout(syncButton, 50))
+  );
+
+  const trayElement = document.querySelector('.js-selected-tray');
+  if (trayElement) {
+    const observer = new MutationObserver(syncButton);
+    observer.observe(trayElement, { childList: true, subtree: true });
+  }
+
+  document.querySelectorAll('.js-addon-toggle').forEach(cb =>
+    cb.addEventListener('change', syncButton)
+  );
+
+  document.querySelectorAll('.bundle-product').forEach(b =>
+    b.addEventListener('click', () => setTimeout(syncButton, 50))
+  );
+
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    addBundleToCart();
+  });
+
+  syncButton();
+});
+</script>

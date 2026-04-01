@@ -1,0 +1,655 @@
+{% style %}
+  .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.desktop-padding-top }}px;
+      padding-bottom: {{ section.settings.desktop-padding-bottom }}px;
+      background: #FFF4F3;
+  }
+    .section-{{ section.id }}-padding .page-width{
+      padding: 0 37px;
+    }
+    .cs-raising-heading{
+     margin: 0;
+    }
+    .cs-featured-blocks img{
+      width: 32px;
+      height: 32px;
+      margin: 0 auto;
+    }
+    .cs-raising-heading p {
+    margin: 0;
+    margin-bottom: 32px;
+    color: #000;
+    text-align: center;
+    font-family: "PP Mori";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 46.8px;
+}
+    p.cs-des {
+      margin: 0;
+      color: var(--Second-100, #010101);
+      text-align: center;
+      font-family: Akrobat;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 24px;
+      letter-spacing: 1px;
+      max-width: 760px;
+      margin: 0 auto;
+      padding-bottom: 43px;
+      padding-top: 7px;
+  }
+  .cs-raising-heading p strong{
+    font-weight: 400;
+    color: var(--Primary-100, #D02029);
+  }
+    .cs-raising-content{
+      display: flex;
+      /* grid-template-columns: 20% 20% auto; */
+      position: relative;
+      gap: 24px;
+    }
+    .cs-raising-featured{
+      width: 40%;
+    }
+    .cs-raising-innerwork{
+      width: 20%;
+      background: white;
+    }
+    .cs-raising-slider{
+      width: 40%;
+    }
+    .cs-raising-featured-title {
+    margin: 0;
+    letter-spacing: 0px;
+    padding-top: 46.6px;
+    height: 93px;
+    border-bottom: 1px solid #b7b6b6;
+    color: #1E4851;
+    font-family: "PP Mori";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 30px;
+}
+    .cs-featured-block-text p {
+    margin: 0;
+    font-size: 18px;
+    color: #000000a8;
+    text-align: start;
+    color: #000;
+    font-family: "PP Mori";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+}
+    .cs-featured-block-text p strong{
+      font-weight: 600;
+    }
+    .cs-featured-blocks{
+     border-bottom: 1px solid #b7b6b6;
+      height: 87px;
+      display: flex;
+      /* justify-content: center; */
+      align-items: center;
+      /* background: #F0F0F0; */
+    }
+    
+    .cs-raising-slid .cs-check-img:last-child {
+    border: none;
+  }
+    .cs-check-img{
+      /* padding: 40px 0 40px; */
+      height: 105.5px;
+      border-bottom: 3px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+  text-align: center;
+  font-family: Regular;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+    letter-spacing: 0px;
+    }
+    
+    /* .cs-swiper-main-slider{
+      display: flex;
+      flex-direction: column;
+    } */
+    /* .cs-inner-work-img {
+      max-width: 100%;
+      object-fit: cover;
+      display: block;
+      margin: auto;
+  } */
+    .cs-raising-main {
+      max-width: 1100px;
+      margin: auto;
+  }
+    .cs-check-title{
+      margin: 0;
+      color: #000;
+      text-align: center;
+      font-family: "Suisse Intl";
+      font-size: 19.531px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 26px; /* 133.12% */
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      max-width: 216px;
+      padding: 16px 0;
+    }
+    
+  .cs-raising-slids-main .swiper-slide{
+        display: block;
+        background: white;
+  }
+    .cs-inner-work-main-img{
+         display: block;
+  }
+       .cs-inner-work-main-img-mbl{
+         display: none;
+  }
+ 
+  .cs-raising-innerwork .cs-featured-block-main{
+       border: none;
+      border-right: 0;
+      border-radius: 0px 0px 0px 0px;
+
+  }
+  .logo-heading{
+    height: 93px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .cheaked-title{
+   height: 93px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+  }
+  .cheaked-title h3 {
+    margin: 0;
+    color: #6F6D6D;
+    text-align: center;
+    font-family: 'PP Mori';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px;
+}
+  .cheaked-title img {
+      max-width: 75px;
+      height: 75px;
+  }
+  .logo-heading img{
+   width: 100%;
+   max-width: 60px;
+  }
+  .cs-raising-innerwork .cs-featured-block-text{
+    color: var(--Light-100, #FFF);
+  text-align: center;
+  font-family: Regular;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+    letter-spacing: 0px;
+  }
+  .cs-raising-innerwork .cs-featured-blocks{
+    border: none;
+        border-top: 1px solid #b7b6b66b;
+  }
+  .cs-raising-slid{
+   text-align: center;
+   height: 87px;
+   border-top: 1px solid #b7b6b66b;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+  .new-feature{
+   display: flex;
+   align-items: center;
+   gap: 12px;
+  }
+  .new-feature img{
+   margin: unset;
+  }
+  .myner {
+    display: flex;
+  }
+  .neymr {
+    display: none;
+  }
+     @media screen and (max-width: 768px) {
+      .section-{{ section.id }}-padding {
+          padding-top: {{ section.settings.padding-top-mbl }}px;
+          padding-bottom: {{ section.settings.padding-bottom-mbl }}px;
+      }
+        .section-{{ section.id }}-padding .page-width{
+      padding: 0 20px;
+    }
+    
+       .cs-featured-block-text{
+         font-size: 15px;
+        line-height: 20.6px;
+         padding-left: 5px;
+       }
+       .cs-featured-blocks {
+          height: 77px;
+         /* border-bottom: 2px solid #000; */
+      }
+       .cs-check-img{
+        height: 77px;
+        border-bottom: 2px solid #000;
+       }
+       .cs-raising-featured{
+         width: 50%;
+         margin-right: 20px;
+       }
+       .cs-raising-innerwork{
+         width: 25%;
+         border-right: 1px solid #b7b6b66b;
+      }
+     .cs-raising-slider{
+       width: 25%;
+    }
+       .cs-inner-work-main-img{
+         display: none;
+       }
+       .cs-inner-work-main-img-mbl{
+         display: block;
+       }
+       .cs-raising-featured-title{
+        font-size: 14px;
+        line-height: 19px;
+        padding: 0px 0 0px 0;
+        height: 78px;
+        display: flex;
+        align-items: center;
+       }
+       .cs-check-title{
+         font-size: 15px;
+        line-height: 21px;
+        max-width: 98px;
+        padding: 13.5px 0;
+       }
+       .cs-raising-heading p {
+         font-size: 36px;
+       }
+       p.cs-des {
+         max-width: 336px;
+         padding-bottom: 33px;
+       }
+      .logo-heading {
+        height: 77px;
+      }
+     .logo-heading img{
+       width: 40px;
+     }
+    .cheaked-title {
+      height: 77px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+    .cheaked-title img{
+      width: 35px;
+      height: 35px;
+    }
+    /* .cs-featured-block-main {
+      border: 2px solid #000;
+      border-right: 0;
+      border-radius: 8px 0px 0px 8px;
+  } */
+     
+  .cs-raising-slid{
+   height: 76px;
+  }
+  .cs-raising-slids-main .swiper, .cs-raising-slids-main .swiper-wrapper, .cs-raising-slids-main .swiper-slide{
+    position: unset;
+  }
+  .custom-pagination{
+   position: absolute;
+   bottom: -30px !important;
+   left: 50% !important;
+   transform: translateX(-50%);
+   width: 70px !important;
+   z-index: 9;
+  }
+  .cs-raising-slids-main .swiper-pagination-bullet-active{
+    border-radius: 5px;
+    background: black;
+    width: 30px;
+    height: 8px;
+  }
+  .cs-raising-slids-main .swiper-pagination-bullet{
+    background: black;
+    opacity: 1;
+    cursor: pointer;
+  }
+  .cs-raising-innerwork .cs-featured-block-text {
+    font-size: 16px;
+  }
+  .cs-check-img {
+    font-size: 16px;
+  }
+  .new-feature img {
+    margin: unset;
+}
+.cs-raising-content {
+   gap: 0px;
+}
+.cheaked-title h3 {
+    font-size: 12px;
+    color: #6F6D6D;
+    margin: 0;
+}
+.cs-featured-blocks img {
+    width: 25px;
+    height: 25px;
+    margin: 0 auto;
+}
+.cs-featured-block-text p {
+   font-size: 14px;
+   line-height: 19px;
+   letter-spacing: 0px;
+}
+.cs-raising-slid img{
+   width: 25px;
+   height: 25px;
+}
+.myner {
+    display: none;
+  }
+  .neymr {
+    display: flex;
+  }
+.cs-raising-heading p {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+     }
+{% endstyle %}
+<section class="section-{{ section.id }}-padding">
+  <div class="page-width">
+    <div class="cs-raising-main">
+      <h2 class="cs-raising-heading">{{ section.settings.heading }}</h2>
+     
+      <div class="cs-raising-content">
+        <div class="cs-raising-featured" {% if section.settings.slide-view == 1 %} style="width: 50%" {% endif %}>
+          <h2 class="cs-raising-featured-title">{{ section.settings['featured-heading'] }}</h2>
+          <div class="cs-featured-block-main">
+            {% for block in section.blocks %}
+              {% if block.type == 'featured-blocks' %}
+                <div class="cs-featured-blocks new-feature">
+                  {% if block.settings.icon  %}
+                  <img src="{{ block.settings.icon | image_url }}" width="auto" height="auto">
+                  {% endif %}
+                  <h2 class="cs-featured-block-text">{{ block.settings['block-text'] }}</h2>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="cs-raising-innerwork" {% if section.settings.slide-view == 1 %} style="width: 25%" {% endif %}>
+          <div class="logo-heading">
+            {% if section.settings.logo %}
+              <img src="{{ section.settings.logo | image_url }}" width="auto" height="auto">
+            {% endif %}
+          </div>
+          <div class="cs-featured-block-mains">
+            {% for block in section.blocks %}
+              {% if block.type == 'product-blocks' %}
+                <div class="cs-featured-blocks">
+                  {% if block.settings['product-p-c-img'] %}
+                    <img src="{{ block.settings.product-p-c-img | image_url }}" width="auto" height="auto">
+                  {% endif %}
+                  <h2 class="cs-featured-block-text">{{ block.settings['p-c-text'] }}</h2>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="cs-raising-slider" {% if section.settings.slide-view == 1 %} style="width: 25%" {% endif %}>
+          <div class="cs-raising-slids-main">
+            <div class="swiper my-check-Swiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  {% for block in section.blocks %}
+                    {% if block.type == 'check-blocks' %}
+                      <div class="cs-swiper-main-slider">
+                         {% if block.settings['checked-title'] != blank %}
+                        <div class="cheaked-title myner">
+                         
+                        <h3>{{ block.settings['checked-title'] }}</h3>
+                         
+                        </div>
+                        <div class="cheaked-title neymr">
+                         
+                        <h3>{{ block.settings['checked-title-ner'] }}</h3>
+                         
+                        </div>
+                         {% endif %}
+                        <div class="cs-raising-slid">
+                          {% if block.settings.svg %}
+                            <img src="{{ block.settings.svg | image_url }}" width="auto" height="auto">
+                          {% endif %}
+                        </div>
+                      </div>
+                      
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                {% comment %} <div class="swiper-slide">
+                  {% for block in section.blocks %}
+                    {% if block.type == 'check-blocks-2nd' %}
+                      <div class="cs-swiper-main-slider">
+                         {% if block.settings['checked-title-2'] != blank %}
+                        <div class="cheaked-title">
+                         <h3>{{ block.settings['checked-title-2'] }}</h3>
+                         </div>
+                         {% endif %}
+                        <div class="cs-raising-slid">
+                          {% if block.settings.svg-2 %}
+                            <img src="{{ block.settings.svg-2 | image_url }}" width="auto" height="auto">
+                          {% endif %}
+                        </div>
+                      </div>
+                      
+                    {% endif %}
+                  {% endfor %}
+                </div> {% endcomment %}
+              </div>
+              {% comment %} <div class="custom-pagination"></div> {% endcomment %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  var swiper = new Swiper('.my-check-Swiper', {
+    slidesPerView: 1,
+    speed: 1000,
+    {% comment %} autoplay: {
+        delay: 2500,
+        disableOnInteraction: false
+      }, {% endcomment %}
+    pagination: {
+      el: '.custom-pagination',
+      clickable: true,
+    },
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+        spaceBetween: 0,
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 0,
+      },
+      1024: {
+        slidesPerView: {{ section.settings.slide-view }},
+        spaceBetween: 25,
+      },
+    },
+  });
+</script>
+{% schema %}
+{
+  "name": "Duri Prodct Why Chos duri",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "des",
+      "label": "description"
+    },
+    {
+      "type": "text",
+      "id": "featured-heading",
+      "label": "Featured Heading"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "logo"
+    },
+    {
+      "type": "range",
+      "id": "desktop-padding-top",
+      "label": "Desktop Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "desktop-padding-bottom",
+      "label": "Desktop Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding-top-mbl",
+      "label": "Mobile Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding-bottom-mbl",
+      "label": "Mobile Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "number",
+      "id": "slide-view",
+      "label": "slider per view",
+      "default": 1
+   }
+  ],
+  "blocks": [
+    {
+      "type": "featured-blocks",
+      "name": "Featurd Blocks",
+      "settings": [
+         {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "icon"
+         },
+        {
+          "type": "richtext",
+          "id": "block-text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "product-blocks",
+      "name": "product-blocks",
+      "settings": [
+        {
+          "type": "text",
+          "id": "p-c-text",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "product-p-c-img",
+          "label": "checked svg"
+        }
+      ]
+    },
+    {
+      "type": "check-blocks",
+      "name": "Check Blocks",
+      "settings": [
+        {
+          "type": "text",
+          "id": "checked-title",
+          "label": "title"
+        },
+        {
+          "type": "text",
+          "id": "checked-title-ner",
+          "label": "Title Mobile"
+        },
+
+        {
+          "type": "image_picker",
+          "id": "svg",
+          "label": "svg"
+        }
+      ]
+    },
+    {
+      "type": "check-blocks-2nd",
+      "name": "Check Blocks 2",
+      "settings": [
+        {
+          "type": "text",
+          "id": "checked-title-2",
+          "label": "title"
+        },
+        {
+          "type": "image_picker",
+          "id": "svg-2",
+          "label": "svg"
+        }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Duri Prodct Why Chos duri" }]
+}
+{% endschema %}

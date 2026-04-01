@@ -1,0 +1,960 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Browse our latest products",
+            "heading_size": "h0"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop all",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "button"
+      ],
+      "disabled": true,
+      "settings": {
+        "image_overlay_opacity": 40,
+        "image_height": "large",
+        "image_behavior": "none",
+        "desktop_content_position": "bottom-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-3",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "collection": "all",
+        "products_to_show": 8,
+        "title": "Featured products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "duri_banner_CJBiqx": {
+      "type": "duri-banner",
+      "disabled": true,
+      "name": "Duri Banner",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "mbl_padding_top": 10,
+        "mbl_padding_bottom": 10,
+        "back-color": "",
+        "cheeseBnrImg": "shopify://shop_images/4ccf4e401f7655130f5863c7b3fa8b0b7fafe84a.jpg",
+        "cheeseBnrImg1": "shopify://shop_images/5d1b83b989cba385ec8f6a3574392fc6d94bdd20.jpg",
+        "heading": "Start Your Nail Recovery Journey Today with Our Premium Solution",
+        "headingMBL": "Nail Recovery Starts Here",
+        "subtextt": "<p>Strengthen, protect, and polish in one easy bundle — featuring our best-selling Rejuvacote + your choice of nail color.</p>",
+        "button_label": "",
+        "button_label4": "Request Form",
+        "button_label5": "CALL US",
+        "button_link": "#",
+        "button_link4": "",
+        "button_link5": "",
+        "enable_highlight-chz-bnr": false,
+        "enable_highlight-country-page": false
+      }
+    },
+    "banner_durin_FmVR3y": {
+      "type": "banner-durin",
+      "name": "Custom Banner Section",
+      "settings": {
+        "img_desk": "shopify://shop_images/4ccf4e401f7655130f5863c7b3fa8b0b7fafe84a.jpg",
+        "img_mob": "shopify://shop_images/5d1b83b989cba385ec8f6a3574392fc6d94bdd20.jpg",
+        "title": "Start Your Nail Recovery Journey Today with Our Premium Solution",
+        "text_colot": "#000000",
+        "description": "Strengthen, protect, and polish in one easy bundle — featuring  our best-selling Rejuvacote + your choice of nail color.",
+        "max_width": 620,
+        "button_text": "Shop Now",
+        "button_link": "shopify://collections/all",
+        "btn_bg": "#7c0732",
+        "btn_text": "#ffffff",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "marquee_TxWLjn": {
+      "type": "marquee",
+      "disabled": true,
+      "name": "Scrolling Feature Icons",
+      "settings": {
+        "hide": false,
+        "border": false,
+        "background_color": "#e2f1c4",
+        "border_color": "",
+        "padding_block": 0,
+        "padding_block_mob": 0
+      }
+    },
+    "duri_marquee_first_VyxPpU": {
+      "type": "duri-marquee-first",
+      "blocks": {
+        "feature_YQnKUU": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/manicure.svg",
+            "title": "Strengthens Nails"
+          }
+        },
+        "feature_ywiktf": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Layer_1.svg",
+            "title": "Long-Lasting"
+          }
+        },
+        "feature_zQjrfn": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Layer_1_1.svg",
+            "title": "Non-Toxic Formula"
+          }
+        },
+        "feature_hem99K": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_11.svg",
+            "title": "Gluten-Free"
+          }
+        }
+      },
+      "block_order": [
+        "feature_YQnKUU",
+        "feature_ywiktf",
+        "feature_zQjrfn",
+        "feature_hem99K"
+      ],
+      "disabled": true,
+      "name": "Duri First Marquee",
+      "settings": {
+        "hide": false
+      }
+    },
+    "marquee_QQEaLU": {
+      "type": "marquee",
+      "blocks": {
+        "feature_Ggwtwg": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_3.svg",
+            "title": "Non-Toxic Formula"
+          }
+        },
+        "feature_NQYcqY": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_4.svg",
+            "title": "CRUELTY-Free"
+          }
+        },
+        "feature_pg6PGN": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_2.svg",
+            "title": "Long-Lasting"
+          }
+        },
+        "feature_mq6VqP": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_1.svg",
+            "title": "Strengthens Nails"
+          }
+        },
+        "feature_Uq3bMm": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_3.svg",
+            "title": "Non-Toxic Formula"
+          }
+        },
+        "feature_ThUbBz": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_4.svg",
+            "title": "CRUELTY-Free"
+          }
+        },
+        "feature_LpGeQh": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_2.svg",
+            "title": "Long-Lasting"
+          }
+        },
+        "feature_ErgFtg": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_1.svg",
+            "title": "Strengthens Nails"
+          }
+        }
+      },
+      "block_order": [
+        "feature_Ggwtwg",
+        "feature_NQYcqY",
+        "feature_pg6PGN",
+        "feature_mq6VqP",
+        "feature_Uq3bMm",
+        "feature_ThUbBz",
+        "feature_LpGeQh",
+        "feature_ErgFtg"
+      ],
+      "name": "CSTM Marquee",
+      "settings": {
+        "hide": false,
+        "border": true,
+        "background_color": "rgba(0,0,0,0)",
+        "border_color": "#d99ca5",
+        "padding_block": 10,
+        "padding_block_mob": 5
+      }
+    },
+    "strenght_duri_qzfxxb": {
+      "type": "strenght-duri",
+      "blocks": {
+        "strength_block_yY448n": {
+          "type": "strength_block",
+          "settings": {
+            "image_desk": "shopify://shop_images/29d050608d7d9c451ca14d1f4c1006a783476081.png",
+            "image_mob": "shopify://shop_images/Rejuvacote_1_-_Mobile.png",
+            "title": "Maximum Strength",
+            "description": "Intensive rehabilitation for thin, brittle nails. \nDesigned to rebuild severely damaged nails.",
+            "button_text": "Shop  NOW",
+            "button_link": "shopify://collections/all"
+          }
+        },
+        "strength_block_8ttQm7": {
+          "type": "strength_block",
+          "settings": {
+            "image_desk": "shopify://shop_images/6d6b74219a407ca3c4d885f550b97ed17b3c3ead.png",
+            "image_mob": "shopify://shop_images/Rejuvacote_1_-_Mobile_1.png",
+            "title": "Balanced Repair",
+            "description": "Strengthening system for peeling, weak nails.  Perfect for maintenance and long-term upkeep.",
+            "button_text": "Shop  NOW",
+            "button_link": "shopify://collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "strength_block_yY448n",
+        "strength_block_8ttQm7"
+      ],
+      "name": "Strength Section",
+      "settings": {
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "duri_best_sellers_wK8ajw": {
+      "type": "duri-best-sellers",
+      "name": "Duri First Collection",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "mbl_padding_top": 40,
+        "mbl_padding_bottom": 40,
+        "back-color": "#ffffff",
+        "heading-discover": "Best sellers",
+        "shopeAll-href": "shopify://collections/all",
+        "btn-shopeAll": "Shop All",
+        "collection": "2023-pantone-color-trends",
+        "rating-text": "4.8",
+        "quick_add": "standard"
+      }
+    },
+    "duri_rapidsheild_VBUDec": {
+      "type": "duri-rapidsheild",
+      "blocks": {
+        "icon_fFHaMk": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/Three_Leaf_Clover_48_1.svg",
+            "label": "Clean, 17‑Free Formulas"
+          }
+        },
+        "icon_yJzEiq": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/icon.svg_1_1_1.svg",
+            "label": "Starter Kits & Tutorials"
+          }
+        },
+        "icon_MEUaEU": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/icon.svg_2_1.svg",
+            "label": "180+ Colors & Tools"
+          }
+        }
+      },
+      "block_order": [
+        "icon_fFHaMk",
+        "icon_yJzEiq",
+        "icon_MEUaEU"
+      ],
+      "disabled": true,
+      "name": "duri rapidSHEILD",
+      "settings": {
+        "heading": "Polish Drying Drops",
+        "text": "Say goodbye to accidental smudges and hello to a long-lasting, professional finish with Drop'N Go Drying Drops!  This innovative formula protects your nails from smudges and accelerates drying time, ensuring your polish sets perfectly in minutes.",
+        "image": "shopify://shop_images/presentation_image.png"
+      }
+    },
+    "drying_duri_9KBYw7": {
+      "type": "drying-duri",
+      "blocks": {
+        "drying_block_Bpgq6t": {
+          "type": "drying_block",
+          "settings": {
+            "icon": "shopify://shop_images/Three_Leaf_Clover_48.svg",
+            "text": "Clean, 17‑Free Formulas"
+          }
+        },
+        "drying_block_jettkW": {
+          "type": "drying_block",
+          "settings": {
+            "icon": "shopify://shop_images/icon.svg_1_1.svg",
+            "text": "Starter Kits & Tutorials"
+          }
+        },
+        "drying_block_NQLay7": {
+          "type": "drying_block",
+          "settings": {
+            "icon": "shopify://shop_images/g2421.svg",
+            "text": "180+ Colors & Tools"
+          }
+        }
+      },
+      "block_order": [
+        "drying_block_Bpgq6t",
+        "drying_block_jettkW",
+        "drying_block_NQLay7"
+      ],
+      "name": "Drying Section",
+      "settings": {
+        "section_bg": "#ffffff",
+        "content_bg": "#fed4cc",
+        "title": "Polish Drying Drops",
+        "description": "Say goodbye to accidental smudges and hello to a long-lasting, professional finish with Drop'N Go Drying Drops!  This innovative formula protects your nails from smudges and accelerates drying time, ensuring your polish sets perfectly in minutes.",
+        "main_image": "shopify://shop_images/presentation_image.png",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "duri_best_sellers_QjyDmB": {
+      "type": "duri-best-sellers",
+      "name": "Duri First Collection",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "mbl_padding_top": 40,
+        "mbl_padding_bottom": 40,
+        "back-color": "#ffffff",
+        "heading-discover": "Discover Your Perfect Hue",
+        "shopeAll-href": "shopify://collections/all",
+        "btn-shopeAll": "Shop All",
+        "collection": "2023-pantone-color-trends",
+        "rating-text": "4.8",
+        "quick_add": "standard"
+      }
+    },
+    "duri_marquee_first_nYtmXH": {
+      "type": "duri-marquee-first",
+      "blocks": {
+        "feature_Vxb6YR": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/manicure.svg",
+            "title": "Strengthens Nails"
+          }
+        },
+        "feature_4KqGRq": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Layer_1.svg",
+            "title": "Long-Lasting"
+          }
+        },
+        "feature_d4gWXV": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Layer_1_1.svg",
+            "title": "Non-Toxic Formula"
+          }
+        },
+        "feature_Y8JbRL": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_11.svg",
+            "title": "Gluten-Free"
+          }
+        }
+      },
+      "block_order": [
+        "feature_Vxb6YR",
+        "feature_4KqGRq",
+        "feature_d4gWXV",
+        "feature_Y8JbRL"
+      ],
+      "disabled": true,
+      "name": "Duri First Marquee",
+      "settings": {
+        "hide": false
+      }
+    },
+    "duri_shop_by_concern_fb6Fj8": {
+      "type": "duri-shop-by-concern",
+      "blocks": {
+        "concern_bxxBR3": {
+          "type": "concern",
+          "settings": {
+            "image": "shopify://shop_images/c1c7c75323074f1bb099dccd8556f6cb.thumbnail.0000000000.jpg_2.png",
+            "title": "Cuticle Care",
+            "link": "shopify://collections/2023-pantone-color-trends"
+          }
+        },
+        "concern_kJQhcA": {
+          "type": "concern",
+          "settings": {
+            "image": "shopify://shop_images/c1c7c75323074f1bb099dccd8556f6cb.thumbnail.0000000000.jpg_1.png",
+            "title": "Nail Biting",
+            "link": "shopify://collections/6pce-sets"
+          }
+        },
+        "concern_D9BmBW": {
+          "type": "concern",
+          "settings": {
+            "image": "shopify://shop_images/c1c7c75323074f1bb099dccd8556f6cb_thumbnail_0000000000_jpg.png",
+            "title": "Nail Growth",
+            "link": "shopify://collections/90s-edit"
+          }
+        },
+        "concern_7Wy9Xy": {
+          "type": "concern",
+          "settings": {
+            "image": "shopify://shop_images/c1c7c75323074f1bb099dccd8556f6cb.thumbnail.0000000000.jpg_3.png",
+            "title": "Top Coats",
+            "link": "shopify://collections/all"
+          }
+        },
+        "concern_Mb9UDx": {
+          "type": "concern",
+          "settings": {
+            "image": "shopify://shop_images/c1c7c75323074f1bb099dccd8556f6cb.thumbnail.0000000000.jpg_4.png",
+            "title": "Base Coats",
+            "link": "shopify://collections/atlantis"
+          }
+        },
+        "concern_9iAPih": {
+          "type": "concern",
+          "settings": {
+            "image": "shopify://shop_images/c1c7c75323074f1bb099dccd8556f6cb.thumbnail.0000000000.jpg_5.png",
+            "title": "Quick Dry Oil",
+            "link": "shopify://collections/base-coats"
+          }
+        },
+        "concern_9AUwmz": {
+          "type": "concern",
+          "settings": {
+            "image": "shopify://shop_images/c1c7c75323074f1bb099dccd8556f6cb.thumbnail.0000000000.jpg_6.png",
+            "title": "Other Fun Stuff",
+            "link": "shopify://collections/beachside-glam"
+          }
+        },
+        "category_JpWiGa": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/c1c7c75323074f1bb099dccd8556f6cb.thumbnail.0000000000.jpg_2.png",
+            "title": "Cuticle Care",
+            "link": "shopify://collections/below-zero"
+          }
+        },
+        "category_gND9xd": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/c1c7c75323074f1bb099dccd8556f6cb_thumbnail_0000000000_jpg.png",
+            "title": "Nail Growth",
+            "link": "shopify://collections/best-sellers"
+          }
+        },
+        "category_N7EHQh": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/c1c7c75323074f1bb099dccd8556f6cb.thumbnail.0000000000.jpg_1.png",
+            "title": "Nail Biting",
+            "link": "shopify://collections/bright-lights"
+          }
+        },
+        "category_YyGjUE": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/c1c7c75323074f1bb099dccd8556f6cb.thumbnail.0000000000.jpg_1.png",
+            "title": "Nail Biting",
+            "link": "shopify://collections/bright-lights"
+          }
+        },
+        "category_adUhpt": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/c1c7c75323074f1bb099dccd8556f6cb.thumbnail.0000000000.jpg_1.png",
+            "title": "Nail Biting",
+            "link": "shopify://collections/brushn-go"
+          }
+        },
+        "category_PfTRpN": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/c1c7c75323074f1bb099dccd8556f6cb.thumbnail.0000000000.jpg_1.png",
+            "title": "Nail Biting",
+            "link": "shopify://collections/bundle-gift-sets"
+          }
+        }
+      },
+      "block_order": [
+        "concern_bxxBR3",
+        "concern_kJQhcA",
+        "concern_D9BmBW",
+        "concern_7Wy9Xy",
+        "concern_Mb9UDx",
+        "concern_9iAPih",
+        "concern_9AUwmz",
+        "category_JpWiGa",
+        "category_gND9xd",
+        "category_N7EHQh",
+        "category_YyGjUE",
+        "category_adUhpt",
+        "category_PfTRpN"
+      ],
+      "disabled": true,
+      "name": "Duri Shop By Concern",
+      "settings": {}
+    },
+    "collection_tabs_EKdtxR": {
+      "type": "collection-tabs",
+      "blocks": {
+        "tab_Kj6LYM": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "shop by concern",
+            "collection_list": [
+              "nail-growth",
+              "quit-anti-bite",
+              "nail-care",
+              "cuticle-treatments",
+              "atlantis"
+            ]
+          }
+        },
+        "tab_9QjkJL": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "shop by category",
+            "collection_list": [
+              "bundle-gift-sets",
+              "canal-products",
+              "combos",
+              "90s-edit",
+              "below-zero",
+              "nail-care",
+              "nail-growth"
+            ]
+          }
+        }
+      },
+      "block_order": [
+        "tab_Kj6LYM",
+        "tab_9QjkJL"
+      ],
+      "name": "Collection Tabs Slider",
+      "settings": {
+        "mobile_layout": "grid",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "duri_our_mission_dxQ8ih": {
+      "type": "duri-our-mission",
+      "blocks": {
+        "feature_VUyEfR": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Recurso_1_2x_1.png",
+            "title": "Nail Wellness & Longevity",
+            "text": "Blending science with beauty, we create nail care that strengthens, nourishes, and preserves natural nail health for the long term."
+          }
+        },
+        "feature_EEDJEm": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Figure_0cd61a69-7319-4df7-82ee-65840544ddff.png",
+            "title": "Clinically Backed Ingredients",
+            "text": "Every product is crafted with safe, effective ingredients tested for performance and proven nail wellness."
+          }
+        },
+        "feature_tyM3rp": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Figure_1_a3f846ac-6caa-4fd6-aaad-9b470b21e3b2.png",
+            "title": "Quiet Confidence Evolution",
+            "text": "Healthy, polished nails are more than beauty — they’re confidence, expression, and the way you show up to the world."
+          }
+        },
+        "feature_jXFFr3": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Figure_2_79863ba2-4fe2-4144-b9bf-346fcd492c0f.png",
+            "title": "Sustainable Beauty Commitment",
+            "text": "From formula to finish, we prioritize cruelty-free, eco-conscious practices that care for your nails and the planet."
+          }
+        }
+      },
+      "block_order": [
+        "feature_VUyEfR",
+        "feature_EEDJEm",
+        "feature_tyM3rp",
+        "feature_jXFFr3"
+      ],
+      "name": "duri Mission Section",
+      "settings": {
+        "heading": "Our Mission",
+        "description": "To redefine nail wellness with safe, clinically proven care that strengthens, protects, and enhances natural beauty.",
+        "image_desk": "shopify://shop_images/presentation_image_1_79eb6387-eee0-48e1-94fd-619332153083.png",
+        "image_mob": "shopify://shop_images/e04ce54a3125928c8bdb7b2ce6c69c7f6bf9faad.jpg"
+      }
+    },
+    "duri_marquee_first_xmhATE": {
+      "type": "duri-marquee-first",
+      "blocks": {
+        "feature_BRQheA": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/manicure.svg",
+            "title": "Strengthens Nails"
+          }
+        },
+        "feature_JfaXnt": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Layer_1.svg",
+            "title": "Long-Lasting"
+          }
+        },
+        "feature_b3aeew": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Layer_1_1.svg",
+            "title": "Non-Toxic Formula"
+          }
+        },
+        "feature_CyeP4g": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_11.svg",
+            "title": "Gluten-Free"
+          }
+        }
+      },
+      "block_order": [
+        "feature_BRQheA",
+        "feature_JfaXnt",
+        "feature_b3aeew",
+        "feature_CyeP4g"
+      ],
+      "disabled": true,
+      "name": "Duri First Marquee",
+      "settings": {
+        "hide": false
+      }
+    },
+    "duri_collection_video_HVhPgE": {
+      "type": "duri-collection-video",
+      "disabled": true,
+      "name": "Duri Second Collection",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "mbl_padding_top": 40,
+        "mbl_padding_bottom": 40,
+        "back-color": "#fff4f3",
+        "heading-discover": "Loved by Thousands of Women Who Do It All",
+        "subheading": "<p>Join thousands of women who do it all and trust in our products to keep them stylish, confident, and unstoppable every day.</p>",
+        "shopeAll-href": "shopify://collections/all",
+        "btn-shopeAll": "Shop All",
+        "collection": "2023-pantone-color-trends",
+        "rating-text": "4.8"
+      }
+    },
+    "duri_collection_vifeo_new_xHCKTz": {
+      "type": "duri-collection-vifeo-new",
+      "blocks": {
+        "featured_blocks_FRKtKw": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "product": "007d-to-the-moon-back"
+          }
+        },
+        "featured_blocks_WN4EH6": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "product": "005d-bluebell-jungle"
+          }
+        },
+        "featured_blocks_GWqMLx": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "product": "005d-bluebell-jungle"
+          }
+        },
+        "featured_blocks_9aX7GJ": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "product": "005d-bluebell-jungle"
+          }
+        },
+        "featured_blocks_ekzMfh": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "product": "005d-bluebell-jungle"
+          }
+        },
+        "featured_blocks_BKQMPn": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "product": "005d-bluebell-jungle"
+          }
+        },
+        "featured_blocks_GgyUa3": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "product": "005d-bluebell-jungle"
+          }
+        }
+      },
+      "block_order": [
+        "featured_blocks_FRKtKw",
+        "featured_blocks_WN4EH6",
+        "featured_blocks_GWqMLx",
+        "featured_blocks_9aX7GJ",
+        "featured_blocks_ekzMfh",
+        "featured_blocks_BKQMPn",
+        "featured_blocks_GgyUa3"
+      ],
+      "disabled": true,
+      "name": "Duri Collection Video New",
+      "settings": {
+        "show_section1": false,
+        "desktop-padding-top": 80,
+        "desktop-padding-bottom": 80,
+        "padding-top-mbl": 16,
+        "padding-bottom-mbl": 40,
+        "back-color": "#fff4f3",
+        "heading": "<p>Loved by Thousands of Women Who Do It All</p>",
+        "subheading": "Join thousands of women who do it all and trust in our products to keep them stylish, confident, and unstoppable every day.",
+        "quick_add": "standard"
+      }
+    },
+    "video_slider_duri_MKhde4": {
+      "type": "video-slider-duri",
+      "blocks": {
+        "video_product_eFiiVz": {
+          "type": "video_product",
+          "settings": {
+            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "product": "neon-pink-nail-polish-792-flamingo-frose"
+          }
+        },
+        "video_product_dpeFpE": {
+          "type": "video_product",
+          "settings": {
+            "video": "shopify://files/videos/billo1_rejuvacote 1_.mp4",
+            "product": "002d-sand-java"
+          }
+        },
+        "video_product_bBPatb": {
+          "type": "video_product",
+          "settings": {
+            "video": "shopify://files/videos/30PEALPINKVIDEO_af95ed9e-a233-42ee-823e-a554e4815340.MOV",
+            "product": "003d-minty-breeze"
+          }
+        },
+        "video_product_QUpjY4": {
+          "type": "video_product",
+          "settings": {
+            "video": "shopify://files/videos/welcomejunepop_d8727356-83ea-48db-9728-e1023c6d10b3.mp4",
+            "product": "004d-aphrodites-kiss"
+          }
+        },
+        "video_product_cqnjV3": {
+          "type": "video_product",
+          "settings": {
+            "video": "shopify://files/videos/Valentine's Pouring out Nail Polishes .MP4",
+            "product": "007d-to-the-moon-back"
+          }
+        },
+        "video_product_TDC48C": {
+          "type": "video_product",
+          "settings": {
+            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "product": "neon-pink-nail-polish-792-flamingo-frose"
+          }
+        },
+        "video_product_73k8PC": {
+          "type": "video_product",
+          "settings": {
+            "video": "shopify://files/videos/billo1_rejuvacote 1_.mp4",
+            "product": "002d-sand-java"
+          }
+        }
+      },
+      "block_order": [
+        "video_product_eFiiVz",
+        "video_product_dpeFpE",
+        "video_product_bBPatb",
+        "video_product_QUpjY4",
+        "video_product_cqnjV3",
+        "video_product_TDC48C",
+        "video_product_73k8PC"
+      ],
+      "name": "Video Product Slider",
+      "settings": {
+        "progress_clr": "#7BA69D66",
+        "active_clr": "#7BA69D",
+        "heading": "Loved by Thousands of Women Who Do It All",
+        "description": "Join thousands of women who do it all and trust in our products to keep them stylish, confident, and unstoppable every day.",
+        "play_icon_svg": "<svg width=\"60\" height=\"60\" viewbox=\"0 0 24 24\" fill=\"white\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"rgba(0,0,0,0.6)\"></circle><polygon points=\"10,8 16,12 10,16\" fill=\"white\"></polygon></svg>",
+        "mobile_layout": "swiper",
+        "padding_top_desktop": 48,
+        "padding_bottom_desktop": 56,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "duri_wholesale_e4rRz8": {
+      "type": "duri-wholesale",
+      "blocks": {
+        "feature_amFafd": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/icon.svg_-_2025-08-21T045300.260_1_1.svg",
+            "text": "Bulk Pricing – maximize your margins"
+          }
+        },
+        "feature_4rieRz": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/icon.svg_-_2025-08-21T051039.151_1_2.svg",
+            "text": "Fast Shipping – orders ship from Brooklyn, NY"
+          }
+        },
+        "feature_VJEcxm": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/icon.svg_-_2025-08-21T050158.796_2_2.svg",
+            "text": "USA-Made Quality – trusted by professionals nationwide"
+          }
+        }
+      },
+      "block_order": [
+        "feature_amFafd",
+        "feature_4rieRz",
+        "feature_VJEcxm"
+      ],
+      "name": "Duri Wholesale Section",
+      "settings": {
+        "image": "shopify://shop_images/presentation_image_2.png",
+        "heading": "Partner With Duri Wholesale",
+        "description": "Join our wholesale program and enjoy exclusive access to Duri’s best-selling nail treatments and polishes. Whether you’re a salon, spa, or retailer, we provide everything you need to keep your customers coming back.",
+        "button_label": "Shop on FAIR",
+        "button_link": "shopify://pages/landing-page-1",
+        "cotent_bg": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "featured_collection",
+    "duri_banner_CJBiqx",
+    "banner_durin_FmVR3y",
+    "marquee_TxWLjn",
+    "duri_marquee_first_VyxPpU",
+    "marquee_QQEaLU",
+    "strenght_duri_qzfxxb",
+    "duri_best_sellers_wK8ajw",
+    "duri_rapidsheild_VBUDec",
+    "drying_duri_9KBYw7",
+    "duri_best_sellers_QjyDmB",
+    "duri_marquee_first_nYtmXH",
+    "duri_shop_by_concern_fb6Fj8",
+    "collection_tabs_EKdtxR",
+    "duri_our_mission_dxQ8ih",
+    "duri_marquee_first_xmhATE",
+    "duri_collection_video_HVhPgE",
+    "duri_collection_vifeo_new_xHCKTz",
+    "video_slider_duri_MKhde4",
+    "duri_wholesale_e4rRz8"
+  ]
+}

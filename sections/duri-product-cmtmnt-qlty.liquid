@@ -1,0 +1,456 @@
+{% style %}
+.section-{{ section.id }}--padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.back-ground }};
+    position: relative;
+}
+
+.revamp-title p strong {
+    margin: 0;
+    font-family: Poppins;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 37px;
+    letter-spacing: 0.5px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: linear-gradient(90deg, #0D2628 5.47%, #32999E 52.73%, #0D2628 100%);
+}
+.revamp-title p {
+    margin: 0;
+    text-align: center;
+    padding-bottom: 32px;
+    color: #000 !important;
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 46.8px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+}
+.revamp-card-footer {
+    padding: 30px;
+    text-align: center;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFF4F3 50%, #FFF4F3 100%);
+}
+.revamp-card-box {
+    display: flex;
+    flex-direction: column-reverse;
+}
+.revamp-card-box img {
+    max-width: 100%;
+    max-height: 290px;
+    object-fit: cover;
+    height: auto;
+}
+.revamp-stars {
+    line-height: 0;
+    padding-bottom: 16px;
+}
+.revamp-card-heading {
+    margin: 0;
+    text-transform: capitalize;
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20.8px;
+    letter-spacing: 0;
+    vertical-align: middle;
+    color: #000;
+    text-align: left;
+}
+.revamp-desc p {
+    margin: 0;
+    text-align: left;
+    padding-top: 7.47px;
+    font-family: PP Mori;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    color: #000;
+}
+.revamp-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.revamp-user {
+    margin: 0;
+    font-family: PP Mori;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    color: #000;
+}
+.revamp-verified-text {
+    margin: 0;
+    font-family: PP Mori;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
+.revamp-verified {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3px;
+    border-radius: 1084px;
+    padding: 2px 11px 2px 8px;
+    line-height: 0;
+}
+.revamp-slider .slick-next {
+    bottom: 0 !important;
+    top: unset;
+    right: 46%;
+    width: 40px !important;
+    height: 40px;
+    background: #6c4e72;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+}
+.revamp-slider .slick-prev {
+    bottom: 0 !important;
+    top: unset;
+    left: 47%;
+    width: 40px;
+    height: 40px;
+    background: #6c4e72;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+}
+.revamp-slider .slick-prev:before {
+    display: none;
+}
+.revamp-slider .slick-track {
+    display: flex;
+    gap: 14px;
+}
+.revamp-top-shape svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    line-height: 0;
+}
+.revamp-top-shape {
+    position: absolute;
+    top: -77px;
+    width: 100%;
+}
+.revamp-top-shape-mbl {
+    display: none;
+}
+.slick-prev svg {
+    transform: rotate(180deg);
+}
+.slick-arrow svg circle {
+    stroke: none;
+    fill: none;
+}
+.slick-arrow svg path {
+    stroke: white;
+}
+.revamp-card-number {
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 46.8px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    margin: 0;
+    padding-bottom: 12px;
+    text-align: left;
+    color: #000;
+}
+.main-refbtn {
+    text-align: left;
+}
+a.duri-mi-btn {
+    text-decoration: none;
+    color: #000;
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20.8px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+}
+p.duri-btn-text {
+    margin: 0;
+    padding-top: 40px;
+}
+.main-refbtn {
+    display: none;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .section-{{ section.id }}--padding {
+      padding-top: {{ section.settings.padding_top_mob }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mob }}px;
+    }
+    .section-{{ section.id }}--padding .page-width {
+    padding-right: 0;
+}
+    .main-refbtn {
+      display: none;
+    }
+    .revamp-stars svg {
+      height: 12px;
+      width: 68px;
+    }
+    .revamp-card-heading {
+      font-size: 14px;
+      line-height: 21px;
+    }
+    .revamp-user {
+      font-size: 12px;
+      line-height: 18px;
+    }
+    .revamp-verified-text {
+      font-size: 11px;
+      line-height: 16px;
+    }
+    .revamp-slider .slick-track {
+      gap: 13px;
+    }
+    .revamp-stars {
+      margin: 21px 0 13px 0;
+    }
+    .revamp-slider .slick-prev {
+      left: 39%;
+      z-index: 2;
+    }
+    .revamp-slider .slick-next {
+      right: 39%;
+      z-index: 2;
+    }
+    .revamp-slider .slick-dots {
+      bottom: -27px;
+    }
+    .revamp-top-shape {
+      top: -20px;
+      display: none;
+    }
+    .revamp-top-shape-mbl {
+      display: block;
+      width: 100%;
+      position: absolute;
+      top: -48px;
+    }
+    .revamp-top-shape-mbl svg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+.revamp-title p {
+    font-size: 24px;
+    line-height: 31.2px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 auto;
+    padding-right: 16px;
+    max-width: 228px;
+    padding-bottom: 16px;
+}
+}
+{% endstyle %}
+
+{% comment %} <div class="revamp-container"> {% endcomment %}
+  <section class="section-{{ section.id }}--padding" id="our_community">
+    <!-- <div class="revamp-top-shape">{% render 'custom-reviews-section-top-section-svg' %}</div>
+    <div class="revamp-top-shape-mbl">{% render 'custom-reviews-section-top-section-mobile-svg' %}</div> -->
+
+    <div class="page-width">
+      <div class="revamp-header">
+        <div class="revamp-title">{{ section.settings.heading }}</div>
+      </div>
+
+      <div class="revamp-slider">
+        <div class="swiper revamp-swiper">
+          <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+            <div class="swiper-slide">
+              <div class="revamp-card-box">
+                <img src="{{ block.settings.image | image_url }}" loading="lazy" width="100%" height="auto">
+                <div class="revamp-card-footer">
+                  {% comment %} <div class="revamp-stars">{% render 'custom-reviews-block-stars' %}</div> {% endcomment %}
+                  <h2 class="revamp-card-number">{{ block.settings.block-headingNUmbr }}</h2>
+                  <h2 class="revamp-card-heading">{{ block.settings.block-heading }}</h2>
+                  <div class="revamp-desc">{{ block.settings.para }}</div>
+                  <div class="main-refbtn">
+                  <a href="{{ block.settings.btn-ref-link }}" class="duri-mi-btn"><p class="duri-btn-text">{{ block.settings.btn-lable }}</p></a>
+                  </div>
+                  {% comment %} <div class="revamp-meta">
+                    <div class="revamp-user">{{ block.settings.name }}</div>
+                    <div class="revamp-verified">
+                      <span class="revamp-verified-icon">{% render 'custom-reviews-verified-icon-svg' %}</span>
+                      <span class="revamp-verified-text">{{ block.settings.varified-text }}</span>
+                    </div>
+                  </div> {% endcomment %}
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% comment %} </div> {% endcomment %}
+
+<script>
+var swiper = new Swiper(".revamp-swiper", {
+  slidesPerView: 4,
+  spaceBetween: 20,
+  centeredSlides: true,
+  loop: true,
+  navigation: {
+    nextEl: ".cs_reviews_next",
+    prevEl: ".cs_reviews_prev",
+  },
+  breakpoints: {
+    0: {
+      slidesPerView: 1.2,
+      spaceBetween: 16,
+      centeredSlides: false,
+    },
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 16,
+      centeredSlides: false,
+    },
+    1024: {
+      slidesPerView: 4,
+      spaceBetween: 20,
+      centeredSlides: false,
+    }
+  },
+});
+</script>
+
+{% schema %}
+{
+  "name": "Duri Prodct cmtmnt qualty",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Hading"
+    },
+    {
+      "type": "text",
+      "id": "sub-heading",
+      "label": "Counting"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mob",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Padding Mobile",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom Padding Mobile",
+      "default": 40
+    },
+    {
+      "type": "color",
+      "id": "back-ground",
+      "label": "Background Color"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "blocks",
+      "name": "blocks",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "block-headingNUmbr",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "block-heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "para",
+          "label": "Block Para"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "varified-text",
+          "label": "Varified Text"
+        }, 
+        {
+          "type": "url",
+          "id": "btn-ref-link",
+          "label": "Button"
+        },
+        {
+          "type": "text",
+          "id": "btn-lable",
+          "label": "Button Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Duri Prodct cmtmnt qualty"
+    }
+  ]
+}
+{% endschema %}

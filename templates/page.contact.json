@@ -1,0 +1,52 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "form": {
+      "type": "contact-form",
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "duri_contact_form_TCRn3a": {
+      "type": "duri-contact-form",
+      "name": "t:sections.contact-form1.presets.name",
+      "settings": {
+        "left-myheading": "Contact Us",
+        "left-subHead": "<p>Our customer care team is here to support you Monday through Friday, from 9:00 AM to 5:00 PM EST.<br/>Whether you have questions about our nail care products, need help choosing the right shade, or have inquiries about your order and delivery, we’re always happy to assist. Healthy, beautiful nails deserve the best care!</p><p>Feel free to reach us directly at <a href=\"mailto:info@duri.com\" target=\"_blank\" title=\"mailto:info@duri.com\"><strong>info@duri.com</strong></a> or call our office<br/> at <a href=\"tel:718-209-7070\" target=\"_blank\" title=\"tel:718-209-7070\"><strong>718-209-7070</strong></a> if you have any other questions.</p>",
+        "heading": "",
+        "heading_size": "h1",
+        "color_scheme": "",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mob": 40,
+        "padding_bottom_mob": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "form",
+    "duri_contact_form_TCRn3a"
+  ]
+}

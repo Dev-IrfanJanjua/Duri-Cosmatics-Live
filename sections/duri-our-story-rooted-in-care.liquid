@@ -1,0 +1,260 @@
+<style> 
+.uniqueblk-sec-{{ section.id }}-wrap {
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+  background-color: {{ section.settings.back-color }};
+}
+.section-{{ section.id }} .page-width{
+  padding: 0;
+}
+.uniqueblk-wrap-outer {
+  display: flex;
+}
+.uniqueblk-left-col {
+    max-width: 50%;
+    width: 100%;
+    padding: 40px 80px;
+}
+.uniqueblk-left-content {
+    padding: 14px 0;
+}
+.uniqueblk-right-col {
+  max-width: 50%;
+  width: 100%;
+}
+a.uniqueblk-btn-main {
+    display: flex;
+    height: 42px;
+    padding: 14px 50px;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+    background: #7C0732;
+    max-width: 190px;
+    text-decoration: none;
+}
+p.uniqueblk-main-title {
+    color: #000;
+    text-align: left;
+    font-family: "PP Mori";
+    font-size: 46px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 55px;
+    letter-spacing: 0;
+    margin: 0;
+}
+h4.uniqueblk-sub-title {
+  font-family: PP Mori;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0px;
+  vertical-align: middle;
+  text-align: left;
+  margin: 20px 0px;
+}
+img.uniqueblk-img-main {
+  height: 100%;
+}
+
+/* button hover effect */
+a.uniqueblk-btn-main {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+a.uniqueblk-btn-main::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: white;
+  transition: all 0.3s ease;
+  z-index: 0;
+}
+a.uniqueblk-btn-main:hover::before {
+  left: 0;
+}
+a.uniqueblk-btn-main:hover {
+  transform: scale(1.05);
+}
+p.uniqueblk-btn-text {
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
+  color: #fff;
+}
+a.uniqueblk-btn-main:hover p.uniqueblk-btn-text {
+  color: #7C0732;
+}
+.uniqueblk-main-title1st {
+    margin: 0;
+    padding-bottom: 20px;
+    font-family: PP Mori;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 3px;
+    vertical-align: middle;
+    color: #000;
+    text-align: left;
+
+}
+
+/* responsive */
+@media screen and (max-width: 768px) {
+  .uniqueblk-sec-{{ section.id }}-wrap {
+    padding-top: {{ section.settings.mbl_padding_top }}px;
+    padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
+  }
+  .uniqueblk-main-title1st {
+    padding-bottom: 8px;
+}
+  .uniqueblk-wrap-outer {
+    display: flex;
+    flex-direction: column;
+  }
+  h4.uniqueblk-sub-title {
+    margin: 16px 0px;
+  }
+  .uniqueblk-right-col {
+    max-width: 100%;
+    line-height: 0;
+  }
+  .uniqueblk-left-col {
+    max-width: 100%;
+    padding: 40px 16px;
+  }
+  p.uniqueblk-main-title {
+    font-size: 28px;
+    line-height: 36.4px;
+  }
+  .uniqueblk-page-width {
+    padding: 0;
+  }
+  p.uniqueblk-btn-text {
+    font-size: 14px;
+  }
+  a.uniqueblk-btn-main {
+    padding: 11px 20px;
+    max-width: 130px;
+  }
+}
+</style>
+
+<section class="uniqueblk-sec-{{ section.id }}-wrap section-{{ section.id }}">
+  <div class="page-width">
+    <div class="uniqueblk-wrap-outer">
+      <div class="uniqueblk-right-col">
+        {% if section.settings.duri-ready-img != blank %}
+          <img class="uniqueblk-img-main" src="{{ section.settings.duri-ready-img | image_url }}" loading="lazy" width="100%" height="">
+        {% endif %}
+      </div>
+      <div class="uniqueblk-left-col">
+        <div class="uniqueblk-left-inner">
+          <div class="uniqueblk-left-content">
+            <p class="uniqueblk-main-title1st">{{ section.settings.duriVeryFirsttext }}</p>
+            <p class="uniqueblk-main-title">{{ section.settings.duriFirsttext }}</p>
+            <h4 class="uniqueblk-sub-title">{{ section.settings.duriFirsttext2 }}</h4>
+            {% if section.settings.duri-button_link != blank and section.settings.duri-btnbutton_label != blank %}
+              <a href="{{ section.settings.duri-button_link }}" class="uniqueblk-btn-main">
+                <p class="uniqueblk-btn-text">{{ section.settings.duri-btnbutton_label }}</p>
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Duri Our Story Roted care",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Top Padding",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Bottom Padding",
+      "default": 10
+    },
+    {
+      "type": "color",
+      "id": "back-color",
+      "label": "Background Color"
+    },
+    {
+      "type": "image_picker",
+      "id": "duri-ready-img",
+      "label": "Ready Image"
+    },
+    {
+      "type": "text",
+      "id": "duriVeryFirsttext",
+      "label": "First Short Text"
+    },
+    {
+      "type": "text",
+      "id": "duriFirsttext",
+      "label": "Main Text"
+    },
+    {
+      "type": "richtext",
+      "id": "duriFirsttext2",
+      "label": "Sub Text"
+    },
+    {
+      "type": "url",
+      "id": "duri-button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "duri-btnbutton_label",
+      "label": "Button Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Duri Our Story Roted care"
+    }
+  ]
+}
+{% endschema %}
