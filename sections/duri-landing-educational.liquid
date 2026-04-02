@@ -87,7 +87,7 @@
     width: 100%;
 }
 .how-to-card img {
-    max-width: 100%;
+    width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
@@ -419,46 +419,7 @@
   </div>
 </div>
 
-{% comment %} <script>
-    document.addEventListener("DOMContentLoaded", function () {
-  // Tabs switching
-  const tabs = document.querySelectorAll(".edu-tab");
-  const contents = document.querySelectorAll(".edu-content");
 
-  tabs.forEach(tab => {
-    tab.addEventListener("click", function () {
-      tabs.forEach(t => t.classList.remove("active"));
-      contents.forEach(c => c.classList.remove("active"));
-
-      tab.classList.add("active");
-      document.getElementById(tab.dataset.tab).classList.add("active");
-    });
-  });
-
-  // FAQ toggle
-  document.querySelectorAll(".faq-question").forEach(q => {
-    q.addEventListener("click", function () {
-      const answer = this.nextElementSibling;
-      answer.style.display = answer.style.display === "block" ? "none" : "block";
-    });
-  });
-
-  // Ingredients tab inside
-  const ingItems = document.querySelectorAll(".ingredient-item");
-  const ingDetails = document.querySelectorAll(".ingredient-detail");
-
-  ingItems.forEach(item => {
-    item.addEventListener("click", function () {
-      ingItems.forEach(i => i.classList.remove("active"));
-      ingDetails.forEach(d => d.classList.remove("active"));
-
-      item.classList.add("active");
-      document.getElementById(item.dataset.target).classList.add("active");
-    });
-  });
-});
-
-</script> {% endcomment %}
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -524,6 +485,17 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+</script>
+
+<script>
+  // ✅ Force initialize the first ingredient state on load
+const firstIng = document.querySelector(".ingredient-item");
+const firstDetail = document.querySelector(".ingredient-detail");
+
+if (firstIng && firstDetail) {
+    firstIng.classList.add("active");
+    firstDetail.classList.add("active");
+}
 </script>
 
 
