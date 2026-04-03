@@ -1,37 +1,150 @@
+{%- liquid
+  comment
+    ── SOURCE DECISION ──
+    Resolve each content piece independently so each falls back gracefully.
+    checkbox must be ON for any metafield to be considered.
+  endcomment
+
+  assign use_metafields = section.settings.use_metafields
+
+  comment — DESKTOP IMAGE
+  endcomment
+  assign resolved_desktop_image = section.settings.desktop_image
+  if use_metafields
+    assign mf_desktop_image = collection.metafields.custom.collection_image.value
+    if mf_desktop_image != blank
+      assign resolved_desktop_image = mf_desktop_image
+    endif
+  endif
+
+  comment — MOBILE IMAGE
+  endcomment
+  assign resolved_mobile_image = section.settings.mobile_image
+  if use_metafields
+    assign mf_mobile_image = collection.metafields.custom.collection_mobile_image.value
+    if mf_mobile_image != blank
+      assign resolved_mobile_image = mf_mobile_image
+    endif
+  endif
+
+  comment — HEADING: metafield title → collection.title → schema heading
+  endcomment
+  assign resolved_heading = section.settings.heading
+  if use_metafields
+    assign mf_title = collection.metafields.custom.banner_title.value
+    if mf_title != blank
+      assign resolved_heading = mf_title
+    elsif collection.title != blank
+      assign resolved_heading = collection.title
+    endif
+  endif
+
+  comment — ITEMS
+  endcomment
+  assign mf_items = null
+  if use_metafields
+    assign mf_items = collection.metafields.custom.banner_item.value
+  endif
+-%}
+
 <section class="cbanner-sec-{{ section.id }} section-{{ section.id }}">
   <div class="page-width">
     <div class="cbanner-wrapper-991">
-      
-      <!-- Desktop Image -->
-      {% if section.settings.desktop_image != blank or section.settings.mobile_image != blank %}
+
+      <!-- Images -->
+      {% if resolved_desktop_image != blank or resolved_mobile_image != blank %}
         <div class="col_banner-images">
-          {% if section.settings.desktop_image != blank %}
-            <img class="cbanner-img-desktop-991" src="{{ section.settings.desktop_image | image_url }}" alt="banner" loading="eager">
+
+          {% if resolved_desktop_image != blank %}
+            {% if use_metafields and collection.metafields.custom.collection_image.value != blank %}
+              {{
+                resolved_desktop_image
+                | image_url: width: 1600
+                | image_tag:
+                  widths: '600, 800, 1000, 1200, 1440, 1600',
+                  alt: collection.title,
+                  loading: 'eager',
+                  class: 'cbanner-img-desktop-991'
+              }}
+            {% else %}
+              {% comment %} <img
+                class="cbanner-img-desktop-991"
+                src="{{ resolved_desktop_image | image_url }}"
+                alt="banner"
+                loading="eager"
+              > {% endcomment %}
+                {{ resolved_desktop_image | image_url: width: 1600 | image_tag:
+                    widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                    alt: "image",
+                    loading: "lazy",
+                    class: 'cbanner-img-desktop-991'
+                }}
+            {% endif %}
           {% endif %}
-          
-          <!-- Mobile Image -->
-          {% if section.settings.mobile_image != blank %}
-            <img class="cbanner-img-mobile-991" src="{{ section.settings.mobile_image | image_url }}" alt="banner mobile" loading="eager">
+
+          {% if resolved_mobile_image != blank %}
+            {% if use_metafields and collection.metafields.custom.collection_mobile_image.value != blank %}
+              {{
+                resolved_mobile_image
+                | image_url: width: 800
+                | image_tag:
+                  widths: '400, 600, 800',
+                  alt: collection.title,
+                  loading: 'eager',
+                  class: 'cbanner-img-mobile-991'
+              }}
+            {% else %}
+              {% comment %} <img
+                class="cbanner-img-mobile-991"
+                src="{{ resolved_mobile_image | image_url }}"
+                alt="banner mobile"
+                loading="eager"
+              > {% endcomment %}
+              {{ resolved_mobile_image | image_url: width: 1600 | image_tag:
+                  widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                  alt: "image",
+                  loading: "lazy",
+                  class: 'cbanner-img-mobile-991'
+              }}
+            {% endif %}
           {% endif %}
+
         </div>
       {% endif %}
-  
+
       <!-- Content -->
       <div class="cbanner-content-991">
-        {% if section.settings.heading != blank %}
-          <h2 class="cbanner-heading-991">{{ section.settings.heading }}</h2>
+
+        <!-- Heading -->
+        {% if resolved_heading != blank %}
+          <h2 class="cbanner-heading-991">{{ resolved_heading }}</h2>
         {% endif %}
-  
-        {% if section.blocks.size > 0 %}
+
+        <!-- Icon + Text list -->
+        {% if use_metafields and mf_items != blank %}
+
+          <div class="cbanner-icons-wrap-991">
+            {% for item in mf_items %}
+              {% if item != blank %}
+                <div class="cbanner-icon-box-991">
+                  <div class="cbanner-svg-991">
+                    {% render 'myicon-svg' %}
+                  </div>
+                  <p class="cbanner-icon-text-991">{{ item }}</p>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+
+        {% elsif section.blocks.size > 0 %}
+
           <div class="cbanner-icons-wrap-991">
             {% for block in section.blocks %}
               {% if block.settings.icon_svg != blank or block.settings.text != blank %}
                 <div class="cbanner-icon-box-991">
-                  
-                    <div class="cbanner-svg-991">
-                      {% render'myicon-svg' %}
-                    </div>
-                  
+                  <div class="cbanner-svg-991">
+                    {% render 'myicon-svg' %}
+                  </div>
                   {% if block.settings.text != blank %}
                     <p class="cbanner-icon-text-991">{{ block.settings.text }}</p>
                   {% endif %}
@@ -39,7 +152,9 @@
               {% endif %}
             {% endfor %}
           </div>
+
         {% endif %}
+
       </div>
     </div>
   </div>
@@ -55,14 +170,14 @@
 }
 
 .section-{{ section.id }} .page-width {
-    padding: 0 60px;
+  padding: 0 60px;
 }
 
 .col_banner-images {
-    max-width: 100%;
-    height: auto;
-    width: 100%;
-    position: relative;
+  max-width: 100%;
+  height: auto;
+  width: 100%;
+  position: relative;
 }
 
 .cbanner-img-desktop-991,
@@ -77,42 +192,43 @@
 }
 
 .cbanner-wrapper-991 {
-    position: relative;
+  position: relative;
 }
 
 .cbanner-content-991 {
-    position: absolute;
-    bottom: 80px;
-    left: 80px;
-    z-index: 2;
-    text-align: center;
-    color: #fff;
-    max-width: 546px;
-    width: 100%;
+  position: absolute;
+  bottom: 80px;
+  left: 80px;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  max-width: 546px;
+  width: 100%;
 }
 
 .cbanner-heading-991 {
-    font-family: "PP Mori", sans-serif;
-    font-size: 46px;
-    font-weight: 600;
-    margin: 0 0 24px;
-    color: #fff;
-    text-align: start;
-    line-height: 55px;
+  font-family: "PP Mori", sans-serif;
+  font-size: 46px;
+  font-weight: 600;
+  margin: 0 0 24px;
+  color: #fff;
+  text-align: start;
+  line-height: 55px;
 }
 
 .cbanner-svg-991 {
-    min-width: 15px;
-    width: 15px;
-    height: 15px;
-    display: flex;
-    overflow: hidden;
+  min-width: 15px;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  overflow: hidden;
 }
 
 .cbanner-icons-wrap-991 {
   display: flex;
   justify-content: start;
   gap: 12px;
+  flex-direction: column;
   flex-wrap: wrap;
 }
 
@@ -138,37 +254,42 @@
 }
 
 @media (max-width: 768px) {
-.section-{{ section.id }}{
-  padding-top: {{ section.settings.padding_top_mobile }}px;
-  padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
-}
+  .section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
 
-.section-{{ section.id }} .page-width {
-    padding: 0px;
-}
+  .section-{{ section.id }} .page-width {
+    padding: 0;
+  }
+
   .cbanner-img-desktop-991 {
     display: none;
   }
-.cbanner-content-991 {
+
+  .cbanner-content-991 {
     left: 16px;
     max-width: 100%;
     width: unset;
     right: 16px !important;
     bottom: 43px;
-}
+  }
 
   .cbanner-img-mobile-991 {
     display: block;
     padding: 0;
   }
-.cbanner-heading-991 {
+
+  .cbanner-heading-991 {
     font-size: 28px;
     line-height: 36.4px;
     margin-bottom: 10px;
-}
+  }
+
   .cbanner-icons-wrap-991 {
     gap: 12px;
   }
+
   .cbanner-icon-text-991 {
     font-size: 14px;
     text-align: left;
@@ -180,6 +301,13 @@
 {
   "name": "Duri Collection Banner",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "use_metafields",
+      "label": "Use collection metafields",
+      "info": "When enabled: images from 'custom.collection_image' and 'custom.collection_mobile_image', heading from 'custom.banner_title' (falls back to collection title then schema heading), items from 'custom.banner_item'. Each falls back to schema values if the metafield is blank.",
+      "default": false
+    },
     {
       "type": "image_picker",
       "id": "desktop_image",
@@ -199,10 +327,9 @@
     {
       "type": "color",
       "id": "bg_color",
-      "label": "Description Color",
+      "label": "Background Color",
       "default": "#fff"
     },
-
     {
       "type": "range",
       "id": "padding_top_desktop",
@@ -223,7 +350,6 @@
       "unit": "px",
       "default": 32
     },
-
     {
       "type": "range",
       "id": "padding_top_mobile",
@@ -253,7 +379,7 @@
         {
           "type": "text",
           "id": "icon_svg",
-          "label": "Render SVG snippet name (without .liquid)",
+          "label": "SVG snippet name (without .liquid)",
           "default": "my-svg"
         },
         {

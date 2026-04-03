@@ -9,8 +9,51 @@
  */
 {
   "sections": {
+    "duri_collection_banner_RbLgiJ": {
+      "type": "duri-collection-banner",
+      "blocks": {
+        "icon_with_text_gbCRcb": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon_svg": "",
+            "text": "Clean, Safe, and Long-Lasting Formulas."
+          }
+        },
+        "icon_with_text_VaLHga": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon_svg": "",
+            "text": "Wide Range of Shades and Treatments for Every Style."
+          }
+        },
+        "icon_with_text_9TDpKn": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon_svg": "",
+            "text": "Vegan, Cruelty-Free & Free from Harsh Chemicals."
+          }
+        }
+      },
+      "block_order": [
+        "icon_with_text_gbCRcb",
+        "icon_with_text_VaLHga",
+        "icon_with_text_9TDpKn"
+      ],
+      "name": "Duri Collection Banner",
+      "settings": {
+        "desktop_image": "shopify://shop_images/Component_10_b669bdc5-9124-4f61-be25-03b58464c5c0.png",
+        "mobile_image": "shopify://shop_images/Component_10_1.png",
+        "heading": "NAIL POLISH & NAIL CARE PRODUCTS",
+        "bg_color": "#fff4f3",
+        "padding_top_desktop": 32,
+        "padding_bottom_desktop": 40,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
     "banner": {
       "type": "main-collection-banner",
+      "disabled": true,
       "settings": {
         "show_collection_description": true,
         "show_collection_image": false,
@@ -20,7 +63,8 @@
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
-        "products_per_page": 16,
+        "cstm_style": true,
+        "products_per_page": 12,
         "columns_desktop": 3,
         "columns_mobile": "2",
         "color_scheme": "scheme-1",
@@ -28,17 +72,21 @@
         "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
-        "show_rating": false,
+        "show_rating": true,
         "quick_add": "standard",
         "enable_filtering": true,
         "filter_type": "vertical",
         "enable_sorting": true,
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "padding_top_mob": 36,
+        "padding_bottom_mob": 36,
+        "bg_color": "#fff4f3"
       }
     }
   },
   "order": [
+    "duri_collection_banner_RbLgiJ",
     "banner",
     "product-grid"
   ]
