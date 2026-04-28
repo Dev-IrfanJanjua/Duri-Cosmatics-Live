@@ -41,8 +41,9 @@
       ],
       "name": "Duri Collection Banner",
       "settings": {
-        "desktop_image": "shopify://shop_images/Component_10_b669bdc5-9124-4f61-be25-03b58464c5c0.png",
-        "mobile_image": "shopify://shop_images/Component_10_1.png",
+        "use_metafields": false,
+        "desktop_image": "{{ collection.metafields.custom.collection_image.value }}",
+        "mobile_image": "{{ collection.metafields.custom.collection_mobile_image.value }}",
         "heading": "NAIL POLISH & NAIL CARE PRODUCTS",
         "bg_color": "#fff4f3",
         "padding_top_desktop": 32,

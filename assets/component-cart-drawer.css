@@ -1132,6 +1132,7 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
     flex-direction: row;
     max-width: 711px !important;
     width: 100% !important;
+    height: 100vh;
 }
 
   /* cart drawer part upsell */
@@ -1252,7 +1253,6 @@ p.cart-upsell__price {
 .custom-drawer cart-drawer-items {
         overflow-y: auto;
         overflow-x: hidden;
-        max-height:500px;
     }
 .custom-drawer .drawer__header {
     position: relative;
@@ -1537,7 +1537,6 @@ cart-drawer-items {
     padding-left: 16px;
     overflow-y: auto;
     overflow-x: hidden;
-    max-height: 200px;
     padding-right: 16px;
 }
 .custom-drawer .cart-items, .cart-drawer tbody {
@@ -1587,7 +1586,9 @@ span.progress-bar_icon svg {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100vh;
+    min-height: 0;
+    gap: 30px;
+    height: 100%;
 }
 
 @media screen and (max-width: 768px){
@@ -1666,7 +1667,7 @@ span.progress-bar_icon svg {
 }
 
 .cstm_cart-drawer-body {
-    height: 80vh;
+    gap: 0;
 }
 
 .custom-drawer .price--end, .custom-drawer .totals__total {

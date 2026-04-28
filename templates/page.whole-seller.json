@@ -101,7 +101,7 @@
         "heading": "Partner With Duri Wholesale",
         "description": "Join our wholesale program and enjoy exclusive access to Duri’s best-selling nail treatments and polishes. Whether you’re a salon, spa, or retailer, we provide everything you need to keep your customers coming back.",
         "button_label": "Shop on FAIR",
-        "button_link": "shopify://pages/landing-page-1",
+        "button_link": "https://duricosmetics.faire.com",
         "cotent_bg": "#fff4f3"
       }
     }

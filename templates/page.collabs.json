@@ -1,0 +1,53 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "collabs": {
+      "type": "apps",
+      "blocks": {
+        "uppromote_affiliate_registration_form_h7niCK": {
+          "type": "shopify://apps/uppromote-affiliate/blocks/registration-form/64c32457-930d-4cb9-9641-e24c0d9cf1f4",
+          "settings": {
+            "section_width": 100,
+            "border_radius": 4,
+            "top_margin": 20,
+            "bottom_margin": 4
+          }
+        },
+        "aa049a50-c66d-4867-b008-5b310a8f17ac": {
+          "type": "shopify://apps/collabs/blocks/application-page/54758706-9f25-4fa9-a553-64720a4c998b",
+          "disabled": true,
+          "settings": {
+            "heading": "Join the Duri Cosmetics community",
+            "show_square_logo": true,
+            "show_partnership_info": true,
+            "button_text": "Apply now",
+            "number_of_images": "4",
+            "logo_position": "above",
+            "corner_style": "square",
+            "button_background_color": "#000000",
+            "button_label_color": "#ffffff",
+            "link_color": "#2c6ecb"
+          }
+        }
+      },
+      "block_order": [
+        "uppromote_affiliate_registration_form_h7niCK",
+        "aa049a50-c66d-4867-b008-5b310a8f17ac"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "collabs"
+  ]
+}

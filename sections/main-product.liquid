@@ -1089,110 +1089,94 @@
                   </a>
                 </div>
               {%- when 'tubs_selector' -%}
-                {% assign selling_plans = product.selling_plan_groups[0].selling_plans %}
-                <div class="tubs-selector" data-section-id="{{ section.id }}" {{ block.shopify_attributes }}>
-                  {% if block.settings.title_t != blank %}
-                    <h3 class="tubs-selector_title">{{ block.settings.title_t }}</h3>
-                  {% endif %}
-                  <div class="tubs-options">
-                    {%- comment -%} OPTION 1 (no discount) {%- endcomment -%}
-                    {% assign plan_1 = selling_plans[0].id %}
-                    {% assign orgprice = product.price | times: block.settings.qty_1 %}
-                    {% assign comp_price = product.compare_at_price | times: block.settings.qty_1 %}
-                    {% assign discount = orgprice | times: block.settings.discount | divided_by: 100 %}
-                    {% assign finalprice = orgprice | minus: discount %}
-                    {% assign diffprice = orgprice | minus: finalprice %}
+                  {% unless customer and customer.tags contains 'salon' %}
+                    {% assign selling_plans = product.selling_plan_groups[0].selling_plans %}
+                      <div class="tubs-selector" data-section-id="{{ section.id }}" {{ block.shopify_attributes }}>
+                        {% if block.settings.title_t != blank %}
+                          <h3 class="tubs-selector_title">{{ block.settings.title_t }}</h3>
+                        {% endif %}
+                        <div class="tubs-options">
 
-                    <label class="tub-box">
-                      <input
-                        type="radio"
-                        class="qty-input"
-                        name="tub_option"
-                        value="1"
-                        data-selling-plan="{{ plan_1 }}"
-                        data-qty="{{ block.settings.qty_1 }}"
-                        org-price="{{ orgprice | money }}"
-                        dis-price="{{ finalprice | money }}"
-                        compare-price="{{ comp_price | default: orgprice | money }}"
-                        diff-price="{{ diffprice | money }}"
-                      >
-                      <div class="tub-box-abc">
-                        <div class="tubs-text">
-                          <strong>{{ block.settings.text1 }}</strong>
-                        </div>
-                        <div class="tubs-price-wrapper">
-                          <div class="tubs-price1">{{ orgprice | money }}</div>
-                          <div class="tubs-price">{{ comp_price | money }}</div>
-                        </div>
-                      </div>
-                    </label>
+                          {%- comment -%} OPTION 1 (no discount) {%- endcomment -%}
+                          {% assign plan_1 = selling_plans[0].id %}
+                          {% assign orgprice = product.price | times: block.settings.qty_1 %}
+                          {% assign comp_price = product.compare_at_price | times: block.settings.qty_1 %}
+                          {% assign discount = orgprice | times: block.settings.discount | divided_by: 100 %}
+                          {% assign finalprice = orgprice | minus: discount %}
+                          {% assign diffprice = orgprice | minus : finalprice %}
 
-                    {%- comment -%} OPTION 2 (10% off) {%- endcomment -%}
-                    {% assign plan_2 = selling_plans[1].id %}
-                    {% assign orgprice = product.price | times: block.settings.qty_2 %}
-                    {% assign comp_price = product.compare_at_price | times: block.settings.qty_2 %}
-                    {% assign discount = orgprice | times: block.settings.discount | divided_by: 100 %}
-                    {% assign finalprice = orgprice | minus: discount %}
-                    {% assign diffprice = orgprice | minus: finalprice %}
+                          <label class="tub-box">
+                            <input type="radio" class="qty-input" name="tub_option" value="1"
+                              data-selling-plan="{{ plan_1 }}"
+                                  data-qty="{{ block.settings.qty_1 }}"
+                                  org-price="{{ orgprice | money }}"
+                                  dis-price="{{ finalprice | money }}"
+                                  compare-price="{{ comp_price | default: orgprice | money }}"
+                                  diff-price="{{ diffprice | money }}">
+                            <div class="tub-box-abc">
+                              <div class="tubs-text"><strong>{{ block.settings.text1 }}</strong></div>
+                              <div class="tubs-price-wrapper">
+                                <div class="tubs-price1">{{ orgprice | money }}</div>
+                                <div class="tubs-price">{{ comp_price | money }}</div>
+                              </div>
+                            </div>
+                          </label>
 
-                    <label class="tub-box selected">
-                      <input
-                        type="radio"
-                        class="qty-input"
-                        name="tub_option"
-                        value="2"
-                        checked
-                        data-selling-plan="{{ plan_2 }}"
-                        data-qty="{{ block.settings.qty_2 }}"
-                        org-price="{{ orgprice | money }}"
-                        dis-price="{{ finalprice | money }}"
-                        compare-price="{{ comp_price | default: orgprice | money }}"
-                        diff-price="{{ diffprice | money }}"
-                      >
-                      <div class="tub-box-abc">
-                        <div class="badge">Most Popular</div>
-                        <div class="tubs-text">{{ block.settings.text2 }}</div>
-                        <div class="tubs-price-flex">
-                          <div class="tubs-price">{{ comp_price | money }}</div>
-                          <div class="tubs-price1">{{ orgprice | money }}</div>
-                        </div>
-                      </div>
-                    </label>
+                          {%- comment -%} OPTION 2 (10% off) {%- endcomment -%}
+                          {% assign plan_2 = selling_plans[1].id %}
+                          {% assign orgprice = product.price | times: block.settings.qty_2 %}
+                          {% assign comp_price = product.compare_at_price | times: block.settings.qty_2 %}
+                          {% assign discount = orgprice | times: block.settings.discount | divided_by: 100 %}
+                          {% assign finalprice = orgprice | minus: discount %}
+                          {% assign diffprice = orgprice | minus : finalprice %}
 
-                    {%- comment -%} OPTION 3 (15% off) {%- endcomment -%}
-                    {% assign plan_3 = selling_plans[2].id %}
-                    {% assign orgprice = product.price | times: block.settings.qty_3 %}
-                    {% assign comp_price = product.compare_at_price | times: block.settings.qty_3 %}
-                    {% assign discount = orgprice | times: block.settings.discount | divided_by: 100 %}
-                    {% assign finalprice = orgprice | minus: discount %}
-                    {% assign diffprice = orgprice | minus: finalprice %}
+                          <label class="tub-box selected">
+                            <input type="radio" class="qty-input" name="tub_option" value="2"  checked
+                              data-selling-plan="{{ plan_2 }}"
+                                  data-qty="{{ block.settings.qty_2 }}"
+                                  org-price="{{ orgprice | money }}"
+                                  dis-price="{{ finalprice | money }}"
+                                  compare-price="{{ comp_price | default: orgprice | money }}"
+                                  diff-price="{{ diffprice | money }}">
+                            <div class="tub-box-abc">
+                              <div class="badge">Most Popular</div>
+                              <div class="tubs-text">{{ block.settings.text2 }}</div>
+                              <div class="tubs-price-flex">
+                                <div class="tubs-price">{{ comp_price | money }}</div>
+                                <div class="tubs-price1">{{ orgprice | money }}</div>
+                              </div>
+                            </div>
+                          </label>
 
-                    <label class="tub-box">
-                      <input
-                        type="radio"
-                        class="qty-input"
-                        name="tub_option"
-                        value="3"
-                        data-selling-plan="{{ plan_3 }}"
-                        data-qty="{{ block.settings.qty_3 }}"
-                        org-price="{{ orgprice | money }}"
-                        dis-price="{{ finalprice | money }}"
-                        compare-price="{{ comp_price | default: orgprice | money }}"
-                        diff-price="{{ diffprice | money }}"
-                      >
-                      <div class="tub-box-abc">
-                        <div class="badge dark">Best value</div>
-                        <div class="tubs-text">
-                          <strong>{{ block.settings.text3 }}</strong>
-                        </div>
-                        <div class="tubs-price-flex">
-                          <div class="tubs-price">{{ comp_price | money }}</div>
-                          <div class="tubs-price1">{{ orgprice | money }}</div>
+                          {%- comment -%} OPTION 3 (15% off) {%- endcomment -%}
+                          {% assign plan_3 = selling_plans[2].id %}
+                          {% assign orgprice = product.price | times: block.settings.qty_3 %}
+                          {% assign comp_price = product.compare_at_price | times: block.settings.qty_3 %}
+                          {% assign discount = orgprice | times: block.settings.discount | divided_by: 100 %}
+                          {% assign finalprice = orgprice | minus: discount %}
+                          {% assign diffprice = orgprice | minus : finalprice %}
+                          
+                          <label class="tub-box">
+                            <input type="radio" class="qty-input" name="tub_option" value="3"
+                              data-selling-plan="{{ plan_3 }}"
+                                  data-qty="{{ block.settings.qty_3 }}"
+                                  org-price="{{ orgprice | money }}"
+                                  dis-price="{{ finalprice | money }}"
+                                  compare-price="{{ comp_price | default: orgprice | money }}"
+                                  diff-price="{{ diffprice | money }}">
+                            <div class="tub-box-abc">
+                              <div class="badge dark">Best value</div>
+                              <div class="tubs-text"><strong>{{ block.settings.text3 }}</strong></div>
+                              <div class="tubs-price-flex">
+                                <div class="tubs-price">{{ comp_price | money }}</div>
+                                <div class="tubs-price1">{{ orgprice | money }}</div>
+                              </div>
+                            </div>
+                          </label>
+
                         </div>
                       </div>
-                    </label>
-                  </div>
-                </div>
+                  {% endunless %}
 
                 {% comment %}
                   {%- when 'tubs_selector' -%}
@@ -1275,123 +1259,125 @@
                 {% endcomment %}
 
               {%- when 'purchase_type' -%}
-                <div class="purchase-options" {{ block.shopify_attributes }}>
-                  <label class="option-box selected">
-                    <input type="radio" name="purchase_type" class="onetime_input" value="">
-                    <div class="option-box-abcd">
-                      <div class="one-tim-p">
-                        <div>
+                {% unless customer and customer.tags contains 'salon' %}
+                  <div class="purchase-options" {{ block.shopify_attributes }}>
+                    <label class="option-box selected">
+                      <input type="radio" name="purchase_type" class="onetime_input" value="">
+                      <div class="option-box-abcd">
+                        <div class="one-tim-p">
+                          <div>
+                            <span class="unchecked-svg">
+                              {% render 'pdp-2nd-svg' %}
+                            </span>
+                            <span class="checked-svg">
+                              {% render 'pdp-first-svg' %}
+                            </span>
+                          </div>
+                          <p>{{ block.settings.text412 }}</p>
+                        </div>
+                        <div class="price-newew" id="one-time-price">{{ product.price | money }}</div>
+                      </div>
+                    </label>
+                    <label class="option-box">
+                      <input
+                        type="radio"
+                        name="purchase_type"
+                        class="subscription_input"
+                        checked
+                        value="{{ product.selected_or_first_available_selling_plan_allocation.selling_plan.id }}"
+                        {% if product.selected_or_first_available_selling_plan_allocation %}
+                        {% endif %}
+  
+                        id="subscribe-option-{{ section.id }}"
+                      >
+                      <div class="option-box-abcd">
+                        <div class="option123">
                           <span class="unchecked-svg">
                             {% render 'pdp-2nd-svg' %}
                           </span>
                           <span class="checked-svg">
                             {% render 'pdp-first-svg' %}
                           </span>
+                          <p>{{ block.settings.text324 }}</p>
                         </div>
-                        <p>{{ block.settings.text412 }}</p>
+                        <div class="main-new-12" id="subsc_price-uptd">
+                          <div class="price-box">
+                            <div class="price-newABC" id="compare-price">$0.00</div>
+                            <div class="price-disc" id="subscribe-price">$0.00</div>
+                          </div>
+                        </div>
                       </div>
-                      <div class="price-newew" id="one-time-price">{{ product.price | money }}</div>
-                    </div>
-                  </label>
-                  <label class="option-box">
-                    <input
-                      type="radio"
-                      name="purchase_type"
-                      class="subscription_input"
-                      checked
-                      value="{{ product.selected_or_first_available_selling_plan_allocation.selling_plan.id }}"
-                      {% if product.selected_or_first_available_selling_plan_allocation %}
+                      {% if block.settings.list_1 != blank %}
+                        <ul class="option-box_list">
+                          {% if block.settings.list_1 != blank %}
+                            <li class="option-box_list-item">
+                              <span class="option-box_list-item-icon">
+                                <svg
+                                  width="20"
+                                  height="20"
+                                  viewBox="0 0 20 20"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path d="M15.0459 6.02826C14.7322 5.71454 14.2616 5.71454 13.9478 6.02826L8.06549 11.9106L5.63411 9.47924C5.32039 9.16552 4.8498 9.16552 4.53608 9.47924C4.22235 9.79297 4.22235 10.2636 4.53608 10.5773L7.51647 13.5577C7.67333 13.7145 7.83019 13.793 8.06549 13.793C8.30078 13.793 8.45764 13.7145 8.61451 13.5577L15.0459 7.1263C15.3596 6.81258 15.3596 6.34199 15.0459 6.02826Z" fill="black"/>
+                                </svg>
+                              </span>
+                              <span class="option-box_list-item-text">{{ block.settings.list_1 }}</span>
+                            </li>
+                          {% endif %}
+                          {% if block.settings.list_2 != blank %}
+                            <li class="option-box_list-item">
+                              <span class="option-box_list-item-icon">
+                                <svg
+                                  width="20"
+                                  height="20"
+                                  viewBox="0 0 20 20"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path d="M15.0459 6.02826C14.7322 5.71454 14.2616 5.71454 13.9478 6.02826L8.06549 11.9106L5.63411 9.47924C5.32039 9.16552 4.8498 9.16552 4.53608 9.47924C4.22235 9.79297 4.22235 10.2636 4.53608 10.5773L7.51647 13.5577C7.67333 13.7145 7.83019 13.793 8.06549 13.793C8.30078 13.793 8.45764 13.7145 8.61451 13.5577L15.0459 7.1263C15.3596 6.81258 15.3596 6.34199 15.0459 6.02826Z" fill="black"/>
+                                </svg>
+                              </span>
+                              <span class="option-box_list-item-text">{{ block.settings.list_2 }}</span>
+                            </li>
+                          {% endif %}
+                          {% if block.settings.list_3 != blank %}
+                            <li class="option-box_list-item">
+                              <span class="option-box_list-item-icon">
+                                <svg
+                                  width="20"
+                                  height="20"
+                                  viewBox="0 0 20 20"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path d="M15.0459 6.02826C14.7322 5.71454 14.2616 5.71454 13.9478 6.02826L8.06549 11.9106L5.63411 9.47924C5.32039 9.16552 4.8498 9.16552 4.53608 9.47924C4.22235 9.79297 4.22235 10.2636 4.53608 10.5773L7.51647 13.5577C7.67333 13.7145 7.83019 13.793 8.06549 13.793C8.30078 13.793 8.45764 13.7145 8.61451 13.5577L15.0459 7.1263C15.3596 6.81258 15.3596 6.34199 15.0459 6.02826Z" fill="black"/>
+                                </svg>
+                              </span>
+                              <span class="option-box_list-item-text">{{ block.settings.list_3 }}</span>
+                            </li>
+                          {% endif %}
+                          {% if block.settings.list_4 != blank %}
+                            <li class="option-box_list-item">
+                              <span class="option-box_list-item-icon">
+                                <svg
+                                  width="20"
+                                  height="20"
+                                  viewBox="0 0 20 20"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path d="M15.0459 6.02826C14.7322 5.71454 14.2616 5.71454 13.9478 6.02826L8.06549 11.9106L5.63411 9.47924C5.32039 9.16552 4.8498 9.16552 4.53608 9.47924C4.22235 9.79297 4.22235 10.2636 4.53608 10.5773L7.51647 13.5577C7.67333 13.7145 7.83019 13.793 8.06549 13.793C8.30078 13.793 8.45764 13.7145 8.61451 13.5577L15.0459 7.1263C15.3596 6.81258 15.3596 6.34199 15.0459 6.02826Z" fill="black"/>
+                                </svg>
+                              </span>
+                              <span class="option-box_list-item-text">{{ block.settings.list_4 }}</span>
+                            </li>
+                          {% endif %}
+                        </ul>
                       {% endif %}
-
-                      id="subscribe-option-{{ section.id }}"
-                    >
-                    <div class="option-box-abcd">
-                      <div class="option123">
-                        <span class="unchecked-svg">
-                          {% render 'pdp-2nd-svg' %}
-                        </span>
-                        <span class="checked-svg">
-                          {% render 'pdp-first-svg' %}
-                        </span>
-                        <p>{{ block.settings.text324 }}</p>
-                      </div>
-                      <div class="main-new-12" id="subsc_price-uptd">
-                        <div class="price-box">
-                          <div class="price-newABC" id="compare-price">$0.00</div>
-                          <div class="price-disc" id="subscribe-price">$0.00</div>
-                        </div>
-                      </div>
-                    </div>
-                    {% if block.settings.list_1 != blank %}
-                      <ul class="option-box_list">
-                        {% if block.settings.list_1 != blank %}
-                          <li class="option-box_list-item">
-                            <span class="option-box_list-item-icon">
-                              <svg
-                                width="20"
-                                height="20"
-                                viewBox="0 0 20 20"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path d="M15.0459 6.02826C14.7322 5.71454 14.2616 5.71454 13.9478 6.02826L8.06549 11.9106L5.63411 9.47924C5.32039 9.16552 4.8498 9.16552 4.53608 9.47924C4.22235 9.79297 4.22235 10.2636 4.53608 10.5773L7.51647 13.5577C7.67333 13.7145 7.83019 13.793 8.06549 13.793C8.30078 13.793 8.45764 13.7145 8.61451 13.5577L15.0459 7.1263C15.3596 6.81258 15.3596 6.34199 15.0459 6.02826Z" fill="black"/>
-                              </svg>
-                            </span>
-                            <span class="option-box_list-item-text">{{ block.settings.list_1 }}</span>
-                          </li>
-                        {% endif %}
-                        {% if block.settings.list_2 != blank %}
-                          <li class="option-box_list-item">
-                            <span class="option-box_list-item-icon">
-                              <svg
-                                width="20"
-                                height="20"
-                                viewBox="0 0 20 20"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path d="M15.0459 6.02826C14.7322 5.71454 14.2616 5.71454 13.9478 6.02826L8.06549 11.9106L5.63411 9.47924C5.32039 9.16552 4.8498 9.16552 4.53608 9.47924C4.22235 9.79297 4.22235 10.2636 4.53608 10.5773L7.51647 13.5577C7.67333 13.7145 7.83019 13.793 8.06549 13.793C8.30078 13.793 8.45764 13.7145 8.61451 13.5577L15.0459 7.1263C15.3596 6.81258 15.3596 6.34199 15.0459 6.02826Z" fill="black"/>
-                              </svg>
-                            </span>
-                            <span class="option-box_list-item-text">{{ block.settings.list_2 }}</span>
-                          </li>
-                        {% endif %}
-                        {% if block.settings.list_3 != blank %}
-                          <li class="option-box_list-item">
-                            <span class="option-box_list-item-icon">
-                              <svg
-                                width="20"
-                                height="20"
-                                viewBox="0 0 20 20"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path d="M15.0459 6.02826C14.7322 5.71454 14.2616 5.71454 13.9478 6.02826L8.06549 11.9106L5.63411 9.47924C5.32039 9.16552 4.8498 9.16552 4.53608 9.47924C4.22235 9.79297 4.22235 10.2636 4.53608 10.5773L7.51647 13.5577C7.67333 13.7145 7.83019 13.793 8.06549 13.793C8.30078 13.793 8.45764 13.7145 8.61451 13.5577L15.0459 7.1263C15.3596 6.81258 15.3596 6.34199 15.0459 6.02826Z" fill="black"/>
-                              </svg>
-                            </span>
-                            <span class="option-box_list-item-text">{{ block.settings.list_3 }}</span>
-                          </li>
-                        {% endif %}
-                        {% if block.settings.list_4 != blank %}
-                          <li class="option-box_list-item">
-                            <span class="option-box_list-item-icon">
-                              <svg
-                                width="20"
-                                height="20"
-                                viewBox="0 0 20 20"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path d="M15.0459 6.02826C14.7322 5.71454 14.2616 5.71454 13.9478 6.02826L8.06549 11.9106L5.63411 9.47924C5.32039 9.16552 4.8498 9.16552 4.53608 9.47924C4.22235 9.79297 4.22235 10.2636 4.53608 10.5773L7.51647 13.5577C7.67333 13.7145 7.83019 13.793 8.06549 13.793C8.30078 13.793 8.45764 13.7145 8.61451 13.5577L15.0459 7.1263C15.3596 6.81258 15.3596 6.34199 15.0459 6.02826Z" fill="black"/>
-                              </svg>
-                            </span>
-                            <span class="option-box_list-item-text">{{ block.settings.list_4 }}</span>
-                          </li>
-                        {% endif %}
-                      </ul>
-                    {% endif %}
-                  </label>
-                </div>
+                    </label>
+                  </div>
+                {% endunless %}
 
               {% when 'jump-to' %}
                 <div class="jump-to">

@@ -316,7 +316,7 @@
                           <div class="info-icon-item">
                               <div class="info-icon-wrapper">
                               {%- if block.settings.icon_1 != blank -%}
-                                  {{ block.settings.icon_1 | image_url: width: 100 | image_tag: loading: 'lazy' }}
+                                  {{ block.settings.icon_1 | image_url: width: 100 | image_tag: loading: 'lazy', alt: "image"  }}
                               {%- endif -%}
                               </div>
                               <p class="info-icon-text">{{ block.settings.title_1 }}</p>
@@ -327,7 +327,7 @@
                           <div class="info-icon-item">
                               <div class="info-icon-wrapper">
                               {%- if block.settings.icon_2 != blank -%}
-                                  {{ block.settings.icon_2 | image_url: width: 100 | image_tag: loading: 'lazy' }}
+                                  {{ block.settings.icon_2 | image_url: width: 100 | image_tag: loading: 'lazy', alt: "image" }}
                               {%- endif -%}
                               </div>
                               <p class="info-icon-text">{{ block.settings.title_2 }}</p>
@@ -338,7 +338,7 @@
                           <div class="info-icon-item">
                               <div class="info-icon-wrapper">
                               {%- if block.settings.icon_3 != blank -%}
-                                  {{ block.settings.icon_3 | image_url: width: 100 | image_tag: loading: 'lazy' }}
+                                  {{ block.settings.icon_3 | image_url: width: 100 | image_tag: loading: 'lazy', alt: "image" }}
                               {%- endif -%}
                               </div>
                               <p class="info-icon-text">{{ block.settings.title_3 }}</p>

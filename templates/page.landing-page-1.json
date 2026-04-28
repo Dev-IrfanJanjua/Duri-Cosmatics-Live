@@ -195,14 +195,14 @@
         "gallery_image_BghVxV": {
           "type": "gallery_image",
           "settings": {
-            "image": "shopify://shop_images/Rectangle_2_1.png",
+            "image": "shopify://shop_images/ccd221fb81ad93317cc6705dd304f83dca12afde.png",
             "alt": ""
           }
         },
         "gallery_image_wn6eJX": {
           "type": "gallery_image",
           "settings": {
-            "image": "shopify://shop_images/3_pack_-_rej1_new_print_9a820da9-cb35-4a91-9642-06e02cac1a6b.png",
+            "image": "shopify://shop_images/real_recovery_pg_2.png",
             "alt": ""
           }
         },
@@ -216,7 +216,7 @@
         "gallery_image_NqjLGa": {
           "type": "gallery_image",
           "settings": {
-            "image": "shopify://shop_images/p2_2fe113c5-890a-4788-ade0-4f2b311ec4b3.png",
+            "image": "shopify://shop_images/p6_a0dab956-9844-4550-80d4-e90528386fb2.png",
             "alt": ""
           }
         },
@@ -247,16 +247,16 @@
         "bundle_products_DExbnk": {
           "type": "bundle_products",
           "settings": {
-            "product_1": "006d-aurora",
-            "product_2": "008d-o-sole-mia",
-            "collection_1": "pink",
-            "collection_2": "enchanted-collection",
-            "collection_3": "dear-diary",
-            "collection_4": "red-carpet-trends",
-            "collection_5": "",
-            "collection_6": "",
-            "collection_7": "",
-            "collection_8": "",
+            "product_1": "rejuvacote-1-original-maximum-strength-nail-growth-system-base-and-top-coat",
+            "product_2": "rejuvacote-2-nail-growth-system-super-sensitive-formula-base-and-top-coat",
+            "collection_1": "pink-nail-polish",
+            "collection_2": "pink-nail-polish-copy",
+            "collection_3": "purple-nail-polish-copy",
+            "collection_4": "green-nail-polish-copy",
+            "collection_5": "white-nail-polish-copy",
+            "collection_6": "yellow-nail-polish-copy",
+            "collection_7": "green-nail-polish-copy",
+            "collection_8": "orange-nail-polish-copy",
             "placeholder": "shopify://shop_images/72090e03ad6b44f695db104529a76a1f109af336.png"
           }
         },
@@ -264,7 +264,7 @@
           "type": "add_ons",
           "settings": {
             "main_title": "Choose Add Ons",
-            "product": "001d-sunny-side-up",
+            "product": "dropn-go-polish-drying-drops",
             "custom_title": "DROP'N GO Polish Drying Drops",
             "custom_desc": "Speed up dry time by 2x",
             "custom_image": "shopify://shop_images/f7d1ddb040fb0b465d78c6a891cc7285f918d04d.png"
@@ -279,7 +279,7 @@
           "settings": {
             "bg_color": "#f8d7da",
             "text": "Free Nail File Included",
-            "subtext": "Take care of your nails with every order"
+            "subtext": "You'll need it with the nail growth boost"
           }
         },
         "info_icons_rNXMXk": {
@@ -288,9 +288,9 @@
             "icon_1": "shopify://shop_images/Frame_1484578863_3d4d12af-9361-405b-a94f-3dde6eb156b6.svg",
             "title_1": "Multi-Award Winning Formula",
             "icon_2": "shopify://shop_images/Frame_1484578863_1_0699c23e-6592-402b-a528-0a04a9019252.svg",
-            "title_2": "Free Delivery 3-5 Days",
+            "title_2": "Ships from Brooklyn, NY",
             "icon_3": "shopify://shop_images/Frame_1484578863_5.svg",
-            "title_3": "3 Days Risk-Free Manicure"
+            "title_3": "3 Days Risk-Free Returns"
           }
         },
         "popup_fKGNHP": {
@@ -358,12 +358,12 @@
         "tier_4_badge": "Most Popular",
         "tier_4_colors": 4,
         "tier_4_price": "$55",
-        "tier_4_compare_price": "",
+        "tier_4_compare_price": "$66",
         "tier_6_label": "Rejuvacote  + 6 Nail Colors",
         "tier_6_badge": "Best value",
         "tier_6_colors": 6,
         "tier_6_price": "$72",
-        "tier_6_compare_price": ""
+        "tier_6_compare_price": "$91"
       }
     },
     "featured_product_Rk3tJE": {
@@ -706,28 +706,28 @@
         "video_product_AeYTMj": {
           "type": "video_product",
           "settings": {
-            "video": "shopify://files/videos/welcomejunepop_d8727356-83ea-48db-9728-e1023c6d10b3.mp4",
+            "video": "shopify://files/videos/KIM - NAIL GROWTH REJ1 VID.mov",
             "product": ""
           }
         },
         "video_product_RGhdFy": {
           "type": "video_product",
           "settings": {
-            "video": "shopify://files/videos/Valentine's Pouring out Nail Polishes .MP4",
+            "video": "shopify://files/videos/billo2_rejuvacote 1_.mp4",
             "product": ""
           }
         },
         "video_product_EqQJJi": {
           "type": "video_product",
           "settings": {
-            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "video": "shopify://files/videos/KARMATHEARTIST - VIA SOCIALCAT.mp4",
             "product": ""
           }
         },
         "video_product_4Cghyt": {
           "type": "video_product",
           "settings": {
-            "video": "shopify://files/videos/billo1_rejuvacote 1_.mp4",
+            "video": "shopify://files/videos/HADISE MAYELI - SOCIAL CAT.mov",
             "product": ""
           }
         }
@@ -782,53 +782,53 @@
         "faq_TxPkBr": {
           "type": "faq",
           "settings": {
-            "question": "Should I go with Rejuvacote 1 or Rejuvacote 2?",
-            "answer": "If you have flexible, peeling nails with stunted growth and constant chipping, go for Rejuvacote 1. If you have thin, brittle nails with ridges, then Rejuvacote 2 is for you."
+            "question": "What's the difference between Rejuvacote 1 and Rejuvacote 2?",
+            "answer": "Rejuvacote 1 is our Maximum Strength Formula, designed for very weak, damaged nails that need intensive strengthening.\nRejuvacote 2 is our Balanced Repair Formula, created for thin, peeling, or sensitive nails that need gentle repair and flexibility.\n\nBoth work as a base and top coat, but the choice depends on whether your nails need intensive strength (R1) or balanced, flexible repair (R2)."
           }
         },
         "faq_9MUHxH": {
           "type": "faq",
           "settings": {
-            "question": "Should I go with Rejuvacote 1 or Rejuvacote 2?",
-            "answer": "If you have flexible, peeling nails with stunted growth and constant chipping, go for Rejuvacote 1. If you have thin, brittle nails with ridges, then Rejuvacote 2 is for you."
+            "question": "How do I use my bundle for best results?",
+            "answer": "Start with clean, dry nails. Apply your treatment (Rejuvacote 1 or 2) as a base coat, follow with 1–2 coats of your nail color, and finish with a top coat to seal and protect. Reapply your treatment or top coat every 1–2 days to maintain strength and shine. For best results, follow a consistent routine and remove and restart your manicure every 5–7 days."
           }
         },
         "faq_YjzTkc": {
           "type": "faq",
           "settings": {
-            "question": "Should I go with Rejuvacote 1 or Rejuvacote 2?",
-            "answer": "If you have flexible, peeling nails with stunted growth and constant chipping, go for Rejuvacote 1. If you have thin, brittle nails with ridges, then Rejuvacote 2 is for you."
+            "question": "How often should I use Rejuvacote?",
+            "answer": "Nail treatments work best with consistent use. Apply daily or every other day as part of your routine, either alone or over polish. For treatment cycles like Rejuvacote, we recommend a 7-day routine, building layers throughout the week, then removing and starting fresh."
           }
         },
         "faq_AJ8g43": {
           "type": "faq",
           "settings": {
-            "question": "Should I go with Rejuvacote 1 or Rejuvacote 2?",
-            "answer": "If you have flexible, peeling nails with stunted growth and constant chipping, go for Rejuvacote 1. If you have thin, brittle nails with ridges, then Rejuvacote 2 is for you."
+            "question": "Are your products safe for sensitive nails?",
+            "answer": "Yes, Rejuvacote 2 is specifically designed for thin, peeling, or more sensitive nails. Its Balanced Repair Formula strengthens while maintaining flexibility, helping to avoid the stiffness that can lead to further breakage. If you have highly sensitive skin or nails, we recommend starting with Rejuvacote 2 and monitoring how your nails respond."
           }
         },
         "ingredient_mmCKGF": {
           "type": "ingredient",
           "settings": {
             "name": "Rejuvacote 1",
-            "image": "shopify://shop_images/newpicsu.webp",
-            "description": "Rejuvacote 1 by Duri Cosmetics is an award-winning nail growth treatment that repairs brittle nails, doubles as a base/top coat, and uses wheat protein, soy protein, and calcium to nourish, prevent peeling, and promote growth."
+            "image": "shopify://shop_images/p1_-_AMZ_hero_NEW_PRINT_2.png",
+            "description": "Ethyl Acetate, Butyl Acetate, Nitrocellulose, Isopropyl Alcohol, Adipic Acid/Neopentyl Glycol/Trimellitic Anhydride Copolymer, Acetyl Tributyl Citrate, Sucrose Acetate Isobutyrate, Tosylamide/Epoxy Resin, Caprylic/Capric Triglyceride, Apium Graveolens (Celery) Seed Extract, Hydrolyzed Wheat Protein, Hydrolyzed Soy Protein, Arginine HCl, Melaleuca Alternifolia (Tea Tree) Leaf Oil, Tocopheryl Acetate, Etocrylene, Benzophenone-1, Violet 2 (CI 60725)"
           }
         },
         "ingredient_yFpL36": {
           "type": "ingredient",
           "settings": {
-            "name": "Nail Pain 2",
-            "image": "shopify://shop_images/newpicsu.webp",
-            "description": "Hello, this is your captain speaking, i'm sorry to say... \"tail muki gya ay\""
+            "name": "Rejuvacote 2",
+            "image": "shopify://shop_images/p1_-_AMZ_hero_NEW_PRINT_2_23359c6b-6d5b-4d19-b0e0-aca1341f9ce4.png",
+            "description": "Ethyl Acetate, Butyl Acetate, Nitrocellulose, Isopropyl Alcohol, Adipic Acid/Neopentyl Glycol/Trimellitic Anhydride Copolymer, Acetyl Tributyl Citrate, Sucrose Acetate Isobutyrate, Caprylic/Capric Triglyceride, Apium Graveolens (Celery) Seed Extract, Hydrolyzed Wheat Protein, Hydrolyzed Soy Protein, Arginine HCl, Melaleuca Alternifolia (Tea Tree) Leaf Oil, Tocopheryl Acetate, Etocrylene, Benzophenone-1"
           }
         },
         "ingredient_kqhwrk": {
           "type": "ingredient",
           "settings": {
-            "name": "Nail Polish 3",
-            "image": "shopify://shop_images/newpicsu.webp",
-            "description": "Rejuvacote 1 by Duri Cosmetics is an award-winning nail growth treatment that repairs brittle nails, doubles as a base/top coat, and uses wheat protein, soy protein, and calcium to nourish, prevent peeling, and promote growth."
+            "name": "Nail Polish",
+            "image": "shopify://shop_images/4e18f07a1fbf9c373128f3c4a73a0fe4a598b5c4.png",
+            "description": "XX"
           }
         }
       },
@@ -1098,7 +1098,7 @@
         "mbl_padding_bottom": 0,
         "back-color": "#fff4f3",
         "bg_faq": "#ffffff",
-        "trust-img": "shopify://shop_images/presentation_image_12.png",
+        "trust-img": "shopify://shop_images/presentation_image_e0c311b0-be44-4971-bca4-6cac8c192426.png",
         "heading": "Frequently Asked Questions",
         "ir_subtexxtt": "Still have questions? Feel free to reach out to us at <a href=\"mailto:support@duri.com\" target=\"_blank\" title=\"mailto:support@duri.com\">support@duri.com</a>",
         "enable_highlight_TRUSTED": false

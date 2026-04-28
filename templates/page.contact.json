@@ -33,7 +33,7 @@
       "name": "t:sections.contact-form1.presets.name",
       "settings": {
         "left-myheading": "Contact Us",
-        "left-subHead": "<p>Our customer care team is here to support you Monday through Friday, from 9:00 AM to 5:00 PM EST.<br/>Whether you have questions about our nail care products, need help choosing the right shade, or have inquiries about your order and delivery, we’re always happy to assist. Healthy, beautiful nails deserve the best care!</p><p>Feel free to reach us directly at <a href=\"mailto:info@duri.com\" target=\"_blank\" title=\"mailto:info@duri.com\"><strong>info@duri.com</strong></a> or call our office<br/> at <a href=\"tel:718-209-7070\" target=\"_blank\" title=\"tel:718-209-7070\"><strong>718-209-7070</strong></a> if you have any other questions.</p>",
+        "left-subHead": "<p>Our customer care team is here to support you Monday through Friday, from 9:00 AM to 5:00 PM EST.<br/></p><p>Whether you have questions about our nail care products, need help choosing the right shade, or have inquiries about your order and delivery, we’re always happy to assist. Healthy, beautiful nails deserve the best care!</p><p>Feel free to reach us directly at <a href=\"mailto:info@duri.com\" target=\"_blank\" title=\"mailto:info@duri.com\"><strong>info@duri.com</strong></a> or call our office<br/> at <a href=\"tel:718-209-7070\" target=\"_blank\" title=\"tel:718-209-7070\"><strong>718-209-7070</strong></a> (Monday through Friday 9am-5pm EST) if you have any other questions.</p>",
         "heading": "",
         "heading_size": "h1",
         "color_scheme": "",
@@ -42,11 +42,18 @@
         "padding_top_mob": 40,
         "padding_bottom_mob": 40
       }
+    },
+    "17762631861f55d70c": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
     "main",
     "form",
-    "duri_contact_form_TCRn3a"
+    "duri_contact_form_TCRn3a",
+    "17762631861f55d70c"
   ]
 }

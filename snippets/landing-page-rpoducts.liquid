@@ -96,7 +96,7 @@ p.prod-tag {
             
             <div class="card-inner">
               <div class="prod-img-wrap">
-                {{ product_ref.featured_image | image_url: width: 300 | image_tag: loading: 'lazy' }}
+                {{ product_ref.featured_image | image_url: width: 300 | image_tag: loading: 'lazy', alt: "image" }}
               </div>
               
               <div class="prod-content">

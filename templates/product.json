@@ -14,21 +14,65 @@
       "blocks": {
         "vendor": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "{{ product.vendor }}",
             "text_style": "uppercase"
+          }
+        },
+        "rating_YNjRX3": {
+          "type": "rating",
+          "disabled": true,
+          "settings": {}
+        },
+        "cstm_review_3EPBxe": {
+          "type": "cstm_review",
+          "settings": {
+            "review_img": "shopify://shop_images/Img_-_4.7_out_of_5_stars.svg",
+            "review_text": "4.9",
+            "review_url": "#"
           }
         },
         "title": {
           "type": "title",
           "settings": {}
         },
+        "new_description_dxkifY": {
+          "type": "new-description",
+          "settings": {}
+        },
+        "tubs_selector_jnfaQC": {
+          "type": "tubs_selector",
+          "settings": {
+            "title_t": "Select Your Bundle",
+            "text1": "Pack of 1",
+            "text2": "Pack of 2",
+            "text3": "Pack of 3",
+            "qty_1": "1",
+            "qty_2": "2",
+            "qty_3": "3",
+            "discount": 10
+          }
+        },
+        "purchase_type_bCVdEG": {
+          "type": "purchase_type",
+          "settings": {
+            "text324": "Subscribe and Save 10%",
+            "text412": "One time purchase",
+            "list_1": "Stay Polished",
+            "list_2": "Favorites For Less",
+            "list_3": "Refresh Your Color Rotation",
+            "list_4": "Cancel Anytime"
+          }
+        },
         "price": {
           "type": "price",
+          "disabled": true,
           "settings": {}
         },
         "variant_picker": {
           "type": "variant_picker",
+          "disabled": true,
           "settings": {
             "picker_type": "button",
             "swatch_shape": "circle"
@@ -36,21 +80,55 @@
         },
         "quantity_selector": {
           "type": "quantity_selector",
+          "disabled": true,
           "settings": {}
         },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "icon_with_text_UdFgXp": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "icon_1": "heart",
+            "image_1": "shopify://shop_images/Frame_1484578863_3d4d12af-9361-405b-a94f-3dde6eb156b6.svg",
+            "heading_1": "Loved By Thousands",
+            "icon_2": "return",
+            "image_2": "shopify://shop_images/Frame_1484578863_1_0699c23e-6592-402b-a528-0a04a9019252.svg",
+            "heading_2": "Ships from Brooklyn, NY",
+            "icon_3": "truck",
+            "image_3": "shopify://shop_images/Frame_1484578863_2_1a2965ee-68ad-4121-a257-dd7b41a8bc2f.svg",
+            "heading_3": "30 Day Returns"
+          }
+        },
+        "jump_to_7PGkgp": {
+          "type": "jump-to",
+          "settings": {
+            "j-heading": "",
+            "s-t": "Benefits",
+            "s-l": "#about-mission-sec",
+            "n-t": "Our Commitment",
+            "n-l": "#our_community",
+            "r-t": "Why Choose",
+            "r-l": "#reviews_sec",
+            "f-t": "Ingredients",
+            "f-l": "#ingredients_sec",
+            "t-t": "FAQs",
+            "t-l": "#faqs_section"
           }
         },
         "description": {
           "type": "description",
+          "disabled": true,
           "settings": {}
         },
         "share": {
           "type": "share",
+          "disabled": true,
           "settings": {
             "share_label": "Share"
           }
@@ -58,32 +136,43 @@
       },
       "block_order": [
         "vendor",
+        "rating_YNjRX3",
+        "cstm_review_3EPBxe",
         "title",
+        "new_description_dxkifY",
+        "tubs_selector_jnfaQC",
+        "purchase_type_bCVdEG",
         "price",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
+        "icon_with_text_UdFgXp",
+        "jump_to_7PGkgp",
         "description",
         "share"
       ],
       "settings": {
+        "show-qty": true,
+        "cstm_style": true,
+        "add-class": true,
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "contain",
-        "gallery_layout": "stacked",
-        "mobile_thumbnails": "hide",
+        "gallery_layout": "thumbnail_slider",
+        "mobile_thumbnails": "show",
         "media_position": "left",
         "image_zoom": "lightbox",
         "hide_variants": true,
         "enable_video_looping": false,
-        "padding_top": 36,
-        "padding_bottom": 12
+        "padding_top": 40,
+        "padding_bottom": 80
       }
     },
     "related-products": {
       "type": "related-products",
+      "disabled": true,
       "settings": {
         "heading": "You may also like",
         "heading_size": "h2",
@@ -99,10 +188,909 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "duri_marquee_first_7PiJNA": {
+      "type": "duri-marquee-first",
+      "blocks": {
+        "feature_iRmGrr": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/manicure.svg",
+            "title": "Strengthens Nails"
+          }
+        },
+        "feature_qNrJhw": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Layer_1.svg",
+            "title": "Long-Lasting"
+          }
+        },
+        "feature_4WhTFC": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Layer_1_1.svg",
+            "title": "Non-Toxic Formula"
+          }
+        },
+        "feature_fnwjMQ": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_11.svg",
+            "title": "Gluten-Free"
+          }
+        }
+      },
+      "block_order": [
+        "feature_iRmGrr",
+        "feature_qNrJhw",
+        "feature_4WhTFC",
+        "feature_fnwjMQ"
+      ],
+      "disabled": true,
+      "name": "Duri First Marquee",
+      "settings": {
+        "hide": false
+      }
+    },
+    "marquee_AiRPMM": {
+      "type": "marquee",
+      "blocks": {
+        "feature_7PqRPK": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_3.svg",
+            "title": "Non-Toxic Formula"
+          }
+        },
+        "feature_mXmahC": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_4.svg",
+            "title": "CRUELTY-Free"
+          }
+        },
+        "feature_yAbtXx": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_2.svg",
+            "title": "Long-Lasting"
+          }
+        },
+        "feature_nzgPwF": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_1.svg",
+            "title": "Strengthens Nails"
+          }
+        },
+        "feature_jdMQTD": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_3.svg",
+            "title": "Non-Toxic Formula"
+          }
+        },
+        "feature_xfRkfk": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_4.svg",
+            "title": "CRUELTY-Free"
+          }
+        },
+        "feature_te39qJ": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_2.svg",
+            "title": "Long-Lasting"
+          }
+        },
+        "feature_qUNaPw": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_1.svg",
+            "title": "Strengthens Nails"
+          }
+        }
+      },
+      "block_order": [
+        "feature_7PqRPK",
+        "feature_mXmahC",
+        "feature_yAbtXx",
+        "feature_nzgPwF",
+        "feature_jdMQTD",
+        "feature_xfRkfk",
+        "feature_te39qJ",
+        "feature_qUNaPw"
+      ],
+      "name": "CSTM Marquee",
+      "settings": {
+        "hide": false,
+        "border": true,
+        "background_color": "rgba(0,0,0,0)",
+        "border_color": "#d99ca5",
+        "padding_block": 10,
+        "padding_block_mob": 5
+      }
+    },
+    "duri_product_bnft_rejuvacot_xjHTGt": {
+      "type": "Duri-product-bnft-rejuvacot",
+      "blocks": {
+        "feature_mjFDct": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Figure_3_5edfce7a-78a7-44fb-a194-e97abb0c9f9d.png",
+            "title": "Strengthening Nail Formula",
+            "text": "This nourishing treatment supports nail growth and strengthens nails from the base. It helps reduce brittleness and prevents peeling, providing long-lasting protection."
+          }
+        },
+        "feature_HpFcRH": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Figure_4_c4c3e7ac-f0f2-4f3b-842a-d75615d07624.png",
+            "title": "Advanced Strengthening Complex",
+            "text": "Our formula features a blend of vitamins and proteins that fortify nails and promote overall health. These ingredients work together to ensure your nails remain strong and resilient."
+          }
+        },
+        "feature_gk63nU": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Figure_5_664ad7af-d96d-4a1c-a3b5-3e426b885cd8.png",
+            "title": "Hydrolyzed Keratin & Biotin",
+            "text": "The potent combination of Hydrolyzed Keratin and Biotin deeply penetrates the nails, restoring and revitalizing them for ultimate protection against damage and breakage."
+          }
+        }
+      },
+      "block_order": [
+        "feature_mjFDct",
+        "feature_HpFcRH",
+        "feature_gk63nU"
+      ],
+      "name": "Duri Product benifit rejv",
+      "settings": {
+        "headingrjv": "Benefits of Rejuvacote",
+        "subheadingrjv": "Apply daily for 7 days, then remove. For best results, use for 3+ weeks.",
+        "image": "shopify://shop_images/presentation_image_3.png"
+      }
+    },
+    "duri_product_how_it_works_exD6zd": {
+      "type": "duri-product-how-it-works",
+      "blocks": {
+        "featured_blocks_dXmdjR": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "product": "",
+            "title12": "<strong>1 | </strong>Apply Rejuvacote daily for 7–10 days",
+            "title34": ""
+          }
+        },
+        "featured_blocks_YVBQpF": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/clear nail painting clip.MOV",
+            "product": "",
+            "title12": "<strong>2 |</strong> Remove + reapply with polish of your choice",
+            "title34": ""
+          }
+        },
+        "featured_blocks_hN8JPM": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/red nail clip painting.MOV",
+            "product": "",
+            "title12": "<strong>3 |</strong> Continue Rejuvacote as base/top coat",
+            "title34": ""
+          }
+        },
+        "featured_blocks_YkjFMU": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "product": "",
+            "title12": "<strong>4 | </strong>Apply Rejuvacote daily for 7–10 days",
+            "title34": ""
+          }
+        },
+        "featured_blocks_PaygYX": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "product": "",
+            "title12": "<strong>5 | </strong>Apply Rejuvacote daily for 7–10 days",
+            "title34": ""
+          }
+        },
+        "featured_blocks_wDwawE": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "product": "",
+            "title12": "<strong>6 | </strong>Apply Rejuvacote daily for 7–10 days",
+            "title34": ""
+          }
+        },
+        "featured_blocks_cqKqyP": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "product": "",
+            "title12": "<strong>7 | </strong>Apply Rejuvacote daily for 7–10 days",
+            "title34": ""
+          }
+        },
+        "featured_blocks_nBtTiq": {
+          "type": "featured-blocks",
+          "settings": {
+            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "product": "",
+            "title12": "<strong>8 | </strong>Apply Rejuvacote daily for 7–10 days",
+            "title34": ""
+          }
+        }
+      },
+      "block_order": [
+        "featured_blocks_dXmdjR",
+        "featured_blocks_YVBQpF",
+        "featured_blocks_hN8JPM",
+        "featured_blocks_YkjFMU",
+        "featured_blocks_PaygYX",
+        "featured_blocks_wDwawE",
+        "featured_blocks_cqKqyP",
+        "featured_blocks_nBtTiq"
+      ],
+      "name": "Duri Product How It Works",
+      "settings": {
+        "desktop-padding-top": 60,
+        "desktop-padding-bottom": 60,
+        "padding-top-mob": 0,
+        "padding-bottom-mob": 40,
+        "back-color": "",
+        "heading": "<p>How It Works</p>",
+        "subhead": "Use as a base coat, top coat, or alone. Apply daily for 7 days, then remove and repeat. For optimal results, use for 3+ weeks.  "
+      }
+    },
+    "duri_product_loved_by_thsnd_kcfQhx": {
+      "type": "duri-product-loved-by-thsnd",
+      "blocks": {
+        "blocks_rLAWma": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-02_at_12_52_37_PM_1_png.png",
+            "block-heading": "Long-Lasting Manicures",
+            "para": "<p>Products are reliably good. I can generally get 2–3 weeks from one home-done manicure. Get tons of compliments. Duri simply better than store-bought polish.</p>",
+            "name": "Emily K.",
+            "varified-text": "Verified Buyer"
+          }
+        },
+        "blocks_zfYfUT": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-02_at_12.52.37_PM_1.png_1_a533ec27-500b-4ca7-91b0-da74fbf217fa.png",
+            "block-heading": "Long-Lasting Manicures",
+            "para": "<p>The polish stayed on for almost 10 days and I wash my dishes and forget to wear gloves, I wash my hands several times a day because of caring for my sick husband and the polish endures.</p>",
+            "name": "Toni G.",
+            "varified-text": "Verified Buyer"
+          }
+        },
+        "blocks_rn9maJ": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-02_at_12.52.37_PM_1.png_2_1cbd3e63-16e5-4996-b438-bf8c25c31931.png",
+            "block-heading": "Long-Lasting Manicures",
+            "para": "<p>Love my selection of new colors Duri polish doesn’t chip and my nails look great for several weeks.</p>",
+            "name": "Marcia F.",
+            "varified-text": "Verified Buyer"
+          }
+        },
+        "blocks_8X3YrK": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-02_at_12.52.37_PM_1.png_1.png",
+            "block-heading": "Long-Lasting Manicures",
+            "para": "<p>Very easy to order and check-out is a breeze!! I also love the variety of nail polish colors!!!\"</p>",
+            "name": "Lola L.",
+            "varified-text": "Verified Buyer"
+          }
+        },
+        "blocks_TA6ExH": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-02_at_12_52_37_PM_1_png.png",
+            "block-heading": "Long-Lasting Manicures",
+            "para": "<p>Products are reliably good. I can generally get 2–3 weeks from one home-done manicure. Get tons of compliments. Duri simply better than store-bought polish.</p>",
+            "name": "Emily K.",
+            "varified-text": "Verified Buyer"
+          }
+        },
+        "blocks_aNLaaC": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-02_at_12.52.37_PM_1.png_1_a533ec27-500b-4ca7-91b0-da74fbf217fa.png",
+            "block-heading": "Long-Lasting Manicures",
+            "para": "<p>The polish stayed on for almost 10 days and I wash my dishes and forget to wear gloves, I wash my hands several times a day because of caring for my sick husband and the polish endures.</p>",
+            "name": "Toni G.",
+            "varified-text": "Verified Buyer"
+          }
+        },
+        "blocks_aTKEiG": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-02_at_12.52.37_PM_1.png_2_1cbd3e63-16e5-4996-b438-bf8c25c31931.png",
+            "block-heading": "Long-Lasting Manicures",
+            "para": "<p>Love my selection of new colors Duri polish doesn’t chip and my nails look great for several weeks.</p>",
+            "name": "Marcia F.",
+            "varified-text": "Verified Buyer"
+          }
+        },
+        "blocks_yXL3id": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-02_at_12.52.37_PM_1.png_1.png",
+            "block-heading": "Long-Lasting Manicures",
+            "para": "<p>Very easy to order and check-out is a breeze!! I also love the variety of nail polish colors!!!\"</p>",
+            "name": "Lola L.",
+            "varified-text": "Verified Buyer"
+          }
+        }
+      },
+      "block_order": [
+        "blocks_rLAWma",
+        "blocks_zfYfUT",
+        "blocks_rn9maJ",
+        "blocks_8X3YrK",
+        "blocks_TA6ExH",
+        "blocks_aNLaaC",
+        "blocks_aTKEiG",
+        "blocks_yXL3id"
+      ],
+      "name": "Duri Product Lvd by Thsnd",
+      "settings": {
+        "heading": "<p>Loved by Thousands of Women Who Do It All</p>",
+        "sub-heading": "",
+        "padding_top": 80,
+        "padding_bottom": 30,
+        "padding_top_mob": 40,
+        "padding_bottom_mob": 40,
+        "back-ground": "rgba(0,0,0,0)",
+        "bg_card": "#D99CA599",
+        "image_stars": "shopify://shop_images/Frame_2147226171.svg",
+        "image_buyer": "shopify://shop_images/Container_1.svg"
+      }
+    },
+    "duri_product_cmtmnt_qlty_pxQjQQ": {
+      "type": "duri-product-cmtmnt-qlty",
+      "blocks": {
+        "blocks_Car8zN": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/petitenaillover803NoWine-ingHere2.jpg",
+            "block-headingNUmbr": "93%",
+            "block-heading": "saw less nail breakage*",
+            "para": "<p><em>120-day study of 40 users of Rejuvacote.</em></p>",
+            "name": "",
+            "varified-text": "",
+            "btn-ref-link": "#",
+            "btn-lable": "Shop Now →"
+          }
+        },
+        "blocks_kDwjmq": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/754_Social_Bubble_-_allmyprettypolish.jpg",
+            "block-headingNUmbr": "91%",
+            "block-heading": "improvement in nail health*",
+            "para": "<p><em>120-day study of 40 users of Rejuvacote. </em></p>",
+            "name": "",
+            "varified-text": "",
+            "btn-ref-link": "#",
+            "btn-lable": "Shop Now →"
+          }
+        },
+        "blocks_mkwTid": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/673_fairytale_prague.jpg",
+            "block-headingNUmbr": "96%",
+            "block-heading": "reported smoother nails*",
+            "para": "<p><em>180-day clinical study of 50 users of Rejuvacote.</em></p>",
+            "name": "",
+            "varified-text": "",
+            "btn-ref-link": "#",
+            "btn-lable": "Shop Now →"
+          }
+        },
+        "blocks_M9AEbp": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/nailpolish_whiz_791_flamingo_Frose.jpg",
+            "block-headingNUmbr": "72 hours",
+            "block-heading": "Users experienced protection.",
+            "para": "<p><em>*In a controlled nail care study using Rejuvacote ingredients</em></p>",
+            "name": "",
+            "varified-text": "",
+            "btn-ref-link": "#",
+            "btn-lable": "Shop Now →"
+          }
+        },
+        "blocks_Cb33hg": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/presentation_image_8.png",
+            "block-headingNUmbr": "93%",
+            "block-heading": "saw less nail breakage*",
+            "para": "<p><em>120-day study of 40 users of Rejuvacote.</em></p>",
+            "name": "",
+            "varified-text": "",
+            "btn-ref-link": "#",
+            "btn-lable": "Shop Now →"
+          }
+        },
+        "blocks_WJLAxe": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/presentation_image_9.png",
+            "block-headingNUmbr": "91%",
+            "block-heading": "improvement in nail health*",
+            "para": "<p><em>120-day study of 40 users of Rejuvacote. </em></p>",
+            "name": "",
+            "varified-text": "",
+            "btn-ref-link": "#",
+            "btn-lable": "Shop Now →"
+          }
+        },
+        "blocks_xBbmzD": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/presentation_image_10.png",
+            "block-headingNUmbr": "96%",
+            "block-heading": "reported smoother nails*",
+            "para": "<p><em>180-day clinical study of 50 users of Rejuvacote ingredients. </em></p>",
+            "name": "",
+            "varified-text": "",
+            "btn-ref-link": "#",
+            "btn-lable": "Shop Now →"
+          }
+        },
+        "blocks_UKUA3Y": {
+          "type": "blocks",
+          "settings": {
+            "image": "shopify://shop_images/presentation_image_11.png",
+            "block-headingNUmbr": "72 hours",
+            "block-heading": "Users experienced protection.",
+            "para": "<p><em>*In a controlled nail care study using Rejuvacote ingredients.</em></p>",
+            "name": "",
+            "varified-text": "",
+            "btn-ref-link": "#",
+            "btn-lable": "Shop Now →"
+          }
+        }
+      },
+      "block_order": [
+        "blocks_Car8zN",
+        "blocks_kDwjmq",
+        "blocks_mkwTid",
+        "blocks_M9AEbp",
+        "blocks_Cb33hg",
+        "blocks_WJLAxe",
+        "blocks_xBbmzD",
+        "blocks_UKUA3Y"
+      ],
+      "name": "Duri Prodct cmtmnt qualty",
+      "settings": {
+        "heading": "<p>Our Commitment to Quality</p>",
+        "sub-heading": "",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mob": 40,
+        "padding_bottom_mob": 40,
+        "back-ground": ""
+      }
+    },
+    "duri_product_why_choose_duri_YWVA9X": {
+      "type": "duri-product-why-choose-duri",
+      "blocks": {
+        "featured_blocks_gEVYQk": {
+          "type": "featured-blocks",
+          "settings": {
+            "icon": "shopify://shop_images/g2150.svg",
+            "block-text": "<p>Long-lasting, high-gloss finish</p>"
+          }
+        },
+        "featured_blocks_tLnwMp": {
+          "type": "featured-blocks",
+          "settings": {
+            "icon": "shopify://shop_images/Frame_2147228758.svg",
+            "block-text": "<p>Innovative, vibrant colors for every mood</p>"
+          }
+        },
+        "featured_blocks_KVDFJA": {
+          "type": "featured-blocks",
+          "settings": {
+            "icon": "shopify://shop_images/Group_1.svg",
+            "block-text": "<p>Smooth, even application with no streaks</p>"
+          }
+        },
+        "featured_blocks_mEEt4U": {
+          "type": "featured-blocks",
+          "settings": {
+            "icon": "shopify://shop_images/icon.svg_10_1.svg",
+            "block-text": "<p>Strengthens and nourishes nails</p>"
+          }
+        },
+        "product_blocks_3gnktf": {
+          "type": "product-blocks",
+          "settings": {
+            "p-c-text": "",
+            "product-p-c-img": "shopify://shop_images/check-new.png"
+          }
+        },
+        "product_blocks_CVDqQk": {
+          "type": "product-blocks",
+          "settings": {
+            "p-c-text": "",
+            "product-p-c-img": "shopify://shop_images/check-new.png"
+          }
+        },
+        "product_blocks_Gna6MD": {
+          "type": "product-blocks",
+          "settings": {
+            "p-c-text": "",
+            "product-p-c-img": "shopify://shop_images/check-new.png"
+          }
+        },
+        "product_blocks_rQ67ML": {
+          "type": "product-blocks",
+          "settings": {
+            "p-c-text": "",
+            "product-p-c-img": "shopify://shop_images/check-new.png"
+          }
+        },
+        "check_blocks_DcxTbt": {
+          "type": "check-blocks",
+          "settings": {
+            "checked-title": "High street products",
+            "checked-title-ner": "OTHERS",
+            "svg": "shopify://shop_images/SVG_5.svg"
+          }
+        },
+        "check_blocks_N7nzLg": {
+          "type": "check-blocks",
+          "settings": {
+            "checked-title": "",
+            "checked-title-ner": "",
+            "svg": "shopify://shop_images/SVG_5.svg"
+          }
+        },
+        "check_blocks_eE4DNk": {
+          "type": "check-blocks",
+          "settings": {
+            "checked-title": "",
+            "checked-title-ner": "",
+            "svg": "shopify://shop_images/SVG_5.svg"
+          }
+        },
+        "check_blocks_MncH7L": {
+          "type": "check-blocks",
+          "settings": {
+            "checked-title": "",
+            "checked-title-ner": "",
+            "svg": "shopify://shop_images/SVG_5.svg"
+          }
+        }
+      },
+      "block_order": [
+        "featured_blocks_gEVYQk",
+        "featured_blocks_tLnwMp",
+        "featured_blocks_KVDFJA",
+        "featured_blocks_mEEt4U",
+        "product_blocks_3gnktf",
+        "product_blocks_CVDqQk",
+        "product_blocks_Gna6MD",
+        "product_blocks_rQ67ML",
+        "check_blocks_DcxTbt",
+        "check_blocks_N7nzLg",
+        "check_blocks_eE4DNk",
+        "check_blocks_MncH7L"
+      ],
+      "disabled": true,
+      "name": "Duri Prodct Why Chos duri",
+      "settings": {
+        "heading": "<p>Why Choose Duri?</p>",
+        "des": "",
+        "featured-heading": "PRODUCT FEATURES",
+        "logo": "shopify://shop_images/image_1444.png",
+        "desktop-padding-top": 80,
+        "desktop-padding-bottom": 80,
+        "padding-top-mbl": 40,
+        "padding-bottom-mbl": 40,
+        "slide-view": 1
+      }
+    },
+    "duri_product_pure_ingradient_jwkELF": {
+      "type": "duri-product-pure-ingradient",
+      "blocks": {
+        "cs_blocks_wGLeF4": {
+          "type": "cs_blocks",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_34624635_a17ccd82-99c9-48d4-8360-4a8dae15bbf2.png",
+            "block-headingNUmbr": "",
+            "block-heading": "Advanced Polymer Technology",
+            "para": "Engineered with advanced polymer technology, this nail polish glides on effortlessly for a smooth, streak-free application. The balanced formula helps deliver rich, even color with every coat. Perfect for achieving a salon-quality manicure at home.",
+            "btn-ref-link": "",
+            "btn-lable": ""
+          }
+        },
+        "cs_blocks_VJHEQf": {
+          "type": "cs_blocks",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_34624635_1_1d73b465-cf11-4a39-ad4b-f3af10886439.png",
+            "block-headingNUmbr": "",
+            "block-heading": "High-Gloss Finish",
+            "para": "Formulated to create a light-reflecting, high-gloss finish, this long-lasting nail polish enhances color vibrancy and depth. Whether you prefer sheer shimmer or bold color, achieve a glossy, professional-looking manicure that stands out.",
+            "btn-ref-link": "",
+            "btn-lable": ""
+          }
+        },
+        "cs_blocks_NdBVit": {
+          "type": "cs_blocks",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_34624636.png",
+            "block-headingNUmbr": "",
+            "block-heading": "Chip-Resistant Wear",
+            "para": "A flexible, chip-resistant formula helps your manicure last longer without constant touch-ups. Designed for everyday wear, this durable nail polish resists chipping, fading, and dullness. Keeping your nails looking fresh and polished.",
+            "btn-ref-link": "",
+            "btn-lable": ""
+          }
+        },
+        "cs_blocks_BpMEpJ": {
+          "type": "cs_blocks",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_34624635_a17ccd82-99c9-48d4-8360-4a8dae15bbf2.png",
+            "block-headingNUmbr": "",
+            "block-heading": "Advanced Polymer Technology",
+            "para": "Engineered with advanced polymer technology, this nail polish glides on effortlessly for a smooth, streak-free application. The balanced formula helps deliver rich, even color with every coat. Perfect for achieving a salon-quality manicure at home.",
+            "btn-ref-link": "",
+            "btn-lable": ""
+          }
+        },
+        "cs_blocks_bQdXnh": {
+          "type": "cs_blocks",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_34624635_1_1d73b465-cf11-4a39-ad4b-f3af10886439.png",
+            "block-headingNUmbr": "",
+            "block-heading": "High-Gloss Finish",
+            "para": "Formulated to create a light-reflecting, high-gloss finish, this long-lasting nail polish enhances color vibrancy and depth. Whether you prefer sheer shimmer or bold color, achieve a glossy, professional-looking manicure that stands out.",
+            "btn-ref-link": "",
+            "btn-lable": ""
+          }
+        },
+        "cs_blocks_BnT7gD": {
+          "type": "cs_blocks",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_34624636.png",
+            "block-headingNUmbr": "",
+            "block-heading": "Chip-Resistant Wear",
+            "para": "A flexible, chip-resistant formula helps your manicure last longer without constant touch-ups. Designed for everyday wear, this durable nail polish resists chipping, fading, and dullness. Keeping your nails looking fresh and polished.",
+            "btn-ref-link": "",
+            "btn-lable": ""
+          }
+        }
+      },
+      "block_order": [
+        "cs_blocks_wGLeF4",
+        "cs_blocks_VJHEQf",
+        "cs_blocks_NdBVit",
+        "cs_blocks_BpMEpJ",
+        "cs_blocks_bQdXnh",
+        "cs_blocks_BnT7gD"
+      ],
+      "name": "Duri Product Pure Ingrdnt",
+      "settings": {
+        "heading": "Formulated with Purpose",
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "padding_top_mob": 40,
+        "padding_bottom_mob": 40,
+        "back-ground": ""
+      }
+    },
+    "17738163049c01bcd4": {
+      "type": "apps",
+      "blocks": {
+        "fera_product_reviews_WA93H4": {
+          "type": "shopify://apps/fera/blocks/product_reviews/2fbfcfa7-8a04-479f-89a8-0621fa099c51",
+          "settings": {
+            "heading": "Product Reviews",
+            "layout": "masonry",
+            "star_color": "#000000",
+            "when_no_reviews": "show_from_related"
+          }
+        }
+      },
+      "block_order": [
+        "fera_product_reviews_WA93H4"
+      ],
+      "disabled": true,
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "duri_product_frequently_ask_iMUBrg": {
+      "type": "duri-product-frequently-ask",
+      "blocks": {
+        "blocks_9maVCh": {
+          "type": "blocks",
+          "settings": {
+            "custom_svg": "",
+            "blockheading": "Should I go with Rejuvacote 1 or Rejuvacote 2?",
+            "subtext": "If you have flexible, peeling nails with stunted growth and constant chipping, go for Rejuvacote 1. If you have thin, brittle nails with ridges, then Rejuvacote 2 is for you."
+          }
+        },
+        "blocks_3U44YR": {
+          "type": "blocks",
+          "settings": {
+            "custom_svg": "",
+            "blockheading": "Does Rejuvacote 1 or Rejuvacote 2 contain formaldehyde?",
+            "subtext": "We are thrilled to say after years of ingredient testing and research neither Rejuvacote 1 nor Rejuvacote 2 contain formaldehyde as of August 2025."
+          }
+        },
+        "blocks_keUTpi": {
+          "type": "blocks",
+          "settings": {
+            "custom_svg": "",
+            "blockheading": "Do I use Rejuvacote 1 and Rejuvacote 2 together?",
+            "subtext": "No, you don't need to use them together.  Choose which nail growth system fits your nail needs."
+          }
+        }
+      },
+      "block_order": [
+        "blocks_9maVCh",
+        "blocks_3U44YR",
+        "blocks_keUTpi"
+      ],
+      "name": "Duri product freqntly ask",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "mbl_padding_top": 40,
+        "mbl_padding_bottom": 40,
+        "back-color": "rgba(0,0,0,0)",
+        "bg_faq": "",
+        "trust-img": "shopify://shop_images/presentation_image_12.png",
+        "heading": "Frequently Asked Questions",
+        "ir_subtexxtt": "Still have questions? Feel free to reach out to us at <a href=\"mailto:info@duri.com\" target=\"_blank\" title=\"mailto:info@duri.com\">info@duri.com</a>",
+        "enable_highlight_TRUSTED": false
+      }
+    },
+    "marquee_pdp_W7HP6D": {
+      "type": "marquee_pdp",
+      "blocks": {
+        "feature_aQNJKU": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/icon.svg_12_1.svg",
+            "title": "Paraben-Free"
+          }
+        },
+        "feature_EzDKUi": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/icon.svg_12_1.svg",
+            "title": "Toluene-Free"
+          }
+        },
+        "feature_JkfaUr": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/icon.svg_12_1.svg",
+            "title": "Formaldehyde-Free"
+          }
+        },
+        "feature_qNHgmk": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/icon.svg_12_1.svg",
+            "title": "DBP-Free (Dibutyl Phthalate)"
+          }
+        },
+        "feature_bjJxN3": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/icon.svg_12_1.svg",
+            "title": "Camphor-Free"
+          }
+        },
+        "feature_k8JWVD": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/icon.svg_12_1.svg",
+            "title": "Paraben-Free"
+          }
+        },
+        "feature_UX8hPL": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/icon.svg_12_1.svg",
+            "title": "Toluene-Free"
+          }
+        },
+        "feature_CEqiqf": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/icon.svg_12_1.svg",
+            "title": "Formaldehyde-Free"
+          }
+        },
+        "feature_h6FTjD": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/icon.svg_12_1.svg",
+            "title": "DBP-Free (Dibutyl Phthalate)"
+          }
+        },
+        "feature_z3NhDq": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/icon.svg_12_1.svg",
+            "title": "Camphor-Free"
+          }
+        }
+      },
+      "block_order": [
+        "feature_aQNJKU",
+        "feature_EzDKUi",
+        "feature_JkfaUr",
+        "feature_qNHgmk",
+        "feature_bjJxN3",
+        "feature_k8JWVD",
+        "feature_UX8hPL",
+        "feature_CEqiqf",
+        "feature_h6FTjD",
+        "feature_z3NhDq"
+      ],
+      "name": "CSTM Marquee PDP",
+      "settings": {
+        "hide": false,
+        "border": true,
+        "background_color": "rgba(0,0,0,0)",
+        "border_color": "#d99ca5",
+        "text_color": "#7c0732",
+        "padding_block": 16,
+        "padding_block_mob": 19
+      }
+    },
+    "duri_product_ready_BHYyTr": {
+      "type": "duri-product-ready",
+      "name": "Duri Product Ready",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "mbl_padding_top": 40,
+        "mbl_padding_bottom": 0,
+        "back-color": "",
+        "duri-ready-img": "shopify://shop_images/presentation_image_13.png",
+        "duriFirsttext": "Build A Kit As Unique As You Are!",
+        "duriFirsttext2": "Design a nail kit that’s as unique as you are! With our customizable options, you’ll have everything you need for a flawless, salon-quality manicure from the comfort of your home.",
+        "duri-button_link": "shopify://pages/landing-page",
+        "duri-btnbutton_label": "Shop Now"
+      }
     }
   },
   "order": [
     "main",
-    "related-products"
+    "related-products",
+    "duri_marquee_first_7PiJNA",
+    "marquee_AiRPMM",
+    "duri_product_bnft_rejuvacot_xjHTGt",
+    "duri_product_how_it_works_exD6zd",
+    "duri_product_loved_by_thsnd_kcfQhx",
+    "duri_product_cmtmnt_qlty_pxQjQQ",
+    "duri_product_why_choose_duri_YWVA9X",
+    "duri_product_pure_ingradient_jwkELF",
+    "17738163049c01bcd4",
+    "duri_product_frequently_ask_iMUBrg",
+    "marquee_pdp_W7HP6D",
+    "duri_product_ready_BHYyTr"
   ]
 }

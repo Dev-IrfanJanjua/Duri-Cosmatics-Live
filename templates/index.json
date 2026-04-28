@@ -111,10 +111,10 @@
         "img_mob": "shopify://shop_images/5d1b83b989cba385ec8f6a3574392fc6d94bdd20.jpg",
         "title": "Start Your Nail Recovery Journey Today with Our Premium Solution",
         "text_colot": "#000000",
-        "description": "Strengthen, protect, and polish in one easy bundle — featuring  our best-selling Rejuvacote + your choice of nail color.",
+        "description": "Strengthen, protect, and polish in one easy bundle — featuring our best-selling Rejuvacote + your choice of nail color.",
         "max_width": 620,
         "button_text": "Shop Now",
-        "button_link": "shopify://collections/all",
+        "button_link": "shopify://pages/landing-page",
         "btn_bg": "#7c0732",
         "btn_text": "#ffffff",
         "padding_top_desktop": 0,
@@ -280,7 +280,7 @@
             "image_desk": "shopify://shop_images/6d6b74219a407ca3c4d885f550b97ed17b3c3ead.png",
             "image_mob": "shopify://shop_images/Rejuvacote_1_-_Mobile_1.png",
             "title": "Balanced Repair",
-            "description": "Strengthening system for peeling, weak nails.  Perfect for maintenance and long-term upkeep.",
+            "description": "Strengthening system for peeling, weak nails. Perfect for maintenance and long-term upkeep.",
             "button_text": "Shop  NOW",
             "button_link": "shopify://collections/all"
           }
@@ -308,9 +308,9 @@
         "mbl_padding_bottom": 40,
         "back-color": "#ffffff",
         "heading-discover": "Best sellers",
-        "shopeAll-href": "shopify://collections/all",
+        "shopeAll-href": "shopify://collections/best-sellers",
         "btn-shopeAll": "Shop All",
-        "collection": "2023-pantone-color-trends",
+        "collection": "best-sellers",
         "rating-text": "4.8",
         "quick_add": "standard"
       }
@@ -349,7 +349,7 @@
       "name": "duri rapidSHEILD",
       "settings": {
         "heading": "Polish Drying Drops",
-        "text": "Say goodbye to accidental smudges and hello to a long-lasting, professional finish with Drop'N Go Drying Drops!  This innovative formula protects your nails from smudges and accelerates drying time, ensuring your polish sets perfectly in minutes.",
+        "text": "Say goodbye to accidental smudges and hello to a long-lasting, professional finish with Drop'N Go Drying Drops! This innovative formula protects your nails from smudges and accelerates drying time, ensuring your polish sets perfectly in minutes.",
         "image": "shopify://shop_images/presentation_image.png"
       }
     },
@@ -388,7 +388,7 @@
         "section_bg": "#ffffff",
         "content_bg": "#fed4cc",
         "title": "Polish Drying Drops",
-        "description": "Say goodbye to accidental smudges and hello to a long-lasting, professional finish with Drop'N Go Drying Drops!  This innovative formula protects your nails from smudges and accelerates drying time, ensuring your polish sets perfectly in minutes.",
+        "description": "Say goodbye to accidental smudges and hello to a long-lasting, professional finish with Drop'N Go Drying Drops! This innovative formula protects your nails from smudges and accelerates drying time, ensuring your polish sets perfectly in minutes.",
         "main_image": "shopify://shop_images/presentation_image.png",
         "padding_top_desktop": 0,
         "padding_bottom_desktop": 0,
@@ -408,7 +408,7 @@
         "heading-discover": "Discover Your Perfect Hue",
         "shopeAll-href": "shopify://collections/all",
         "btn-shopeAll": "Shop All",
-        "collection": "2023-pantone-color-trends",
+        "collection": "nail-polishes",
         "rating-text": "4.8",
         "quick_add": "standard"
       }
@@ -823,50 +823,50 @@
         "video_product_eFiiVz": {
           "type": "video_product",
           "settings": {
-            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
-            "product": "neon-pink-nail-polish-792-flamingo-frose"
+            "video": "shopify://files/videos/694 nail clip pink.MOV",
+            "product": "694-urbanesque"
           }
         },
         "video_product_dpeFpE": {
           "type": "video_product",
           "settings": {
             "video": "shopify://files/videos/billo1_rejuvacote 1_.mp4",
-            "product": "002d-sand-java"
+            "product": "rejuvacote-1-original-maximum-strength-nail-growth-system-base-and-top-coat"
           }
         },
         "video_product_bBPatb": {
           "type": "video_product",
           "settings": {
             "video": "shopify://files/videos/30PEALPINKVIDEO_af95ed9e-a233-42ee-823e-a554e4815340.MOV",
-            "product": "003d-minty-breeze"
+            "product": "30-pearl-pink"
           }
         },
         "video_product_QUpjY4": {
           "type": "video_product",
           "settings": {
-            "video": "shopify://files/videos/welcomejunepop_d8727356-83ea-48db-9728-e1023c6d10b3.mp4",
-            "product": "004d-aphrodites-kiss"
+            "video": "shopify://files/videos/KIM - NAIL GROWTH REJ1 VID.mov",
+            "product": "pretty-in-pink-polish-nail-strengthening-polish-travel-set"
           }
         },
         "video_product_cqnjV3": {
           "type": "video_product",
           "settings": {
-            "video": "shopify://files/videos/Valentine's Pouring out Nail Polishes .MP4",
-            "product": "007d-to-the-moon-back"
+            "video": "shopify://files/videos/red nail clip painting.MOV",
+            "product": "753-humble-brag"
           }
         },
         "video_product_TDC48C": {
           "type": "video_product",
           "settings": {
-            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
-            "product": "neon-pink-nail-polish-792-flamingo-frose"
+            "video": "shopify://files/videos/pink nail clip.MOV",
+            "product": "727-lovers-cabo"
           }
         },
         "video_product_73k8PC": {
           "type": "video_product",
           "settings": {
-            "video": "shopify://files/videos/billo1_rejuvacote 1_.mp4",
-            "product": "002d-sand-java"
+            "video": "shopify://files/videos/clear nail painting clip.MOV",
+            "product": "ridge-filler"
           }
         }
       },
@@ -929,7 +929,7 @@
         "heading": "Partner With Duri Wholesale",
         "description": "Join our wholesale program and enjoy exclusive access to Duri’s best-selling nail treatments and polishes. Whether you’re a salon, spa, or retailer, we provide everything you need to keep your customers coming back.",
         "button_label": "Shop on FAIR",
-        "button_link": "shopify://pages/landing-page-1",
+        "button_link": "https://duricosmetics.faire.com",
         "cotent_bg": "#ffffff"
       }
     }

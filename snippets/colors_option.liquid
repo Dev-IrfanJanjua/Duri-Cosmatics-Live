@@ -455,9 +455,9 @@ button.bundle-tier.is-active .bundle-tier__badge { background: #7C0732; }
 .bundle-product__img-wrap { width: 46px; flex-shrink: 0; overflow: hidden; }
 .bundle-product__img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .bundle-product__info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
-.bundle-product__name { font-weight: 600; font-size: 14px; line-height: 16.4px; color: #000; }
+.bundle-product__name { font-weight: 600; font-size: 14px; line-height: 16.4px; color: #000; padding-right: 20px; }
 .bundle-product__desc { font-weight: 400; font-size: 14px; line-height: 18.8px; color: #000; }
-.bundle-product__info-btn { position: absolute; top: 13px; right: 13px; cursor: pointer; padding: 0; z-index: 2; width: 16px; height: 16px; transition: all 0.3s ease; }
+.bundle-product__info-btn { position: absolute; top: 12px; right: 4px; cursor: pointer; padding: 0; z-index: 2; width: 16px; height: 16px; transition: all 0.3s ease; }
 .bundle-product__info-btn svg { width: 100%; height: 100%; display: block; }
 .bundle-product__info-btn:hover { transform: scale(1.1) !important; }
 
@@ -648,8 +648,8 @@ button.bundle-tier.is-active .bundle-tier__badge { background: #7C0732; }
         currentCompare = this._parseMoney(btn.dataset.defaultCompare);
       }
 
-      const priceEl = btn.querySelector('.bundle-tier__price');
-      const compareEl = btn.querySelector('.bundle-tier__compare');
+      const priceEl = btn.querySelector('.bundle-tier__priceNot');
+      const compareEl = btn.querySelector('.bundle-tier__compareNot');
 
       if (priceEl) priceEl.textContent = this._formatMoney(currentTotal);
       if (compareEl) {

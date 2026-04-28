@@ -306,7 +306,7 @@
                       <span class="rate-text">{{ product.metafields.custom.rating_text | metafield_tag }}</span>
                       <!-- Replace 200 with dynamic if needed -->
                     </div>
-                    {% comment %} <p class="single-product-title">{{ product.title | truncate: 50 }}</p> {% endcomment %}
+                     <p class="single-product-title">{{ product.title | truncate: 50 }}</p> 
                     <p class="product-description">{{ product.description | strip_html | truncate: 95 }}</p>
                     <div class="price-and-btn">
                         <div class="price-container">

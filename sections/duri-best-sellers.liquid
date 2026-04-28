@@ -92,7 +92,8 @@
       font-style: normal;
       font-weight: 700;
       line-height: 26px;
-      /* min-height:60px; */
+       min-height:52px; 
+      margin:0;
     }
 
     .product-description {
@@ -203,12 +204,14 @@
       margin: 0 auto;
       padding-left: 0;
     }
-    .single-product-image .best-seller-badge{
-      margin: 10px;
-      position: absolute;
-      right: 10px;
-      background-color: #121A5B;
-    }
+.single-product-image .best-seller-badge {
+    margin: 10px;
+    position: absolute;
+    right: 0px;
+    background-color: #7c0732;
+    color: #ffff;
+    padding: 2px 8px;
+}
     .collection-btn-shop {
       display: flex;
       width: 32px;
@@ -421,8 +424,8 @@
                     <span class="rate-text">{{ card_product.metafields.custom.rating_text | metafield_tag }}</span>
                     <!-- Replace 200 with dynamic if needed -->
                   </div>
-                  {% comment %} <p class="single-product-title">{{ product.title | truncate: 50 }}</p> {% endcomment %}
-                  <p class="product-description">{{ card_product.description | strip_html | truncate: 80 }}</p>
+                   <p class="single-product-title">{{ card_product.title | truncate: 30 }}</p> 
+                  <p class="product-description">{{ card_product.description | strip_html | truncate: 50 }}</p>
                   <div class="price-and-btn">
                     <div class="price-container">
                       {% if card_product.compare_at_price > card_product.price %}

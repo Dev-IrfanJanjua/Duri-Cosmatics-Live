@@ -14,15 +14,23 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
+        "announcement_LGfyHd": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free Shipping Orders $45+",
+            "link": ""
+          }
+        },
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "25% OFF EVERYTHING + FREE GIFTS",
-            "link": ""
+            "text": "Shop our Spring favorite nail polish colors",
+            "link": "shopify://collections/curated-for-spring"
           }
         }
       },
       "block_order": [
+        "announcement_LGfyHd",
         "announcement-bar-0"
       ],
       "settings": {
