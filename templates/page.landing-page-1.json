@@ -277,6 +277,7 @@
         "announcement_bar_hAt3FE": {
           "type": "announcement_bar",
           "settings": {
+            "free_product": "hand-sanitizer-spray-lavender-2-ounce",
             "bg_color": "#f8d7da",
             "text": "Free Nail File Included",
             "subtext": "You'll need it with the nail growth boost"

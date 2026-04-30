@@ -352,7 +352,18 @@
                       {%- if block.settings.text != blank -%}
                       <div class="custom-announcement-block" 
                           style="background-color: {{ block.settings.bg_color }};" 
-                          {{ block.shopify_attributes }}>
+                          {{ block.shopify_attributes }}
+                          {% assign free_product_variant = block.settings.free_product.selected_or_first_available_variant %}
+                            {% if block.settings.free_product != blank and free_product_variant.available %}
+                              data-free-available="{{ free_product_variant.available }}"
+                              data-free-product='{
+                                "id": "{{ free_product_variant.id }}",
+                                "title": "{{ block.settings.free_product.title | escape }}",
+                                "handle": "{{ block.settings.free_product.handle }}",
+                                "price": "{{ free_product_variant.price }}"
+                              }'
+                            {% endif %}
+                        >
                           <div class="announcement-content">
                           <h4 class="announcement-title">{{ block.settings.text }}</h4>
                           {%- if block.settings.subtext != blank -%}
@@ -1484,6 +1495,11 @@
       "type": "announcement_bar",
       "name": "Announcement Bar",
       "settings": [
+        {
+          "type": "product",
+          "id": "free_product",
+          "label": "Select product (optional)"
+        },
         {
           "type": "color",
           "id": "bg_color",

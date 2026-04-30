@@ -45,14 +45,14 @@
       -%}
       {% if showQty %}
            <input 
-  type="hidden" 
-  name="quantity" 
-  id="ProductQuantity-{{ section.id }}" 
-  value="1"
-  data-default-quantity="1"
-  class="product-quantity-input buy-button-qty"
-> 
-{% endif %}
+              type="hidden" 
+              name="quantity" 
+              id="ProductQuantity-{{ section.id }}" 
+              value="1"
+              data-default-quantity="1"
+              class="product-quantity-input buy-button-qty"
+            > 
+      {% endif %}
         <input
           type="hidden"
           name="id"
@@ -184,55 +184,6 @@
 </div>
 
 
-
-{% comment %} <script>
-document.addEventListener('DOMContentLoaded', () => {
-
-  const sellingPlanInput = document.querySelector('.selling_plan_id');
-  const subscriptionRadio = document.querySelector('.subscription_input');
-  const onetimeRadio = document.querySelector('.onetime_input');
-
-  function enforceSellingPlan() {
-
-    if (!sellingPlanInput) return;
-
-    // If subscription is checked
-    if (subscriptionRadio && subscriptionRadio.checked) {
-
-      // If value missing, assign again
-      if (sellingPlanInput.value !== subscriptionRadio.value) {
-        sellingPlanInput.value = subscriptionRadio.value;
-        console.log("Selling plan FORCE assigned:", subscriptionRadio.value);
-      }
-
-    }
-
-    // If one-time purchase checked
-    if (onetimeRadio && onetimeRadio.checked) {
-
-      if (sellingPlanInput.value !== '') {
-        sellingPlanInput.value = '';
-        console.log("Selling plan removed (one time)");
-      }
-
-    }
-
-  }
-
-  // Run once on load
-  enforceSellingPlan();
-
-  // Run when user switches option
-  document.querySelectorAll('input[name="purchase_type"]').forEach(radio => {
-    radio.addEventListener('change', enforceSellingPlan);
-  });
-
-  // Force check every 300ms (prevents other scripts overriding it)
-  setInterval(enforceSellingPlan, 300);
-
-});
-</script> {% endcomment %}
-
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -295,3 +246,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 </script>
+
+
+{% comment %} <script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  const sellingPlanInput = document.querySelector('.selling_plan_id');
+  const subscriptionRadio = document.querySelector('.subscription_input');
+  const onetimeRadio = document.querySelector('.onetime_input');
+
+  function enforceSellingPlan() {
+
+    if (!sellingPlanInput) return;
+
+    // If subscription is checked
+    if (subscriptionRadio && subscriptionRadio.checked) {
+
+      // If value missing, assign again
+      if (sellingPlanInput.value !== subscriptionRadio.value) {
+        sellingPlanInput.value = subscriptionRadio.value;
+        console.log("Selling plan FORCE assigned:", subscriptionRadio.value);
+      }
+
+    }
+
+    // If one-time purchase checked
+    if (onetimeRadio && onetimeRadio.checked) {
+
+      if (sellingPlanInput.value !== '') {
+        sellingPlanInput.value = '';
+        console.log("Selling plan removed (one time)");
+      }
+
+    }
+
+  }
+
+  // Run once on load
+  enforceSellingPlan();
+
+  // Run when user switches option
+  document.querySelectorAll('input[name="purchase_type"]').forEach(radio => {
+    radio.addEventListener('change', enforceSellingPlan);
+  });
+
+  // Force check every 300ms (prevents other scripts overriding it)
+  setInterval(enforceSellingPlan, 300);
+
+});
+</script> {% endcomment %}

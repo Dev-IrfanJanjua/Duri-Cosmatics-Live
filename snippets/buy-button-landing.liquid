@@ -360,6 +360,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
+      // ─────────────────────────────
+      // FREE PRODUCT LOGIC (SAFE ADD)
+      // ─────────────────────────────
+      const freeBlock = document.querySelector('[data-free-product]');
+
+      if (freeBlock && freeBlock.dataset.freeAvailable == "true") {
+        try {
+          const freeProduct = JSON.parse(freeBlock.dataset.freeProduct);
+
+          if (freeProduct && freeProduct.id) {
+            items.push({
+              id: parseInt(freeProduct.id, 10),
+              quantity: 1,
+              properties: {
+                _bundle_role: 'free_product'
+              }
+            });
+          }
+        } catch (e) {
+          console.warn('Free product JSON error:', e, freeBlock.dataset.freeProduct);
+        }
+      }
+
       if (!items.length) throw new Error('Nothing to add.');
 
       const res = await fetch(`${window.Shopify.routes.root}cart/add.js`, {
