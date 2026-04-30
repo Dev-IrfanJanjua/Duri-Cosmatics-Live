@@ -357,10 +357,10 @@
                             {% if block.settings.free_product != blank and free_product_variant.available %}
                               data-free-available="{{ free_product_variant.available }}"
                               data-free-product='{
-                                "id": "{{ free_product_variant.id }}",
-                                "title": "{{ block.settings.free_product.title | escape }}",
+                                "id": {{ free_product_variant.id }},
+                                "title": {{ block.settings.free_product.title | json }},
                                 "handle": "{{ block.settings.free_product.handle }}",
-                                "price": "{{ free_product_variant.price }}"
+                                "price": {{ free_product_variant.price }}
                               }'
                             {% endif %}
                         >

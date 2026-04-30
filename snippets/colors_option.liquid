@@ -808,3 +808,33 @@ button.bundle-tier.is-active .bundle-tier__badge { background: #7C0732; }
   document.addEventListener('shopify:section:load', init);
 })();
 </script>
+
+{% comment %} ==== change selected colors after text ====== {% endcomment %}
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  function updateTierCount() {
+    const activeTier = document.querySelector('.bundle-tier.is-active');
+    const displayEl  = document.querySelector('.js-tier-count');
+
+    if (!activeTier || !displayEl) return;
+
+    const tierValue = activeTier.dataset.tier;
+
+    displayEl.textContent = `${tierValue} Colors`;
+  }
+
+  // Run on load
+  updateTierCount();
+
+  // Listen for tier clicks
+  document.querySelectorAll('.bundle-tier').forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Wait for your existing logic to update "is-active"
+      setTimeout(updateTierCount, 50);
+    });
+  });
+
+});
+</script>
