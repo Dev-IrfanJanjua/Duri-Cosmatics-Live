@@ -9,21 +9,28 @@
  */
 {
   "sections": {
-    "image_banner": {
+    "image_banner_gxtMp6": {
       "type": "image-banner",
       "blocks": {
-        "heading": {
+        "heading_7wVBcY": {
           "type": "heading",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "heading": "<strong>20% OFF SITEWIDE</strong>",
+            "heading_size": "h1"
           }
         },
-        "button": {
+        "text_4zk9pM": {
+          "type": "text",
+          "settings": {
+            "text": "FREE SHIPPING $40+ | FREE PLATINUM NAIL POLISH ORDERS $50",
+            "text_style": "subtitle"
+          }
+        },
+        "buttons_3kkt4P": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
+            "button_label_1": "CODE: SEPT20",
+            "button_link_1": "https://duri.com/discount/SEPT20",
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
@@ -32,75 +39,23 @@
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "heading_7wVBcY",
+        "text_4zk9pM",
+        "buttons_3kkt4P"
       ],
-      "disabled": true,
+      "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
+        "image": "shopify://shop_images/SALE_GEMS_1440_x_310_px.png",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
         "image_behavior": "none",
-        "desktop_content_position": "bottom-center",
-        "desktop_content_alignment": "center",
+        "desktop_content_position": "middle-right",
+        "desktop_content_alignment": "right",
         "show_text_box": false,
-        "color_scheme": "scheme-3",
-        "stack_images_on_mobile": false,
+        "color_scheme": "",
+        "stack_images_on_mobile": true,
         "mobile_content_alignment": "center",
-        "show_text_below": false
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "disabled": true,
-      "settings": {
-        "collection": "all",
-        "products_to_show": 8,
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
-      }
-    },
-    "duri_banner_CJBiqx": {
-      "type": "duri-banner",
-      "disabled": true,
-      "name": "Duri Banner",
-      "settings": {
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "mbl_padding_top": 10,
-        "mbl_padding_bottom": 10,
-        "back-color": "",
-        "cheeseBnrImg": "shopify://shop_images/4ccf4e401f7655130f5863c7b3fa8b0b7fafe84a.jpg",
-        "cheeseBnrImg1": "shopify://shop_images/5d1b83b989cba385ec8f6a3574392fc6d94bdd20.jpg",
-        "heading": "Start Your Nail Recovery Journey Today with Our Premium Solution",
-        "headingMBL": "Nail Recovery Starts Here",
-        "subtextt": "<p>Strengthen, protect, and polish in one easy bundle — featuring our best-selling Rejuvacote + your choice of nail color.</p>",
-        "button_label": "",
-        "button_label4": "Request Form",
-        "button_label5": "CALL US",
-        "button_link": "#",
-        "button_link4": "",
-        "button_link5": "",
-        "enable_highlight-chz-bnr": false,
-        "enable_highlight-country-page": false
+        "show_text_below": true
       }
     },
     "banner_durin_FmVR3y": {
@@ -109,12 +64,12 @@
       "settings": {
         "img_desk": "shopify://shop_images/4ccf4e401f7655130f5863c7b3fa8b0b7fafe84a.jpg",
         "img_mob": "shopify://shop_images/5d1b83b989cba385ec8f6a3574392fc6d94bdd20.jpg",
-        "title": "Start Your Nail Recovery Journey Today with Our Premium Solution",
+        "title": "Start Your Nail Recovery Journey Today",
         "text_colot": "#000000",
         "description": "Strengthen, protect, and polish in one easy bundle — featuring our best-selling Rejuvacote + your choice of nail color.",
         "max_width": 620,
         "button_text": "Shop Now",
-        "button_link": "shopify://pages/landing-page",
+        "button_link": "shopify://pages/build-a-natural-nail-routine",
         "btn_bg": "#7c0732",
         "btn_text": "#ffffff",
         "padding_top_desktop": 0,
@@ -935,13 +890,11 @@
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection",
-    "duri_banner_CJBiqx",
-    "banner_durin_FmVR3y",
+    "image_banner_gxtMp6",
     "marquee_TxWLjn",
     "duri_marquee_first_VyxPpU",
     "marquee_QQEaLU",
+    "banner_durin_FmVR3y",
     "strenght_duri_qzfxxb",
     "duri_best_sellers_wK8ajw",
     "duri_rapidsheild_VBUDec",

@@ -85,6 +85,13 @@
 <div class="csym_pdp-container-mf sec-{{ section.id }}" style="background-color: {{section.settings.background_color}};">
     <div class="csym_pdp-track-mf">
         {% for block in section.blocks %}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: block %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
             <div class="cysm_pdp-feature-icon-item-mf">
                 {% if block.settings.icon %}
                     <img src="{{ block.settings.icon | image_url }}" alt="{{ block.settings.icon.alt }}" width="auto" height="auto" loading="eager" fetchpriority="high">
@@ -95,6 +102,13 @@
 
         <!-- Duplicate the content once for seamless looping -->
         {% for block in section.blocks %}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: block %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
             <div class="cysm_pdp-feature-icon-item-mf">
                 {% if block.settings.icon %}
                     <img src="{{ block.settings.icon | image_url }}" alt="{{ block.settings.icon.alt }}" width="auto" height="auto" loading="eager" fetchpriority="high">

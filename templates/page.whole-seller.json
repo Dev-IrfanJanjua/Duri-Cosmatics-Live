@@ -21,14 +21,14 @@
       "type": "banner-durin",
       "name": "Custom Banner Section",
       "settings": {
-        "img_desk": "shopify://shop_images/Component_9_3.png",
-        "img_mob": "shopify://shop_images/Component_9_2.png",
+        "img_desk": "shopify:\/\/shop_images\/Component_9_3.png",
+        "img_mob": "shopify:\/\/shop_images\/Component_9_2.png",
         "title": "Partner With Us – Let’s Create Beautiful Connections",
         "text_colot": "#ffffff",
         "description": "",
         "max_width": 695,
         "button_text": "",
-        "button_link": "shopify://collections/all",
+        "button_link": "shopify:\/\/collections\/all",
         "btn_bg": "#7c0732",
         "btn_text": "#ffffff",
         "padding_top_desktop": 0,
@@ -41,7 +41,7 @@
       "type": "apps",
       "blocks": {
         "forms_inline_RxQPam": {
-          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+          "type": "shopify:\/\/apps\/forms\/blocks\/inline\/8744a304-fcb1-4347-b211-bb6b4759a76a",
           "settings": {
             "form_id": "930227",
             "text_color": "#000000",
@@ -71,21 +71,21 @@
         "feature_AbYbN6": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/icon.svg_-_2025-08-21T045300.260_1_1.svg",
+            "icon": "shopify:\/\/shop_images\/icon.svg_-_2025-08-21T045300.260_1_1.svg",
             "text": "Bulk Pricing – maximize your margins"
           }
         },
         "feature_VHBLJ6": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/icon.svg_-_2025-08-21T051039.151_1_2.svg",
+            "icon": "shopify:\/\/shop_images\/icon.svg_-_2025-08-21T051039.151_1_2.svg",
             "text": "Fast Shipping – orders ship from Brooklyn, NY"
           }
         },
         "feature_eQQDFp": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/icon.svg_-_2025-08-21T050158.796_2_2.svg",
+            "icon": "shopify:\/\/shop_images\/icon.svg_-_2025-08-21T050158.796_2_2.svg",
             "text": "USA-Made Quality – trusted by professionals nationwide"
           }
         }
@@ -97,11 +97,11 @@
       ],
       "name": "Duri Wholesale Section",
       "settings": {
-        "image": "shopify://shop_images/presentation_image_7_a8fafba8-9351-4ceb-8749-46cd05b1633b.png",
+        "image": "shopify:\/\/shop_images\/presentation_image_7_a8fafba8-9351-4ceb-8749-46cd05b1633b.png",
         "heading": "Partner With Duri Wholesale",
         "description": "Join our wholesale program and enjoy exclusive access to Duri’s best-selling nail treatments and polishes. Whether you’re a salon, spa, or retailer, we provide everything you need to keep your customers coming back.",
         "button_label": "Shop on FAIR",
-        "button_link": "https://duricosmetics.faire.com",
+        "button_link": "https:\/\/duricosmetics.faire.com",
         "cotent_bg": "#fff4f3"
       }
     }

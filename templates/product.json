@@ -39,6 +39,7 @@
         },
         "new_description_dxkifY": {
           "type": "new-description",
+          "disabled": true,
           "settings": {}
         },
         "tubs_selector_jnfaQC": {
@@ -67,7 +68,6 @@
         },
         "price": {
           "type": "price",
-          "disabled": true,
           "settings": {}
         },
         "variant_picker": {
@@ -75,12 +75,11 @@
           "disabled": true,
           "settings": {
             "picker_type": "button",
-            "swatch_shape": "circle"
+            "swatch_shape": "square"
           }
         },
         "quantity_selector": {
           "type": "quantity_selector",
-          "disabled": true,
           "settings": {}
         },
         "buy_buttons": {
@@ -105,6 +104,16 @@
             "heading_3": "30 Day Returns"
           }
         },
+        "collapsible_tab_bU3eMQ": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "Description",
+            "icon": "none",
+            "content": "{{ product.description }}",
+            "page": ""
+          }
+        },
         "jump_to_7PGkgp": {
           "type": "jump-to",
           "settings": {
@@ -123,7 +132,6 @@
         },
         "description": {
           "type": "description",
-          "disabled": true,
           "settings": {}
         },
         "share": {
@@ -147,10 +155,12 @@
         "quantity_selector",
         "buy_buttons",
         "icon_with_text_UdFgXp",
+        "collapsible_tab_bU3eMQ",
         "jump_to_7PGkgp",
         "description",
         "share"
       ],
+      "custom_css": [],
       "settings": {
         "show-qty": true,
         "cstm_style": true,
@@ -1072,7 +1082,7 @@
         "duri-ready-img": "shopify://shop_images/presentation_image_13.png",
         "duriFirsttext": "Build A Kit As Unique As You Are!",
         "duriFirsttext2": "Design a nail kit that’s as unique as you are! With our customizable options, you’ll have everything you need for a flawless, salon-quality manicure from the comfort of your home.",
-        "duri-button_link": "shopify://pages/landing-page",
+        "duri-button_link": "shopify://pages/build-a-natural-nail-routine",
         "duri-btnbutton_label": "Shop Now"
       }
     }

@@ -329,6 +329,13 @@ span.nv-orignal-price {
          <div class="swiper mySwiper-video">
     <div class="swiper-wrapper">
       {% for block in section.blocks %}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: block %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
       <div class="swiper-slide">
        <div class="single-video-block">
         <div class="custom-video-container custom-video-new-block-{{ section.id }}">

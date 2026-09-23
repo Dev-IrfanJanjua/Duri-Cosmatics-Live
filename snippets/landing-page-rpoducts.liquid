@@ -89,6 +89,13 @@ p.prod-tag {
 
     {% if main_product and main_product.metafields.custom.landing_page_products.value != blank %}
         {% for product_ref in main_product.metafields.custom.landing_page_products.value %}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: product_ref %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
           {% assign detail = product_ref.metafields.custom.detail_entry.value %}
           
           <div class="comparison-card {% if forloop.first %}active{% endif %}" 

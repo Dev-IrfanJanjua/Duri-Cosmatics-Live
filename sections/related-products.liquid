@@ -37,6 +37,13 @@
       >
         {% assign skip_card_product_styles = false %}
         {% for recommendation in recommendations.products %}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: recommendation %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
           <li class="grid__item">
             {% render 'card-product',
               card_product: recommendation,

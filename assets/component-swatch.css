@@ -23,3 +23,8 @@
   border-style: dashed;
   border-color: rgba(var(--color-foreground), 0.5);
 }
+
+/* Brand-consistent swatch styling for the product page variant picker */
+.product-form__input--swatch .swatch {
+  border-color: rgba(217, 156, 165, 0.5);
+}

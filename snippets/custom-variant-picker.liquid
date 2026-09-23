@@ -1,0 +1,176 @@
+{% comment %}
+  Renders a custom color variant picker: a heading, a "Color: <selected>" row,
+  and a row of 20x20 square color swatches (using each option value's swatch
+  image). Plugs into the theme's existing <variant-selects> / product-info
+  infrastructure, so selecting a swatch updates price, availability, URL, etc.
+  the same way the default variant picker does. Hidden entirely when the
+  product has no real variants.
+
+  Accepts:
+  - product: {Object} product object.
+  - block: {Object} block information.
+  - product_form_id: {String} id of the product form to associate inputs with.
+
+  Usage:
+  {% render 'custom-color-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+{% endcomment %}
+
+{% style %}
+  .custom-color-picker {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .custom-color-picker__heading {
+    font-family: PP Mori;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.3;
+    margin: 0 0 8px;
+    padding: 0;
+  }
+
+  .custom-color-picker__selected-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin: 0 0 10px;
+    font-family: PP Mori;
+    font-size: 14px;
+  }
+
+  .custom-color-picker__label {
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  .custom-color-picker__selected-value {
+    text-transform: capitalize;
+  }
+
+  .custom-color-picker__swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .custom-color-picker__swatch {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    outline: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .custom-color-picker__swatch img,
+  .custom-color-picker__swatch-fallback {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1px;
+  }
+
+  .custom-color-picker__input {
+    outline: none;
+  }
+
+  .custom-color-picker__input:checked + .custom-color-picker__swatch {
+    border-color: #7c0732;
+  }
+
+  .custom-color-picker__swatch--disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+{% endstyle %}
+
+{%- unless product.has_only_default_variant -%}
+  {%- liquid
+    assign color_option_name = block.settings.color_option_name | default: 'Color'
+    assign color_option = null
+    for option in product.options_with_values
+      if option.name == color_option_name
+        assign color_option = option
+      endif
+    endfor
+  -%}
+  {%- if color_option and color_option.values.size > 0 -%}
+    <variant-selects
+      id="CustomColorVariantSelects-{{ section.id }}"
+      data-section="{{ section.id }}"
+      {{ block.shopify_attributes }}
+    >
+      <fieldset class="js product-form__input custom-color-picker">
+        <legend class="custom-color-picker__heading">
+          {{ block.settings.heading | default: 'Select your color' }}
+        </legend>
+        <div class="custom-color-picker__selected-row">
+          <span class="custom-color-picker__label">{{ color_option.name }}:</span>
+          <span class="custom-color-picker__selected-value" data-selected-value>
+            {{- color_option.selected_value -}}
+          </span>
+        </div>
+        <div class="custom-color-picker__swatches">
+          {%- for value in color_option.values -%}
+            {%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+            {%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: value %}{%- endcapture -%}
+            {%- if hide_resource == 'true' -%}
+              {% continue %}
+            {%- endif -%}
+            {%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
+            {%- liquid
+              assign swatch_image = value.swatch.image
+              if swatch_image == blank
+                assign swatch_image = value.variant.featured_image
+              endif
+              assign option_disabled = true
+              if value.available
+                assign option_disabled = false
+              endif
+            -%}
+            {%- capture input_id -%}CustomColor-{{ section.id }}-{{ color_option.position }}-{{ forloop.index0 }}{%- endcapture -%}
+            <input
+              type="radio"
+              id="{{ input_id }}"
+              name="{{ color_option.name }}-{{ color_option.position }}"
+              value="{{ value | escape }}"
+              form="{{ product_form_id }}"
+              data-option-value-id="{{ value.id }}"
+              data-product-url="{{ value.product_url }}"
+              class="custom-color-picker__input visually-hidden"
+              {% if value.selected %}
+                checked
+              {% endif %}
+            >
+            <label
+              for="{{ input_id }}"
+              class="custom-color-picker__swatch{% if option_disabled %} custom-color-picker__swatch--disabled{% endif %}"
+              title="{{ value | escape }}"
+            >
+              {%- if swatch_image != blank -%}
+                {{ swatch_image | image_url: width: 40 | image_tag: widths: '20,40', alt: value, loading: 'lazy' }}
+              {%- else -%}
+                <span
+                  class="custom-color-picker__swatch-fallback"
+                  style="background:{% if value.swatch.color %}rgb({{ value.swatch.color.rgb }}){% else %}#e5e5e5{% endif %};"
+                ></span>
+              {%- endif -%}
+              <span class="visually-hidden">{{ value }}</span>
+            </label>
+          {%- endfor -%}
+        </div>
+      </fieldset>
+
+      <script type="application/json" data-selected-variant>
+        {{ product.selected_or_first_available_variant | json }}
+      </script>
+    </variant-selects>
+  {%- endif -%}
+{%- endunless -%}

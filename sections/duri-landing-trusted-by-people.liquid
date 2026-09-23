@@ -249,6 +249,13 @@ img.cr-trusted-image {
                 <p class="cr-trusted-heading">{{ section.settings.heading }}</p>
                 <div class="cr-trusted-items">
                     {% for block in section.blocks %}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: block %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
                         <div class="cr-trusted-block">
                             <div class="cr-trusted-iconrow">
                                 <div class="cr-trusted-icon"> {{ block.settings.custom_svg }} </div>

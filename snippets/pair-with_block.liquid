@@ -156,12 +156,18 @@ h3.pair-width-title {
 {% endstyle %}
 
 
-<div class="pair-with-block">
-    {% if block.settings.pair_title != blank %}
-        <h3 class="pair-width-title">{{ block.settings.pair_title }}</h3>
-    {% endif %}
-    <div class="pair-with-content">
-        {% for pair_product in product.metafields.custom.pair_with.value %}
+{%- assign pair_with_products = product.metafields.custom.pair_with.value -%}
+{%- assign pair_with_visible_count = 0 -%}
+{%- capture pair_with_cards -%}
+    {% for pair_product in pair_with_products %}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: pair_product %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+{%- assign pair_with_visible_count = pair_with_visible_count | plus: 1 -%}
+
             <div class="pair-with-card">
                 <input type="checkbox" class="pair-with-input" name="pair_product" value="{{ pair_product.selected_or_first_available_variant.id }}"
                     data-variant-id="{{ pair_product.selected_or_first_available_variant.id }}"
@@ -191,8 +197,17 @@ h3.pair-width-title {
                 </div>
             </div>
         {% endfor %}
+{%- endcapture -%}
+{%- if pair_with_visible_count > 0 -%}
+<div class="pair-with-block">
+    {% if block.settings.pair_title != blank %}
+        <h3 class="pair-width-title">{{ block.settings.pair_title }}</h3>
+    {% endif %}
+    <div class="pair-with-content">
+        {{ pair_with_cards }}
     </div>
 </div>
+{%- endif -%}
 
 
 <script>

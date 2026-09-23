@@ -3664,3 +3664,168 @@ header.header.cstm_header {
 }
 
 }
+
+.product__description.rte.quick-add-hidden {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #000;
+    font-family: "PP Mori";
+}
+
+/* ==== cart page ===== */
+
+.cart__dynamic-checkout-buttons.additional-checkout-buttons {
+    margin: 20px 0 0;
+    max-width: 100%;
+}
+
+button#checkout:before,
+button#checkout:after{
+  display: none;
+}
+
+button#checkout {
+    background: #7C0732;
+    font-family: PP Mori !important;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 18px;
+    leading-trim: NONE;
+    line-height: 22px;
+    letter-spacing: 0%;
+    max-width: 100%;
+}
+
+.cart__ctas {
+    justify-content: end;
+}
+
+.cart__blocks {
+    width: 400px !important;
+}
+
+.saw-extra-note {
+    background-color: #ca97d3!important;
+    color: #000!important;
+    padding: 10px!important;
+    margin: 0 0 20px!important;
+    font-family: PP Mori!important;
+    font-weight: 700!important;
+    font-style: Regular!important;
+    font-size: 14px!important;
+    leading-trim: NONE!important;
+    line-height: 21px!important;
+    letter-spacing: 0px!important;
+    vertical-align: middle!important;
+    order: -1 !important;
+    max-width: 100%!important;
+    width: 100%!important;
+}
+
+h2.totals__total {
+    font-family: PP Mori !important;
+    font-weight: 600 !important;
+    font-style: SemiBold !important;
+    font-size: 20px !important;
+    leading-trim: NONE !important;
+    line-height: 24px !important;
+    letter-spacing: 0px !important;
+    vertical-align: middle !important;
+    margin: 0 !important;
+}
+
+.cart small.tax-note.caption-large.rte {
+    font-family: PP Mori !important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    line-height: 22px !important;
+    letter-spacing: 0px !important;
+    vertical-align: middle !important;
+}
+
+.cart th.caption-with-letter-spacing {
+    font-family: PP Mori !important;
+    font-weight: 400 !important;
+    font-style: Regular !important;
+    font-size: 14px !important;
+    leading-trim: NONE !important;
+    line-height: 21px !important;
+    letter-spacing: 0px !important;
+    vertical-align: middle !important;
+    color: #000 !important;
+}
+
+.cart .totals {
+    flex-wrap: wrap !important;
+    justify-content: end !important;
+}
+
+span.saw-cart-total {
+    font-family: PP Mori;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 20px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    margin-top: 0;
+}
+
+p.totals__total-value {
+    font-family: PP Mori;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 20px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-transform: capitalize;
+    text-decoration: line-through;
+    text-decoration-style: solid;
+    text-decoration-offset: -34%;
+    text-decoration-thickness: 10%;
+    color: #555555;
+}
+
+@media screen and (max-width: 768px){
+  .cart__blocks {
+    width: 100% !important;
+}
+
+h2.totals__total {
+    font-size: 18px!important;
+    line-height: 20px!important;
+}
+
+p.totals__total-value {
+    font-size: 16px;
+}
+
+span.saw-cart-total {
+    font-size: 18px;
+}
+
+.saw-extra-note {
+    font-size: 12px!important;
+    line-height: 18px!important;
+}
+
+.paypal-button-row {
+    height: 52px !important;
+    min-height: 52px !important;
+    max-height: 52px !important;
+}
+
+.paypal-button.paypal-button-shape-sharp {
+    height: 52px !important;
+    min-height: 52px !important;
+    max-height: 52px !important;
+}
+
+a.cart-item__name.h4.break {
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+}
+
+}

@@ -5,6 +5,13 @@
       <!-- Left Column -->
       <div class="mission-left">
         {% for block in section.blocks %}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: block %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
           <div class="mission-item">
             <div class="mission-img-main">
             {% if block.settings.icon != blank %}

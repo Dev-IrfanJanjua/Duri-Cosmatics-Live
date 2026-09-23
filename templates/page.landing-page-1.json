@@ -192,6 +192,13 @@
     "bundle_collection_cy8naR": {
       "type": "bundle-collection",
       "blocks": {
+        "gallery_image_YrYwYF": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/Build_your_Bundle_MAIN_IMAGE.jpg",
+            "alt": ""
+          }
+        },
         "gallery_image_BghVxV": {
           "type": "gallery_image",
           "settings": {
@@ -255,7 +262,7 @@
             "collection_4": "green-nail-polish-copy",
             "collection_5": "white-nail-polish-copy",
             "collection_6": "yellow-nail-polish-copy",
-            "collection_7": "green-nail-polish-copy",
+            "collection_7": "blue-nail-polish-copy",
             "collection_8": "orange-nail-polish-copy",
             "placeholder": "shopify://shop_images/72090e03ad6b44f695db104529a76a1f109af336.png"
           }
@@ -324,6 +331,7 @@
         }
       },
       "block_order": [
+        "gallery_image_YrYwYF",
         "gallery_image_BghVxV",
         "gallery_image_wn6eJX",
         "gallery_image_iqCWfC",
@@ -350,17 +358,17 @@
         "product_heading": "Choose Rejuvacote:",
         "color_heading": "Select Nail Polish Colors",
         "selected_heading": "Selected Nail Polish Colors",
-        "tier_2_label": "Rejuvacote  + 2 Nail Colors",
+        "tier_2_label": "Nail Growth base & top + 2 Nail Colors",
         "tier_2_badge": "",
         "tier_2_colors": 2,
         "tier_2_price": "$35",
         "tier_2_compare_price": "$41",
-        "tier_4_label": "Rejuvacote  + 4 Nail Colors",
+        "tier_4_label": "Nail Growth base & top  + 4 Nail Colors",
         "tier_4_badge": "Most Popular",
         "tier_4_colors": 4,
         "tier_4_price": "$55",
         "tier_4_compare_price": "$66",
-        "tier_6_label": "Rejuvacote  + 6 Nail Colors",
+        "tier_6_label": "Nail Growth base & top  + 6 Nail Colors",
         "tier_6_badge": "Best value",
         "tier_6_colors": 6,
         "tier_6_price": "$72",
@@ -406,7 +414,7 @@
           "disabled": true,
           "settings": {
             "picker_type": "button",
-            "swatch_shape": "circle"
+            "swatch_shape": "square"
           }
         },
         "quantity_selector_NUEFYc": {

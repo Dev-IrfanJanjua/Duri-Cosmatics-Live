@@ -48,6 +48,13 @@
             </thead>
             <tbody role="rowgroup">
               {%- for order in customer.orders -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: order %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
                 <tr role="row">
                   <td
                     id="RowOrder"
@@ -105,6 +112,13 @@
                 {%- endif -%}
 
                 {%- for part in paginate.parts -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: part %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
                   <li>
                     {%- if part.is_link -%}
                       <a href="{{ part.url }}" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">

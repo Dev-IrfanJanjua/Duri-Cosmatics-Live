@@ -282,6 +282,13 @@
                               <span>{{ 'sections.quick_order_list.each' | t: money: price }}</span>
                             </li>
                             {%- for price_break in card_product.selected_or_first_available_variant.quantity_price_breaks -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: price_break %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
                               <li>
                                 <span>
                                   {{- price_break.minimum_quantity -}}

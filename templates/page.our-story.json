@@ -27,11 +27,11 @@
         "mbl_padding_top": 10,
         "mbl_padding_bottom": 10,
         "back-color": "",
-        "cheeseBnrImg": "shopify://shop_images/Component_9.png",
-        "cheeseBnrImg1": "shopify://shop_images/Component_60.png",
+        "cheeseBnrImg": "shopify:\/\/shop_images\/Component_9.png",
+        "cheeseBnrImg1": "shopify:\/\/shop_images\/Component_60.png",
         "heading": "Since 1989: Vegan Care for Strong Nails",
         "headingMBL": "",
-        "subtextt": "<p>Crafted with Care, Since 1989: A Family Legacy of Vegan Innovation and Science-Backed Excellence, Empowering Women Worldwide to Grow Strong, Healthy, and Beautifully Natural Nails</p>",
+        "subtextt": "<p>Crafted with Care, Since 1989: A Family Legacy of Vegan Innovation and Science-Backed Excellence, Empowering Women Worldwide to Grow Strong, Healthy, and Beautifully Natural Nails<\/p>",
         "button_label": "SHOP NOW",
         "button_label4": "Request Form",
         "button_label5": "CALL US",
@@ -52,11 +52,11 @@
         "mbl_padding_top": 10,
         "mbl_padding_bottom": 10,
         "back-color": "",
-        "cheeseBnrImg": "shopify://shop_images/Component_9.png",
-        "cheeseBnrImg1": "shopify://shop_images/Component_60.png",
+        "cheeseBnrImg": "shopify:\/\/shop_images\/Component_9.png",
+        "cheeseBnrImg1": "shopify:\/\/shop_images\/Component_60.png",
         "heading": "Since 1989: Vegan Care for Strong Nails",
         "headingMBL": "",
-        "subtextt": "<p>Crafted with Care, Since 1989: A Family Legacy of Vegan Innovation and Science-Backed Excellence, Empowering Women Worldwide to Grow Strong, Healthy, and Beautifully Natural Nails.</p>",
+        "subtextt": "<p>Crafted with Care, Since 1989: A Family Legacy of Vegan Innovation and Science-Backed Excellence, Empowering Women Worldwide to Grow Strong, Healthy, and Beautifully Natural Nails.<\/p>",
         "button_label": "SHOP NOW",
         "button_label4": "Request Form",
         "button_label5": "CALL US",
@@ -73,28 +73,28 @@
         "feature_jwFBRN": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/manicure.svg",
+            "icon": "shopify:\/\/shop_images\/manicure.svg",
             "title": "Strengthens Nails"
           }
         },
         "feature_TtRhzF": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/Layer_1.svg",
+            "icon": "shopify:\/\/shop_images\/Layer_1.svg",
             "title": "Long-Lasting"
           }
         },
         "feature_NmBbfG": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/Layer_1_1.svg",
+            "icon": "shopify:\/\/shop_images\/Layer_1_1.svg",
             "title": "Non-Toxic Formula"
           }
         },
         "feature_6RaYck": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/SVG_11.svg",
+            "icon": "shopify:\/\/shop_images\/SVG_11.svg",
             "title": "Gluten-Free"
           }
         }
@@ -122,9 +122,9 @@
         "mbl_padding_bottom": 0,
         "back-color": "",
         "btn_color": "#7c0732",
-        "duri-ready-img": "shopify://shop_images/image_1445.png",
+        "duri-ready-img": "shopify:\/\/shop_images\/image_1445.png",
         "duriFirsttext": "About Duri Cosmetics",
-        "duriFirsttext2": "<p>Duri is a nail-focused cosmetic company headquartered in Brooklyn, New York. It’s a small, family-owned business, now in its third generation, that has helped millions of people repair their nails and feel good about their fingertips. </p><p>Instagram founded in 1990 by a family with expertise in chemistry and knowledge of the paint industry, Duri launched its line of premium salon-quality nail and body care products aimed at complementing natural beauty.</p>",
+        "duriFirsttext2": "<p>Duri is a nail-focused cosmetic company headquartered in Brooklyn, New York. It’s a small, family-owned business, now in its third generation, that has helped millions of people repair their nails and feel good about their fingertips. <\/p><p>Instagram founded in 1990 by a family with expertise in chemistry and knowledge of the paint industry, Duri launched its line of premium salon-quality nail and body care products aimed at complementing natural beauty.<\/p>",
         "duri-button_link": "#",
         "duri-btnbutton_label": "Shop Now"
       }
@@ -139,9 +139,9 @@
         "mbl_padding_top": 0,
         "mbl_padding_bottom": 0,
         "back-color": "",
-        "duri-ready-img": "shopify://shop_images/ccd221fb81ad93317cc6705dd304f83dca12afde.png",
+        "duri-ready-img": "shopify:\/\/shop_images\/ccd221fb81ad93317cc6705dd304f83dca12afde.png",
         "duriFirsttext": "Our Philosophy",
-        "duriFirsttext2": "<p>We believe nail care should be as healthy as it is beautiful. That’s why our products are vegan, cruelty-free, paraben-free, and long-lasting—crafted with clean ingredients in state-of-the-art U.S. facilities.</p><ul><li>vegan  & Cruelty-Free – ethically made</li><li>No Harsh Chemicals – paraben-free formulas.</li><li>Made in the USA – clean, quality ingredients</li></ul>",
+        "duriFirsttext2": "<p>We believe nail care should be as healthy as it is beautiful. That’s why our products are vegan, cruelty-free, paraben-free, and long-lasting—crafted with clean ingredients in state-of-the-art U.S. facilities.<\/p><ul><li>vegan  & Cruelty-Free – ethically made<\/li><li>No Harsh Chemicals – paraben-free formulas.<\/li><li>Made in the USA – clean, quality ingredients<\/li><\/ul>",
         "duri-button_link": "#",
         "duri-btnbutton_label": ""
       }
@@ -152,21 +152,21 @@
         "icon_rA4GpJ": {
           "type": "icon",
           "settings": {
-            "icon": "shopify://shop_images/icon.svg_-_2025-08-21T063640.411_1.svg",
+            "icon": "shopify:\/\/shop_images\/icon.svg_-_2025-08-21T063640.411_1.svg",
             "label": "Eco Conscious"
           }
         },
         "icon_WLJhPw": {
           "type": "icon",
           "settings": {
-            "icon": "shopify://shop_images/icon.svg_-_2025-08-21T064022.603_1.svg",
+            "icon": "shopify:\/\/shop_images\/icon.svg_-_2025-08-21T064022.603_1.svg",
             "label": "18 Free"
           }
         },
         "icon_yNFN9i": {
           "type": "icon",
           "settings": {
-            "icon": "shopify://shop_images/icon.svg_-_2025-08-21T064242.207_1.svg",
+            "icon": "shopify:\/\/shop_images\/icon.svg_-_2025-08-21T064242.207_1.svg",
             "label": "Global Care"
           }
         }
@@ -181,7 +181,7 @@
       "settings": {
         "heading": "We Are Proudly",
         "text": "We love creating nail care that inspires confidence and never compromises on quality. | Our formulas are 18-free, packed with nourishing ingredients, and safe for all nail types. | We minimize our environmental footprint with sustainable practices wherever possible. | Experience the global essence of high-quality nail care crafted for you!",
-        "image": "shopify://shop_images/presentation_image_16.png"
+        "image": "shopify:\/\/shop_images\/presentation_image_16.png"
       }
     },
     "duri_our_story_rooted_in_care_4QPDTR": {
@@ -193,11 +193,11 @@
         "mbl_padding_top": 0,
         "mbl_padding_bottom": 0,
         "back-color": "",
-        "duri-ready-img": "shopify://shop_images/image_1445_4.png",
+        "duri-ready-img": "shopify:\/\/shop_images\/image_1445_4.png",
         "duriVeryFirsttext": "Our Story",
         "duriFirsttext": "Rooted in Care, Crafted with Purpose",
-        "duriFirsttext2": "<p>Since 1990, Duri has been a family-owned brand dedicated to creating safe, effective nail and body care. What started with a passion for better formulas has grown into a collection of over 150 clean, cruelty-free products trusted by salons and individuals a like.</p><p>At the heart of our story is the award-winning Rejuvacote Nail Growth System, alongside a full range designed to strengthen, protect, and beautify naturally. Three generations later, we remain committed to blending family values with innovation — helping your natural beauty shine, one polish at a time.<br/></p>",
-        "duri-button_link": "shopify://collections/all",
+        "duriFirsttext2": "<p>Since 1990, Duri has been a family-owned brand dedicated to creating safe, effective nail and body care. What started with a passion for better formulas has grown into a collection of over 150 clean, cruelty-free products trusted by salons and individuals a like.<\/p><p>At the heart of our story is the award-winning Rejuvacote Nail Growth System, alongside a full range designed to strengthen, protect, and beautify naturally. Three generations later, we remain committed to blending family values with innovation — helping your natural beauty shine, one polish at a time.<br\/><\/p>",
+        "duri-button_link": "shopify:\/\/collections\/all",
         "duri-btnbutton_label": "SHOP NOW"
       }
     },
@@ -207,56 +207,56 @@
         "feature_VtAHzR": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/SVG_3.svg",
+            "icon": "shopify:\/\/shop_images\/SVG_3.svg",
             "title": "Non-Toxic Formula"
           }
         },
         "feature_GNdK6B": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/SVG_4.svg",
+            "icon": "shopify:\/\/shop_images\/SVG_4.svg",
             "title": "CRUELTY-Free"
           }
         },
         "feature_BMgCfa": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/SVG_2.svg",
+            "icon": "shopify:\/\/shop_images\/SVG_2.svg",
             "title": "Long-Lasting"
           }
         },
         "feature_rXmL6m": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/SVG_1.svg",
+            "icon": "shopify:\/\/shop_images\/SVG_1.svg",
             "title": "Strengthens Nails"
           }
         },
         "feature_YbD3Hg": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/SVG_3.svg",
+            "icon": "shopify:\/\/shop_images\/SVG_3.svg",
             "title": "Non-Toxic Formula"
           }
         },
         "feature_g7nQ94": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/SVG_4.svg",
+            "icon": "shopify:\/\/shop_images\/SVG_4.svg",
             "title": "CRUELTY-Free"
           }
         },
         "feature_yar4Fn": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/SVG_2.svg",
+            "icon": "shopify:\/\/shop_images\/SVG_2.svg",
             "title": "Long-Lasting"
           }
         },
         "feature_VQjN33": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/SVG_1.svg",
+            "icon": "shopify:\/\/shop_images\/SVG_1.svg",
             "title": "Strengthens Nails"
           }
         }
@@ -290,10 +290,10 @@
         "mbl_padding_top": 0,
         "mbl_padding_bottom": 0,
         "back-color": "",
-        "duri-ready-img": "shopify://shop_images/presentation_image_17.png",
+        "duri-ready-img": "shopify:\/\/shop_images\/presentation_image_17.png",
         "duriVeryFirsttextT": "Our Vision",
         "duriFirsttext": "Growth & Evolution",
-        "duriFirsttext2": "<p>From our roots in Brooklyn, we’ve grown into a trusted name in nail and body care, creating clean, reliable products that blend science with beauty. Today, our collection spans over 150 shades and treatments designed for both professionals and everyday use. At the heart of it all is our award-winning Rejuvacote Nail Growth System, a breakthrough formula that has helped countless customers restore, repair, and strengthen their nails naturally.</p><ul><li>Highlight expansion to 150+ products</li><li>Focus on Rejuvacote Nail Growth System as your hero product.</li><li>Visual: product flat-lay, collage, or timeline milestone graphics.</li></ul>",
+        "duriFirsttext2": "<p>From our roots in Brooklyn, we’ve grown into a trusted name in nail care. Creating clean, reliable products that blend science with beauty. Today, our collection spans over 150 shades and treatments designed for both professionals and everyday use. At the heart of it all is our award-winning Rejuvacote Nail Growth System, a breakthrough formula that has helped countless customers restore, repair, and strengthen their nails naturally.<\/p>",
         "duri-button_link": "",
         "duri-btnbutton_label": ""
       }
@@ -304,21 +304,21 @@
         "icon_pXtRpJ": {
           "type": "icon",
           "settings": {
-            "icon": "shopify://shop_images/icon.svg_-_2025-08-21T063640.411_1.svg",
+            "icon": "shopify:\/\/shop_images\/icon.svg_-_2025-08-21T063640.411_1.svg",
             "label": "Eco Conscious"
           }
         },
         "icon_3ifcpi": {
           "type": "icon",
           "settings": {
-            "icon": "shopify://shop_images/icon.svg_-_2025-08-21T064022.603_1.svg",
+            "icon": "shopify:\/\/shop_images\/icon.svg_-_2025-08-21T064022.603_1.svg",
             "label": "18 Free"
           }
         },
         "icon_4yaK48": {
           "type": "icon",
           "settings": {
-            "icon": "shopify://shop_images/icon.svg_-_2025-08-21T064242.207_1.svg",
+            "icon": "shopify:\/\/shop_images\/icon.svg_-_2025-08-21T064242.207_1.svg",
             "label": "Global Care"
           }
         }
@@ -337,8 +337,8 @@
         "back-color": "",
         "heading": "We Are Proudly",
         "duriVeryFirsttextmy": "What Defines Us",
-        "text": "We love creating nail care that inspires confidence and never compromises on quality. | Our formulas are 18-free, packed with nourishing ingredients, and safe for all nail types. | We minimize our environmental footprint with sustainable practices wherever possible. | Experience the global essence of high-quality nail care crafted for you!",
-        "image": "shopify://shop_images/presentation_image_16.png"
+        "text": "We love creating nail care that inspires confidence and never compromises on quality. Our formulas are 18-free, packed with nourishing ingredients, and safe for all nail types. We minimize our environmental footprint with sustainable practices wherever possible. Experience the global essence of high-quality nail care crafted for you!",
+        "image": "shopify:\/\/shop_images\/presentation_image_16.png"
       }
     }
   },

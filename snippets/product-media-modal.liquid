@@ -40,6 +40,13 @@
       -%}
 
       {%- for media in product.media -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: media %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
         {%- liquid
           if section.settings.hide_variants and variant_images contains media.src or variant_images contains media.id
             assign variant_image = true

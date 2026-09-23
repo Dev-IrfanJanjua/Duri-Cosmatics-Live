@@ -1043,6 +1043,7 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
     font-size: 20px;
     line-height: 100%;
     letter-spacing: 0%;
+    margin: 0;
 }
 .custom-drawer .footer-wrapper {
     display: flex;

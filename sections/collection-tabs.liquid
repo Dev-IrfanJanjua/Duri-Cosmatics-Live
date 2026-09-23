@@ -280,6 +280,13 @@ span.collection-tabs-card-arrow {
     <div class="collection-tabs-head">
       <div class="collection-tabs-buttons">
         {% for block in section.blocks %}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: block %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
           {% if block.type == 'tab' %}
             <button 
               class="collection-tabs-btn {% if forloop.first %}active{% endif %}" 
@@ -296,6 +303,13 @@ span.collection-tabs-card-arrow {
     <!-- Tabs Content -->
     <div class="collection-tabs-contents">
       {% for block in section.blocks %}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: block %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
         {% if block.type == 'tab' %}
           <div 
             class="collection-tabs-content {% if forloop.first %}active{% endif %}" 
@@ -307,6 +321,13 @@ span.collection-tabs-card-arrow {
                 <div class="swiper-wrapper">
 
                   {% for collection in block.settings.collection_list %}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: collection %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
                     <div class="collection-tabs-slide swiper-slide">
                       <a href="{{ collection.url }}" class="collection-tabs-card">
 

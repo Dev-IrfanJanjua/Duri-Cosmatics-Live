@@ -5,6 +5,13 @@
     <div class="page-width">
       <div class="cstm_blog_inner">
         {%- for block in section.blocks -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: block %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
           {% if block.type == 'title' %}
             <header
                   class="{% if section.settings.cstm_style == false %}page-width page-width--narrow {% else %}cstm_blog_header{% endif %} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
@@ -37,6 +44,13 @@
         {% endfor %}
         <div class="cstm_blogs_wrapper">
           {%- for block in section.blocks -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: block %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
             {%- case block.type -%}
               {%- when '@app' -%}
                 <div class="page-width page-width--narrow">
@@ -160,6 +174,13 @@
                       {%- endif -%}
         
                       {%- for comment in article.comments -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: comment %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
                         <article id="{{ comment.id }}" class="article-template__comments-comment">
                           {{ comment.content }}
                           <footer class="right">
@@ -193,6 +214,13 @@
                     </div>
                     <ul class="form-status-list caption-large">
                       {%- for field in form.errors -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: field %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
                         <li>
                           <a href="#CommentForm-{{ field }}" class="link">
                             {%- if form.errors.translated_fields[field] contains 'author' -%}
@@ -342,6 +370,13 @@
               {% assign related_articles = blogs[blog_handle].articles %}
   
               {% for article in related_articles limit:3 %}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: article %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
                 {% if article.id != current_article.id %}
   
                 <div class="related-blog-card">
@@ -386,6 +421,13 @@
     </div>
   {% else %}
     {%- for block in section.blocks -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: block %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
           {%- case block.type -%}
             {%- when '@app' -%}
               <div class="page-width page-width--narrow">
@@ -501,6 +543,13 @@
                     {%- endif -%}
       
                     {%- for comment in article.comments -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: comment %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
                       <article id="{{ comment.id }}" class="article-template__comments-comment">
                         {{ comment.content }}
                         <footer class="right">
@@ -534,6 +583,13 @@
                   </div>
                   <ul class="form-status-list caption-large">
                     {%- for field in form.errors -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: field %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
                       <li>
                         <a href="#CommentForm-{{ field }}" class="link">
                           {%- if form.errors.translated_fields[field] contains 'author' -%}

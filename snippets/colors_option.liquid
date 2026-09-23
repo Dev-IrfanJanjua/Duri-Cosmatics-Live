@@ -100,6 +100,13 @@
       <div class="bundle-tiers__grid">
         {%- assign tiers = '2,4,6' | split: ',' -%}
         {%- for tier in tiers -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: tier %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
           {%- liquid
             case tier
               when '2'
@@ -286,6 +293,13 @@
 
       <div class="bcp-dropdown" id="bcp-dropdown-{{ section.id }}" role="listbox" aria-label="Select a collection" hidden>
         {%- for i in (1..8) -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: i %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
           {%- assign key  = 'collection_' | append: i -%}
           {%- assign coll = block.settings[key] -%}
           {%- if coll != blank -%}
@@ -306,10 +320,24 @@
 
       <div class="bundle-colors__grid js-color-grid">
         {%- for i in (1..8) -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: i %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
           {%- assign key  = 'collection_' | append: i -%}
           {%- assign coll = block.settings[key] -%}
           {%- if coll != blank -%}
             {%- for prod in coll.products -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: prod %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
               {%- assign first_variant = prod.selected_or_first_available_variant -%}
               <button
                 class="color-swatch js-color-swatch"

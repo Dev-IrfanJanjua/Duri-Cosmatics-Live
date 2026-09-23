@@ -78,6 +78,13 @@ style="{% if section.settings.cstm_clr %} background:{{ section.settings.cstm_bg
             data-speed="{{ section.settings.change_slides_speed }}"
           >
             {%- for block in section.blocks -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: block %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
               <div
                 class="slideshow__slide slider__slide grid__item grid--1-col"
                 id="Slide-{{ section.id }}-{{ forloop.index }}"

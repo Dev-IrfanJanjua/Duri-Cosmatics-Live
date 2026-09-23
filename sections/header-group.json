@@ -14,24 +14,24 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement_LGfyHd": {
+        "announcement_77agbx": {
           "type": "announcement",
           "settings": {
-            "text": "Free Shipping Orders $45+",
+            "text": "20% OFF SITEWIDE | FREE NAIL POLISH ORDER $50+",
             "link": ""
           }
         },
-        "announcement-bar-0": {
+        "announcement_LGfyHd": {
           "type": "announcement",
           "settings": {
-            "text": "Shop our Spring favorite nail polish colors",
-            "link": "shopify://collections/curated-for-spring"
+            "text": "FREE SHIPPING orders over $40",
+            "link": ""
           }
         }
       },
       "block_order": [
-        "announcement_LGfyHd",
-        "announcement-bar-0"
+        "announcement_77agbx",
+        "announcement_LGfyHd"
       ],
       "settings": {
         "cstm_clr": true,

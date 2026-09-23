@@ -350,6 +350,13 @@
         <div class="edu-content active" id="how-to">
           <div class="how-to-images">
             {% for block in section.blocks %}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: block %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
               {% if block.type == 'how_to_image' %}
                 <div class="how-to-card">
                   <img src="{{ block.settings.image | img_url: '600x' }}" alt="">
@@ -367,6 +374,13 @@
         <div class="edu-content" id="faqs">
           <div class="faq-wrapper">
             {% for block in section.blocks %}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: block %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
               {% if block.type == 'faq' %}
                 <div class="faq-item">
                   <div class="faq-item_content">
@@ -389,6 +403,13 @@
           <div class="ingredients-wrapper">
             <div class="ingredient-list">
               {% for block in section.blocks %}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: block %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
                 {% if block.type == 'ingredient' %}
                   <div class="ingredient-item {% if forloop.first %}active{% endif %}" data-target="ingredient-{{ forloop.index }}">
                     {{ block.settings.name }}
@@ -398,6 +419,13 @@
             </div>
             <div class="ingredient-details">
               {% for block in section.blocks %}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: block %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
                 {% if block.type == 'ingredient' %}
                   <div class="ingredient-detail {% if forloop.first %}active{% endif %}" id="ingredient-{{ forloop.index }}">
                     <img src="{{ block.settings.image | img_url: '400x' }}" alt="">

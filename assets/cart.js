@@ -88,36 +88,41 @@ class CartItems extends HTMLElement {
   }
 
   onCartUpdate() {
-    if (this.tagName === 'CART-DRAWER-ITEMS') {
-      return fetch(`${routes.cart_url}?section_id=cart-drawer`)
-        .then((response) => response.text())
-        .then((responseText) => {
-          const html = new DOMParser().parseFromString(responseText, 'text/html');
-          const selectors = ['cart-drawer-items', '.cart-drawer__footer'];
-          for (const selector of selectors) {
-            const targetElement = document.querySelector(selector);
-            const sourceElement = html.querySelector(selector);
-            if (targetElement && sourceElement) {
-              targetElement.replaceWith(sourceElement);
-            }
+  if (this.tagName === 'CART-DRAWER-ITEMS') {
+    return fetch(`${routes.cart_url}?section_id=cart-drawer`)
+      .then((response) => response.text())
+      .then((responseText) => {
+        const html = new DOMParser().parseFromString(responseText, 'text/html');
+        const selectors = ['cart-drawer-items', '.cart-drawer__footer'];
+        for (const selector of selectors) {
+          const targetElement = document.querySelector(selector);
+          const sourceElement = html.querySelector(selector);
+          if (targetElement && sourceElement) {
+            targetElement.replaceWith(sourceElement);
           }
-        })
-        .catch((e) => {
-          console.error(e);
-        });
-    } else {
-      return fetch(`${routes.cart_url}?section_id=main-cart-items`)
-        .then((response) => response.text())
-        .then((responseText) => {
-          const html = new DOMParser().parseFromString(responseText, 'text/html');
-          const sourceQty = html.querySelector('cart-items');
-          this.innerHTML = sourceQty.innerHTML;
-        })
-        .catch((e) => {
-          console.error(e);
-        });
-    }
+        }
+        // === WHOLESALE HUB DRAWER PATCH ===
+        if (window.WCDrawer && typeof window.WCDrawer.recalculate === 'function') {
+          window.WCDrawer.recalculate();
+        }
+        // === END PATCH ===
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  } else {
+    return fetch(`${routes.cart_url}?section_id=main-cart-items`)
+      .then((response) => response.text())
+      .then((responseText) => {
+        const html = new DOMParser().parseFromString(responseText, 'text/html');
+        const sourceQty = html.querySelector('cart-items');
+        this.innerHTML = sourceQty.innerHTML;
+      })
+      .catch((e) => {
+        console.error(e);
+      });
   }
+}
 
   getSectionsToRender() {
     return [
@@ -181,13 +186,19 @@ class CartItems extends HTMLElement {
           if (cartDrawerWrapper) cartDrawerWrapper.classList.toggle('is-empty', parsedState.item_count === 0);
 
           this.getSectionsToRender().forEach((section) => {
-            const elementToReplace =
-              document.getElementById(section.id).querySelector(section.selector) || document.getElementById(section.id);
-            elementToReplace.innerHTML = this.getSectionInnerHTML(
-              parsedState.sections[section.section],
-              section.selector
-            );
-          });
+  const elementToReplace =
+    document.getElementById(section.id).querySelector(section.selector) || document.getElementById(section.id);
+  elementToReplace.innerHTML = this.getSectionInnerHTML(
+    parsedState.sections[section.section],
+    section.selector
+  );
+});
+
+// === WHOLESALE HUB DRAWER PATCH ===
+if (window.WCDrawer && typeof window.WCDrawer.recalculate === 'function') {
+  setTimeout(() => window.WCDrawer.recalculate(), 200);
+}
+// === END PATCH ===
           const updatedValue = parsedState.items[line - 1] ? parsedState.items[line - 1].quantity : undefined;
           let message = '';
           if (items.length === parsedState.items.length && updatedValue !== parseInt(quantityElement.value)) {

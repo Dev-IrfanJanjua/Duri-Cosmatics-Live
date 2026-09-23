@@ -142,6 +142,13 @@
     
       <div class="custom-faq-container">
         {% for block in section.blocks %}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: block %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
           <div class="custom-faq-item {% if forloop.first %}custom-faq-item_first{% endif %}">
             <div class="custom-faq-question">
               <p class="faq-quest">{{ block.settings.question }}</p>

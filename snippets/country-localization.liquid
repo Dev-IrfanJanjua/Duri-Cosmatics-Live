@@ -94,6 +94,13 @@
           aria-label="{{ 'localization.popular_countries_regions' | t }}"
         >
           {%- for country in popular_countries -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: country %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
             <li class="disclosure__item" tabindex="-1">
               <a
                 class="link link--text disclosure__link caption-large focus-inset"
@@ -123,6 +130,13 @@
       {% endif %}
       <ul role="list" class="list-unstyled countries">
         {%- for country in localization.available_countries -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: country %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
           <li class="disclosure__item" tabindex="-1">
             <a
               class="link link--text disclosure__link caption-large focus-inset"

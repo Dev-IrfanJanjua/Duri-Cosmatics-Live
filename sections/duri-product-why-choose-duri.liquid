@@ -394,6 +394,13 @@
           <h2 class="cs-raising-featured-title">{{ section.settings['featured-heading'] }}</h2>
           <div class="cs-featured-block-main">
             {% for block in section.blocks %}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: block %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
               {% if block.type == 'featured-blocks' %}
                 <div class="cs-featured-blocks new-feature">
                   {% if block.settings.icon  %}
@@ -413,6 +420,13 @@
           </div>
           <div class="cs-featured-block-mains">
             {% for block in section.blocks %}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: block %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
               {% if block.type == 'product-blocks' %}
                 <div class="cs-featured-blocks">
                   {% if block.settings['product-p-c-img'] %}
@@ -430,6 +444,13 @@
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
                   {% for block in section.blocks %}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: block %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
                     {% if block.type == 'check-blocks' %}
                       <div class="cs-swiper-main-slider">
                          {% if block.settings['checked-title'] != blank %}
@@ -456,6 +477,13 @@
                 </div>
                 {% comment %} <div class="swiper-slide">
                   {% for block in section.blocks %}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: block %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
                     {% if block.type == 'check-blocks-2nd' %}
                       <div class="cs-swiper-main-slider">
                          {% if block.settings['checked-title-2'] != blank %}

@@ -1,0 +1,243 @@
+{% comment %}
+  Wholesale Hub Cart Drawer Integration
+  -------------------------------------
+  This snippet exposes window.WCDrawer.recalculate() which:
+    1. Fetches the latest cart via /cart.js
+    2. POSTs to Orbit's API to get the wholesale total
+    3. Updates .saw-cart-total / .saw-cart-original-total inside the drawer
+    4. Hijacks the drawer's #CartDrawer-Checkout button to create a draft order
+
+  Render this in theme.liquid OR inside cart-drawer.liquid (we'll put it in the drawer).
+  It must run on every page (not gated by cart.item_count) because the drawer
+  exists on every page.
+{% endcomment %}
+
+{% if customer.email != blank and customer.tags != blank %}
+
+<script>
+(function() {
+  if (window.WCDrawer && window.WCDrawer.initialized) return;
+
+  var baseUrl = "https://api.wholesale.orbitapps.com";
+  var shopSlug = "{{ shop.permanent_domain }}".replace(".myshopify.com", "");
+  var countryCode = "{{ localization.country.iso_code }}";
+  var marketIdString = "{{ localization.market.id }}";
+  var marketId = marketIdString ? parseInt(marketIdString) : undefined;
+  var customerData = {
+    id: {{ customer.id | json }},
+    email: {{ customer.email | json }}
+  };
+
+  // --- Cookie helper (same as Orbit's) ---
+  var sawCookies = {
+    getItem: function(a) {
+      return a ? decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(a).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null : null;
+    },
+    setItem: function(a, b, c, d) {
+      document.cookie = encodeURIComponent(a) + "=" + encodeURIComponent(b) + (d ? "; path=" + d : "");
+      return true;
+    }
+  };
+
+  // --- Update drawer DOM with discounted total ---
+  function updateDrawerTotals(res) {
+    if (!res || typeof res !== 'object') return;
+
+    // Find drawer-scoped elements only
+    var drawer = document.querySelector('cart-drawer #CartDrawer');
+    if (!drawer) return;
+
+    if (res.saw_total_price_format && res.saw_total_price_format !== "") {
+      // Strike through original
+      var originalTotals = drawer.querySelectorAll('.saw-cart-original-total');
+      originalTotals.forEach(function(el) {
+        el.style.textDecoration = "line-through";
+        el.style.opacity = "0.6";
+      });
+
+      // Show wholesale total
+      var sawTotals = drawer.querySelectorAll('.saw-cart-total');
+      sawTotals.forEach(function(el) {
+        el.innerHTML = res.saw_total_price_format;
+        el.style.fontWeight = "bold";
+        el.style.fontSize = "1.1em";
+      });
+
+      // Update extra note (savings message)
+      var extraNote = drawer.querySelector('.saw-extra-note');
+      if (extraNote && typeof res.extra_note === 'string') {
+        extraNote.innerHTML = res.extra_note;
+      }
+
+      // Store discount state on window so checkout handler can use it
+      window.WCDrawer.hasDiscount = (res.price_difference != 0);
+    } else {
+      window.WCDrawer.hasDiscount = false;
+    }
+  }
+
+  // --- Hijack the drawer's checkout button ---
+  function attachCheckoutHandler() {
+    var btn = document.querySelector('cart-drawer #CartDrawer-Checkout');
+    if (!btn || btn.dataset.wcHijacked === 'true') return;
+    btn.dataset.wcHijacked = 'true';
+
+    btn.addEventListener('click', function(ev) {
+      // If no wholesale discount applies, let the form submit normally
+      if (!window.WCDrawer.hasDiscount) return true;
+
+      ev.preventDefault();
+      ev.stopPropagation();
+
+      var originalText = btn.innerHTML;
+      btn.innerHTML = "Processing...";
+      btn.disabled = true;
+
+      // Fetch latest cart
+      fetch('/cart.js?_=' + Date.now(), {
+        headers: { 'Content-Type': 'application/json' }
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(cart) {
+        var postData = {
+          cart: cart,
+          countryCode: countryCode,
+          customer: customerData,
+          marketId: marketId,
+          note: cart.note || "",
+          note_attributes: [],
+          shop_slug: shopSlug
+        };
+
+        var savedCode = sawCookies.getItem("saw_discount_code");
+        if (savedCode) postData.discount_code_cart = savedCode;
+
+        return fetch(baseUrl + "/api/v1/cart-check-discounts?checkout=draft", {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json; charset=utf-8' },
+          body: JSON.stringify(postData)
+        });
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(res) {
+        if (typeof res.invoice_url !== 'string') {
+          // No draft created — fall back to /cart so cart page handles it
+          window.location.href = '/cart';
+          return;
+        }
+        if (res.status === 'OK') {
+          // Poll until invoice URL is ready, then redirect
+          pollInvoice(res.invoice_url, 0);
+        } else {
+          btn.innerHTML = originalText;
+          btn.disabled = false;
+          alert(res.status || "Could not process checkout");
+        }
+      })
+      .catch(function(err) {
+        console.error('[WCDrawer] checkout error:', err);
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        // Fallback: send them to cart page where the full Orbit script runs
+        window.location.href = '/cart';
+      });
+    });
+  }
+
+  function pollInvoice(url, attempt) {
+    if (attempt >= 10) {
+      window.location.assign(url);
+      return;
+    }
+    fetch(url, { method: 'HEAD' })
+      .then(function(r) {
+        if (r.status < 400) {
+          window.location.assign(url);
+        } else {
+          setTimeout(function() { pollInvoice(url, attempt + 1); }, 1000);
+        }
+      })
+      .catch(function() {
+        setTimeout(function() { pollInvoice(url, attempt + 1); }, 1000);
+      });
+  }
+
+  // --- Hide dynamic checkout buttons in drawer for tagged customers ---
+  function hideDynamicCheckoutButtons() {
+    var drawer = document.querySelector('cart-drawer #CartDrawer');
+    if (!drawer) return;
+    var selectors = [
+      '.shopify-payment-button',
+      '.additional-checkout-button',
+      '[data-shopify="payment-button"]',
+      '.dynamic-checkout__content'
+    ];
+    selectors.forEach(function(sel) {
+      drawer.querySelectorAll(sel).forEach(function(el) { el.style.display = 'none'; });
+    });
+  }
+
+  // --- Main recalculation entry point ---
+  function recalculate() {
+    fetch('/cart.js?_=' + Date.now(), {
+      headers: { 'Content-Type': 'application/json' }
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(cart) {
+      if (cart.item_count === 0) return;
+
+      var postData = {
+        cart: cart,
+        countryCode: countryCode,
+        customer: customerData,
+        marketId: marketId,
+        shop_slug: shopSlug
+      };
+
+      var savedCode = sawCookies.getItem("saw_discount_code");
+      if (savedCode) postData.discount_code_cart = savedCode;
+
+      return fetch(baseUrl + "/api/v1/cart-check-discounts", {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json; charset=utf-8' },
+        body: JSON.stringify(postData)
+      });
+    })
+    .then(function(r) { return r ? r.json() : null; })
+    .then(function(res) {
+      if (!res) return;
+      updateDrawerTotals(res);
+      attachCheckoutHandler();
+      hideDynamicCheckoutButtons();
+    })
+    .catch(function(err) {
+      console.error('[WCDrawer] recalculate error:', err);
+    });
+  }
+
+  // Expose globally
+  window.WCDrawer = {
+    initialized: true,
+    hasDiscount: false,
+    recalculate: recalculate
+  };
+
+  // Run once on page load (in case drawer is pre-rendered with items)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(recalculate, 100);
+    });
+  } else {
+    setTimeout(recalculate, 100);
+  }
+
+  // Re-run whenever drawer opens
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('#cart-icon-bubble') || e.target.closest('[data-cart-drawer-trigger]')) {
+      setTimeout(recalculate, 300);
+    }
+  });
+})();
+</script>
+
+{% endif %}

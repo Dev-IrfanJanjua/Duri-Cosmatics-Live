@@ -107,7 +107,7 @@
       "settings": {
         "heading": "Frequently Asked Questions",
         "button_label": "SHOP NOW",
-        "button_link": "shopify://collections/all",
+        "button_link": "shopify:\/\/collections\/all",
         "padding_top": 30,
         "padding_bottom": 80,
         "mbl_padding_top": 40,

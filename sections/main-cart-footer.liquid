@@ -60,7 +60,7 @@
 
                 <div class="totals">
                   <h2 class="totals__total">{{ 'sections.cart.estimated_total' | t }}</h2>
-                  <p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p>
+                  <span style="display: block; text-align: right;" class="saw-extra-note"></span><span class="saw-cart-original-total"><p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p></span><br><span class="saw-cart-total"></span>
                 </div>
 
                 <small class="tax-note caption-large rte">
@@ -186,3 +186,5 @@
   ]
 }
 {% endschema %}
+
+{% render 'orbit_wholesale_cart' %}

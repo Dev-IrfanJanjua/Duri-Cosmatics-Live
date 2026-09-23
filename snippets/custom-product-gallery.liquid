@@ -15,6 +15,13 @@
 
     {% comment %} Badge {% endcomment %}
     {%- for tag in product.tags -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: tag %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
       {%- assign tag_lower = tag | downcase -%}
       {%- if tag_lower contains 'new' -%}
         <span class="cpg-badge">NEW ARRIVAL</span>
@@ -29,6 +36,13 @@
     <div class="swiper cpg-main-swiper">
       <div class="swiper-wrapper">
         {%- for media in product.media -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: media %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
           <div class="swiper-slide cpg-main-slide" data-media-id="{{ media.id }}" data-media-type="{{ media.media_type }}">
 
             {%- if media.media_type == 'image' -%}
@@ -53,6 +67,13 @@
                   poster="{{ media.preview_image | image_url: width: 1200 }}"
                 >
                   {%- for source in media.sources -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: source %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
                     <source src="{{ source.url }}" type="{{ source.mime_type }}">
                   {%- endfor -%}
                 </video>
@@ -149,6 +170,13 @@
       <div class="swiper cpg-thumb-swiper">
         <div class="swiper-wrapper">
           {%- for media in product.media -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "orbit_wholesale_product_visibility", resource: media %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Hub_Product_Visibility_For_Loop End {%- endcomment -%}
+
             <div class="swiper-slide cpg-thumb-slide {% if forloop.first %}is-active{% endif %}" data-index="{{ forloop.index0 }}">
 
               {%- if media.media_type == 'image' -%}

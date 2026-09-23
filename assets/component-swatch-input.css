@@ -85,3 +85,23 @@
   transform: rotate(-45deg);
   transform-origin: left;
 }
+
+/* Brand-consistent swatch styling for the product page variant picker */
+.product-form__input--swatch .swatch-input__input:active + .swatch-input__label,
+.product-form__input--swatch .swatch-input__input:checked + .swatch-input__label {
+  outline-color: #7C0732;
+}
+
+.product-form__input--swatch .swatch-input__input + .swatch-input__label:hover,
+.product-form__input--swatch .swatch-input__input:hover + .swatch-input__label {
+  outline-color: rgba(124, 7, 50, 0.4);
+}
+
+.product-form__input--swatch .swatch-input__input:focus-visible + .swatch-input__label {
+  outline-color: rgba(124, 7, 50, 0.5);
+}
+
+.product-form__input--swatch .swatch-input__input:active:focus-visible + .swatch-input__label,
+.product-form__input--swatch .swatch-input__input:checked:focus-visible + .swatch-input__label {
+  outline-color: #7C0732;
+}

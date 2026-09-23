@@ -27,11 +27,11 @@
         "mbl_padding_top": 10,
         "mbl_padding_bottom": 10,
         "back-color": "",
-        "cheeseBnrImg": "shopify://shop_images/Component_9.png",
-        "cheeseBnrImg1": "shopify://shop_images/Component_60.png",
+        "cheeseBnrImg": "shopify:\/\/shop_images\/Component_9.png",
+        "cheeseBnrImg1": "shopify:\/\/shop_images\/Component_60.png",
         "heading": "Since 1989: Vegan Care for Strong Nails",
         "headingMBL": "",
-        "subtextt": "<p>Crafted with Care, Since 1989: A Family Legacy of Vegan Innovation and Science-Backed Excellence, Empowering Women Worldwide to Grow Strong, Healthy, and Beautifully Natural Nails</p>",
+        "subtextt": "<p>Crafted with Care, Since 1989: A Family Legacy of Vegan Innovation and Science-Backed Excellence, Empowering Women Worldwide to Grow Strong, Healthy, and Beautifully Natural Nails<\/p>",
         "button_label": "SHOP NOW",
         "button_label4": "Request Form",
         "button_label5": "CALL US",
@@ -52,11 +52,11 @@
         "mbl_padding_top": 0,
         "mbl_padding_bottom": 0,
         "back-color": "",
-        "cheeseBnrImg": "shopify://shop_images/Component_9_fd5f9eb5-d101-48c0-9849-25c3beccb433.png",
-        "cheeseBnrImg1": "shopify://shop_images/Component_9_1.png",
+        "cheeseBnrImg": "shopify:\/\/shop_images\/Component_9_fd5f9eb5-d101-48c0-9849-25c3beccb433.png",
+        "cheeseBnrImg1": "shopify:\/\/shop_images\/Component_9_1.png",
         "heading": "Since 1989: Vegan Care for Strong Nails",
         "headingMBL": "",
-        "subtextt": "<p>Crafted with Care, Since 1989: A Family Legacy of Vegan Innovation and Science-Backed Excellence, Empowering Women Worldwide to Grow Strong, Healthy, and Beautifully Natural Nails.</p>",
+        "subtextt": "<p>Crafted with Care, Since 1989: A Family Legacy of Vegan Innovation and Science-Backed Excellence, Empowering Women Worldwide to Grow Strong, Healthy, and Beautifully Natural Nails.<\/p>",
         "button_label": "SHOP NOW",
         "button_label4": "Request Form",
         "button_label5": "CALL US",
@@ -72,8 +72,8 @@
       "disabled": true,
       "name": "Custom Banner Section",
       "settings": {
-        "img_desk": "shopify://shop_images/Component_9_fd5f9eb5-d101-48c0-9849-25c3beccb433.png",
-        "img_mob": "shopify://shop_images/Component_9_1.png",
+        "img_desk": "shopify:\/\/shop_images\/Component_9_fd5f9eb5-d101-48c0-9849-25c3beccb433.png",
+        "img_mob": "shopify:\/\/shop_images\/Component_9_1.png",
         "title": "Since 1989: Vegan Care for Strong Nails",
         "text_colot": "#ffffff",
         "description": "Crafted with Care, Since 1989: A Family Legacy of Vegan Innovation and Science-Backed Excellence, Empowering Women Worldwide to Grow Strong, Healthy, and Beautifully Natural Nails",
@@ -94,56 +94,56 @@
         "feature_EnGMPg": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/SVG_3.svg",
+            "icon": "shopify:\/\/shop_images\/SVG_3.svg",
             "title": "Non-Toxic Formula"
           }
         },
         "feature_hHD7cB": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/SVG_4.svg",
+            "icon": "shopify:\/\/shop_images\/SVG_4.svg",
             "title": "CRUELTY-Free"
           }
         },
         "feature_3TMyqy": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/SVG_2.svg",
+            "icon": "shopify:\/\/shop_images\/SVG_2.svg",
             "title": "Long-Lasting"
           }
         },
         "feature_LN8cQi": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/SVG_1.svg",
+            "icon": "shopify:\/\/shop_images\/SVG_1.svg",
             "title": "Strengthens Nails"
           }
         },
         "feature_qHr8NU": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/SVG_3.svg",
+            "icon": "shopify:\/\/shop_images\/SVG_3.svg",
             "title": "Non-Toxic Formula"
           }
         },
         "feature_CQe4Xk": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/SVG_4.svg",
+            "icon": "shopify:\/\/shop_images\/SVG_4.svg",
             "title": "CRUELTY-Free"
           }
         },
         "feature_4CzCbE": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/SVG_2.svg",
+            "icon": "shopify:\/\/shop_images\/SVG_2.svg",
             "title": "Long-Lasting"
           }
         },
         "feature_gTpYEt": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/SVG_1.svg",
+            "icon": "shopify:\/\/shop_images\/SVG_1.svg",
             "title": "Strengthens Nails"
           }
         }
@@ -175,28 +175,28 @@
         "feature_jwFBRN": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/manicure.svg",
+            "icon": "shopify:\/\/shop_images\/manicure.svg",
             "title": "Strengthens Nails"
           }
         },
         "feature_TtRhzF": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/Layer_1.svg",
+            "icon": "shopify:\/\/shop_images\/Layer_1.svg",
             "title": "Long-Lasting"
           }
         },
         "feature_NmBbfG": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/Layer_1_1.svg",
+            "icon": "shopify:\/\/shop_images\/Layer_1_1.svg",
             "title": "Non-Toxic Formula"
           }
         },
         "feature_6RaYck": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/SVG_11.svg",
+            "icon": "shopify:\/\/shop_images\/SVG_11.svg",
             "title": "Gluten-Free"
           }
         }
@@ -219,49 +219,49 @@
         "video_product_8rDxqP": {
           "type": "video_product",
           "settings": {
-            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "video": "shopify:\/\/files\/videos\/Rejuvacote vid test.mp4",
             "product": "neon-pink-nail-polish-792-flamingo-frose"
           }
         },
         "video_product_Rq7dQx": {
           "type": "video_product",
           "settings": {
-            "video": "shopify://files/videos/billo1_rejuvacote 1_.mp4",
+            "video": "shopify:\/\/files\/videos\/billo1_rejuvacote 1_.mp4",
             "product": "002d-sand-java"
           }
         },
         "video_product_ctREDr": {
           "type": "video_product",
           "settings": {
-            "video": "shopify://files/videos/30PEALPINKVIDEO_af95ed9e-a233-42ee-823e-a554e4815340.MOV",
+            "video": "shopify:\/\/files\/videos\/30PEALPINKVIDEO_af95ed9e-a233-42ee-823e-a554e4815340.MOV",
             "product": "003d-minty-breeze"
           }
         },
         "video_product_Nbw8ep": {
           "type": "video_product",
           "settings": {
-            "video": "shopify://files/videos/welcomejunepop_d8727356-83ea-48db-9728-e1023c6d10b3.mp4",
+            "video": "shopify:\/\/files\/videos\/welcomejunepop_d8727356-83ea-48db-9728-e1023c6d10b3.mp4",
             "product": "004d-aphrodites-kiss"
           }
         },
         "video_product_AMDBqe": {
           "type": "video_product",
           "settings": {
-            "video": "shopify://files/videos/Valentine's Pouring out Nail Polishes .MP4",
+            "video": "shopify:\/\/files\/videos\/Valentine's Pouring out Nail Polishes .MP4",
             "product": "007d-to-the-moon-back"
           }
         },
         "video_product_XPqb4D": {
           "type": "video_product",
           "settings": {
-            "video": "shopify://files/videos/Rejuvacote vid test.mp4",
+            "video": "shopify:\/\/files\/videos\/Rejuvacote vid test.mp4",
             "product": "neon-pink-nail-polish-792-flamingo-frose"
           }
         },
         "video_product_wNawQW": {
           "type": "video_product",
           "settings": {
-            "video": "shopify://files/videos/billo1_rejuvacote 1_.mp4",
+            "video": "shopify:\/\/files\/videos\/billo1_rejuvacote 1_.mp4",
             "product": "002d-sand-java"
           }
         }
@@ -279,7 +279,7 @@
       "settings": {
         "heading": "Loved by Thousands of Women Who Do It All",
         "description": "Join thousands of women who do it all and trust in our products to keep them stylish, confident, and unstoppable every day.",
-        "play_icon_svg": "<svg width=\"60\" height=\"60\" viewbox=\"0 0 24 24\" fill=\"white\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"rgba(0,0,0,0.6)\"></circle><polygon points=\"10,8 16,12 10,16\" fill=\"white\"></polygon></svg>",
+        "play_icon_svg": "<svg width=\"60\" height=\"60\" viewbox=\"0 0 24 24\" fill=\"white\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"rgba(0,0,0,0.6)\"><\/circle><polygon points=\"10,8 16,12 10,16\" fill=\"white\"><\/polygon><\/svg>",
         "mobile_layout": "swiper",
         "padding_top_desktop": 48,
         "padding_bottom_desktop": 56,
@@ -297,10 +297,10 @@
         "mbl_padding_bottom": 0,
         "back-color": "",
         "btn_color": "#7c0732",
-        "duri-ready-img": "shopify://shop_images/image_1445_e057c268-52b1-466c-9956-d25041b4db87.png",
+        "duri-ready-img": "shopify:\/\/shop_images\/image_1445_e057c268-52b1-466c-9956-d25041b4db87.png",
         "duriFirsttext": "About Duri Cosmetics",
-        "duriFirsttext2": "<p>Duri is a nail-focused cosmetic company headquartered in Brooklyn, New York. It’s a small, family-owned business, now in its third generation, that has helped millions of people repair their nails and feel good about their fingertips. <br/>Instagram<br/><br/>Founded in 1990 by a family with expertise in chemistry and knowledge of the paint industry, Duri launched its line of premium salon-quality nail and body care products aimed at complementing natural beauty.</p>",
-        "duri-button_link": "shopify://collections/all",
+        "duriFirsttext2": "<p>Duri is a nail-focused cosmetic company headquartered in Brooklyn, New York. It’s a small, family-owned business, now in its third generation, that has helped millions of people repair their nails and feel good about their fingertips. <br\/>Instagram<br\/><br\/>Founded in 1990 by a family with expertise in chemistry and knowledge of the paint industry, Duri launched its line of premium salon-quality nail and body care products aimed at complementing natural beauty.<\/p>",
+        "duri-button_link": "shopify:\/\/collections\/all",
         "duri-btnbutton_label": "Shop Now"
       }
     },
@@ -313,9 +313,9 @@
         "mbl_padding_top": 0,
         "mbl_padding_bottom": 0,
         "back-color": "",
-        "duri-ready-img": "shopify://shop_images/ccd221fb81ad93317cc6705dd304f83dca12afde.png",
+        "duri-ready-img": "shopify:\/\/shop_images\/ccd221fb81ad93317cc6705dd304f83dca12afde.png",
         "duriFirsttext": "Our Philosophy",
-        "duriFirsttext2": "<p>We believe nail care should be as healthy as it is beautiful. That’s why our products are vegan, cruelty-free, paraben-free, and long-lasting—crafted with clean ingredients in state-of-the-art U.S. facilities.</p><ul><li>Vegan & Cruelty-Free – ethically made.</li><li>No Harsh Chemicals – paraben-free formulas.</li><li>Made in the USA – clean, quality ingredients.</li></ul>",
+        "duriFirsttext2": "<p>We believe nail care should be as healthy as it is beautiful. That’s why our products are vegan, cruelty-free, paraben-free, and long-lasting—crafted with clean ingredients in state-of-the-art U.S. facilities.<\/p><ul><li>Vegan & Cruelty-Free – ethically made.<\/li><li>No Harsh Chemicals – paraben-free formulas.<\/li><li>Made in the USA – clean, quality ingredients.<\/li><\/ul>",
         "duri-button_link": "#",
         "duri-btnbutton_label": ""
       }
@@ -326,21 +326,21 @@
         "icon_rA4GpJ": {
           "type": "icon",
           "settings": {
-            "icon": "shopify://shop_images/icon.svg_-_2025-08-21T063640.411_1.svg",
+            "icon": "shopify:\/\/shop_images\/icon.svg_-_2025-08-21T063640.411_1.svg",
             "label": "Eco Conscious"
           }
         },
         "icon_WLJhPw": {
           "type": "icon",
           "settings": {
-            "icon": "shopify://shop_images/icon.svg_-_2025-08-21T064022.603_1.svg",
+            "icon": "shopify:\/\/shop_images\/icon.svg_-_2025-08-21T064022.603_1.svg",
             "label": "18 Free"
           }
         },
         "icon_yNFN9i": {
           "type": "icon",
           "settings": {
-            "icon": "shopify://shop_images/icon.svg_-_2025-08-21T064242.207_1.svg",
+            "icon": "shopify:\/\/shop_images\/icon.svg_-_2025-08-21T064242.207_1.svg",
             "label": "Global Care"
           }
         }
@@ -354,7 +354,7 @@
       "settings": {
         "heading": "We Are Proudly",
         "text": "We love creating nail care that inspires confidence and never compromises on quality. | Our formulas are 18-free, packed with nourishing ingredients, and safe for all nail types. | We minimize our environmental footprint with sustainable practices wherever possible. | Experience the global essence of high-quality nail care crafted for you!",
-        "image": "shopify://shop_images/presentation_image_16.png"
+        "image": "shopify:\/\/shop_images\/presentation_image_16.png"
       }
     },
     "duri_product_ready_geKtzm": {
@@ -366,8 +366,8 @@
         "mbl_padding_top": 40,
         "mbl_padding_bottom": 0,
         "back-color": "",
-        "duri-ready-img": "shopify://shop_images/presentation_image_13.png",
-        "duriFirsttext": "Build A Kit As Unique  As You Are!",
+        "duri-ready-img": "shopify:\/\/shop_images\/presentation_image_13.png",
+        "duriFirsttext": "Build A Kit As Unique \u2028As You Are!",
         "duriFirsttext2": "Design a nail kit that’s as unique as you are! With our customizable options, you’ll have everything you need for a flawless, salon-quality manicure from the comfort of your home.",
         "duri-button_link": "#",
         "duri-btnbutton_label": "Shop Now"

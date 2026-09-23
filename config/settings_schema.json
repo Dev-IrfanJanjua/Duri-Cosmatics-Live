@@ -4,8 +4,8 @@
     "theme_name": "Dawn",
     "theme_version": "15.4.0",
     "theme_author": "Shopify",
-    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
-    "theme_support_url": "https://support.shopify.com/"
+    "theme_documentation_url": "https:\/\/help.shopify.com\/manual\/online-store\/themes",
+    "theme_support_url": "https:\/\/support.shopify.com\/"
   },
   {
     "name": "t:settings_schema.logo.name",
@@ -1450,7 +1450,7 @@
         "label": "t:sections.all.colors.label",
         "default": "scheme-1"
       },
-       {
+      {
         "type": "text",
         "id": "cart_upsell_heading",
         "label": "Upsell heading",
@@ -1463,23 +1463,23 @@
         "limit": 5
       },
       {
-      "type": "number",
-      "id": "free_shipping_goal",
-      "label": "Free shipping goal (in store currency)",
-      "default": 100
-    },
-    {
-      "type": "text",
-      "id": "free_shipping_text",
-      "label": "Free shipping progress text",
-      "default": "Spend [amount] more to unlock free shipping!"
-    },
-    {
-      "type": "text",
-      "id": "free_shipping_success",
-      "label": "Free shipping success text",
-      "default": "You unlocked free shipping!"
-    }
+        "type": "number",
+        "id": "free_shipping_goal",
+        "label": "Free shipping goal (in store currency)",
+        "default": 100
+      },
+      {
+        "type": "text",
+        "id": "free_shipping_text",
+        "label": "Free shipping progress text",
+        "default": "Spend [amount] more to unlock free shipping!"
+      },
+      {
+        "type": "text",
+        "id": "free_shipping_success",
+        "label": "Free shipping success text",
+        "default": "You unlocked free shipping!"
+      }
     ]
   }
 ]
