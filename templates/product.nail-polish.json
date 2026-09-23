@@ -78,8 +78,16 @@
           "disabled": true,
           "settings": {}
         },
+        "color_variant_picker_QzreUP": {
+          "type": "color_variant_picker",
+          "settings": {
+            "heading": "Select your color:",
+            "color_option_name": "Color"
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
+          "disabled": true,
           "settings": {
             "picker_type": "button",
             "swatch_shape": "square"
@@ -150,6 +158,7 @@
         "tubs_selector_jnfaQC",
         "purchase_type_bCVdEG",
         "price",
+        "color_variant_picker_QzreUP",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",

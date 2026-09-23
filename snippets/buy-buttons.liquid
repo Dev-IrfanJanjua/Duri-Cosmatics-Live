@@ -272,18 +272,29 @@
 {% if showQty %}
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    var priceBtn = document.getElementById("one-time-price-btn");
-    if (!priceBtn || typeof subscribe !== "function") return;
+    if (typeof subscribe !== "function") return;
+
+    var submitButtonId = "ProductSubmitButton-{{ section_id }}";
 
     subscribe(PUB_SUB_EVENTS.variantChange, function (event) {
       if (event.data.sectionId !== "{{ section_id }}") return;
 
-      var updatedPriceBtn = event.data.html.getElementById("one-time-price-btn");
-      if (!updatedPriceBtn) return;
+      // toggleSubmitButton() resets .button-text to a plain text node just before
+      // this fires, so the price markup has to be restored wholesale from the
+      // freshly rendered section rather than patched in place.
+      var currentButton = document.getElementById(submitButtonId);
+      var updatedButton = event.data.html.getElementById(submitButtonId);
+      if (!currentButton || !updatedButton) return;
 
-      priceBtn.innerHTML = updatedPriceBtn.innerHTML;
-      priceBtn.dataset.mainPrice = updatedPriceBtn.dataset.mainPrice;
-      priceBtn.dataset.mainCompare = updatedPriceBtn.dataset.mainCompare;
+      var currentText = currentButton.querySelector(".button-text");
+      var updatedText = updatedButton.querySelector(".button-text");
+      if (!currentText || !updatedText) return;
+
+      currentText.innerHTML = updatedText.innerHTML;
+
+      // Replacing .button-text detaches #one-time-price-btn, so anything layering
+      // its own total on top (the pair-with bundle) has to recalculate afterwards.
+      document.dispatchEvent(new CustomEvent("atc-price:updated"));
     });
   });
 </script>

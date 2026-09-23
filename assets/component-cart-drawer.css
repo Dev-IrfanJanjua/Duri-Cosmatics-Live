@@ -959,6 +959,11 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
 .custom-drawer .product-option {
     display: none;
 }
+/* line item properties are the exception: the rule above hides the price and the
+   variant options, both of which this drawer already renders elsewhere */
+.custom-drawer .product-option.cart-item__property {
+    display: block;
+}
 .custom-drawer .cart-items .cart-item__quantity  .price--end {
     color: #3B3B3B;
     font-family: PP Mori;

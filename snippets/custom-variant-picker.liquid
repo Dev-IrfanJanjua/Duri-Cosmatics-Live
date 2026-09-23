@@ -20,6 +20,7 @@
     margin: 0;
     padding: 0;
     border: 0;
+    max-width: 100%;
   }
 
   .custom-color-picker__heading {
@@ -38,6 +39,7 @@
     margin: 0 0 10px;
     font-family: PP Mori;
     font-size: 14px;
+    justify-content: space-between;
   }
 
   .custom-color-picker__label {
@@ -57,11 +59,11 @@
 
   .custom-color-picker__swatch {
     display: block;
-    width: 20px;
-    height: 20px;
+    width: 50px;
+    height: 50px;
     border-radius: 2px;
     outline: none;
-    border: 1px solid transparent;
+    border: 1px solid #00000033;
     cursor: pointer;
     overflow: hidden;
     position: relative;
@@ -92,15 +94,34 @@
 
 {%- unless product.has_only_default_variant -%}
   {%- liquid
-    assign color_option_name = block.settings.color_option_name | default: 'Color'
-    assign color_option = null
+    assign color_option_name = block.settings.color_option_name | default: 'Color' | downcase
+    assign color_option = nil
+
     for option in product.options_with_values
-      if option.name == color_option_name
+      assign this_option_name = option.name | downcase
+      if this_option_name == color_option_name
         assign color_option = option
+        break
       endif
     endfor
+
+    if color_option == nil
+      for option in product.options_with_values
+        assign swatch_count = option.values | map: 'swatch' | compact | size
+        if swatch_count > 0
+          assign color_option = option
+          break
+        endif
+      endfor
+    endif
+
+    if color_option == nil
+      assign color_option = product.options_with_values.first
+    endif
+
+    assign color_values_count = color_option.values | size
   -%}
-  {%- if color_option and color_option.values.size > 0 -%}
+  {%- if color_values_count > 0 -%}
     <variant-selects
       id="CustomColorVariantSelects-{{ section.id }}"
       data-section="{{ section.id }}"
@@ -111,7 +132,9 @@
           {{ block.settings.heading | default: 'Select your color' }}
         </legend>
         <div class="custom-color-picker__selected-row">
-          <span class="custom-color-picker__label">{{ color_option.name }}:</span>
+          <span class="custom-color-picker__label">
+            {{- block.settings.color_option_name | default: color_option.name -}}:
+          </span>
           <span class="custom-color-picker__selected-value" data-selected-value>
             {{- color_option.selected_value -}}
           </span>
@@ -155,7 +178,7 @@
               title="{{ value | escape }}"
             >
               {%- if swatch_image != blank -%}
-                {{ swatch_image | image_url: width: 40 | image_tag: widths: '20,40', alt: value, loading: 'lazy' }}
+                {{ swatch_image | image_url: width: 500 | image_tag: widths: '20,40,50,60,100,200,300', alt: value, loading: 'lazy' }}
               {%- else -%}
                 <span
                   class="custom-color-picker__swatch-fallback"
@@ -167,6 +190,18 @@
           {%- endfor -%}
         </div>
       </fieldset>
+
+      {%- comment -%}
+        Submitted with the product form as a cart line item property. Lives inside
+        <variant-selects> so product-info's updateOptionValues() swaps it for the
+        freshly rendered value on every variant change.
+      {%- endcomment -%}
+      <input
+        type="hidden"
+        name="properties[{{ color_option.name }}]"
+        value="{{ color_option.selected_value | escape }}"
+        form="{{ product_form_id }}"
+      >
 
       <script type="application/json" data-selected-variant>
         {{ product.selected_or_first_available_variant | json }}

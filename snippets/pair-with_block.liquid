@@ -216,18 +216,7 @@ document.addEventListener("DOMContentLoaded", function(){
   const form = document.querySelector('form[action="/cart/add"]');
   const checkboxes = document.querySelectorAll(".pair-with-input");
 
-  const priceElement = document.getElementById("one-time-price-btn");
-  const compareElement = document.getElementById("bundle-compare-price");
-
-  if(!priceElement || !form) return;
-
-  const basePrice = parseInt(priceElement.dataset.mainPrice) || 0;
-  {% comment %} const baseCompare = parseInt(priceElement.dataset.mainCompare) || 0; {% endcomment %}
-   let baseCompare = parseInt(priceElement.dataset.mainCompare) || 0;
-
-    if(!baseCompare){
-    baseCompare = basePrice;
-    }
+  if(!form || !document.getElementById("one-time-price-btn")) return;
 
   function formatMoney(cents){
     return (cents/100).toLocaleString('en-US',{
@@ -236,7 +225,28 @@ document.addEventListener("DOMContentLoaded", function(){
     });
   }
 
+  function appendHidden(name, value){
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = name;
+    input.value = value;
+    input.classList.add("pair-hidden-input");
+    form.appendChild(input);
+  }
+
   function updateBundle(){
+
+    /* re-query every time: buy-buttons re-renders .button-text on each variant
+       change, which detaches any previously held reference to these nodes */
+    const priceElement = document.getElementById("one-time-price-btn");
+    const compareElement = document.getElementById("bundle-compare-price");
+    if(!priceElement) return;
+
+    const basePrice = parseInt(priceElement.dataset.mainPrice) || 0;
+    let baseCompare = parseInt(priceElement.dataset.mainCompare) || 0;
+    if(!baseCompare){
+      baseCompare = basePrice;
+    }
 
     let totalPrice = basePrice;
     let totalCompare = baseCompare;
@@ -244,14 +254,41 @@ document.addEventListener("DOMContentLoaded", function(){
     /* remove old hidden inputs */
     form.querySelectorAll(".pair-hidden-input").forEach(el => el.remove());
 
+    const mainIdInput = form.querySelector('input[name="id"]');
+    const hasSelection = Array.from(checkboxes).some(cb => cb.checked);
+
     let index = 0;
+
+    /* /cart/add ignores the single-item fields (id, properties[...]) as soon as an
+       items[] array is present, so the main product has to join the array too —
+       otherwise it is dropped from the cart along with its line item properties */
+    if(hasSelection && mainIdInput){
+      const qtyInput = form.querySelector('[name="quantity"]');
+
+      appendHidden("items[0][id]", mainIdInput.value);
+      appendHidden("items[0][quantity]", qtyInput ? qtyInput.value : 1);
+
+      /* form.elements (not querySelectorAll) so inputs associated via the form=""
+         attribute from outside the <form> — like the variant picker's — are seen */
+      Array.from(form.elements).forEach(prop => {
+        if(!prop.name || prop.name.indexOf("properties[") !== 0 || !prop.value) return;
+        appendHidden("items[0][properties][" + prop.name.slice(11, -1) + "]", prop.value);
+      });
+
+      /* flagged so we only ever re-enable an input we disabled ourselves — the
+         theme renders it disabled on its own when the variant is sold out */
+      mainIdInput.disabled = true;
+      mainIdInput.dataset.pairDisabled = "true";
+      index = 1;
+    } else if(mainIdInput && mainIdInput.dataset.pairDisabled === "true"){
+      mainIdInput.disabled = false;
+      delete mainIdInput.dataset.pairDisabled;
+    }
 
     checkboxes.forEach(cb => {
 
       if(cb.checked){
 
-        {% comment %} const price = parseInt(cb.dataset.price) || 0;
-        const compare = parseInt(cb.dataset.comparePrice) || 0; {% endcomment %}
         const price = parseInt(cb.dataset.price) || 0;
         let compare = parseInt(cb.dataset.comparePrice) || 0;
 
@@ -259,26 +296,12 @@ document.addEventListener("DOMContentLoaded", function(){
         if(!compare){
         compare = price;
         }
-        const variantId = cb.dataset.variantId;
 
         totalPrice += price;
         totalCompare += compare;
 
-        /* hidden input for ATC */
-        const idInput = document.createElement("input");
-        idInput.type = "hidden";
-        idInput.name = `items[${index}][id]`;
-        idInput.value = variantId;
-        idInput.classList.add("pair-hidden-input");
-
-        const qtyInput = document.createElement("input");
-        qtyInput.type = "hidden";
-        qtyInput.name = `items[${index}][quantity]`;
-        qtyInput.value = 1;
-        qtyInput.classList.add("pair-hidden-input");
-
-        form.appendChild(idInput);
-        form.appendChild(qtyInput);
+        appendHidden(`items[${index}][id]`, cb.dataset.variantId);
+        appendHidden(`items[${index}][quantity]`, 1);
 
         index++;
 
@@ -287,19 +310,11 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
     /* update selling price */
-    priceElement.childNodes[0].nodeValue = formatMoney(totalPrice) + " ";
+    if(priceElement.childNodes[0]){
+      priceElement.childNodes[0].nodeValue = formatMoney(totalPrice) + " ";
+    }
 
     /* update compare price */
-    {% comment %} if(compareElement){
-
-      if(totalCompare > totalPrice){
-        compareElement.innerText = formatMoney(totalCompare);
-        compareElement.style.display = "inline";
-      }else{
-        compareElement.style.display = "none";
-      }
-
-    } {% endcomment %}
     if(compareElement){
         compareElement.innerText = formatMoney(totalCompare);
         compareElement.style.display = "inline";
@@ -310,6 +325,10 @@ document.addEventListener("DOMContentLoaded", function(){
   checkboxes.forEach(cb=>{
     cb.addEventListener("change", updateBundle);
   });
+
+  /* buy-buttons fires this after it has re-rendered the button for the new
+     variant, so the bundle total is layered back on top of the fresh price */
+  document.addEventListener("atc-price:updated", updateBundle);
 
   updateBundle();
 
