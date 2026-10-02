@@ -47,17 +47,27 @@
           "settings": {
             "title_t": "Select Your Bundle",
             "text1": "Pack of 1",
-            "text2": "Pack of 2",
-            "text3": "Pack of 3",
             "qty_1": "1",
+            "discount_type_1": "percentage",
+            "text2": "Pack of 2",
             "qty_2": "2",
+            "discount_type_2": "percentage",
+            "discount_2": 5,
+            "text3": "Pack of 3",
             "qty_3": "3",
-            "discount": 10
+            "discount_type_3": "percentage",
+            "discount_3": 5,
+            "use_discounted_price": true,
+            "show_tub_compare_price": true,
+            "default_tub": "2"
           }
         },
         "purchase_type_bCVdEG": {
           "type": "purchase_type",
           "settings": {
+            "default_purchase": "onetime",
+            "subscription_discount_type": "percentage",
+            "subscription_discount": 10,
             "text324": "Subscribe and Save 10%",
             "text412": "One time purchase",
             "list_1": "Stay Polished",
@@ -85,6 +95,7 @@
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
+            "show_compare_price": true,
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": false
           }
