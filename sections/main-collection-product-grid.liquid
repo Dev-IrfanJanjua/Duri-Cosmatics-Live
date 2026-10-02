@@ -704,6 +704,24 @@
     border: 1px solid #D99CA580;
 }
 
+/* the stock shadow pseudo-element is redundant under the card's own border */
+.cstm_col-prod_grid_item .card--standard .card__inner:after,
+.cstm_col-prod_grid_item .card--card:after {
+    display: none;
+}
+
+/* contain rather than cover: the box stays a fixed square so rows line up, but a
+   tall bottle is scaled to fit inside it instead of being cropped to fill it */
+.cstm_col-prod_grid_item .card__media .media img {
+    object-fit: contain;
+}
+
+/* .media paints a grey placeholder that would otherwise show either side of a
+   contained image */
+.cstm_col-prod_grid_item .card__media .media {
+    background-color: #fff;
+}
+
 .card__content.cstm_col-prod_card-content {
     padding: 20px;
 }

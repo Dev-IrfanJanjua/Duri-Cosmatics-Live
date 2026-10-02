@@ -256,7 +256,15 @@
         data-main-compare="{{ WCProduct_VariantComparePrice }}"
       >
         {{  WCProduct_VariantPrice | money }}
-        {% if section.settings.cstm_style %}
+        {%- liquid
+          assign show_compare_price = false
+          if section.settings.cstm_style and block.settings.show_compare_price
+            if WCProduct_VariantComparePrice > WCProduct_VariantPrice
+              assign show_compare_price = true
+            endif
+          endif
+        -%}
+        {% if show_compare_price %}
           <span id="bundle-compare-price" class="cstm-btn-comp_price">
             {{ WCProduct_VariantComparePrice | money }}
           </span>

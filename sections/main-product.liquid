@@ -611,6 +611,7 @@
   .main-product .product-form__submit span.compare-price {
       color: #D2D2D2;
       text-decoration: line-through;
+      margin-left: 5px;
   }
   .main-product .product-form__submit {
      font-family: "PP Mori";
@@ -1248,6 +1249,20 @@
               {%- when 'tubs_selector' -%}
                   {% unless customer and customer.tags contains 'SALON' %}
                     {% assign selling_plans = product.selling_plan_groups[0].selling_plans %}
+                      {%- liquid
+                        assign default_tub = block.settings.default_tub | default: '2'
+
+                        # the subscribe and save amount lives on the purchase type block,
+                        # since that is the option it actually discounts
+                        assign sub_discount = 0
+                        assign sub_discount_type = 'percentage'
+                        for b in section.blocks
+                          if b.type == 'purchase_type'
+                            assign sub_discount = b.settings.subscription_discount | default: 0
+                            assign sub_discount_type = b.settings.subscription_discount_type | default: 'percentage'
+                          endif
+                        endfor
+                      -%}
                       <div class="tubs-selector" data-section-id="{{ section.id }}" {{ block.shopify_attributes }}>
                         {% if block.settings.title_t != blank %}
                           <h3 class="tubs-selector_title">{{ block.settings.title_t }}</h3>
@@ -1256,77 +1271,221 @@
 
                           {%- comment -%} OPTION 1 (no discount) {%- endcomment -%}
                           {% assign plan_1 = selling_plans[0].id %}
-                          {% assign orgprice = WCProduct_Price | times: block.settings.qty_1 %}
-                          {% assign comp_price = WCProduct_ComparePrice | times: block.settings.qty_1 %}
-                          {% assign discount = orgprice | times: block.settings.discount | divided_by: 100 %}
-                          {% assign finalprice = orgprice | minus: discount %}
-                          {% assign diffprice = orgprice | minus : finalprice %}
+                          {%- liquid
+                            assign orgprice = WCProduct_Price | times: block.settings.qty_1
+                            assign comp_price = WCProduct_ComparePrice | times: block.settings.qty_1
 
-                          <label class="tub-box">
+                            assign tub_discount = block.settings.discount_1 | default: 0
+                            assign tub_discount_type = block.settings.discount_type_1 | default: 'percentage'
+
+                            if tub_discount_type == 'fixed'
+                              assign discount = tub_discount | times: 100 | round
+                            else
+                              assign discount = orgprice | times: tub_discount | divided_by: 100
+                            endif
+                            if discount > orgprice
+                              assign discount = orgprice
+                            endif
+
+                            assign display_price = orgprice
+                            if block.settings.use_discounted_price
+                              assign display_price = orgprice | minus: discount
+                            endif
+
+                            # taken off the full price, not off an already discounted one, so the saving
+                            # matches the percentage advertised against the struck through price
+                            if sub_discount_type == 'fixed'
+                              assign sub_off = sub_discount | times: 100 | round
+                            else
+                              assign sub_off = orgprice | times: sub_discount | divided_by: 100
+                            endif
+                            if sub_off > orgprice
+                              assign sub_off = orgprice
+                            endif
+
+                            assign finalprice = orgprice | minus: sub_off
+                            assign diffprice = orgprice | minus: finalprice
+
+                            # strike through whichever is genuinely higher, so a discount still reads as
+                            # a saving on products that carry no compare at price
+                            assign compare_display = comp_price
+                            if compare_display < orgprice
+                              assign compare_display = orgprice
+                            endif
+
+                            assign show_tub_compare = false
+                            if block.settings.show_tub_compare_price and compare_display > display_price
+                              assign show_tub_compare = true
+                            endif
+                          -%}
+
+                          <label class="tub-box{% if default_tub == '1' %} selected{% endif %}">
                             <input type="radio" class="qty-input" name="tub_option" value="1"
+                              {% if default_tub == '1' %}checked{% endif %}
                               data-selling-plan="{{ plan_1 }}"
                                   data-qty="{{ block.settings.qty_1 }}"
-                                  org-price="{{ orgprice | money }}"
+                                  org-price="{{ display_price | money }}"
                                   dis-price="{{ finalprice | money }}"
-                                  compare-price="{{ comp_price | default: orgprice | money }}"
+                                  compare-price="{{ compare_display | money }}"
+                                  data-compare-raw="{{ compare_display }}"
+                                  data-org-raw="{{ display_price }}"
+                                  data-dis-raw="{{ finalprice }}"
                                   diff-price="{{ diffprice | money }}">
                             <div class="tub-box-abc">
                               <div class="tubs-text"><strong>{{ block.settings.text1 }}</strong></div>
                               <div class="tubs-price-wrapper">
-                                <div class="tubs-price1">{{ orgprice | money }}</div>
-                                <div class="tubs-price">{{ comp_price | money }}</div>
+                                <div class="tubs-price1">{{ display_price | money }}</div>
+                                {% if show_tub_compare %}
+                                  <div class="tubs-price">{{ compare_display | money }}</div>
+                                {% endif %}
                               </div>
                             </div>
                           </label>
 
                           {%- comment -%} OPTION 2 (10% off) {%- endcomment -%}
                           {% assign plan_2 = selling_plans[1].id %}
-                          {% assign orgprice = WCProduct_Price | times: block.settings.qty_2 %}
-                          {% assign comp_price = WCProduct_ComparePrice | times: block.settings.qty_2 %}
-                          {% assign discount = orgprice | times: block.settings.discount | divided_by: 100 %}
-                          {% assign finalprice = orgprice | minus: discount %}
-                          {% assign diffprice = orgprice | minus : finalprice %}
+                          {%- liquid
+                            assign orgprice = WCProduct_Price | times: block.settings.qty_2
+                            assign comp_price = WCProduct_ComparePrice | times: block.settings.qty_2
 
-                          <label class="tub-box selected">
-                            <input type="radio" class="qty-input" name="tub_option" value="2"  checked
+                            assign tub_discount = block.settings.discount_2 | default: 0
+                            assign tub_discount_type = block.settings.discount_type_2 | default: 'percentage'
+
+                            if tub_discount_type == 'fixed'
+                              assign discount = tub_discount | times: 100 | round
+                            else
+                              assign discount = orgprice | times: tub_discount | divided_by: 100
+                            endif
+                            if discount > orgprice
+                              assign discount = orgprice
+                            endif
+
+                            assign display_price = orgprice
+                            if block.settings.use_discounted_price
+                              assign display_price = orgprice | minus: discount
+                            endif
+
+                            # taken off the full price, not off an already discounted one, so the saving
+                            # matches the percentage advertised against the struck through price
+                            if sub_discount_type == 'fixed'
+                              assign sub_off = sub_discount | times: 100 | round
+                            else
+                              assign sub_off = orgprice | times: sub_discount | divided_by: 100
+                            endif
+                            if sub_off > orgprice
+                              assign sub_off = orgprice
+                            endif
+
+                            assign finalprice = orgprice | minus: sub_off
+                            assign diffprice = orgprice | minus: finalprice
+
+                            # strike through whichever is genuinely higher, so a discount still reads as
+                            # a saving on products that carry no compare at price
+                            assign compare_display = comp_price
+                            if compare_display < orgprice
+                              assign compare_display = orgprice
+                            endif
+
+                            assign show_tub_compare = false
+                            if block.settings.show_tub_compare_price and compare_display > display_price
+                              assign show_tub_compare = true
+                            endif
+                          -%}
+
+                          <label class="tub-box{% if default_tub == '2' %} selected{% endif %}">
+                            <input type="radio" class="qty-input" name="tub_option" value="2"
+                              {% if default_tub == '2' %}checked{% endif %}
                               data-selling-plan="{{ plan_2 }}"
                                   data-qty="{{ block.settings.qty_2 }}"
-                                  org-price="{{ orgprice | money }}"
+                                  org-price="{{ display_price | money }}"
                                   dis-price="{{ finalprice | money }}"
-                                  compare-price="{{ comp_price | default: orgprice | money }}"
+                                  compare-price="{{ compare_display | money }}"
+                                  data-compare-raw="{{ compare_display }}"
+                                  data-org-raw="{{ display_price }}"
+                                  data-dis-raw="{{ finalprice }}"
                                   diff-price="{{ diffprice | money }}">
                             <div class="tub-box-abc">
                               <div class="badge">Most Popular</div>
                               <div class="tubs-text">{{ block.settings.text2 }}</div>
                               <div class="tubs-price-flex">
-                                <div class="tubs-price">{{ comp_price | money }}</div>
-                                <div class="tubs-price1">{{ orgprice | money }}</div>
+                                {% if show_tub_compare %}
+                                  <div class="tubs-price">{{ compare_display | money }}</div>
+                                {% endif %}
+                                <div class="tubs-price1">{{ display_price | money }}</div>
                               </div>
                             </div>
                           </label>
 
                           {%- comment -%} OPTION 3 (15% off) {%- endcomment -%}
                           {% assign plan_3 = selling_plans[2].id %}
-                          {% assign orgprice = WCProduct_Price | times: block.settings.qty_3 %}
-                          {% assign comp_price = WCProduct_ComparePrice | times: block.settings.qty_3 %}
-                          {% assign discount = orgprice | times: block.settings.discount | divided_by: 100 %}
-                          {% assign finalprice = orgprice | minus: discount %}
-                          {% assign diffprice = orgprice | minus : finalprice %}
-                          
-                          <label class="tub-box">
+                          {%- liquid
+                            assign orgprice = WCProduct_Price | times: block.settings.qty_3
+                            assign comp_price = WCProduct_ComparePrice | times: block.settings.qty_3
+
+                            assign tub_discount = block.settings.discount_3 | default: 0
+                            assign tub_discount_type = block.settings.discount_type_3 | default: 'percentage'
+
+                            if tub_discount_type == 'fixed'
+                              assign discount = tub_discount | times: 100 | round
+                            else
+                              assign discount = orgprice | times: tub_discount | divided_by: 100
+                            endif
+                            if discount > orgprice
+                              assign discount = orgprice
+                            endif
+
+                            assign display_price = orgprice
+                            if block.settings.use_discounted_price
+                              assign display_price = orgprice | minus: discount
+                            endif
+
+                            # taken off the full price, not off an already discounted one, so the saving
+                            # matches the percentage advertised against the struck through price
+                            if sub_discount_type == 'fixed'
+                              assign sub_off = sub_discount | times: 100 | round
+                            else
+                              assign sub_off = orgprice | times: sub_discount | divided_by: 100
+                            endif
+                            if sub_off > orgprice
+                              assign sub_off = orgprice
+                            endif
+
+                            assign finalprice = orgprice | minus: sub_off
+                            assign diffprice = orgprice | minus: finalprice
+
+                            # strike through whichever is genuinely higher, so a discount still reads as
+                            # a saving on products that carry no compare at price
+                            assign compare_display = comp_price
+                            if compare_display < orgprice
+                              assign compare_display = orgprice
+                            endif
+
+                            assign show_tub_compare = false
+                            if block.settings.show_tub_compare_price and compare_display > display_price
+                              assign show_tub_compare = true
+                            endif
+                          -%}
+
+                          <label class="tub-box{% if default_tub == '3' %} selected{% endif %}">
                             <input type="radio" class="qty-input" name="tub_option" value="3"
+                              {% if default_tub == '3' %}checked{% endif %}
                               data-selling-plan="{{ plan_3 }}"
                                   data-qty="{{ block.settings.qty_3 }}"
-                                  org-price="{{ orgprice | money }}"
+                                  org-price="{{ display_price | money }}"
                                   dis-price="{{ finalprice | money }}"
-                                  compare-price="{{ comp_price | default: orgprice | money }}"
+                                  compare-price="{{ compare_display | money }}"
+                                  data-compare-raw="{{ compare_display }}"
+                                  data-org-raw="{{ display_price }}"
+                                  data-dis-raw="{{ finalprice }}"
                                   diff-price="{{ diffprice | money }}">
                             <div class="tub-box-abc">
                               <div class="badge dark">Best value</div>
                               <div class="tubs-text"><strong>{{ block.settings.text3 }}</strong></div>
                               <div class="tubs-price-flex">
-                                <div class="tubs-price">{{ comp_price | money }}</div>
-                                <div class="tubs-price1">{{ orgprice | money }}</div>
+                                {% if show_tub_compare %}
+                                  <div class="tubs-price">{{ compare_display | money }}</div>
+                                {% endif %}
+                                <div class="tubs-price1">{{ display_price | money }}</div>
                               </div>
                             </div>
                           </label>
@@ -1353,14 +1512,14 @@
                       <label class="tub-box">
                         <input type="radio" class="qty-input" name="tub_option" value="1"
                               data-qty="{{ block.settings.qty_1 }}"
-                              org-price="{{ orgprice | money }}"
+                              org-price="{{ display_price | money }}"
                               dis-price="{{ finalprice | money }}"
                               diff-price="{{ diffprice | money }}">
                         <div class="tub-box-abc">
                           <div class="tubs-text"><strong>{{ block.settings.text1 }}</strong></div>
                           <div class="tubs-price-wrapper">
-                            <div class="tubs-price1">{{ orgprice | money }}</div>
-                            <div class="tubs-price">{{ comp_price | money }}</div>
+                            <div class="tubs-price1">{{ display_price | money }}</div>
+                            <div class="tubs-price">{{ compare_display | money }}</div>
                           </div>
                         </div>
                       </label>
@@ -1375,15 +1534,15 @@
                       <label class="tub-box selected">
                         <input type="radio" class="qty-input" name="tub_option" value="2"  checked
                               data-qty="{{ block.settings.qty_2 }}"
-                              org-price="{{ orgprice | money }}"
+                              org-price="{{ display_price | money }}"
                               dis-price="{{ finalprice | money }}"
                               diff-price="{{ diffprice | money }}">
                         <div class="tub-box-abc">
                           <div class="badge">Most Popular</div>
                           <div class="tubs-text">{{ block.settings.text2 }}</div>
                           <div class="tubs-price-flex">
-                            <div class="tubs-price">{{ comp_price | money }}</div>
-                            <div class="tubs-price1">{{ orgprice | money }}</div>
+                            <div class="tubs-price">{{ compare_display | money }}</div>
+                            <div class="tubs-price1">{{ display_price | money }}</div>
                           </div>
                         </div>
                       </label>
@@ -1398,15 +1557,15 @@
                       <label class="tub-box">
                         <input type="radio" class="qty-input" name="tub_option" value="3"
                               data-qty="{{ block.settings.qty_3 }}"
-                              org-price="{{ orgprice | money }}"
+                              org-price="{{ display_price | money }}"
                               dis-price="{{ finalprice | money }}"
                               diff-price="{{ diffprice | money }}">
                         <div class="tub-box-abc">
                           <div class="badge dark">Best value</div>
                           <div class="tubs-text"><strong>{{ block.settings.text3 }}</strong></div>
                           <div class="tubs-price-flex">
-                            <div class="tubs-price">{{ comp_price | money }}</div>
-                            <div class="tubs-price1">{{ orgprice | money }}</div>
+                            <div class="tubs-price">{{ compare_display | money }}</div>
+                            <div class="tubs-price1">{{ display_price | money }}</div>
                           </div>
                         </div>
                       </label>
@@ -1417,9 +1576,27 @@
 
               {%- when 'purchase_type' -%}
                 {% unless customer and customer.tags contains 'SALON' %}
+                  {%- liquid
+                    assign default_purchase = block.settings.default_purchase | default: 'subscription'
+                    assign has_subscription = false
+                    if product.selling_plan_groups.size > 0
+                      assign has_subscription = true
+                    endif
+                    # without a selling plan the subscription radio would submit an
+                    # empty plan id and silently add a one time purchase instead
+                    unless has_subscription
+                      assign default_purchase = 'onetime'
+                    endunless
+                  -%}
                   <div class="purchase-options" {{ block.shopify_attributes }}>
-                    <label class="option-box selected">
-                      <input type="radio" name="purchase_type" class="onetime_input" value="">
+                    <label class="option-box{% if default_purchase == 'onetime' %} selected{% endif %}">
+                      <input
+                        type="radio"
+                        name="purchase_type"
+                        class="onetime_input"
+                        value=""
+                        {% if default_purchase == 'onetime' %}checked{% endif %}
+                      >
                       <div class="option-box-abcd">
                         <div class="one-tim-p">
                           <div>
@@ -1435,16 +1612,14 @@
                         <div class="price-newew" id="one-time-price">{{ WCProduct_Price | money }}</div>
                       </div>
                     </label>
-                    <label class="option-box">
+                    {%- if has_subscription -%}
+                    <label class="option-box{% if default_purchase == 'subscription' %} selected{% endif %}">
                       <input
                         type="radio"
                         name="purchase_type"
                         class="subscription_input"
-                        checked
+                        {% if default_purchase == 'subscription' %}checked{% endif %}
                         value="{{ product.selected_or_first_available_selling_plan_allocation.selling_plan.id }}"
-                        {% if product.selected_or_first_available_selling_plan_allocation %}
-                        {% endif %}
-  
                         id="subscribe-option-{{ section.id }}"
                       >
                       <div class="option-box-abcd">
@@ -1533,6 +1708,7 @@
                         </ul>
                       {% endif %}
                     </label>
+                    {%- endif -%}
                   </div>
                 {% endunless %}
 
@@ -2453,6 +2629,13 @@
       "settings": [
         {
           "type": "checkbox",
+          "id": "show_compare_price",
+          "label": "Show compare at price in button",
+          "info": "Only shown when the compare at price is higher than the current price.",
+          "default": true
+        },
+        {
+          "type": "checkbox",
           "id": "show_dynamic_checkout",
           "default": true,
           "label": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.label",
@@ -2703,13 +2886,11 @@
         }
       ]
     },
-
     {
       "type": "new-description",
       "name": "new-description",
       "settings": []
     },
-
     {
       "type": "tubs_selector",
       "name": "Tubs Quantity Selector",
@@ -2721,59 +2902,210 @@
           "label": "Title"
         },
         {
+          "type": "header",
+          "content": "Quantity option 1"
+        },
+        {
           "type": "text",
           "id": "text1",
           "default": "1 Tub",
-          "label": "Tubs Name"
+          "label": "Option name"
+        },
+        {
+          "type": "text",
+          "id": "qty_1",
+          "label": "Quantity",
+          "default": "1"
+        },
+        {
+          "type": "select",
+          "id": "discount_type_1",
+          "label": "Discount type",
+          "options": [
+            {
+              "value": "percentage",
+              "label": "Percentage off (%)"
+            },
+            {
+              "value": "fixed",
+              "label": "Fixed amount off"
+            }
+          ],
+          "default": "percentage"
+        },
+        {
+          "type": "number",
+          "id": "discount_1",
+          "label": "Discount amount",
+          "info": "Percentage, or a flat amount in your store currency. Leave empty for no discount on this quantity."
+        },
+        {
+          "type": "header",
+          "content": "Quantity option 2"
         },
         {
           "type": "text",
           "id": "text2",
           "default": "2 Tub",
-          "label": "Tubs Name"
+          "label": "Option name"
+        },
+        {
+          "type": "text",
+          "id": "qty_2",
+          "label": "Quantity",
+          "default": "2"
+        },
+        {
+          "type": "select",
+          "id": "discount_type_2",
+          "label": "Discount type",
+          "options": [
+            {
+              "value": "percentage",
+              "label": "Percentage off (%)"
+            },
+            {
+              "value": "fixed",
+              "label": "Fixed amount off"
+            }
+          ],
+          "default": "percentage"
+        },
+        {
+          "type": "number",
+          "id": "discount_2",
+          "label": "Discount amount",
+          "info": "Percentage, or a flat amount in your store currency. Leave empty for no discount on this quantity."
+        },
+        {
+          "type": "header",
+          "content": "Quantity option 3"
         },
         {
           "type": "text",
           "id": "text3",
           "default": "3 Tub",
-          "label": "Tubs Name"
-        },
-
-        {
-          "type": "text",
-          "id": "qty_1",
-          "label": "Quantity for Option 1",
-          "default": "1"
-        },
-        {
-          "type": "text",
-          "id": "qty_2",
-          "label": "Quantity for Option 2",
-          "default": "2"
+          "label": "Option name"
         },
         {
           "type": "text",
           "id": "qty_3",
-          "label": "Quantity for Option 3",
+          "label": "Quantity",
           "default": "3"
         },
         {
-          "type": "range",
-          "id": "discount",
-          "label": "Discount Percentage",
-          "unit": "%",
-          "min": 0,
-          "max": 80,
-          "step": 2,
-          "default": 10
+          "type": "select",
+          "id": "discount_type_3",
+          "label": "Discount type",
+          "options": [
+            {
+              "value": "percentage",
+              "label": "Percentage off (%)"
+            },
+            {
+              "value": "fixed",
+              "label": "Fixed amount off"
+            }
+          ],
+          "default": "percentage"
+        },
+        {
+          "type": "number",
+          "id": "discount_3",
+          "label": "Discount amount",
+          "info": "Percentage, or a flat amount in your store currency. Leave empty for no discount on this quantity."
+        },
+        {
+          "type": "header",
+          "content": "Pricing"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_discounted_price",
+          "label": "Show discounted prices",
+          "info": "When off, each option shows its full price and the discount only applies to the subscription price.",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "show_tub_compare_price",
+          "label": "Show compare at price",
+          "info": "Only shown on options where the compare at price is higher than the price.",
+          "default": true
+        },
+        {
+          "type": "header",
+          "content": "Behaviour"
+        },
+        {
+          "type": "select",
+          "id": "default_tub",
+          "label": "Default selected option",
+          "options": [
+            {
+              "value": "1",
+              "label": "Option 1"
+            },
+            {
+              "value": "2",
+              "label": "Option 2"
+            },
+            {
+              "value": "3",
+              "label": "Option 3"
+            }
+          ],
+          "default": "2"
         }
       ]
     },
-
     {
       "type": "purchase_type",
       "name": "Purchase Type Options",
       "settings": [
+        {
+          "type": "select",
+          "id": "default_purchase",
+          "label": "Default selected option",
+          "options": [
+            {
+              "value": "subscription",
+              "label": "Subscribe and save"
+            },
+            {
+              "value": "onetime",
+              "label": "One time purchase"
+            }
+          ],
+          "default": "subscription"
+        },
+        {
+          "type": "header",
+          "content": "Subscription discount"
+        },
+        {
+          "type": "select",
+          "id": "subscription_discount_type",
+          "label": "Discount type",
+          "options": [
+            {
+              "value": "percentage",
+              "label": "Percentage off (%)"
+            },
+            {
+              "value": "fixed",
+              "label": "Fixed amount off"
+            }
+          ],
+          "default": "percentage"
+        },
+        {
+          "type": "number",
+          "id": "subscription_discount",
+          "label": "Discount amount",
+          "info": "Percentage, or a flat amount in your store currency. Applied on top of the selected quantity's price.",
+          "default": 10
+        },
         {
           "type": "text",
           "id": "text324",
@@ -2813,7 +3145,6 @@
         }
       ]
     },
-
     {
       "type": "jump-to",
       "name": "jump-to",
@@ -2875,13 +3206,11 @@
         }
       ]
     },
-
     {
       "type": "list_of_products",
       "name": "list of products",
       "settings": []
     },
-
     {
       "type": "popup",
       "name": "t:sections.main-product.blocks.popup.name",
@@ -4136,100 +4465,97 @@
 {% endcomment %}
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    console.log('Script loaded - updating quantity, one-time, and subscription prices...');
+  (function () {
+    {%- liquid
+      assign show_btn_compare_price = false
+      for b in section.blocks
+        if b.type == 'buy_buttons' and b.settings.show_compare_price
+          assign show_btn_compare_price = true
+        endif
+      endfor
+    -%}
+    const showBtnComparePrice = {{ show_btn_compare_price | json }};
 
-    const qtyInputs = document.querySelectorAll('.qty-input');
-    const priceNewElement = document.querySelector('.price-newew'); // One-time price
-    const subscPriceContainer = document.querySelector('#subsc_price-uptd'); // Subscription price container
-    const productQtyInput = document.querySelector('.buy-button-qty'); // Quantity input
-    const sellingPlanInput = document.querySelector('.selling_plan_id'); // Selling plan input
-    const btnPrice = document.querySelector('.btn-price'); // Button price display
-
+    // every node is looked up per run: the theme editor re-renders the section and
+    // variant swaps replace this markup, so anything cached once goes stale
     function updateAllValues() {
       const checkedQty = document.querySelector('.qty-input:checked');
-      const isOneTime = document.querySelector('.onetime_input:checked');
-      const isSubscription = document.querySelector('.subscription_input:checked');
-
       if (!checkedQty) return;
 
+      const isSubscription = document.querySelector('.subscription_input:checked');
       const orgPrice = checkedQty.getAttribute('org-price');
       const disPrice = checkedQty.getAttribute('dis-price');
-      const comparePrice = checkedQty.getAttribute('compare-price'); // ORIGINAL compare price
+      const comparePrice = checkedQty.getAttribute('compare-price');
       const qtyValue = checkedQty.getAttribute('data-qty');
-      const diffPrice = checkedQty.getAttribute('diff-price');
 
-      // Update quantity input
-      if (productQtyInput && qtyValue) {
-        productQtyInput.value = qtyValue;
-        console.log('Quantity updated to:', qtyValue);
-      }
+      const productQtyInput = document.querySelector('.buy-button-qty');
+      if (productQtyInput && qtyValue) productQtyInput.value = qtyValue;
 
-      // Update one-time price
-      if (priceNewElement) {
-        priceNewElement.textContent = orgPrice;
-      }
+      const priceNewElement = document.querySelector('.price-newew');
+      if (priceNewElement) priceNewElement.textContent = orgPrice;
 
-      // Update subscription price container
+      const subscPriceContainer = document.querySelector('#subsc_price-uptd');
       if (subscPriceContainer) {
         const priceDiscElement = subscPriceContainer.querySelector('.price-disc');
         const priceOrgcElement = subscPriceContainer.querySelector('.price-newABC');
-
         if (priceDiscElement) priceDiscElement.textContent = disPrice;
-        {% comment %} if (priceOrgcElement) priceOrgcElement.textContent = orgPrice; {% endcomment %}
         if (priceOrgcElement) priceOrgcElement.textContent = comparePrice;
       }
 
-      // Update button price
-      {% comment %} if (btnPrice) {
-        if (isOneTime) btnPrice.innerText = orgPrice;
-        else if (isSubscription) btnPrice.innerText = disPrice;
-      } {% endcomment %}
-
+      const btnPrice = document.querySelector('.btn-price');
       if (btnPrice) {
-        if (isSubscription) {
-          // Show compare price + discounted price using spans
-          btnPrice.innerHTML = `
-          {% comment %} <span class="actual-price">${disPrice}</span> {% endcomment %}
-          <span class="aaaaaa">${disPrice}</span>
-          <span class="compare-price">${comparePrice}</span>
-          `;
-          console.log('DEBUG: ATC button updated (subscription):', btnPrice.innerHTML);
-        } 
-        else if (isOneTime) {
-          // Show compare price + price for one-time (using spans for CSS)
-          btnPrice.innerHTML = `
-          <span class="actual-price">${orgPrice}</span>
-          <span class="compare-price">${comparePrice}</span>
-          `;
-          console.log('DEBUG: ATC button updated (one-time):', btnPrice.innerHTML);
-        }
+        // one-time is the fallback so the button still tracks quantity when the
+        // purchase type block is not on the page
+        const useSubscription = !!isSubscription;
+
+        // compare only reads as a saving when it is above the price actually charged
+        const compareRaw = parseFloat(checkedQty.dataset.compareRaw) || 0;
+        const activeRaw =
+          parseFloat(useSubscription ? checkedQty.dataset.disRaw : checkedQty.dataset.orgRaw) || 0;
+        const compareMarkup =
+          showBtnComparePrice && compareRaw > activeRaw
+            ? `<span class="compare-price">${comparePrice}</span>`
+            : '';
+
+        btnPrice.innerHTML = useSubscription
+          ? `<span class="aaaaaa">${disPrice}</span>${compareMarkup}`
+          : `<span class="actual-price">${orgPrice}</span>${compareMarkup}`;
       }
 
-      // Update selling plan
-       if (sellingPlanInput) {
+      const sellingPlanInput = document.querySelector('.selling_plan_id');
+      if (sellingPlanInput) {
         const checkedPurchase = document.querySelector('input[name="purchase_type"]:checked');
-        if (checkedPurchase?.classList.contains('subscription_input')) {
-          sellingPlanInput.value = checkedPurchase.value;
-          console.log('Selling plan set to subscription ID:', checkedPurchase.value);
-        } else {
-          sellingPlanInput.value = '';
-          console.log('Selling plan cleared (one-time selected)');
-        }
-      } 
+        sellingPlanInput.value =
+          checkedPurchase && checkedPurchase.classList.contains('subscription_input')
+            ? checkedPurchase.value
+            : '';
+      }
     }
 
-    // Run on page load
-    updateAllValues();
+    // delegated rather than bound per input, so the tub and purchase controls keep
+    // working after the section is re-rendered (DOMContentLoaded never fires again)
+    function onFieldChange(event) {
+      const el = event.target;
+      if (!el || typeof el.matches !== 'function') return;
+      if (
+        el.matches('.qty-input, .onetime_input, .subscription_input') ||
+        el.matches('[name="quantity"]:not(.buy-button-qty)')
+      ) {
+        updateAllValues();
+      }
+    }
 
-    // Event listeners for quantity radios
-    qtyInputs.forEach(input => {
-      input.addEventListener('change', updateAllValues);
-    });
+    document.addEventListener('change', onFieldChange);
+    document.addEventListener('input', onFieldChange);
 
-    // Event listeners for subscription / one-time radios
-    document.querySelectorAll('.onetime_input, .subscription_input').forEach(input => {
-      input.addEventListener('change', updateAllValues);
-    });
-  });
+    // buy-buttons re-renders the button on variant change, wiping what we wrote
+    document.addEventListener('atc-price:updated', updateAllValues);
+    document.addEventListener('shopify:section:load', updateAllValues);
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updateAllValues);
+    } else {
+      updateAllValues();
+    }
+  })();
 </script>

@@ -309,15 +309,23 @@ document.addEventListener("DOMContentLoaded", function(){
 
     });
 
+    /* the tubs selector owns the button total when it is on the page — it prices
+       per bundle size and subscription, which this block knows nothing about */
+    if(document.querySelector(".qty-input:checked")) return;
+
     /* update selling price */
     if(priceElement.childNodes[0]){
       priceElement.childNodes[0].nodeValue = formatMoney(totalPrice) + " ";
     }
 
-    /* update compare price */
+    /* update compare price — only worth showing when it beats the real price */
     if(compareElement){
+      if(totalCompare > totalPrice){
         compareElement.innerText = formatMoney(totalCompare);
         compareElement.style.display = "inline";
+      } else {
+        compareElement.style.display = "none";
+      }
     }
 
   }
