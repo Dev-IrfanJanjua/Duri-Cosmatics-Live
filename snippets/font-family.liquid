@@ -1,3 +1,15 @@
+{%- comment -%}
+  A webfont is only fetched once the browser finds text that uses it, which is what
+  leaves the page rendering in the fallback first. Preloading starts the download
+  immediately instead. Only the two faces in general use are preloaded — adding the
+  rest would compete for bandwidth and make these two arrive later.
+
+  Each href must stay byte identical to the src below it, or the file is fetched twice.
+{%- endcomment -%}
+<link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="{{ 'PPMori-Regular.woff2' | file_url }}" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="{{ 'PPMori-SemiBold.woff2' | file_url }}" crossorigin>
+
 <style>
 @font-face {
     font-family: 'PP Mori';

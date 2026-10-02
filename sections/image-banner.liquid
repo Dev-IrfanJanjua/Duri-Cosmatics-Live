@@ -27,6 +27,53 @@
   #Banner-{{ section.id }}::after {
     opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
   }
+
+  #Banner-{{ section.id }} .banner__heading,
+  #Banner-{{ section.id }} .banner__heading *,
+  #Banner-{{ section.id }} .banner__text,
+  #Banner-{{ section.id }} .banner__text p {
+    color: #7C0732;
+  }
+
+  #Banner-{{ section.id }} .banner__buttons .button {
+    display: inline-block;
+    width: 100%;
+    max-width: 190px;
+    padding: 14px 20px;
+    background: #7C0732;
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    font-family: 'PP Mori', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  /* Dawn draws the button border and shadow with pseudo elements */
+  #Banner-{{ section.id }} .banner__buttons .button::before,
+  #Banner-{{ section.id }} .banner__buttons .button::after {
+    display: none;
+  }
+
+  #Banner-{{ section.id }} .banner__buttons .button:hover {
+    transform: translateY(-2px);
+  }
+
+  @media screen and (min-width: 750px) {
+    /* only needed from here up: below 750px the content renders under the image
+       rather than over it, so it already sits on a plain background */
+    #Banner-{{ section.id }} .banner__box {
+      padding: 3rem 3.5rem;
+      background: rgba(255, 255, 255, 0.82);
+    }
+  }
 {%- endstyle -%}
 
 {%- liquid

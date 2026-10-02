@@ -7,9 +7,14 @@
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
+    {%- comment -%}
+      Kept above the third party stylesheet below: preload hints are acted on in
+      document order, so the fonts start downloading before the browser opens a
+      connection to another origin.
+    {%- endcomment -%}
     {% render 'font-family' %}
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
